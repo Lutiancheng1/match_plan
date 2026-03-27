@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LiveFrameObservation",
+  "type": "object",
+  "required": [
+    "scene_type",
+    "score_detected",
+    "match_clock_detected",
+    "event_candidates",
+    "confidence",
+    "explanation_short"
+  ],
+  "properties": {
+    "scene_type": {
+      "type": "string",
+      "enum": [
+        "live_play",
+        "replay",
+        "scoreboard_focus",
+        "crowd_or_bench",
+        "stoppage",
+        "unknown"
+      ]
+    },
+    "score_detected": {
+      "type": "string",
+      "description": "例如 1-0；无法确认时允许空字符串。"
+    },
+    "match_clock_detected": {
+      "type": "string",
+      "description": "例如 67:14；无法确认时允许空字符串。"
+    },
+    "event_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "confidence"],
+        "properties": {
+          "label": {
+            "type": "string",
+            "enum": [
+              "goal",
+              "red_card",
+              "penalty",
+              "dangerous_attack",
+              "celebration",
+              "replay_sequence",
+              "substitution",
+              "injury_or_stoppage",
+              "none"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "explanation_short": {
+      "type": "string",
+      "description": "只允许一句短解释，不允许思维链。"
+    }
+  },
+  "additionalProperties": false
+}

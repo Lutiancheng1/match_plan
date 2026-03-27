@@ -1,0 +1,413 @@
+model,teams,clip_id,clip_path,label_path,meta_path,kind,reason,start_sec,end_sec,latency_ms,prompt_tokens,completion_tokens,json_valid,scene_type,score_detected,match_clock_detected,confidence,event_candidates_json,expected_score,expected_clock,score_exact_match,clock_exact_match,clock_minute_match,predicted_strong_event,error,raw_content
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__001,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,event,"ratio_re,ior_reh,ior_rec,ratio_rouo,ior_rouh,ior_rouc",8.479,21.479,5452.33,2338,141,True,replay,,,0.82,"[{""label"": ""celebration"", ""confidence"": 0.85}, {""label"": ""replay_sequence"", ""confidence"": 0.75}]",1-1,66:10,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""replay_sequence"",
+      ""confidence"": 0.75
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""The sequence shows a player in a white jersey (number 18) celebrating, likely after a goal, with a replay ball graphic visible in the background.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__002,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,event,"ior_rouh,ior_rouc",42.819,55.819,4336.48,2338,141,True,live_play,,,0.8,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,66:45,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.8,
+  ""explanation_short"": ""The sequence shows continuous live play with the ball moving from midfield towards the attacking third. Players are actively running and positioning, suggesting a developing attack rather than a set piece or celebration.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__003,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,event,"ior_rouh,ior_rouc",66.554,79.554,4497.35,2338,157,True,live_play,,,0.8,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,67:09,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.8,
+  ""explanation_short"": ""The sequence shows a continuous live play where the team in red and blue is attacking, moving the ball from the midfield towards the opponent's penalty area. There are no clear goals, cards, or substitutions shown in these frames, just fluid movement and positioning changes.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__004,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.json,event,"ior_rouh,ior_rouc",99.704,112.704,4164.82,2338,125,True,live_play,,,0.8,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,67:41,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.8,
+  ""explanation_short"": ""Live play showing attacking phase with players spread across the pitch, no clear goal or major event yet.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__005,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.json,event,"ior_reh,ior_rec",141.761,154.761,4300.0,2338,141,True,live_play,,,0.82,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,68:26,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""The sequence shows a continuous attacking play developing from the midfield towards the goal, with players in motion and positioning shifting, indicating live gameplay rather than a static scoreboard or replay summary.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__006,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.json,event,"ior_reh,ior_rec",165.853,178.853,4310.59,2338,146,True,replay,1-0,67:14,0.85,"[{""label"": ""goal"", ""confidence"": 0.9}, {""label"": ""injury_or_stoppage"", ""confidence"": 0.7}]",1-1,68:53,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.9
+    },
+    {
+      ""label"": ""injury_or_stoppage"",
+      ""confidence"": 0.7
+    }
+  ],
+  ""confidence"": 0.85,
+  ""explanation_short"": ""The sequence shows a goal being scored, followed by a player lying on the ground in celebration or exhaustion, suggesting a replay of a goal event.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__007,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.json,event,"ior_rouh,ior_rouc",191.077,204.077,4367.51,2338,152,True,replay,1-0,67:14,0.88,"[{""label"": ""goal"", ""confidence"": 0.9}, {""label"": ""celebration"", ""confidence"": 0.85}]",1-1,69:08,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.9
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.85
+    }
+  ],
+  ""confidence"": 0.88,
+  ""explanation_short"": ""The sequence shows a goal being scored, followed by a close-up of the scorer celebrating with hands raised, and then bending over in exhaustion or joy, typical of a goal replay.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__008,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.json,event,"ior_reh,ior_rec,ior_rouh,ior_rouc",223.244,236.244,4566.35,2338,163,True,live_play,1-0,67:14,0.88,"[{""label"": ""goal"", ""confidence"": 0.85}, {""label"": ""celebration"", ""confidence"": 0.75}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,69:45,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.75
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.88,
+  ""explanation_short"": ""The sequence shows a goal being scored, followed by player celebrations and a wide shot of the field as play resumes.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__009,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.json,event,"ior_reh,ior_rec",255.059,268.059,4494.87,2338,157,True,live_play,,,0.82,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,70:23,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""The sequence shows a continuous live play action, likely a dangerous attack or goal-scoring opportunity developing, with players moving dynamically across the pitch. No clear goal, red card, or substitution is confirmed in these frames, and no scoreboard or clock is visible.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__010,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.json,event,"ior_reh,ior_rec",279.327,292.327,4536.62,2338,161,True,live_play,,,0.82,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.15}]",1-1,70:49,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.15
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""The sequence shows a continuous flow of play from left to right, with players in red and white jerseys moving the ball up the field. There are no clear goal celebrations, red cards, or substitutions happening in these frames, suggesting a standard attacking phase or build-up play.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__011,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.json,event,"ior_reh,ior_rec",304.524,317.524,4386.9,2338,147,True,live_play,,,0.82,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,71:14,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""The sequence shows a continuous live play with the ball moving from midfield towards the goal area. Players are actively repositioning, suggesting a developing attack or transition phase rather than a static set piece or celebration.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__012,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.json,event,"ratio_re,ior_reh,ior_rec,ratio_rouo,ior_rouh,ior_rouc",327.565,340.565,4466.1,2338,157,True,replay,1-0,67:14,0.88,"[{""label"": ""goal"", ""confidence"": 0.85}, {""label"": ""celebration"", ""confidence"": 0.72}]",1-1,71:30,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""confidence"": 0.88,
+  ""explanation_short"": ""The sequence shows a goal being scored, followed by a celebration and a replay of the action. The scoreboard indicates a 1-0 lead, and the match clock is around 67 minutes.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__013,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.json,event,"ior_rouh,ior_rouc",365.482,378.482,4846.65,2338,185,True,replay,,,0.85,"[{""label"": ""replay_sequence"", ""confidence"": 0.9}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,72:14,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""replay_sequence"",
+      ""confidence"": 0.9
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.85,
+  ""explanation_short"": ""The sequence shows a player in a red and yellow jersey, likely from the team 'Deportivo Pasto' given the 'NARIÑO' sponsor, reacting to a play. The camera focuses on his upper body and face, typical of a replay or reaction shot following a significant event like a goal or a miss. The ball is visible in the first frame, suggesting the action just happened.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__014,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.json,event,"ior_reh,ior_rec",390.689,403.689,4900.24,2338,183,True,live_play,1-0,67:14,0.88,"[{""label"": ""goal"", ""confidence"": 0.85}, {""label"": ""celebration"", ""confidence"": 0.7}, {""label"": ""none"", ""confidence"": 0.3}]",1-1,72:37,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.7
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.3
+    }
+  ],
+  ""confidence"": 0.88,
+  ""explanation_short"": ""Live play showing a goal celebration in progress. Players are clustered near the goal area, with some running towards the camera. The scoreboard shows 1-0, and the match clock reads 67:14.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__015,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.json,event,"ior_rouh,ior_rouc",446.583,459.583,3884.22,2338,105,True,live_play,,,0.85,"[{""label"": ""none"", ""confidence"": 0.9}]",1-1,73:27,False,False,False,False,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.9
+    }
+  ],
+  ""confidence"": 0.85,
+  ""explanation_short"": ""Live play showing midfield action with players in white and red/blue kits. No score or clock visible, no major event occurring.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__016,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.json,event,"ior_reh,ior_rec",470.038,483.038,4072.2,2338,123,True,replay,,,0.85,"[{""label"": ""goal"", ""confidence"": 0.9}, {""label"": ""celebration"", ""confidence"": 0.8}]",1-1,74:03,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.9
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.8
+    }
+  ],
+  ""confidence"": 0.85,
+  ""explanation_short"": ""The sequence shows a goal being scored and the subsequent celebration, typical of a replay segment.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__017,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.json,event,"ior_reh,ior_rec,ior_rouh,ior_rouc",497.746,510.746,4296.69,2338,139,True,live_play,1-0,67:14,0.82,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""none"", ""confidence"": 0.15}]",1-1,74:20,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.15
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""Live play showing a dangerous attack developing in the midfield with players from both teams positioned for a potential goal opportunity.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__018,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.json,event,"ior_rouh,ior_rouc",525.664,538.664,4621.72,2338,170,True,live_play,1-0,67:14,0.82,"[{""label"": ""goal"", ""confidence"": 0.85}, {""label"": ""celebration"", ""confidence"": 0.75}, {""label"": ""none"", ""confidence"": 0.5}]",1-1,74:55,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.75
+    },
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.5
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""Live play showing a goal celebration with players in red and white jerseys. Score appears to be 1-0, clock around 67 minutes.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__019,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.json,event,"ior_reh,ior_rec",547.488,560.488,3922.68,2338,105,True,live_play,,,0.85,"[{""label"": ""none"", ""confidence"": 0.9}]",1-1,75:09,False,False,False,False,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""none"",
+      ""confidence"": 0.9
+    }
+  ],
+  ""confidence"": 0.85,
+  ""explanation_short"": ""Live play showing midfield action with players in white and red/blue kits. No clear goal or major event, just ongoing play.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__020,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.json,event,"ior_rouh,ior_rouc",571.727,584.727,4518.88,2338,159,True,live_play,1-0,67:14,0.88,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""goal"", ""confidence"": 0.72}]",1-1,75:34,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""confidence"": 0.88,
+  ""explanation_short"": ""Live play showing attacking phase with players in white and red/blue kits. Scoreboard indicates 1-0. Clock reads 67:14. Players are positioned for a potential goal or dangerous attack.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__021,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.json,event,"ior_reh,ior_rec",597.108,610.108,4399.04,2338,149,True,live_play,1-0,67:14,0.88,"[{""label"": ""dangerous_attack"", ""confidence"": 0.85}, {""label"": ""goal"", ""confidence"": 0.72}]",1-1,76:01,False,False,False,True,,"{
+  ""scene_type"": ""live_play"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""dangerous_attack"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""confidence"": 0.88,
+  ""explanation_short"": ""Live play showing a dynamic attacking sequence with players in motion, likely leading to a goal or dangerous opportunity. Score and clock are visible but not the primary focus.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__022,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.json,event,"ior_rouh,ior_rouc",628.926,641.926,4328.43,2338,144,True,replay,,,0.82,"[{""label"": ""celebration"", ""confidence"": 0.85}, {""label"": ""replay_sequence"", ""confidence"": 0.75}]",1-1,76:35,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.85
+    },
+    {
+      ""label"": ""replay_sequence"",
+      ""confidence"": 0.75
+    }
+  ],
+  ""confidence"": 0.82,
+  ""explanation_short"": ""The sequence shows players reacting emotionally (likely celebrating a goal) and a coach on the bench reacting with hands to his face, typical of a replay or immediate post-goal moment.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__023,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.json,event,"ior_reh,ior_rec",660.097,673.097,4307.19,2338,143,True,replay,1-0,67:14,0.85,"[{""label"": ""goal"", ""confidence"": 0.9}, {""label"": ""celebration"", ""confidence"": 0.8}]",1-1,77:04,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": ""1-0"",
+  ""match_clock_detected"": ""67:14"",
+  ""event_candidates"": [
+    {
+      ""label"": ""goal"",
+      ""confidence"": 0.9
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.8
+    }
+  ],
+  ""confidence"": 0.85,
+  ""explanation_short"": ""The sequence shows a goal being scored, followed by the players celebrating. The camera zooms in on the goal area and the players involved.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__024,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.json,event,"ior_rouh,ior_rouc",681.631,694.631,4583.17,2338,169,True,replay,,,0.85,"[{""label"": ""injury_or_stoppage"", ""confidence"": 0.9}, {""label"": ""celebration"", ""confidence"": 0.7}]",1-1,77:24,False,False,False,True,,"{
+  ""scene_type"": ""replay"",
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""event_candidates"": [
+    {
+      ""label"": ""injury_or_stoppage"",
+      ""confidence"": 0.9
+    },
+    {
+      ""label"": ""celebration"",
+      ""confidence"": 0.7
+    }
+  ],
+  ""confidence"": 0.85,
+  ""explanation_short"": ""The sequence shows a player in a red and blue kit rolling on the ground clutching his face, indicating an injury or a dramatic fall during play. The wide shot establishes the context, while the close-up focuses on the player's reaction, typical of an injury stoppage or a goal celebration replay.""
+}"

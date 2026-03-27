@@ -1,0 +1,13 @@
+{
+  "run_id": "InternVL3-38B-4bit__joint_eval__1774539918",
+  "model": "InternVL3-38B-4bit",
+  "manifest": "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/manifests/current_event_odds_joint_eval_manifest.json",
+  "record_count": 24,
+  "json_valid_count": 24,
+  "json_valid_rate": 1.0,
+  "repricing_expected_match_rate": 0.0833,
+  "repricing_direction_match_rate": 0.6667,
+  "first_leg_side_match_rate": 0.6667,
+  "avg_latency_ms": 17282.62,
+  "output_csv": "/Users/niannianshunjing/match_plan/analysis_vlm/reports/InternVL3-38B-4bit__joint_eval__1774539918/results.csv"
+}

@@ -1,0 +1,13 @@
+# Video Recording + Betting Data Capture
+# Python dependencies for macOS
+
+psutil>=5.9.0
+
+# macOS window detection
+pyobjc-core>=9.0
+pyobjc-framework-Quartz>=9.0
+
+# Optional: black screen detection fallback (ffmpeg signalstats is used by default)
+numpy>=1.24.0
+Pillow>=10.0.0
+websocket-client>=1.8.0

@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "updated_at": "2026-03-26T04:30:00-07:00",
+  "roles": {
+    "online_primary": {
+      "description": "低风险持续看直播画面，输出纯 JSON。",
+      "selection_rule": "优先 7B~9B 级里 JSON 最稳、延迟最稳的模型。"
+    },
+    "offline_reviewer": {
+      "description": "离线复核困难样本，生成更高质量标签候选。",
+      "selection_rule": "优先 30B~40B 级里准确率更高的模型。"
+    },
+    "teacher_model": {
+      "description": "只用于少量高价值困难样本的深度复判。",
+      "selection_rule": "不常驻在线，不做第一训练底座。"
+    },
+    "text_organizer": {
+      "description": "整理知识库、标签清洗、失败案例汇总。",
+      "selection_rule": "文本模型优先，不浪费视觉模型。"
+    }
+  },
+  "models": [
+    {
+      "name": "Qwen2.5-VL-7B-Instruct-4bit",
+      "provider": "omlx",
+      "type": "vlm",
+      "role_candidates": ["online_primary"],
+      "installed_local": true,
+      "priority": "high",
+      "status": "baseline_verified",
+      "notes": "第一轮正式 benchmark 已验证：24/24 JSON 合法，20/24 读出比分和时间，平均延迟约 1776.50ms。当前在线主力首选。"
+    },
+    {
+      "name": "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK",
+      "provider": "omlx",
+      "type": "vlm",
+      "role_candidates": ["offline_reviewer"],
+      "installed_local": true,
+      "priority": "high",
+      "status": "baseline_verified",
+      "notes": "第一轮正式 benchmark 已验证：24/24 JSON 合法，24/24 读出比分和时间，平均延迟约 2033.41ms。当前离线复核首选。"
+    },
+    {
+      "name": "Qwen3.5-VL-122B-A10B-4bit-MLX-CRACK",
+      "provider": "omlx",
+      "type": "vlm",
+      "role_candidates": ["teacher_model"],
+      "installed_local": true,
+      "priority": "medium",
+      "status": "baseline",
+      "notes": "只用于少量高价值样本复判。"
+    },
+    {
+      "name": "Qwen3.5-27B-4bit",
+      "provider": "omlx",
+      "type": "text",
+      "role_candidates": ["text_organizer"],
+      "installed_local": true,
+      "priority": "high",
+      "status": "baseline",
+      "notes": "文本整理、知识库与标签归纳。"
+    },
+    {
+      "name": "Qwen2.5-Coder-14B-Instruct-4bit",
+      "provider": "omlx",
+      "type": "text",
+      "role_candidates": ["text_organizer"],
+      "installed_local": true,
+      "priority": "medium",
+      "status": "baseline",
+      "notes": "代码和工具链辅助，不负责视觉主链。"
+    },
+    {
+      "name": "InternVL3-8B",
+      "provider": "huggingface",
+      "repo_id": "mlx-community/InternVL3-8B-MLX-4bit",
+      "type": "vlm",
+      "role_candidates": ["online_primary"],
+      "installed_local": true,
+      "priority": "high",
+      "status": "candidate_benchmarked",
+      "notes": "已下载并通过第一轮正式 benchmark。24/24 JSON 合法，但 0/24 读出比分和时间，平均延迟约 2344.90ms。保留为次级在线候选。"
+    },
+    {
+      "name": "InternVL3-38B",
+      "provider": "huggingface",
+      "repo_id": "mlx-community/InternVL3-38B-4bit",
+      "type": "vlm",
+      "role_candidates": ["offline_reviewer"],
+      "installed_local": true,
+      "priority": "medium",
+      "status": "candidate_benchmarked",
+      "notes": "已下载并通过第一轮正式 benchmark。24/24 JSON 合法，15/24 读出比分和时间，平均延迟约 14126.01ms。保留为次级离线/教师候选。"
+    },
+    {
+      "name": "MiniCPM-V 4.5",
+      "provider": "huggingface",
+      "repo_id": "openbmb/MiniCPM-V-4_5-int4",
+      "type": "vlm",
+      "role_candidates": ["online_primary", "offline_reviewer"],
+      "installed_local": true,
+      "priority": "high",
+      "status": "candidate_blocked",
+      "notes": "已下载并被 OMLX 识别，但当前视觉请求直接返回 HTTP 500。现阶段不建议纳入 benchmark，需后续排查量化/运行时兼容性。"
+    },
+    {
+      "name": "Qwen2.5-Omni",
+      "provider": "huggingface",
+      "type": "omni",
+      "role_candidates": ["online_primary", "teacher_model"],
+      "installed_local": false,
+      "priority": "low",
+      "status": "candidate",
+      "notes": "后续若要把音频/解说纳入分析时再重点考虑。"
+    }
+  ]
+}

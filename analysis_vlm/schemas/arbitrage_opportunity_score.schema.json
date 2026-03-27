@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArbitrageOpportunityScore",
+  "type": "object",
+  "required": [
+    "opportunity_grade",
+    "should_enter_first_leg",
+    "first_leg_side",
+    "first_leg_confidence",
+    "expected_repricing_direction",
+    "expected_repricing_strength",
+    "expected_hedge_window_sec",
+    "expected_arb_feasibility",
+    "max_risk_flag",
+    "rationale_short"
+  ],
+  "properties": {
+    "opportunity_grade": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D", "reject"]
+    },
+    "should_enter_first_leg": {
+      "type": "boolean"
+    },
+    "first_leg_side": {
+      "type": "string",
+      "enum": ["home", "away", "none"]
+    },
+    "first_leg_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "expected_repricing_direction": {
+      "type": "string",
+      "enum": [
+        "home_price_down",
+        "home_price_up",
+        "away_price_down",
+        "away_price_up",
+        "unclear"
+      ]
+    },
+    "expected_repricing_strength": {
+      "type": "string",
+      "enum": ["weak", "medium", "strong", "very_strong", "unclear"]
+    },
+    "expected_hedge_window_sec": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "expected_arb_feasibility": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "none"]
+    },
+    "max_risk_flag": {
+      "type": "string",
+      "enum": [
+        "safe_enough",
+        "uncertain_event",
+        "repricing_already_happened",
+        "liquidity_or_timing_risk",
+        "do_not_trade"
+      ]
+    },
+    "rationale_short": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

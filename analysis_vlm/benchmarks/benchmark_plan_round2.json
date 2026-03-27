@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "phase": "phase_1_online_baseline_round_2",
+  "goal": "从单帧升级到短片段多帧评测，验证模型对比分、比赛时间、scene type 和事件候选的稳定理解。",
+  "allowed_material_sources": [
+    "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/01_gold_matches",
+    "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples"
+  ],
+  "input_strategy": {
+    "type": "contact_sheet_from_clip",
+    "frame_count": 3,
+    "frame_positions": [0.15, 0.5, 0.85],
+    "prompt_mode": "strict_json"
+  },
+  "candidate_models_round_2": [
+    "Qwen2.5-VL-7B-Instruct-4bit",
+    "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK",
+    "InternVL3-8B-MLX-4bit",
+    "InternVL3-38B-4bit"
+  ],
+  "tasks": [
+    {
+      "id": "multi_frame_score_and_clock",
+      "description": "输入短片段的三张关键帧，识别比分和比赛时间，并与标签骨架做自动对比。"
+    },
+    {
+      "id": "scene_type_classification",
+      "description": "判断当前片段更接近 live_play、replay、scoreboard_focus、crowd_or_bench、stoppage 还是 unknown。"
+    },
+    {
+      "id": "event_candidate_detection",
+      "description": "输出候选事件列表，并统计非 none 的输出频率，作为后续人工复核的优先队列。"
+    }
+  ],
+  "metrics": [
+    "json_valid_rate",
+    "score_exact_match_rate",
+    "clock_exact_match_rate",
+    "clock_minute_match_rate",
+    "avg_latency_ms",
+    "predicted_strong_event_rate",
+    "scene_type_distribution"
+  ],
+  "promotion_rules": {
+    "online_primary_target": "优先选择多帧输入下 JSON 仍稳定、比分和时间读取表现更好的轻量模型。",
+    "offline_reviewer_target": "优先选择多帧输入下比分和时间准确率更高、事件候选更稳的 30B~40B 级模型。"
+  }
+}

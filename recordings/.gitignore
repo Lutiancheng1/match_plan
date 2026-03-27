@@ -1,0 +1,13 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+.build/
+
+live_dashboard.env
+live_service_data/
+
+*.log
+last_openclaw_recording.json
+watch_runtime/
+window_size.txt

@@ -1,0 +1,22 @@
+{
+  "run_id": "Qwen2.5-VL-7B-Instruct-4bit__clip_round2__1774525241",
+  "model": "Qwen2.5-VL-7B-Instruct-4bit",
+  "manifest": "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/current_golden_sample_manifest.json",
+  "clip_count": 3,
+  "json_valid_count": 3,
+  "json_valid_rate": 1.0,
+  "score_exact_match_count": 0,
+  "score_exact_match_rate": 0.0,
+  "clock_exact_match_count": 0,
+  "clock_exact_match_rate": 0.0,
+  "clock_minute_match_count": 0,
+  "clock_minute_match_rate": 0.0,
+  "predicted_strong_event_count": 3,
+  "predicted_strong_event_rate": 1.0,
+  "scene_type_distribution": {
+    "unknown": 1,
+    "live_play": 2
+  },
+  "avg_latency_ms": 5635.78,
+  "output_csv": "/Users/niannianshunjing/match_plan/analysis_vlm/reports/Qwen2.5-VL-7B-Instruct-4bit__clip_round2__1774525241/results.csv"
+}

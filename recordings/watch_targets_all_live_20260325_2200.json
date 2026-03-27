@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "browser": "safari",
+    "gtypes": [],
+    "duration_minutes": 30,
+    "max_streams": 4,
+    "check_interval_minutes": 2,
+    "progress_interval_minutes": 0,
+    "allow_test_recording": false,
+    "notify_channel": "feishu",
+    "notify_account": "legacy",
+    "notify_target": "oc_d8caa357cf6943f7a0b2917a2488876a"
+  },
+  "targets": [
+    {
+      "id": "all_live_any_sport",
+      "name": "全量直播",
+      "enabled": true,
+      "priority": 1000,
+      "gtypes": [],
+      "league_keywords": [],
+      "team_keywords": [],
+      "match_query": "",
+      "allow_test_recording": false,
+      "duration_minutes": 30,
+      "max_streams": 4,
+      "progress_interval_minutes": 0
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StrongEventObservation",
+  "type": "object",
+  "required": [
+    "primary_event_label",
+    "secondary_event_labels",
+    "severity",
+    "affected_side",
+    "stoppage_seconds_estimate",
+    "expected_pricing_impact_direction",
+    "expected_pricing_impact_confidence",
+    "rationale_short"
+  ],
+  "properties": {
+    "primary_event_label": {
+      "type": "string",
+      "enum": [
+        "injury_event",
+        "red_card_risk",
+        "medical_stoppage",
+        "time_decay_pressure",
+        "momentum_pressure",
+        "none"
+      ]
+    },
+    "secondary_event_labels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "injury_event",
+          "red_card_risk",
+          "medical_stoppage",
+          "time_decay_pressure",
+          "momentum_pressure"
+        ]
+      }
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "affected_side": {
+      "type": "string",
+      "enum": ["home", "away", "both", "unknown"]
+    },
+    "stoppage_seconds_estimate": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "expected_pricing_impact_direction": {
+      "type": "string",
+      "enum": [
+        "home_bullish",
+        "away_bullish",
+        "home_bearish",
+        "away_bearish",
+        "unclear"
+      ]
+    },
+    "expected_pricing_impact_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "rationale_short": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

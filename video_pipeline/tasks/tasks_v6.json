@@ -1,0 +1,110 @@
+[
+  {
+    "task_id": "sftraders_rooms",
+    "mode": "site_rooms",
+    "discovery_backend": "pinchtab",
+    "login_url": "https://sftraders.live/login",
+    "rooms_url": "https://sftraders.live/schedules",
+    "email_env": "SFTRADERS_EMAIL",
+    "password_env": "SFTRADERS_PASSWORD",
+    "storage_state": "auth/sftraders.json",
+    "profile_dir": "browser_profile/sftraders",
+    "browser_channel": "chrome",
+    "proxy_server": "http://127.0.0.1:1082",
+    "block_new_window_when_visible": true,
+    "skip_storage_validation_when_visible_window": true,
+    "prefill_credentials": true,
+    "auto_submit_login": false,
+    "login_headless": false,
+    "manual_login_timeout_seconds": 300,
+    "notify_before_manual_session": true,
+    "wait_for_session_after_notify": true,
+    "manual_session_only": true,
+    "manual_session_timeout_seconds": 86400,
+    "manual_session_poll_interval_seconds": 5,
+    "storage_state_validation_retries": 3,
+    "storage_state_validation_retry_delay_seconds": 2,
+    "trust_existing_storage_state": true,
+    "discovery_headless": false,
+    "discovery_persistent_context": true,
+    "discovery_profile_dir": "browser_profile/discovery_monitor",
+    "headless": true,
+    "record_seconds": 300,
+    "wait_until": "domcontentloaded",
+    "wait_after_load_ms": 2500,
+    "fields": ["headings", "paragraphs", "links"],
+    "pinchtab": {
+      "enabled": true,
+      "cli_path": "/opt/homebrew/bin/pinchtab",
+      "config_path": "~/.pinchtab/config.json",
+      "server_url": "http://127.0.0.1:9867",
+      "attach_debug_chrome": true,
+      "debug_origin": "http://127.0.0.1:9222",
+      "debug_version_url": "http://127.0.0.1:9222/json/version",
+      "attach_name": "sftraders-shared-chrome",
+      "reuse_existing_tab_only": true,
+      "open_rooms_window_when_missing": true,
+      "required_url_substrings": [
+        "sftraders.live/schedules",
+        "sftraders.live/login"
+      ]
+    },
+    "monitor": {
+      "enabled": true,
+      "poll_interval_seconds": 30,
+      "max_cycles": 0,
+      "empty_cycles_before_stop": 0,
+      "summary_prefix": "batch_summary_cycle"
+    },
+    "telegram": {
+      "enabled": true,
+      "bot_token_env": "TG_BOT_TOKEN",
+      "chat_id_env": "TG_CHAT_ID"
+    },
+    "rooms": {
+      "table_selector": "table",
+      "row_selector": "tr",
+      "viewer_link_selectors": [
+        "a[href*='/watch']:not([href*='withChart=1'])",
+        "a[href*='/watch']"
+      ],
+      "exclude_terms": [],
+      "require_priority_group_match": false,
+      "priority_groups": [
+        {
+          "name": "tier_1",
+          "keywords": [
+            "primera a",
+            "liga profesional argentina",
+            "liga pro",
+            "division profesional",
+            "serie a",
+            "la liga",
+            "bundesliga",
+            "ligue 1",
+            "primeira liga",
+            "eredivisie",
+            "brasileirão",
+            "brasileirao"
+          ]
+        },
+        {
+          "name": "tier_2",
+          "keywords": [
+            "serie b",
+            "championship",
+            "segunda division",
+            "segunda división",
+            "la liga 2",
+            "ligue 2",
+            "2. bundesliga",
+            "primeira nacional",
+            "liga 2"
+          ]
+        }
+      ],
+      "limit": 6,
+      "load_wait_ms": 4000
+    }
+  }
+]

@@ -1,0 +1,67 @@
+model,teams,clip_id,clip_path,label_path,meta_path,kind,reason,start_sec,end_sec,latency_ms,prompt_tokens,completion_tokens,json_valid,scene_type,score_detected,match_clock_detected,confidence,event_candidates_json,expected_score,expected_clock,score_exact_match,clock_exact_match,clock_minute_match,predicted_strong_event,error,raw_content
+Qwen2.5-VL-7B-Instruct-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__001,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,event,"ratio_re,ior_reh,ior_rec,ratio_rouo,ior_rouh,ior_rouc",8.479,21.479,5855.7,2893,88,True,足球比赛,,,0.7,"[""球员庆祝"", ""球员准备接球"", ""球员准备传球""]",1-1,66:10,False,False,False,False,,"```json
+{
+  ""scene_type"": ""足球比赛"",
+  ""score_detected"": false,
+  ""match_clock_detected"": false,
+  ""event_candidates"": [
+    ""球员庆祝"",
+    ""球员准备接球"",
+    ""球员准备传球""
+  ],
+  ""confidence"": 0.7,
+  ""explanation_short"": ""球员在足球场上，可能在庆祝进球或准备接球传球。""
+}
+```"
+Qwen2.5-VL-7B-Instruct-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__002,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,event,"ior_rouh,ior_rouc",42.819,55.819,5580.74,2893,167,True,足球比赛,,,0.7,"[{""type"": ""传球"", ""confidence"": 0.8, ""description"": ""一名球员正在传球给队友""}, {""type"": ""防守"", ""confidence"": 0.7, ""description"": ""一名球员正在防守对方球员""}, {""type"": ""进攻"", ""confidence"": 0.6, ""description"": ""球员正在向对方球门进攻""}]",1-1,66:45,False,False,False,False,,"```json
+{
+  ""scene_type"": ""足球比赛"",
+  ""score_detected"": false,
+  ""match_clock_detected"": false,
+  ""event_candidates"": [
+    {
+      ""type"": ""传球"",
+      ""confidence"": 0.8,
+      ""description"": ""一名球员正在传球给队友""
+    },
+    {
+      ""type"": ""防守"",
+      ""confidence"": 0.7,
+      ""description"": ""一名球员正在防守对方球员""
+    },
+    {
+      ""type"": ""进攻"",
+      ""confidence"": 0.6,
+      ""description"": ""球员正在向对方球门进攻""
+    }
+  ],
+  ""confidence"": 0.7,
+  ""explanation_short"": ""场景显示一场足球比赛正在进行，球员们在场上移动和传球。""
+}
+```"
+Qwen2.5-VL-7B-Instruct-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__003,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,event,"ior_rouh,ior_rouc",66.554,79.554,5564.6,2893,166,True,足球比赛,,,0.7,"[{""type"": ""传球"", ""confidence"": 0.8, ""description"": ""一名球员将球传给队友""}, {""type"": ""防守"", ""confidence"": 0.7, ""description"": ""一名球员正在防守对方球员""}, {""type"": ""进攻"", ""confidence"": 0.6, ""description"": ""一名球员正在带球进攻""}]",1-1,67:09,False,False,False,False,,"```json
+{
+  ""scene_type"": ""足球比赛"",
+  ""score_detected"": false,
+  ""match_clock_detected"": false,
+  ""event_candidates"": [
+    {
+      ""type"": ""传球"",
+      ""confidence"": 0.8,
+      ""description"": ""一名球员将球传给队友""
+    },
+    {
+      ""type"": ""防守"",
+      ""confidence"": 0.7,
+      ""description"": ""一名球员正在防守对方球员""
+    },
+    {
+      ""type"": ""进攻"",
+      ""confidence"": 0.6,
+      ""description"": ""一名球员正在带球进攻""
+    }
+  ],
+  ""confidence"": 0.7,
+  ""explanation_short"": ""场景显示足球比赛正在进行，球员们在场上移动和传球。""
+}
+```"

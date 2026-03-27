@@ -1,0 +1,10 @@
+{
+  "run_id": "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK__1774524490",
+  "model": "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK",
+  "manifest": "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/current_golden_sample_manifest.json",
+  "clip_count": 24,
+  "json_valid_count": 24,
+  "json_valid_rate": 1.0,
+  "avg_latency_ms": 2033.41,
+  "output_csv": "/Users/niannianshunjing/match_plan/analysis_vlm/reports/Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK__1774524490/results.csv"
+}

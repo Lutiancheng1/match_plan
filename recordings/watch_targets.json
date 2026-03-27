@@ -1,0 +1,39 @@
+{
+  "defaults": {
+    "browser": "safari",
+    "gtypes": [
+      "FT"
+    ],
+    "duration_minutes": 30,
+    "max_streams": 1,
+    "check_interval_minutes": 10,
+    "progress_interval_minutes": 30,
+    "allow_test_recording": false,
+    "notify_channel": "feishu",
+    "notify_account": "legacy",
+    "notify_target": "oc_d8caa357cf6943f7a0b2917a2488876a"
+  },
+  "targets": [
+    {
+      "id": "sample_ft_target",
+      "name": "示例足球目标",
+      "enabled": false,
+      "priority": 100,
+      "gtypes": [
+        "FT"
+      ],
+      "league_keywords": [
+        "Primera A"
+      ],
+      "team_keywords": [
+        "Fortaleza FC",
+        "Deportivo Pasto"
+      ],
+      "match_query": "",
+      "allow_test_recording": false,
+      "duration_minutes": 30,
+      "max_streams": 1,
+      "progress_interval_minutes": 30
+    }
+  ]
+}

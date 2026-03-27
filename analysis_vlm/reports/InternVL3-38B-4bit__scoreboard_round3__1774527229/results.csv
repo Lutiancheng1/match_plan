@@ -1,0 +1,145 @@
+model,teams,clip_id,clip_path,label_path,meta_path,kind,reason,latency_ms,prompt_tokens,completion_tokens,json_valid,score_detected,match_clock_detected,confidence,expected_score,expected_clock,score_exact_match,clock_exact_match,clock_minute_match,scoreboard_visible,ocr_hint_text,error,raw_content
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__001,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,event,"ratio_re,ior_reh,ior_rec,ratio_rouo,ior_rouh,ior_rouc",14487.65,3463,1,False,,,,1-1,66:10,False,False,False,False,,json_parse_error:Expecting value: line 1 column 1 (char 0),```
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__002,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,event,"ior_rouh,ior_rouc",11512.4,3463,1,False,,,,1-1,66:45,False,False,False,False,,json_parse_error:Expecting value: line 1 column 1 (char 0),```
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__003,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,event,"ior_rouh,ior_rouc",34268.27,3463,28,True,,,0.1,1-1,67:09,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.1
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__004,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.json,event,"ior_rouh,ior_rouc",35025.35,3463,1,False,,,,1-1,67:41,False,False,False,False,,json_parse_error:Expecting value: line 1 column 1 (char 0),```
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__005,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.json,event,"ior_reh,ior_rec",11505.92,3463,1,False,,,,1-1,68:26,False,False,False,False,,json_parse_error:Expecting value: line 1 column 1 (char 0),```
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__006,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.json,event,"ior_reh,ior_rec",61166.16,3463,28,True,,,0.0,1-1,68:53,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__007,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.json,event,"ior_rouh,ior_rouc",12233.95,3463,28,True,,,0.1,1-1,69:08,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.1
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__008,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.json,event,"ior_reh,ior_rec,ior_rouh,ior_rouc",12193.07,3463,26,True,,,0,1-1,69:45,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__009,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.json,event,"ior_reh,ior_rec",12263.48,3463,28,True,,,0.0,1-1,70:23,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__010,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.json,event,"ior_reh,ior_rec",12262.34,3463,28,True,,,0.1,1-1,70:49,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.1
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__011,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.json,event,"ior_reh,ior_rec",12261.98,3463,28,True,,,0.0,1-1,71:14,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__012,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.json,event,"ratio_re,ior_reh,ior_rec,ratio_rouo,ior_rouh,ior_rouc",12169.12,3463,26,True,,,0,1-1,71:30,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__013,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.json,event,"ior_rouh,ior_rouc",12176.93,3463,26,True,,,0,1-1,72:14,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__014,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.json,event,"ior_reh,ior_rec",12297.37,3463,28,True,,,0.0,1-1,72:37,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__015,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.json,event,"ior_rouh,ior_rouc",12246.65,3463,28,True,,,0.0,1-1,73:27,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__016,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.json,event,"ior_reh,ior_rec",12236.73,3463,28,True,,,0.0,1-1,74:03,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__017,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.json,event,"ior_reh,ior_rec,ior_rouh,ior_rouc",12282.62,3463,28,True,,,0.0,1-1,74:20,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__018,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.json,event,"ior_rouh,ior_rouc",12233.31,3463,28,True,,,0.0,1-1,74:55,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__019,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.json,event,"ior_reh,ior_rec",12285.1,3463,28,True,,,0.0,1-1,75:09,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__020,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.json,event,"ior_rouh,ior_rouc",12223.12,3463,28,True,,,0.0,1-1,75:34,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__021,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.json,event,"ior_reh,ior_rec",12265.84,3463,28,True,,,0.1,1-1,76:01,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.1
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__022,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.json,event,"ior_rouh,ior_rouc",12181.33,3463,26,True,,,0,1-1,76:35,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__023,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.json,event,"ior_reh,ior_rec",12235.89,3463,28,True,,,0.1,1-1,77:04,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0.1
+}
+```"
+InternVL3-38B-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__024,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.json,event,"ior_rouh,ior_rouc",12169.06,3463,26,True,,,0,1-1,77:24,False,False,False,False,,,"```json
+{
+  ""score_detected"": """",
+  ""match_clock_detected"": """",
+  ""confidence"": 0
+}
+```"

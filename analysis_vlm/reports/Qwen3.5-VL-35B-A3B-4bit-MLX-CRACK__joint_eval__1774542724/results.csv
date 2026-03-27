@@ -1,0 +1,217 @@
+model,teams,clip_id,record_path,clip_path,latency_ms,json_valid,repricing_expected_pred,repricing_direction_pred,repricing_strength_pred,first_leg_side_pred,first_leg_urgency_pred,hedge_window_expected_sec_pred,repricing_expected_gt,repricing_direction_gt,first_leg_side_gt,repricing_expected_match,repricing_direction_match,first_leg_side_match,error,raw_content
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__001,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.mp4,5398.43,True,False,unclear,weak,none,none,60,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 60,
+  ""edge_rationale_short"": ""Score is 1:1 at 66:10, game phase is FT (Full Time). No major event (goal/red card) is indicated by the primary_event_label. The odds changes are minimal (delta_ior_reh +0.050, delta_ior_rec -0.050), suggesting a stable market without significant pressure to reprice.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__002,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.mp4,4379.26,True,False,unclear,weak,none,none,60,True,home_price_up,home,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 60,
+  ""edge_rationale_short"": ""Score 1-1 at 66:45 with no major event. Odds shifts are minor (±0.05-0.06), indicating stable market rather than active repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__003,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.mp4,4452.57,True,False,unclear,weak,none,none,18,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 18,
+  ""edge_rationale_short"": ""Score remains 1:1 at 67:09. No major event (goal/red card) triggered. Odds shifts are minimal (-0.02 to +0.03), indicating stable market rather than active repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__004,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.mp4,3473.18,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score is 1:1 at 67:41. No major event triggered in this clip. Odds changes are minimal (approx +/- 0.03), indicating market stability rather than active repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__005,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__005.mp4,3470.94,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score is 1:1 at 68:26, game phase FT. No major event triggered. Odds shifts are minimal (approx +/- 0.08), indicating market stability rather than re-pricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__006,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__006.mp4,4388.61,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score remains 1:1 at 69th minute. No goal or major event visible in the clip. Odds shifts are minimal (approx +/- 0.06), indicating market stability rather than re-pricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__007,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__007.mp4,3580.52,True,False,unclear,weak,none,none,180,True,away_price_up,away,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1-1 at 69:08, game phase FT (likely Full Time or Final Time approaching). No primary event label. Odds shifts are minimal (0.060 delta) over 60 seconds, suggesting no major re-pricing trigger yet.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__008,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__008.mp4,4282.23,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1:1 at 69:45 with no major event shown. Odds shifts are minor and typical for late-game stabilization, not triggering immediate repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__009,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__009.mp4,3487.53,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1-1 at 70:23, game phase FT. No major event triggered. Odds shifts are minimal (delta < 0.05), indicating stable market sentiment without urgent repricing pressure.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__010,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__010.mp4,3410.44,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1-1 at 71st minute, no major event in clip. Odds shift minimal (±0.01-0.11), no clear pressure for immediate repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__011,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__011.mp4,4543.38,True,False,unclear,weak,none,none,45,True,home_price_up,home,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 45,
+  ""edge_rationale_short"": ""Score remains 1:1 at 71:14. No immediate goal or major event visible. Odds show slight movement (home +0.1, away -0.1) over 60 seconds, but no decisive shift. Conservative: no reprice yet.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__012,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__012.mp4,3558.51,True,False,unclear,weak,none,none,180,True,home_price_up,home,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1:1 at 71:30, game phase FT. Odds shifts are minimal (delta < 0.05) over 60 seconds, indicating no significant pressure or event-driven revaluation. No clear first leg trigger.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__013,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__013.mp4,3474.32,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1:1 at 72:14, game phase FT. Odds shifts are minimal (delta < 0.1) over 60 seconds, indicating no major event triggered revaluation yet.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__014,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__014.mp4,4406.35,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1:1 at 72:37, no major event. Odds shifts are minimal (±0.01-0.05), indicating stable market rather than active repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__015,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__015.mp4,4504.17,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score is 1:1 at 73:27, game phase is FT (Full Time). No major event triggered. Odds changes are minimal (0.02-0.03), indicating no significant pressure to reprice yet.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__016,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__016.mp4,4580.1,True,False,unclear,weak,none,none,60,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 60,
+  ""edge_rationale_short"": ""Score 1-1 at 74:03, game phase FT. No major event shown in clip. IOR changes minimal (+0.01 home, -0.01 away, -0.06 over, +0.06 under). No clear trigger for repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__017,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__017.mp4,4363.49,True,False,unclear,weak,none,none,60,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 60,
+  ""edge_rationale_short"": ""Score 1-1 at 74:20 with no major event. Odds fluctuate slightly but no clear directional pressure. Delta IOR changes are minimal, suggesting no immediate repricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__018,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__018.mp4,3580.14,True,False,unclear,weak,none,none,180,True,home_price_down,home,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score is 1:1 at 74:55, game phase FT. No major event triggered in the clip. Odds shifts are minimal (approx +/- 0.04-0.07), indicating market stability rather than re-pricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__019,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__019.mp4,4369.62,True,False,unclear,weak,none,none,15,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 15,
+  ""edge_rationale_short"": ""Score is 1:1 at 75:09, game phase is FT (Full Time). No major event triggered immediate revaluation. Odds shifts are minimal and within normal fluctuation range.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__020,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__020.mp4,4458.7,True,False,unclear,weak,none,none,60,True,home_price_up,home,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 60,
+  ""edge_rationale_short"": ""Score is 1:1 at 75:34, game phase is FT (Full Time). No major event triggered yet. Odds shifts are minimal (approx +/- 0.11), indicating market stability rather than active re-pricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__021,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__021.mp4,3440.78,True,False,unclear,weak,none,none,180,True,home_price_up,home,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1-1 at 76', no major event. Odds shift is minimal (+0.11/-0.11), indicating market stability rather than re-pricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__022,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__022.mp4,4281.4,True,False,unclear,weak,none,none,180,True,home_price_up,home,False,False,False,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1:1 at 76:35 with no major event shown. Minor odds shifts (±0.08) suggest stability, not immediate re-pricing.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__023,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__023.mp4,3753.19,True,False,unclear,weak,none,none,60,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 60,
+  ""edge_rationale_short"": ""Score is 1:1 at 77:04, game phase FT. No clear goal or major event visible in the clip to trigger immediate repricing. Odds changes are minimal (delta_ior_reh +0.010, delta_ior_rec -0.010), suggesting no significant market shift yet.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__024,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__024.mp4,3470.06,True,False,unclear,weak,none,none,180,False,unclear,none,True,True,True,,"{
+  ""repricing_expected"": false,
+  ""repricing_direction"": ""unclear"",
+  ""repricing_strength"": ""weak"",
+  ""first_leg_side"": ""none"",
+  ""first_leg_urgency"": ""none"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score 1:1 at 77:24, game phase FT. No major event in clip. Odds shifts minimal (-0.02 to +0.05), insufficient for reprice.""
+}"

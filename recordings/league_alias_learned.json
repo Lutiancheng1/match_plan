@@ -1,0 +1,182 @@
+{
+  "friendlies <-> 球会友谊赛": {
+    "left_normalized": "friendlies",
+    "right_normalized": "球会友谊赛",
+    "left_example": "Friendlies\t09:00",
+    "right_example": "球会友谊赛",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T14:03:59.487320+00:00"
+  },
+  "ligarevelacaou23 <-> 葡萄牙联赛u23附加赛": {
+    "left_normalized": "ligarevelacaou23",
+    "right_normalized": "葡萄牙联赛u23附加赛",
+    "left_example": "Liga Revelação U23\t11:00",
+    "right_example": "葡萄牙联赛U23-附加赛",
+    "count": 47,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T15:55:58.607839+00:00"
+  },
+  "friendlies <-> 国际友谊赛": {
+    "left_normalized": "friendlies",
+    "right_normalized": "国际友谊赛",
+    "left_example": "Friendlies\t20:30",
+    "right_example": "国际友谊赛",
+    "count": 135,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T01:31:10.194544+00:00"
+  },
+  "primeradivisionapertura <-> 乌拉圭甲组联赛": {
+    "left_normalized": "primeradivisionapertura",
+    "right_normalized": "乌拉圭甲组联赛",
+    "left_example": "Primera División - Apertura\t13:00",
+    "right_example": "乌拉圭甲组联赛",
+    "count": 28,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T17:48:40.092354+00:00"
+  },
+  "uefau21championshipqualification <-> 欧洲u21青年锦标赛2027外围赛": {
+    "left_normalized": "uefau21championshipqualification",
+    "right_normalized": "欧洲u21青年锦标赛2027外围赛",
+    "left_example": "UEFA U21 Championship - Qualification\t15:30",
+    "right_example": "欧洲U21青年锦标赛2027外围赛",
+    "count": 121,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T20:25:20.326891+00:00"
+  },
+  "uefanationsleague <-> 欧洲国家联赛d附加赛": {
+    "left_normalized": "uefanationsleague",
+    "right_normalized": "欧洲国家联赛d附加赛",
+    "left_example": "UEFA Nations League\t14:00",
+    "right_example": "欧洲国家联赛D-附加赛",
+    "count": 53,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T19:06:49.155002+00:00"
+  },
+  "worldcupqualificationeurope <-> 世界杯2026欧洲外围赛附加赛": {
+    "left_normalized": "worldcupqualificationeurope",
+    "right_normalized": "世界杯2026欧洲外围赛附加赛",
+    "left_example": "World Cup - Qualification Europe\t16:45",
+    "right_example": "世界杯2026欧洲外围赛-附加赛",
+    "count": 223,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T21:44:09.238654+00:00"
+  },
+  "atp迈阿密公开赛 <-> tennis": {
+    "left_normalized": "tennis",
+    "right_normalized": "atp迈阿密公开赛",
+    "left_example": "TENNIS\t14:00",
+    "right_example": "ATP迈阿密公开赛",
+    "count": 33,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T00:17:28.891878+00:00"
+  },
+  "friendlies <-> 国际友谊赛u21": {
+    "left_normalized": "friendlies",
+    "right_normalized": "国际友谊赛u21",
+    "left_example": "Friendlies\t15:30",
+    "right_example": "国际友谊赛U21",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T20:25:20.321994+00:00"
+  },
+  "tennis <-> wta迈阿密公开赛": {
+    "left_normalized": "tennis",
+    "right_normalized": "wta迈阿密公开赛",
+    "left_example": "TENNIS\t14:00",
+    "right_example": "WTA迈阿密公开赛",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T00:33:49.543452+00:00"
+  },
+  "friendlies <-> 欧洲u21青年锦标赛2027外围赛": {
+    "left_normalized": "friendlies",
+    "right_normalized": "欧洲u21青年锦标赛2027外围赛",
+    "left_example": "Friendlies\t17:00",
+    "right_example": "欧洲U21青年锦标赛2027外围赛",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T19:58:03.929961+00:00"
+  },
+  "euroleaguebasketball <-> 欧洲篮球联赛": {
+    "left_normalized": "euroleaguebasketball",
+    "right_normalized": "欧洲篮球联赛",
+    "left_example": "Euroleague - Basketball\t16:30",
+    "right_example": "欧洲篮球联赛",
+    "count": 75,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T21:51:48.939212+00:00"
+  },
+  "ligadeascenso <-> 哥斯达黎加乙组联赛": {
+    "left_normalized": "ligadeascenso",
+    "right_normalized": "哥斯达黎加乙组联赛",
+    "left_example": "Liga de Ascenso\t17:00",
+    "right_example": "哥斯达黎加乙组联赛",
+    "count": 30,
+    "promoted": true,
+    "last_seen_at": "2026-03-26T21:58:32.969256+00:00"
+  },
+  "concacafseries <-> 国际友谊赛": {
+    "left_normalized": "concacafseries",
+    "right_normalized": "国际友谊赛",
+    "left_example": "CONCACAF Series\t21:00",
+    "right_example": "国际友谊赛",
+    "count": 124,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T01:50:54.576764+00:00"
+  },
+  "primerab <-> 哥伦比亚乙组联赛": {
+    "left_normalized": "primerab",
+    "right_normalized": "哥伦比亚乙组联赛",
+    "left_example": "Primera B\t21:00",
+    "right_example": "哥伦比亚乙组联赛",
+    "count": 70,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T01:50:54.569961+00:00"
+  },
+  "worldcupqualificationintercontinentalplayoffs <-> 世界杯2026洲际在墨西哥附加赛": {
+    "left_normalized": "worldcupqualificationintercontinentalplayoffs",
+    "right_normalized": "世界杯2026洲际在墨西哥附加赛",
+    "left_example": "World Cup - Qualification Intercontinental Play-offs\t19:00",
+    "right_example": "世界杯2026洲际(在墨西哥)-附加赛",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T00:00:59.196934+00:00"
+  },
+  "copadonordeste <-> 巴西东北杯": {
+    "left_normalized": "copadonordeste",
+    "right_normalized": "巴西东北杯",
+    "left_example": "Copa do Nordeste\t19:00",
+    "right_example": "巴西东北杯",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T00:00:18.224805+00:00"
+  },
+  "ligaproserieb <-> 厄瓜多尔乙组联赛": {
+    "left_normalized": "ligaproserieb",
+    "right_normalized": "厄瓜多尔乙组联赛",
+    "left_example": "Liga Pro Serie B\t21:00",
+    "right_example": "厄瓜多尔乙组联赛",
+    "count": 22,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T01:56:56.799431+00:00"
+  },
+  "divisionprofesionalapertura <-> 巴拉圭甲组联赛": {
+    "left_normalized": "divisionprofesionalapertura",
+    "right_normalized": "巴拉圭甲组联赛",
+    "left_example": "Division Profesional - Apertura\t20:00",
+    "right_example": "巴拉圭甲组联赛",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T00:51:18.400858+00:00"
+  },
+  "nba <-> nba美国职业篮球联赛": {
+    "left_normalized": "nba",
+    "right_normalized": "nba美国职业篮球联赛",
+    "left_example": "NBA\t20:10",
+    "right_example": "NBA美国职业篮球联赛",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T01:31:10.199134+00:00"
+  }
+}

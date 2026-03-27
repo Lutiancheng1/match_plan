@@ -1,0 +1,19 @@
+{
+  "run_id": "InternVL3-38B-4bit__scoreboard_round3__1774527189",
+  "model": "InternVL3-38B-4bit",
+  "manifest": "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/current_golden_sample_manifest.json",
+  "clip_count": 2,
+  "visible_scoreboard_count": 0,
+  "visible_scoreboard_rate": 0.0,
+  "evaluated_clip_count": 0,
+  "json_valid_count": 0,
+  "json_valid_rate": 0.0,
+  "score_exact_match_count": 0,
+  "score_exact_match_rate": 0.0,
+  "clock_exact_match_count": 0,
+  "clock_exact_match_rate": 0.0,
+  "clock_minute_match_count": 0,
+  "clock_minute_match_rate": 0.0,
+  "avg_latency_ms": 15758.24,
+  "output_csv": "/Users/niannianshunjing/match_plan/analysis_vlm/reports/InternVL3-38B-4bit__scoreboard_round3__1774527189/results.csv"
+}

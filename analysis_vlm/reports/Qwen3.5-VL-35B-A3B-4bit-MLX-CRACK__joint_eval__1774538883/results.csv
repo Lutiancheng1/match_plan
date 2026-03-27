@@ -1,0 +1,37 @@
+model,teams,clip_id,record_path,clip_path,latency_ms,json_valid,repricing_expected_pred,repricing_direction_pred,repricing_strength_pred,first_leg_side_pred,first_leg_urgency_pred,hedge_window_expected_sec_pred,repricing_expected_gt,repricing_direction_gt,first_leg_side_gt,repricing_expected_match,repricing_direction_match,first_leg_side_match,error,raw_content
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__001,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.mp4,10185.07,True,True,home_price_down,medium,home,soon,15,False,unclear,none,False,False,False,,"{
+  ""repricing_expected"": true,
+  ""repricing_direction"": ""home_price_down"",
+  ""repricing_strength"": ""medium"",
+  ""first_leg_side"": ""home"",
+  ""first_leg_urgency"": ""soon"",
+  ""hedge_window_expected_sec"": 15,
+  ""edge_rationale_short"": ""Score tied 1-1 at 66:10. Home team (Fortaleza) showing signs of pressure with odds dropping from 0.940 to 0.900 in next 30 mins, suggesting imminent home goal or draw.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__002,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.mp4,4971.31,True,True,home_price_down,medium,home,soon,15,True,home_price_up,home,True,False,True,,"{
+  ""repricing_expected"": true,
+  ""repricing_direction"": ""home_price_down"",
+  ""repricing_strength"": ""medium"",
+  ""first_leg_side"": ""home"",
+  ""first_leg_urgency"": ""soon"",
+  ""hedge_window_expected_sec"": 15,
+  ""edge_rationale_short"": ""Score tied 1-1 at 67th minute. Home team (Fortaleza) showing slight pressure with ior_reh dropping from 0.930 to 0.840, suggesting potential home advantage or attack building. Away team (Pasto) holding steady but ior_rouc rising to 1.020 indicates slight vulnerability. Expect home team to push for lead, triggering price adjustment.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__003,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__003.mp4,4967.08,True,True,home_price_down,medium,home,soon,18,False,unclear,none,False,False,False,,"{
+  ""repricing_expected"": true,
+  ""repricing_direction"": ""home_price_down"",
+  ""repricing_strength"": ""medium"",
+  ""first_leg_side"": ""home"",
+  ""first_leg_urgency"": ""soon"",
+  ""hedge_window_expected_sec"": 18,
+  ""edge_rationale_short"": ""Score tied 1-1 at 67', but home team (Fortaleza) showing slight pressure with ior_reh dropping from 0.930 to 0.910, suggesting home advantage is being priced in. Over/Under ratio stable at 2.5, but home team's ior_rouc rising to 1.020 indicates slight overvaluation risk. Expect home price to dip slightly as momentum shifts.""
+}"
+Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__004,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/05_eval_sets/event_odds_joint_eval_inputs/records/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__004.mp4,4729.91,True,True,home_price_down,medium,home,soon,180,False,unclear,none,False,False,False,,"{
+  ""repricing_expected"": true,
+  ""repricing_direction"": ""home_price_down"",
+  ""repricing_strength"": ""medium"",
+  ""first_leg_side"": ""home"",
+  ""first_leg_urgency"": ""soon"",
+  ""hedge_window_expected_sec"": 180,
+  ""edge_rationale_short"": ""Score tied 1-1 at 67:41. Home team (Fortaleza FC) slightly favored in odds (ior_reh 0.930). Odds tightening slightly over next 30 mins (ior_reh drops to 0.900), suggesting home team likely to score or win in extra time, triggering home price down.""
+}"

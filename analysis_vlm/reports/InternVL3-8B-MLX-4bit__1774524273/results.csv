@@ -1,0 +1,17 @@
+model,teams,clip_id,clip_path,label_path,meta_path,kind,reason,start_sec,end_sec,latency_ms,prompt_tokens,completion_tokens,json_valid,scene_type,visible_score,visible_clock,confidence,error,raw_content
+InternVL3-8B-MLX-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__001,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__001.json,event,"ratio_re,ior_reh,ior_rec,ratio_rouo,ior_rouh,ior_rouc",8.479,21.479,3079.21,1848,40,True,soccer_match,,,0.95,,"```json
+{
+    ""scene_type"": ""soccer_match"",
+    ""visible_score"": null,
+    ""visible_clock"": null,
+    ""confidence"": 0.95
+}
+```"
+InternVL3-8B-MLX-4bit,Fortaleza FC x Deportivo Pasto,Fortaleza_FC_x_Deportivo_Pasto__002,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/clips/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.mp4,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/labels/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/Fortaleza_FC_x_Deportivo_Pasto/Fortaleza_FC_x_Deportivo_Pasto__002.json,event,"ior_rouh,ior_rouc",42.819,55.819,2349.72,1848,40,True,soccer_match,,,0.95,,"```json
+{
+  ""scene_type"": ""soccer_match"",
+  ""visible_score"": null,
+  ""visible_clock"": null,
+  ""confidence"": 0.95
+}
+```"

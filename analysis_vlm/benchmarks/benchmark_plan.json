@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "phase": "phase_1_online_baseline",
+  "goal": "先验证本地模型能否稳定看懂直播画面并输出纯 JSON，不进入微调。",
+  "allowed_material_sources": [
+    "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/01_gold_matches",
+    "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples"
+  ],
+  "forbidden_material_sources": [
+    "unbound recordings",
+    "test_only recordings",
+    "silver review materials before confirmation"
+  ],
+  "candidate_models_first_round": [
+    "Qwen2.5-VL-7B-Instruct-4bit",
+    "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK",
+    "MiniCPM-V 4.5"
+  ],
+  "tasks": [
+    {
+      "id": "single_frame_json",
+      "description": "输入单帧，测试纯 JSON 输出稳定性。"
+    },
+    {
+      "id": "score_and_clock_readout",
+      "description": "识别比分与比赛时间。"
+    },
+    {
+      "id": "scene_type_classification",
+      "description": "判断是直播、回放、庆祝、停顿等。"
+    },
+    {
+      "id": "event_candidate_detection",
+      "description": "判断是否存在进球、红牌、危险进攻等候选事件。"
+    }
+  ],
+  "metrics": [
+    "json_valid_rate",
+    "score_accuracy",
+    "clock_accuracy",
+    "scene_type_accuracy",
+    "event_candidate_recall",
+    "single_frame_latency_ms",
+    "short_clip_latency_ms",
+    "memory_usage_stability"
+  ],
+  "promotion_rules": {
+    "online_primary_target": "优先 7B~9B 级里 JSON 最稳、延迟更稳的模型。",
+    "offline_reviewer_target": "优先 30B~40B 级里准确率更高的模型。",
+    "training_gate": "在 benchmark、样本库、知识库和评测集成型之前，不进入微调。"
+  }
+}

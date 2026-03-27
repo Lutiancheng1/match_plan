@@ -1,0 +1,23 @@
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Local credentials and session state
+/live_dashboard/live_dashboard.env
+/recordings/live_dashboard.env
+/video_pipeline/auth/sftraders.json
+
+# Runtime service data
+/live_dashboard/live_service_data/
+/recordings/watch_runtime/
+
+# Browser profiles are local machine state, not source
+/video_pipeline/browser_profile/*
+!/video_pipeline/browser_profile/README.md
+
+# Common local logs and pid files
+*.log
+*.pid

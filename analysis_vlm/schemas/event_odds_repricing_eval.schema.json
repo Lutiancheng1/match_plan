@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EventOddsRepricingEval",
+  "type": "object",
+  "required": [
+    "repricing_expected",
+    "repricing_direction",
+    "repricing_strength",
+    "first_leg_side",
+    "first_leg_urgency",
+    "hedge_window_expected_sec",
+    "edge_rationale_short"
+  ],
+  "properties": {
+    "repricing_expected": {
+      "type": "boolean"
+    },
+    "repricing_direction": {
+      "type": "string",
+      "enum": [
+        "home_price_down",
+        "home_price_up",
+        "away_price_down",
+        "away_price_up",
+        "unclear"
+      ]
+    },
+    "repricing_strength": {
+      "type": "string",
+      "enum": ["weak", "medium", "strong", "very_strong", "unclear"]
+    },
+    "first_leg_side": {
+      "type": "string",
+      "enum": ["home", "away", "none"]
+    },
+    "first_leg_urgency": {
+      "type": "string",
+      "enum": ["immediate", "soon", "watch", "none"]
+    },
+    "hedge_window_expected_sec": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "edge_rationale_short": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
