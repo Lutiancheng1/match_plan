@@ -1,135 +1,106 @@
-commit cb230177b8541a78c3fc4a43020a2aa1f61d4287
-Author: Mayun1988998 <yaoxinghe820@gmail.com>
-Date:   Mon Mar 30 02:57:03 2026 -0700
+# MatchPlan Recorder App
 
-    Stabilize app-based recorder pipeline and docs
+这是当前正式使用的 macOS 原生控制台。
 
-diff --git a/recordings/mac_app/MatchPlanRecorderApp/README.md b/recordings/mac_app/MatchPlanRecorderApp/README.md
-new file mode 100644
-index 0000000..1306766
---- /dev/null
-+++ b/recordings/mac_app/MatchPlanRecorderApp/README.md
-@@ -0,0 +1,123 @@
-+# MatchPlan Recorder App
-+
-+这是当前正式使用的 macOS 原生控制台。
-+
-+## App 负责什么
-+
-+- 内嵌登录 `sftraders.live`
-+- 维护 App 自己的会话，不打扰外部浏览器
-+- 配置 formal / test 录制参数
-+- 启动、停止、确保运行、重启
-+- 展示当前活跃 Worker、历史、产物、日志
-+- 管理删除历史和产物
-+
-+## 不负责什么
-+
-+- App 本身不直接接流
-+- 实际接流和写盘仍由后端：
-+  - `/Users/niannianshunjing/match_plan/recordings/pion_gst_direct_chain`
-+
-+## 当前页签说明
-+
-+### 总览
-+
-+- 当前运行阶段
-+- 活跃 worker 数
-+- 当前录制数
-+- 总录制时长
-+
-+### 登录页
-+
-+- App 内嵌的 `sftraders.live/schedules/live`
-+- 后端默认直接使用这张页的会话
-+
-+### 数据站
-+
-+- 内嵌 `hga035.com`
-+- 用于后续直接查看源站数据页
-+
-+### Worker
-+
-+- 只显示当前活跃 worker
-+- 显示阶段、段数、HLS 数、近 8 秒 fps、最后收包时间
-+
-+### 历史
-+
-+- 只显示已结束：
-+  - `completed`
-+  - `failed`
-+  - `stopped`
-+  - `skipped`
-+
-+### 产物
-+
-+- 显示当前 session 产物
-+- 支持多选删除
-+- 对正在录制的条目默认禁直接删
-+- 可选“停止后删除”
-+
-+### 日志
-+
-+- 同时看：
-+  - App 自己的操作日志
-+  - 后台 dispatcher / worker 日志
-+
-+## 当前配置项
-+
-+- 运行模式：
-+  - `formalBoundOnly`
-+  - `bestEffortAll`
-+- 比赛分类：`FT/BK/...`
-+- 发现间隔
-+- 循环频率
-+- 分段时长
-+- 最大并发
-+- 画质与码率
-+- 飞书通知开关
-+
-+## 当前状态提示规则
-+
-+- `等待登录`
-+  - App bridge 还没准备好
-+- `监听中`
-+  - dispatcher 活着，但当前没有录制
-+- `录制中`
-+  - 当前已有 worker 真正在录
-+
-+## 会话与 bridge
-+
-+- App 自己持有 `WKWebView` 会话
-+- 后端默认走：
-+  - `MATCH_PLAN_APP_WEB_BRIDGE_URL`
-+  - `MATCH_PLAN_APP_WEB_BRIDGE_FALLBACK_TO_BROWSER=0`
-+
-+所以正常情况下：
-+- 不依赖外部 Safari
-+- 不会抢你外面的浏览器操作
-+
-+## 构建与打包
-+
-+### 本地运行
-+
-+```bash
-+cd /Users/niannianshunjing/match_plan/recordings/mac_app/MatchPlanRecorderApp
-+swift build
-+swift run
-+```
-+
-+### 打包
-+
-+```bash
-+cd /Users/niannianshunjing/match_plan/recordings/mac_app/MatchPlanRecorderApp
-+./build_app_bundle.sh
-+```
-+
-+当前输出：
-+
-+- `/Users/niannianshunjing/match_plan/recordings/mac_app/MatchPlanRecorderApp/dist/MatchPlanRecorderApp.app`
-+
-+## 当前结论
-+
-+- App 已经是当前主入口
-+- 外部浏览器已不再是默认依赖
-+- 正式录制、历史查看、产物管理、日志查看都已经在 App 里闭环
+## App 负责什么
+
+- 内嵌登录 `sftraders.live`
+- 内嵌数据站页面（通过 `data_site_proxy.py` 代理）
+- 配置 formal / test 录制参数
+- 启动、停止、确保运行、重启
+- 展示当前活跃 Worker、历史、产物、日志
+- 管理删除历史和产物
+
+## 不负责什么
+
+- App 本身不直接接流
+- 实际接流和写盘由后端 `pion_gst_direct_chain/` 完成
+
+## 数据站代理 (data_site_proxy.py)
+
+App 内置一个本地反向代理，运行在 `127.0.0.1:18780`：
+
+### 核心功能
+
+1. **反向代理**: 转发数据站请求到上游 `https://112.121.42.168`，绕过 SSL 证书问题
+2. **单一 session 管理**: 唯一调用 `auto_login()` 的组件，避免 doubleLogin
+3. **session 共享端点**:
+   - `GET /credentials` — 返回当前缓存的 cookie/mid/uid/body_template
+   - `GET /credentials/refresh` — 强制重新登录并返回新 session
+4. **页面改写**: 修正 `needsTrans`、IP 直连地址、域名等，使页面在本地代理下正常工作
+5. **启动时 pre-login**: 服务器启动前就准备好 session
+
+### 为什么 proxy 是 session 唯一出口
+
+数据站强制单 session — 同一账号新登录会踢旧 session (doubleLogin)。
+
+之前的问题：
+- proxy 登录一次 → App 数据站页面能用
+- dispatcher 又登录一次 → proxy 的 session 失效
+- worker 又各自登录 → dispatcher 的 session 也失效
+
+现在的方案：
+- **只有 proxy 调用 `auto_login()`**
+- dispatcher 从 `GET /credentials` 获取 session
+- worker 从 dispatcher 的共享凭证文件获取 session
+- 全链路共享同一个 session，不会互相踢
+
+## 当前页签说明
+
+### 总览
+- 当前运行阶段、活跃 worker 数、录制数、总时长
+
+### 登录页
+- App 内嵌的 `sftraders.live/schedules/live`
+- 后端通过 bridge 使用这张页的 live 列表
+
+### 数据站
+- 内嵌数据站页面 (通过 proxy 代理)
+- 用于查看源站数据
+
+### Worker
+- 只显示当前活跃 worker
+- 显示阶段、段数、HLS 数、fps、最后收包时间
+
+### 历史
+- 已结束的 worker: completed / failed / stopped / skipped
+
+### 产物
+- 当前 session 产物、支持多选删除
+- 对正在录制的条目默认禁直接删
+
+### 日志
+- App 操作日志 + dispatcher / worker 日志
+
+## 当前配置项
+
+- 运行模式: `formalBoundOnly` / `bestEffortAll`
+- 比赛分类: `FT/BK/...`
+- 发现间隔、循环频率、分段时长
+- 最大并发、画质与码率
+- 飞书通知开关
+
+## 当前状态提示规则
+
+- `等待登录` — App bridge 还没准备好
+- `监听中` — dispatcher 活着，当前没有录制
+- `录制中` — 有 worker 在录
+
+## 构建与打包
+
+### 本地运行
+
+```bash
+cd /Users/niannianshunjing/match_plan/recordings/mac_app/MatchPlanRecorderApp
+swift build
+swift run
+```
+
+### 打包
+
+```bash
+cd /Users/niannianshunjing/match_plan/recordings/mac_app/MatchPlanRecorderApp
+./build_app_bundle.sh
+```
+
+输出: `dist/MatchPlanRecorderApp.app`

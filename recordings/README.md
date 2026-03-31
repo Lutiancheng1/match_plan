@@ -5,19 +5,48 @@
 **App 控制台 + Pion/GStreamer 直连接流**，不再依赖浏览器窗口录屏。
 
 ```
-App (WKWebView 登录 sftraders.live)
-  |
-  v
-pion_gst_dispatcher → 发现直播 + 匹配盘口数据
-  |
-  v
-run_pion_gst_direct_capture → 每场比赛独立 worker
-  |
-  v (直连 LiveKit 房间, 不经过浏览器)
-pion_gst_direct_chain (Go) → 视频归档 + HLS 预览
-  +
-BettingDataPoller → 盘口数据轮询 → betting_data.jsonl
+┌─────────────────────────────────────────────────────────┐
+│  MatchPlanRecorderApp (SwiftUI)                         │
+│                                                         │
+│  ┌──────────────┐  ┌──────────────┐                     │
+│  │ sftraders.live│  │ 数据站页面    │                     │
+│  │  WKWebView   │  │  WKWebView   │                     │
+│  └──────┬───────┘  └──────────────┘                     │
+│         │                                               │
+│         │ live 列表 + bootstrap                          │
+└─────────┼───────────────────────────────────────────────┘
+          │
+          ▼
+┌─── data_site_proxy (port 18780) ──────────────────────┐
+│  - 反向代理数据站                                       │
+│  - 单一 session 管理 (auto_login)                       │
+│  - /credentials 端点: 共享 session 给后端               │
+│  - /credentials/refresh: 强制重新登录                   │
+└─────────┬─────────────────────────────────────────────┘
+          │
+          ▼
+┌─── pion_gst_dispatcher ──────────────────────────────┐
+│  - 从 proxy /credentials 获取 session (不自行登录)     │
+│  - 发现直播 + 匹配盘口数据                              │
+│  - 运行唯一的 BettingDataPoller (5s/次)                │
+│  - 数据写入 shared_betting_data.jsonl                  │
+│  - 为每场比赛分发 worker                                │
+└─────────┬─────────────────────────────────────────────┘
+          │ 每场比赛一个子进程
+          ▼
+┌─── run_pion_gst_direct_capture (worker) ──────────────┐
+│  - SharedBettingDataReader 读取共享数据 (不独立请求)     │
+│  - match_data_to_stream() 筛选本场数据                  │
+│  - pion_gst_direct_chain (Go) 直连 LiveKit 接流        │
+│  - 输出: 视频归档 + HLS 预览 + betting_data.jsonl       │
+└───────────────────────────────────────────────────────┘
 ```
+
+### 关键设计决策
+
+1. **单一 session**: 只有 proxy 调用 `auto_login()`，所有组件通过 `/credentials` 复用，避免 doubleLogin
+2. **集中数据采集**: dispatcher 统一 5s 请求一次数据站，worker 从共享文件读取，避免 N 个 worker 各自请求被封
+3. **孤儿进程清理**: stop 时用 `pgrep -f` 兜底发现未被 dispatcher_state.json 追踪的进程
 
 ### 为什么不用浏览器录屏
 
@@ -41,7 +70,7 @@ BettingDataPoller → 盘口数据轮询 → betting_data.jsonl
 
 | 文件 | 说明 |
 |---|---|
-| `auto_login.py` | 数据站自动登录 |
+| `auto_login.py` | 数据站自动登录 (只被 proxy 调用) |
 | `poll_get_game_list.py` | 盘口数据轮询与 XML 解析 |
 | `run_auto_capture.py` | BettingDataPoller 等共享类 (也是旧方案主脚本) |
 | `material_filter_pipeline.py` | 素材过滤 (Gold/Silver/Reject) |
@@ -80,29 +109,47 @@ BettingDataPoller → 盘口数据轮询 → betting_data.jsonl
 
 不要求绑定盘口数据，用于验证稳定性和画质。
 
-## 产物结构
+## Session 管理架构
 
-每场录制一个 session 目录：
+### 为什么需要集中管理
+
+数据站强制单 session：同一账号的新登录会使旧 session 失效 (doubleLogin)。如果多个组件各自调用 `auto_login()`，后登录的会踢掉先登录的。
+
+### 当前方案
 
 ```
-/Volumes/990 PRO PCIe 4T/match_plan_recordings/YYYY-MM-DD/
-  session_pgstapp_.../
-    recording.log
-    session_result.json
-    worker_status.json
-    FT_TeamA_vs_TeamB_.../
-      __betting_data.jsonl     # 盘口数据
-      __full.mp4               # 最终合并视频
-      __timeline.csv           # 时间线
-      __sync_viewer.html       # 同步回放页
-      hls/playlist.m3u8        # HLS 预览
+data_site_proxy.py (port 18780)
+  ├── 启动时 pre-login: 提前准备好 session
+  ├── GET /credentials: 返回当前缓存的 cookie/mid/uid/body_template
+  ├── GET /credentials/refresh: 强制重新登录并返回新 session
+  └── 所有数据站请求: 反向代理到上游，自动注入 cookie
 ```
 
-## 盘口数据
+**获取 session 的优先级** (`bootstrap_credentials()`):
+1. proxy `/credentials` — 最优先，不会产生新登录
+2. 共享凭证文件 (`MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE`) — 离线备选
+3. dashboard 模式 — CDP 从浏览器拿
+4. `auto_login()` — 最后手段，会使旧 session 失效
 
-### 轮询架构
+**session 失效时的恢复流程**:
+1. 数据快照返回 0 行 → 检测到 session 可能失效
+2. 先请求 proxy `/credentials/refresh` 重新登录
+3. proxy 刷新失败才回退到本地 `auto_login()`
 
-一条共享轮询链服务多场比赛，不是每场独立打 API。
+## 盘口数据采集架构
+
+### 集中采集 (2026-03-31 改版)
+
+之前每个 worker 独立轮询数据站，N 个 worker = N 倍请求量，有被封风险。
+
+当前架构：
+- **Dispatcher** 运行唯一的 `BettingDataPoller`，每 5s 请求一次
+- 全量数据写入 `shared_betting_data.jsonl`（dispatcher runtime 目录下）
+- **Worker** 使用 `SharedBettingDataReader` 从共享文件读取
+- Worker 结束时调用 `match_data_to_stream()` 筛选出只属于自己比赛的数据
+- 最终输出两个文件：
+  - `raw_betting_data.jsonl` — 全部原始数据（备份）
+  - `__betting_data.jsonl` — 筛选后的本场数据（正式使用）
 
 ### 数据格式 (betting_data.jsonl)
 
@@ -122,6 +169,25 @@ BettingDataPoller → 盘口数据轮询 → betting_data.jsonl
 | `RATIO_ROUO` / `IOR_ROUH` / `IOR_ROUC` | 大小盘 (盘口/大/小) |
 | `RUNNING` | 是否滚球 (Y/N) |
 | `NOW_MODEL` | 比赛时间 (如 "2nd Half 65'") |
+
+## 产物结构
+
+每场录制一个 session 目录：
+
+```
+/Volumes/990 PRO PCIe 4T/match_plan_recordings/YYYY-MM-DD/
+  session_pgstapp_.../
+    recording.log
+    session_result.json
+    worker_status.json
+    raw_betting_data.jsonl     # 全量原始数据 (备份)
+    FT_TeamA_vs_TeamB_.../
+      __betting_data.jsonl     # 筛选后的本场盘口数据
+      __full.mp4               # 最终合并视频
+      __timeline.csv           # 时间线
+      __sync_viewer.html       # 同步回放页
+      hls/playlist.m3u8        # HLS 预览
+```
 
 ## 素材过滤
 
