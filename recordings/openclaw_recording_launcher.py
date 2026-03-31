@@ -26,6 +26,11 @@ def build_session_dir(root: Path, session_id: str) -> Path:
 
 def build_run_command(args: argparse.Namespace, session_id: str) -> list[str]:
     segment_minutes = args.segment_minutes or min(max(args.duration_minutes, 1), 30)
+    max_duration_minutes = (
+        args.max_duration_minutes
+        if args.max_duration_minutes is not None
+        else 0
+    )
     cmd = [
         "python3",
         str(RUN_SCRIPT),
@@ -36,7 +41,7 @@ def build_run_command(args: argparse.Namespace, session_id: str) -> list[str]:
         "--segment-minutes",
         str(segment_minutes),
         "--max-duration-minutes",
-        str(args.duration_minutes),
+        str(int(max_duration_minutes)),
         "--session-id",
         session_id,
     ]
@@ -58,6 +63,18 @@ def build_run_command(args: argparse.Namespace, session_id: str) -> list[str]:
         cmd.extend(["--trigger-mode", args.trigger_mode])
     if args.watch_lock_key:
         cmd.extend(["--watch-lock-key", args.watch_lock_key])
+    if args.proxy_policy:
+        cmd.extend(["--proxy-policy", args.proxy_policy])
+    if args.recovery_policy:
+        cmd.extend(["--recovery-policy", args.recovery_policy])
+    if int(args.black_refresh_seconds or 0) > 0:
+        cmd.extend(["--black-refresh-seconds", str(int(args.black_refresh_seconds))])
+    if int(args.black_abandon_seconds or 0) > 0:
+        cmd.extend(["--black-abandon-seconds", str(int(args.black_abandon_seconds))])
+    if float(args.recorder_freeze_seconds or 0) > 0:
+        cmd.extend(["--recorder-freeze-seconds", str(float(args.recorder_freeze_seconds))])
+    if args.skip_data_binding:
+        cmd.append("--skip-data-binding")
     if not args.no_notify:
         cmd.extend(["--notify-channel", args.notify_channel])
         cmd.extend(["--notify-target", args.notify_target])
@@ -122,6 +139,7 @@ def main() -> int:
     parser.add_argument("--selected-matches-file", default="")
     parser.add_argument("--browser", choices=["chrome", "safari"], default="safari")
     parser.add_argument("--segment-minutes", type=int, default=0)
+    parser.add_argument("--max-duration-minutes", type=int, default=None)
     parser.add_argument("--output-root", default=str(DEFAULT_OUTPUT_ROOT))
     parser.add_argument("--session-id", default="")
     parser.add_argument("--watch-job-id", default="")
@@ -129,6 +147,12 @@ def main() -> int:
     parser.add_argument("--match-rule-source", default="")
     parser.add_argument("--trigger-mode", default="")
     parser.add_argument("--watch-lock-key", default="")
+    parser.add_argument("--proxy-policy", default="")
+    parser.add_argument("--recovery-policy", default="")
+    parser.add_argument("--black-refresh-seconds", type=int, default=0)
+    parser.add_argument("--black-abandon-seconds", type=int, default=0)
+    parser.add_argument("--recorder-freeze-seconds", type=float, default=0.0)
+    parser.add_argument("--skip-data-binding", action="store_true")
     parser.add_argument("--progress-interval-minutes", type=int, default=0)
     parser.add_argument("--progress-screenshot-scope", default="desktop")
     parser.add_argument("--keep-inline-notify", action="store_true")
@@ -176,8 +200,15 @@ def main() -> int:
         "match_query": args.match_query,
         "selected_matches_file": args.selected_matches_file,
         "browser": args.browser,
+        "proxy_policy": args.proxy_policy,
+        "recovery_policy": args.recovery_policy,
         "duration_minutes": args.duration_minutes,
+        "max_duration_minutes": args.max_duration_minutes if args.max_duration_minutes is not None else 0,
         "segment_minutes": args.segment_minutes or min(max(args.duration_minutes, 1), 30),
+        "black_refresh_seconds": int(args.black_refresh_seconds or 0),
+        "black_abandon_seconds": int(args.black_abandon_seconds or 0),
+        "recorder_freeze_seconds": float(args.recorder_freeze_seconds or 0),
+        "skip_data_binding": bool(args.skip_data_binding),
         "watch": {
             "watch_job_id": args.watch_job_id,
             "trigger_reason": args.trigger_reason,

@@ -23,6 +23,15 @@ import poll_get_game_list as poller
 import auto_login
 import db_store
 
+RECORDINGS_DIR = Path(__file__).resolve().parents[1] / "recordings"
+if str(RECORDINGS_DIR) not in sys.path:
+    sys.path.insert(0, str(RECORDINGS_DIR))
+
+from recording_proxy_runtime import PROXY_POLICY_SAFARI, apply_proxy_env, clear_proxy_env, stop_runtime
+
+
+EMPTY_SNAPSHOT_GRACE_SECONDS = float(os.environ.get("DASHBOARD_EMPTY_SNAPSHOT_GRACE_SECONDS", "120"))
+
 
 APP_HTML = """<!doctype html>
 <html lang="zh-CN">
@@ -783,6 +792,18 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def load_latest_snapshot_summary(path: Path) -> tuple[dict[str, Any] | None, int]:
+    if not path.exists():
+        return None, 0
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None, 0
+    feeds = (payload or {}).get("feeds", {}) or {}
+    total_games = sum(len((feed.get("parsed") or {}).get("games") or []) for feed in feeds.values())
+    return payload, total_games
+
+
 def safe_print(*args, **kwargs) -> None:
     try:
         print(*args, **kwargs)
@@ -813,7 +834,16 @@ def load_live_inputs(args: argparse.Namespace) -> tuple[str, str | None, dict[st
         entry_url = os.environ.get("ENTRY_URL", "https://112.121.42.168")
         if login_user and login_pass:
             safe_print(f"Auto-login as {login_user}...", file=sys.stderr)
-            creds = auto_login.auto_login(login_user, login_pass, entry_url)
+            try:
+                creds = auto_login.auto_login(login_user, login_pass, entry_url)
+            except Exception as exc:
+                if "blocked from current location" in str(exc).lower() and os.environ.get("MATCH_RECORDING_PROXY_POLICY"):
+                    safe_print("[dashboard] proxy path blocked by target, retrying without sing-box...", file=sys.stderr)
+                    stop_runtime()
+                    clear_proxy_env()
+                    creds = auto_login.auto_login(login_user, login_pass, entry_url)
+                else:
+                    raise
             cookie = creds["cookie"]
             body = creds["body_template"]
             safe_print(f"Auto-login OK: uid={creds['uid']}", file=sys.stderr)
@@ -1010,24 +1040,54 @@ def polling_loop(
                     safe_print(f"[polling] re-login FAILED: {login_err}", file=sys.stderr)
 
             if not need_relogin:
+                latest_path = outdir / "latest.json"
+                preserved_previous = False
+                if total_games <= 0:
+                    previous_payload, previous_total_games = load_latest_snapshot_summary(latest_path)
+                    previous_age_seconds = (
+                        time.time() - latest_path.stat().st_mtime if latest_path.exists() else float("inf")
+                    )
+                    if (
+                        previous_payload
+                        and previous_total_games > 0
+                        and previous_age_seconds <= EMPTY_SNAPSHOT_GRACE_SECONDS
+                    ):
+                        preserved_previous = True
+                        payload = previous_payload
+                        total_games = previous_total_games
+                        total_more = 0
+                        safe_print(
+                            "[polling] empty snapshot detected; preserving previous latest.json "
+                            f"(games={previous_total_games}, age={previous_age_seconds:.1f}s)",
+                            file=sys.stderr,
+                        )
+                        retained_error = (
+                            f"empty snapshot suppressed; retained previous latest.json "
+                            f"({previous_total_games} games, age {previous_age_seconds:.1f}s)"
+                        )
+                        if errors:
+                            retained_error += f"; source_errors={json.dumps(errors, ensure_ascii=False)}"
+                        status["last_error"] = retained_error
+                        status["retained_snapshot_time"] = previous_payload.get("snapshot_time", "")
+
                 # Only write latest.json (no timestamped archives)
                 poller.write_latest(outdir, payload)
                 # Write to SQLite if enabled
-                if db_conn is not None:
+                if db_conn is not None and not preserved_previous:
                     try:
                         db_store.insert_snapshot(db_conn, payload)
                     except Exception as db_err:
                         safe_print(f"[db] write error: {db_err}", file=sys.stderr)
                 summary = poller.summarize_payload(
                     payload,
-                    snapshot=outdir / "latest.json",
+                    snapshot=latest_path,
                     total_games=total_games,
                     total_more=total_more,
                     errors=errors,
                 )
                 status["last_success"] = payload.get("snapshot_time", "")
                 status["last_summary"] = summary
-                if errors:
+                if errors and not status.get("last_error"):
                     status["last_error"] = json.dumps(errors, ensure_ascii=False)
                 consecutive_failures = 0
         except Exception as exc:
@@ -1072,13 +1132,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--body-file", help="Path to file containing POST body")
     parser.add_argument("--cookie", help="Inline Cookie header")
     parser.add_argument("--cookie-file", help="Path to file containing Cookie header")
-    parser.add_argument("--gtypes", default="ft,bk,es,tn,vb,bm,tt,bs,sk,op", help="Comma-separated sport codes")
+    parser.add_argument("--gtypes", default="ft", help="Comma-separated sport codes")
     parser.add_argument("--showtype", default="live", choices=("live", "today", "early"), help="Match list type")
     parser.add_argument("--rtype", default="auto", help="Request rtype. Use auto for default mapping")
     parser.add_argument("--include-more", action="store_true", help="Also fetch get_game_more")
     parser.add_argument("--more-filter", default="Main", help="Filter for get_game_more")
     parser.add_argument("--more-delay", type=float, default=0.0, help="Delay between get_game_more requests")
-    parser.add_argument("--interval", type=float, default=5.0, help="Polling interval in seconds")
+    parser.add_argument("--interval", type=float, default=1.0, help="Polling interval in seconds")
     parser.add_argument("--timeout", type=float, default=15.0, help="Request timeout in seconds")
     parser.add_argument("--output-dir", default="live_service_data", help="Directory to store snapshots")
     parser.add_argument("--title", default="全部比赛实时看板", help="Page title")
@@ -1091,6 +1151,7 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
+    apply_proxy_env(PROXY_POLICY_SAFARI)
     _, cookie, template, gtypes, showtype, rtype = load_live_inputs(args)
 
     outdir = poller.ensure_output_dir(args.output_dir)

@@ -21,14 +21,24 @@
   },
   "models": [
     {
-      "name": "Qwen2.5-VL-7B-Instruct-4bit",
+      "name": "Qwen3.5-VL-9B-8bit-MLX-CRACK",
       "provider": "omlx",
       "type": "vlm",
       "role_candidates": ["online_primary"],
       "installed_local": true,
       "priority": "high",
       "status": "baseline_verified",
-      "notes": "第一轮正式 benchmark 已验证：24/24 JSON 合法，20/24 读出比分和时间，平均延迟约 1776.50ms。当前在线主力首选。"
+      "notes": "替代 Qwen2.5-VL-7B。Holdout 基线: JSON 99.75%, Score 39.25%。LoRA 微调后 JSON 100%。当前在线主力。"
+    },
+    {
+      "name": "Qwen3.5-VL-4B-JANG_4S-CRACK",
+      "provider": "omlx",
+      "type": "vlm",
+      "role_candidates": ["online_primary"],
+      "installed_local": true,
+      "priority": "medium",
+      "status": "baseline",
+      "notes": "超快 worker，批量标注备选。待 benchmark 验证。"
     },
     {
       "name": "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK",

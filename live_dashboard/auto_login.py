@@ -16,12 +16,35 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from http.client import IncompleteRead
+from pathlib import Path
 from typing import Any
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+RECORDINGS_DIR = SCRIPT_DIR.parent / "recordings"
+if str(RECORDINGS_DIR) not in sys.path:
+    sys.path.insert(0, str(RECORDINGS_DIR))
+
+from recording_proxy_runtime import update_observed_domains
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
 DEFAULT_ENTRY = "https://hga035.com"
 SSL_CTX = ssl._create_unverified_context()
 FALLBACK_VER = "2026-03-19-fireicon_142"
+
+
+class TrackingRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def __init__(self):
+        super().__init__()
+        self.last_chain: list[str] = []
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        chain = list(getattr(req, "_redirect_chain", []))
+        chain.append(newurl)
+        self.last_chain = list(chain)
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected is not None:
+            setattr(redirected, "_redirect_chain", chain)
+        return redirected
 
 
 def _b64(s: str) -> str:
@@ -43,13 +66,18 @@ def _post_detection(
     req = urllib.request.Request(entry_url, data=body.encode("utf-8"), method="POST")
     req.add_header("Content-Type", "application/x-www-form-urlencoded")
     req.add_header("User-Agent", UA)
+    setattr(req, "_redirect_chain", [])
     html = ""
     final_url = entry_url
     last_err: Exception | None = None
+    started_at = time.time()
+    redirect_chain: list[str] = []
     for _ in range(3):
         try:
             raw = opener.open(req, timeout=30)
             final_url = raw.geturl() or entry_url
+            redirect_handler = getattr(opener, "_tracking_redirect_handler", None)
+            redirect_chain = list(getattr(redirect_handler, "last_chain", []) or getattr(req, "_redirect_chain", []))
             html = raw.read().decode("utf-8", errors="replace")
             last_err = None
             break
@@ -58,6 +86,14 @@ def _post_detection(
             break
         except (TimeoutError, urllib.error.URLError, OSError) as exc:
             last_err = exc
+            update_observed_domains(
+                source="live_dashboard.auto_login.post_detection",
+                requested_url=entry_url,
+                final_url=final_url,
+                redirect_chain=redirect_chain,
+                error=f"{type(exc).__name__}: {exc}",
+                elapsed_seconds=time.time() - started_at,
+            )
             time.sleep(2)
     if last_err and not html:
         raise last_err
@@ -82,6 +118,13 @@ def _post_detection(
 
     parsed = urllib.parse.urlsplit(final_url)
     resolved_entry_url = urllib.parse.urlunsplit((parsed.scheme, parsed.netloc, "", "", ""))
+    update_observed_domains(
+        source="live_dashboard.auto_login.post_detection",
+        requested_url=entry_url,
+        final_url=resolved_entry_url,
+        redirect_chain=redirect_chain,
+        elapsed_seconds=time.time() - started_at,
+    )
     return resolved_entry_url, ver, iovation_key
 
 
@@ -112,13 +155,26 @@ def _chk_login(
     req.add_header("User-Agent", UA)
     req.add_header("Origin", entry_url)
     raw = ""
+    started_at = time.time()
     for _ in range(3):
         try:
             with opener.open(req, timeout=30) as resp:
                 raw = resp.read().decode("utf-8", errors="replace")
+                update_observed_domains(
+                    source="live_dashboard.auto_login.chk_login",
+                    requested_url=url,
+                    final_url=resp.geturl() or url,
+                    elapsed_seconds=time.time() - started_at,
+                )
             break
         except (TimeoutError, urllib.error.URLError, OSError) as exc:
             print(f"[auto_login] chk_login retry: {exc}", file=sys.stderr)
+            update_observed_domains(
+                source="live_dashboard.auto_login.chk_login",
+                requested_url=url,
+                error=f"{type(exc).__name__}: {exc}",
+                elapsed_seconds=time.time() - started_at,
+            )
             time.sleep(2)
             if _ == 2:
                 raise
@@ -155,11 +211,24 @@ def _memset_check(
     req.add_header("Accept", "*/*")
     req.add_header("User-Agent", UA)
     req.add_header("Origin", entry_url)
+    started_at = time.time()
     for _ in range(3):
         try:
             with opener.open(req, timeout=30) as resp:
+                update_observed_domains(
+                    source="live_dashboard.auto_login.memset_check",
+                    requested_url=url,
+                    final_url=resp.geturl() or url,
+                    elapsed_seconds=time.time() - started_at,
+                )
                 return json.loads(resp.read().decode("utf-8"))
-        except (TimeoutError, urllib.error.URLError, OSError):
+        except (TimeoutError, urllib.error.URLError, OSError) as exc:
+            update_observed_domains(
+                source="live_dashboard.auto_login.memset_check",
+                requested_url=url,
+                error=f"{type(exc).__name__}: {exc}",
+                elapsed_seconds=time.time() - started_at,
+            )
             time.sleep(2)
             if _ == 2:
                 raise
@@ -245,10 +314,13 @@ def auto_login(
     """
     jar = http.cookiejar.CookieJar()
     # Create a single opener with cookie jar — reuse across all requests
+    redirect_handler = TrackingRedirectHandler()
     opener = urllib.request.build_opener(
         urllib.request.HTTPSHandler(context=SSL_CTX),
         urllib.request.HTTPCookieProcessor(jar),
+        redirect_handler,
     )
+    setattr(opener, "_tracking_redirect_handler", redirect_handler)
 
     # Step 1: POST detection to get the real login page (with ver & iovationKey)
     resolved_entry_url, ver, iovation_key = _post_detection(entry_url, opener)

@@ -17,10 +17,14 @@ OMLX_BASE_URL = "http://127.0.0.1:8000/v1"
 OMLX_API_KEY = "sk-1234"
 DEFAULT_PROMPT = (
     "请把这段足球直播片段的多张关键帧综合理解后，只输出纯JSON，不要解释，也不要使用 markdown 代码块。"
-    "字段固定为 scene_type, score_detected, match_clock_detected, event_candidates, confidence, explanation_short。"
+    "字段固定为 scene_type, score_detected, match_clock_detected, scoreboard_visibility, "
+    "replay_risk, tradeability, event_candidates, confidence, explanation_short。"
     "scene_type 只能是 live_play, replay, scoreboard_focus, crowd_or_bench, stoppage, unknown 之一。"
     "score_detected 必须是类似 1-0 的字符串；看不清时输出空字符串。"
-    "match_clock_detected 必须是类似 67:14 的字符串；看不清时输出空字符串。"
+    "match_clock_detected 必须是类似 45:00 的字符串；看不清时输出空字符串。"
+    "scoreboard_visibility 只能是 clear, partial, hidden, unknown。"
+    "replay_risk 只能是 low, medium, high。"
+    "tradeability 只能是 tradeable, watch_only, ignore。"
     "event_candidates 必须是数组；每个元素是对象，字段固定为 label 和 confidence。"
     "label 只能是 goal, red_card, penalty, dangerous_attack, celebration, replay_sequence, substitution, injury_or_stoppage, none 之一。"
 )
@@ -219,6 +223,11 @@ def normalize_clock_value(value: object) -> str:
     return text if ":" in text else ""
 
 
+def normalize_simple_text(value: object, allowed: set[str], fallback: str) -> str:
+    text = str(value or "").strip()
+    return text if text in allowed else fallback
+
+
 def normalize_event_candidates(value: object) -> list[dict]:
     allowed = {
         "goal",
@@ -313,8 +322,12 @@ def main() -> int:
                 "scene_type": None,
                 "score_detected": None,
                 "match_clock_detected": None,
+                "scoreboard_visibility": None,
+                "replay_risk": None,
+                "tradeability": None,
                 "confidence": None,
                 "event_candidates_json": None,
+                "explanation_short": None,
                 "expected_score": expected_score,
                 "expected_clock": expected_clock,
                 "score_exact_match": False,
@@ -357,8 +370,20 @@ def main() -> int:
                     result["scene_type"] = normalize_scene_type(parsed.get("scene_type"))
                     result["score_detected"] = score_detected
                     result["match_clock_detected"] = clock_detected
+                    result["scoreboard_visibility"] = normalize_simple_text(
+                        parsed.get("scoreboard_visibility"),
+                        {"clear", "partial", "hidden", "unknown"},
+                        "unknown",
+                    )
+                    result["replay_risk"] = normalize_simple_text(parsed.get("replay_risk"), {"low", "medium", "high"}, "high")
+                    result["tradeability"] = normalize_simple_text(
+                        parsed.get("tradeability"),
+                        {"tradeable", "watch_only", "ignore"},
+                        "watch_only",
+                    )
                     result["confidence"] = parsed.get("confidence")
                     result["event_candidates_json"] = json.dumps(event_candidates, ensure_ascii=False)
+                    result["explanation_short"] = parsed.get("explanation_short")
                     result["score_exact_match"] = bool(expected_score) and score_detected == expected_score
                     result["clock_exact_match"] = bool(expected_clock) and clock_detected == expected_clock
                     result["clock_minute_match"] = bool(expected_clock) and clock_minute_part(clock_detected) == clock_minute_part(expected_clock)
@@ -388,8 +413,12 @@ def main() -> int:
         "scene_type",
         "score_detected",
         "match_clock_detected",
+        "scoreboard_visibility",
+        "replay_risk",
+        "tradeability",
         "confidence",
         "event_candidates_json",
+        "explanation_short",
         "expected_score",
         "expected_clock",
         "score_exact_match",

@@ -23,7 +23,7 @@ DEFAULT_PROMPT = (
     "请只输出纯JSON，不要解释，也不要使用 markdown 代码块。"
     "字段固定为 score_detected, match_clock_detected, confidence。"
     "score_detected 必须是类似 1-0 的字符串；看不清时输出空字符串。"
-    "match_clock_detected 必须是类似 67:14 的字符串；看不清时输出空字符串。"
+    "match_clock_detected 必须是类似 45:00 的字符串；看不清时输出空字符串。"
 )
 
 SCORE_PATTERN = re.compile(r"\b\d{1,2}\s*[-:]\s*\d{1,2}\b")

@@ -1,6 +1,11 @@
 {
   "fifaseries": [
-    "国际友谊赛"
+    "fifa系列赛",
+    "国际友谊赛",
+    "国际系列在卢旺达",
+    "国际系列在印尼",
+    "国际系列在阿塞拜疆",
+    "国际足联系列赛"
   ],
   "国际友谊赛": [
     "concacafseries",
@@ -17,8 +22,7 @@
     "友誼賽",
     "友谊赛",
     "国际友谊赛",
-    "国际友谊赛u21",
-    "欧洲u21青年锦标赛2027外围赛",
+    "法国全国联赛",
     "热身赛",
     "熱身賽",
     "球会友谊赛"
@@ -32,12 +36,8 @@
     "国际友谊赛"
   ],
   "uefachampionsleaguewomen": [
-    "championsleaguefemenina",
-    "ligadecampeonesfemenina",
     "uclwomen",
-    "uefafrauenchampionsleague",
     "uefawomenschampionsleague",
-    "uwcl",
     "womenschampionsleague",
     "女子欧冠",
     "女足欧冠",
@@ -47,7 +47,16 @@
     "uefachampionsleaguewomen"
   ],
   "primeraa": [
-    "哥伦比亚甲组联赛"
+    "哥伦比亚甲",
+    "哥伦比亚甲级",
+    "哥伦比亚甲级联赛",
+    "哥伦比亚甲组联赛",
+    "哥伦甲",
+    "哥甲",
+    "甲级联赛",
+    "阿根廷甲级联赛",
+    "阿甲",
+    "阿甲联赛"
   ],
   "哥伦比亚甲组联赛": [
     "primeraa"
@@ -81,13 +90,33 @@
     "阿甲春季联赛"
   ],
   "乌拉圭甲组联赛": [
+    "juventuddelaspiedrasxbostonriver",
     "primeradivisionapertura"
   ],
   "leagueone": [
-    "英格兰甲组联赛"
+    "苏格兰甲组联赛",
+    "英格兰甲级",
+    "英格兰甲组联赛",
+    "英甲"
   ],
   "英格兰甲组联赛": [
-    "leagueone"
+    "leagueone",
+    "premierleague"
+  ],
+  "fifa系列赛": [
+    "fifaseries"
+  ],
+  "国际系列在卢旺达": [
+    "fifaseries"
+  ],
+  "国际系列在印尼": [
+    "fifaseries"
+  ],
+  "国际系列在阿塞拜疆": [
+    "fifaseries"
+  ],
+  "国际足联系列赛": [
+    "fifaseries"
   ],
   "concacafseries": [
     "中北美系列赛",
@@ -108,12 +137,10 @@
   "友谊赛": [
     "friendlies"
   ],
-  "国际友谊赛u21": [
-    "friendlies"
-  ],
-  "欧洲u21青年锦标赛2027外围赛": [
+  "法国全国联赛": [
+    "championnat",
     "friendlies",
-    "uefau21championshipqualification"
+    "national1"
   ],
   "热身赛": [
     "friendlies"
@@ -124,22 +151,10 @@
   "球会友谊赛": [
     "friendlies"
   ],
-  "championsleaguefemenina": [
-    "uefachampionsleaguewomen"
-  ],
-  "ligadecampeonesfemenina": [
-    "uefachampionsleaguewomen"
-  ],
   "uclwomen": [
     "uefachampionsleaguewomen"
   ],
-  "uefafrauenchampionsleague": [
-    "uefachampionsleaguewomen"
-  ],
   "uefawomenschampionsleague": [
-    "uefachampionsleaguewomen"
-  ],
-  "uwcl": [
     "uefachampionsleaguewomen"
   ],
   "womenschampionsleague": [
@@ -150,6 +165,37 @@
   ],
   "女足欧冠": [
     "uefachampionsleaguewomen"
+  ],
+  "哥伦比亚甲": [
+    "primeraa"
+  ],
+  "哥伦比亚甲级": [
+    "primeraa"
+  ],
+  "哥伦比亚甲级联赛": [
+    "primeraa"
+  ],
+  "哥伦甲": [
+    "primeraa"
+  ],
+  "哥甲": [
+    "primeraa"
+  ],
+  "甲级联赛": [
+    "division1",
+    "primeraa",
+    "primeradivisionapertura"
+  ],
+  "阿根廷甲级联赛": [
+    "primeraa"
+  ],
+  "阿甲": [
+    "ligaprofesionalargentina",
+    "primeraa",
+    "primeradivisionapertura"
+  ],
+  "阿甲联赛": [
+    "primeraa"
   ],
   "apertura": [
     "primeradivisionapertura"
@@ -173,6 +219,7 @@
     "primeradivisionapertura"
   ],
   "墨甲": [
+    "ligadeexpansionmx",
     "primeradivisionapertura"
   ],
   "墨甲开幕赛": [
@@ -182,15 +229,13 @@
     "primeradivisionapertura"
   ],
   "墨超联": [
+    "ligadeexpansionmx",
     "primeradivisionapertura"
   ],
   "春季联赛": [
     "primeradivisionapertura"
   ],
   "甲级开幕赛": [
-    "primeradivisionapertura"
-  ],
-  "甲级联赛": [
     "primeradivisionapertura"
   ],
   "甲级联赛开幕季": [
@@ -211,10 +256,6 @@
   "阿佩图拉": [
     "primeradivisionapertura"
   ],
-  "阿甲": [
-    "ligaprofesionalargentina",
-    "primeradivisionapertura"
-  ],
   "阿甲开幕季": [
     "primeradivisionapertura"
   ],
@@ -227,61 +268,14 @@
   "阿甲春季联赛": [
     "primeradivisionapertura"
   ],
-  "ligaprofesionalargentina": [
-    "阿根廷职业联赛",
-    "阿甲"
+  "苏格兰甲组联赛": [
+    "leagueone"
   ],
-  "ekstraligawomen": [
-    "ekstraligakobiet",
-    "polishwomensleague",
-    "polskaekstraligawomen",
-    "zenskaekstraliga"
+  "英格兰甲级": [
+    "leagueone"
   ],
-  "ekstraligakobiet": [
-    "ekstraligawomen"
-  ],
-  "polishwomensleague": [
-    "ekstraligawomen"
-  ],
-  "polskaekstraligawomen": [
-    "ekstraligawomen"
-  ],
-  "zenskaekstraliga": [
-    "ekstraligawomen"
-  ],
-  "uefau19championshipqualification": [
-    "eurou19qualifiers",
-    "uefau19championshipqualifications",
-    "uefau19kvalifikacia",
-    "uefau19qualification",
-    "欧洲u19锦标赛预选赛",
-    "欧足联u19预选赛",
-    "欧青u19预选赛",
-    "欧青赛u19资格赛"
-  ],
-  "eurou19qualifiers": [
-    "uefau19championshipqualification"
-  ],
-  "uefau19championshipqualifications": [
-    "uefau19championshipqualification"
-  ],
-  "uefau19kvalifikacia": [
-    "uefau19championshipqualification"
-  ],
-  "uefau19qualification": [
-    "uefau19championshipqualification"
-  ],
-  "欧洲u19锦标赛预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "欧足联u19预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "欧青u19预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "欧青赛u19资格赛": [
-    "uefau19championshipqualification"
+  "英甲": [
+    "leagueone"
   ],
   "premierleague": [
     "englishpremierleague",
@@ -290,11 +284,65 @@
     "ligapremier",
     "ligapremieringlesa",
     "premierliga",
+    "英格兰甲组联赛",
     "英格兰超级联赛",
     "英格蘭超級聯賽",
     "英糙",
     "英超",
     "英超联赛"
+  ],
+  "中北美系列赛": [
+    "concacafseries"
+  ],
+  "中北美联": [
+    "concacafseries"
+  ],
+  "中北美联赛": [
+    "concacafseries"
+  ],
+  "中北美金杯": [
+    "concacafseries"
+  ],
+  "championnat": [
+    "卢森堡甲级",
+    "比甲",
+    "法丙",
+    "法国全国联赛",
+    "法甲",
+    "锦标赛"
+  ],
+  "national1": [
+    "中甲",
+    "全国甲级",
+    "全国联赛",
+    "法全国联赛",
+    "法国全国联赛",
+    "英格兰全国联赛"
+  ],
+  "division1": [
+    "乙级联赛",
+    "沙特甲组联赛",
+    "甲级联赛",
+    "第一级别联赛"
+  ],
+  "ligaprofesionalargentina": [
+    "阿根廷职业联赛",
+    "阿甲"
+  ],
+  "ligadeexpansionmx": [
+    "墨乙",
+    "墨扩展联",
+    "墨扩展联赛",
+    "墨扩联",
+    "墨甲",
+    "墨西哥乙级联赛",
+    "墨西哥扩军联赛",
+    "墨西哥扩展联赛",
+    "墨西哥扩张联赛",
+    "墨西哥甲",
+    "墨西哥甲组联赛",
+    "墨超联",
+    "墨超附加"
   ],
   "englishpremierleague": [
     "premierleague"
@@ -324,13 +372,439 @@
     "premierleague"
   ],
   "英超": [
-    "premierleague"
+    "premierleague",
+    "premiership"
   ],
   "英超联赛": [
     "premierleague"
   ],
+  "卢森堡甲级": [
+    "championnat"
+  ],
+  "比甲": [
+    "championnat",
+    "proleague"
+  ],
+  "法丙": [
+    "championnat"
+  ],
+  "法甲": [
+    "championnat"
+  ],
+  "锦标赛": [
+    "championnat"
+  ],
+  "中甲": [
+    "national1"
+  ],
+  "全国甲级": [
+    "national1"
+  ],
+  "全国联赛": [
+    "national1"
+  ],
+  "法全国联赛": [
+    "national1"
+  ],
+  "英格兰全国联赛": [
+    "national1"
+  ],
+  "乙级联赛": [
+    "2liga",
+    "division1",
+    "division2",
+    "ligaproserieb",
+    "primerab",
+    "secondleague"
+  ],
+  "沙特甲组联赛": [
+    "division1"
+  ],
+  "第一级别联赛": [
+    "division1"
+  ],
+  "阿根廷职业联赛": [
+    "ligaprofesionalargentina"
+  ],
+  "墨乙": [
+    "ligadeascenso",
+    "ligadeexpansionmx"
+  ],
+  "墨扩展联": [
+    "ligadeexpansionmx"
+  ],
+  "墨扩展联赛": [
+    "ligadeexpansionmx"
+  ],
+  "墨扩联": [
+    "ligadeexpansionmx"
+  ],
+  "墨西哥乙级联赛": [
+    "ligadeexpansionmx"
+  ],
+  "墨西哥扩军联赛": [
+    "ligadeexpansionmx"
+  ],
+  "墨西哥扩展联赛": [
+    "ligadeexpansionmx"
+  ],
+  "墨西哥扩张联赛": [
+    "ligadeexpansionmx"
+  ],
+  "墨西哥甲": [
+    "ligadeexpansionmx"
+  ],
+  "墨西哥甲组联赛": [
+    "ligadeexpansionmx"
+  ],
+  "墨超附加": [
+    "ligadeexpansionmx"
+  ],
+  "premiership": [
+    "苏格兰超级联赛",
+    "苏超",
+    "英超"
+  ],
+  "proleague": [
+    "比利时甲",
+    "比甲",
+    "沙特联",
+    "职业联赛"
+  ],
+  "2liga": [
+    "secondleague",
+    "乙级联赛",
+    "二级联赛",
+    "捷乙",
+    "捷克乙",
+    "捷克乙级联赛",
+    "斯洛伐克乙组联赛"
+  ],
+  "division2": [
+    "乙级联赛"
+  ],
+  "ligaproserieb": [
+    "乙级职业联赛",
+    "乙级联赛",
+    "厄乙",
+    "厄瓜乙",
+    "厄瓜多尔乙",
+    "厄瓜多尔乙级",
+    "厄瓜多尔乙级联赛",
+    "厄瓜多尔乙组联赛",
+    "厄瓜甲b"
+  ],
+  "primerab": [
+    "乙级b",
+    "乙级联赛",
+    "哥伦比亚乙组联赛",
+    "智乙",
+    "智利乙",
+    "智利乙级",
+    "智利乙级联赛",
+    "智利乙组联赛",
+    "阿丙",
+    "阿乙",
+    "阿乙b",
+    "阿根廷乙级",
+    "阿根廷乙级b"
+  ],
+  "secondleague": [
+    "2liga",
+    "乙级联赛",
+    "保乙",
+    "保加利亚乙级联赛",
+    "第二级别联赛"
+  ],
+  "ligadeascenso": [
+    "promotionleague",
+    "升级联赛",
+    "哥斯达黎加乙组联赛",
+    "墨乙",
+    "墨西哥升级联赛",
+    "西乙",
+    "西乙b",
+    "西协甲"
+  ],
+  "苏格兰超级联赛": [
+    "premiership"
+  ],
+  "苏超": [
+    "premiership"
+  ],
+  "比利时甲": [
+    "proleague"
+  ],
+  "沙特联": [
+    "proleague"
+  ],
+  "职业联赛": [
+    "proleague"
+  ],
+  "二级联赛": [
+    "2liga"
+  ],
+  "捷乙": [
+    "2liga"
+  ],
+  "捷克乙": [
+    "2liga"
+  ],
+  "捷克乙级联赛": [
+    "2liga"
+  ],
+  "斯洛伐克乙组联赛": [
+    "2liga"
+  ],
+  "乙级职业联赛": [
+    "ligaproserieb"
+  ],
+  "厄乙": [
+    "ligaproserieb"
+  ],
+  "厄瓜乙": [
+    "ligaproserieb"
+  ],
+  "厄瓜多尔乙": [
+    "ligaproserieb"
+  ],
+  "厄瓜多尔乙级": [
+    "ligaproserieb"
+  ],
+  "厄瓜多尔乙级联赛": [
+    "ligaproserieb"
+  ],
+  "厄瓜多尔乙组联赛": [
+    "ligaproserieb"
+  ],
+  "厄瓜甲b": [
+    "ligaproserieb"
+  ],
+  "乙级b": [
+    "primerab"
+  ],
+  "哥伦比亚乙组联赛": [
+    "primerab"
+  ],
+  "智乙": [
+    "primerab"
+  ],
+  "智利乙": [
+    "primerab"
+  ],
+  "智利乙级": [
+    "primerab"
+  ],
+  "智利乙级联赛": [
+    "primerab"
+  ],
+  "智利乙组联赛": [
+    "primerab"
+  ],
+  "阿丙": [
+    "primerab"
+  ],
+  "阿乙": [
+    "primerab",
+    "primeranacional"
+  ],
+  "阿乙b": [
+    "primerab"
+  ],
+  "阿根廷乙级": [
+    "primerab",
+    "primeranacional"
+  ],
+  "阿根廷乙级b": [
+    "primerab"
+  ],
+  "保乙": [
+    "secondleague"
+  ],
+  "保加利亚乙级联赛": [
+    "secondleague"
+  ],
+  "第二级别联赛": [
+    "secondleague"
+  ],
+  "promotionleague": [
+    "ligadeascenso"
+  ],
+  "升级联赛": [
+    "ligadeascenso"
+  ],
+  "哥斯达黎加乙组联赛": [
+    "ligadeascenso"
+  ],
+  "墨西哥升级联赛": [
+    "ligadeascenso"
+  ],
+  "西乙": [
+    "ligadeascenso",
+    "segundadivision"
+  ],
+  "西乙b": [
+    "ligadeascenso"
+  ],
+  "西协甲": [
+    "ligadeascenso"
+  ],
+  "primeranacional": [
+    "阿乙",
+    "阿乙联赛",
+    "阿根廷乙级",
+    "阿根廷乙级联赛",
+    "阿根廷乙组曼特波里顿联赛",
+    "阿根廷全国联赛"
+  ],
+  "segundadivision": [
+    "乌拉圭乙组联赛",
+    "西乙",
+    "西班牙乙级",
+    "西班牙乙级联赛",
+    "西班牙乙组联赛"
+  ],
+  "阿乙联赛": [
+    "primeranacional"
+  ],
+  "阿根廷乙级联赛": [
+    "primeranacional"
+  ],
+  "阿根廷乙组曼特波里顿联赛": [
+    "primeranacional"
+  ],
+  "阿根廷全国联赛": [
+    "primeranacional"
+  ],
+  "乌拉圭乙组联赛": [
+    "segundadivision"
+  ],
+  "西班牙乙级": [
+    "segundadivision"
+  ],
+  "西班牙乙级联赛": [
+    "segundadivision"
+  ],
+  "西班牙乙组联赛": [
+    "segundadivision"
+  ],
+  "国际友谊赛u20": [
+    "u20eliteleague"
+  ],
+  "u20eliteleague": [
+    "u20精英联赛",
+    "国际友谊赛u20"
+  ],
+  "u20精英联赛": [
+    "u20eliteleague"
+  ],
+  "欧洲u21青年锦标赛2027外围赛": [
+    "uefau21championshipqualification"
+  ],
+  "uefau21championshipqualification": [
+    "u21欧锦赛预选赛",
+    "u21欧预赛",
+    "欧u21预选赛",
+    "欧洲u21青年锦标赛2027外围赛",
+    "欧洲u21预选赛",
+    "欧青u21外",
+    "欧青u21外围赛",
+    "欧青u21资格赛",
+    "欧青u21预选",
+    "欧青u21预选赛",
+    "欧青赛u21外围赛",
+    "欧青赛u21资格赛",
+    "欧青赛u21预选赛"
+  ],
+  "u21欧锦赛预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "u21欧预赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧洲u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21外": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21外围赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21资格赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21预选": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛u21外围赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛u21资格赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "ekstraligawomen": [
+    "polishwomensleague",
+    "polskaekstraligawomen"
+  ],
+  "polishwomensleague": [
+    "ekstraligawomen"
+  ],
+  "polskaekstraligawomen": [
+    "ekstraligawomen"
+  ],
+  "uefau19championshipqualification": [
+    "eurou19qualifiers",
+    "uefau19championshipqualifications",
+    "uefau19kvalifikacia",
+    "uefau19qualification",
+    "欧洲u19锦标赛预选赛",
+    "欧洲u19青年锦标赛外围赛",
+    "欧足联u19预选赛",
+    "欧青u19资格赛",
+    "欧青u19预选赛",
+    "欧青赛u19资格赛"
+  ],
+  "eurou19qualifiers": [
+    "uefau19championshipqualification"
+  ],
+  "uefau19championshipqualifications": [
+    "uefau19championshipqualification"
+  ],
+  "uefau19kvalifikacia": [
+    "uefau19championshipqualification"
+  ],
+  "uefau19qualification": [
+    "uefau19championshipqualification"
+  ],
+  "欧洲u19锦标赛预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧洲u19青年锦标赛外围赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧足联u19预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青u19资格赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青u19预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青赛u19资格赛": [
+    "uefau19championshipqualification"
+  ],
   "uefau17championshipqualification": [
-    "campeonatosub17uefaclasificacion",
     "campeonatou17uefaclasificacion",
     "campeonatouefau17clasificacion",
     "eurou17qualification",
@@ -355,9 +829,6 @@
     "欧青u17预选赛",
     "欧青赛u17资格赛",
     "欧青赛u17预选赛"
-  ],
-  "campeonatosub17uefaclasificacion": [
-    "uefau17championshipqualification"
   ],
   "campeonatou17uefaclasificacion": [
     "uefau17championshipqualification"
@@ -475,6 +946,7 @@
     "coupedelaligue",
     "eflcup",
     "ligapokal",
+    "埃及联赛杯",
     "联赛杯",
     "英格兰联赛杯",
     "英联杯"
@@ -530,6 +1002,8 @@
     "tenniswtamiami"
   ],
   "迈阿密公开赛": [
+    "atpmiami",
+    "tennisatpmiami",
     "tenniswtamiami",
     "wtamiami"
   ],
@@ -544,6 +1018,28 @@
     "wta迈阿密",
     "迈阿密公开赛",
     "迈阿密站"
+  ],
+  "atpmiami": [
+    "atp迈阿密",
+    "迈阿密公开赛",
+    "迈阿密大师赛",
+    "迈阿密赛"
+  ],
+  "tennisatpmiami": [
+    "atp迈阿密",
+    "迈阿密公开赛",
+    "迈阿密大师赛"
+  ],
+  "atp迈阿密": [
+    "atpmiami",
+    "tennisatpmiami"
+  ],
+  "迈阿密大师赛": [
+    "atpmiami",
+    "tennisatpmiami"
+  ],
+  "迈阿密赛": [
+    "atpmiami"
   ],
   "iraqileague": [
     "dawrialiraqi",
@@ -631,20 +1127,44 @@
   ],
   "nwslwomen": [
     "nationalwomenssoccerleague",
-    "nwsl",
     "nwsl女足",
-    "美国女职联"
+    "美国国家女子足球联赛",
+    "美国女子足球联赛",
+    "美国女职联",
+    "美国女足职业联赛",
+    "美国女足联赛",
+    "美女职",
+    "美女职联",
+    "美女联"
   ],
   "nationalwomenssoccerleague": [
-    "nwslwomen"
-  ],
-  "nwsl": [
     "nwslwomen"
   ],
   "nwsl女足": [
     "nwslwomen"
   ],
+  "美国国家女子足球联赛": [
+    "nwslwomen"
+  ],
+  "美国女子足球联赛": [
+    "nwslwomen"
+  ],
   "美国女职联": [
+    "nwslwomen"
+  ],
+  "美国女足职业联赛": [
+    "nwslwomen"
+  ],
+  "美国女足联赛": [
+    "nwslwomen"
+  ],
+  "美女职": [
+    "nwslwomen"
+  ],
+  "美女职联": [
+    "nwslwomen"
+  ],
+  "美女联": [
     "nwslwomen"
   ],
   "basketballnba": [
@@ -654,6 +1174,7 @@
   "nba": [
     "basketballnba",
     "nba美国职业篮球联赛",
+    "美国职业篮球联赛",
     "美职篮"
   ],
   "美职篮": [
@@ -661,6 +1182,9 @@
     "nba"
   ],
   "nba美国职业篮球联赛": [
+    "nba"
+  ],
+  "美国职业篮球联赛": [
     "nba"
   ],
   "copacostarica": [
@@ -777,53 +1301,6 @@
   "欧洲国家联赛d附加赛": [
     "uefanationsleague"
   ],
-  "uefau21championshipqualification": [
-    "u21欧预赛",
-    "欧u21预选赛",
-    "欧洲u21青年锦标赛2027外围赛",
-    "欧青u21外",
-    "欧青u21外围赛",
-    "欧青u21预选",
-    "欧青u21预选赛",
-    "欧青赛u21资格赛",
-    "欧青赛u21预选赛",
-    "欧青赛外围赛",
-    "欧青赛资格赛",
-    "欧青赛预选赛"
-  ],
-  "u21欧预赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧u21预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21外": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21外围赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21预选": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛u21资格赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛u21预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛外围赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛资格赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛预选赛": [
-    "uefau21championshipqualification"
-  ],
   "tennis": [
     "atp迈阿密公开赛",
     "wta迈阿密公开赛",
@@ -844,126 +1321,51 @@
     "欧篮联"
   ],
   "欧洲篮球联赛": [
+    "basketballeuroleague",
+    "euroleague",
     "euroleaguebasketball"
   ],
   "欧洲联赛": [
+    "basketballeuroleague",
+    "euroleague",
     "euroleaguebasketball"
   ],
   "欧篮联": [
+    "basketballeuroleague",
+    "euroleague",
     "euroleaguebasketball"
   ],
-  "ligadeascenso": [
-    "promotionleague",
-    "升级联赛",
-    "哥斯达黎加乙组联赛",
-    "墨乙",
-    "墨西哥升级联赛",
-    "西乙",
-    "西乙b",
-    "西协甲"
+  "basketballeuroleague": [
+    "欧冠篮球",
+    "欧洲篮球联赛",
+    "欧洲联赛",
+    "欧篮联",
+    "欧联",
+    "篮球欧冠"
   ],
-  "promotionleague": [
-    "ligadeascenso"
+  "euroleague": [
+    "欧冠",
+    "欧洲篮球联赛",
+    "欧洲联赛",
+    "欧篮联"
   ],
-  "升级联赛": [
-    "ligadeascenso"
+  "欧冠篮球": [
+    "basketballeuroleague"
   ],
-  "哥斯达黎加乙组联赛": [
-    "ligadeascenso"
+  "欧联": [
+    "basketballeuroleague"
   ],
-  "墨乙": [
-    "ligadeascenso"
+  "篮球欧冠": [
+    "basketballeuroleague"
   ],
-  "墨西哥升级联赛": [
-    "ligadeascenso"
-  ],
-  "西乙": [
-    "ligadeascenso"
-  ],
-  "西乙b": [
-    "ligadeascenso"
-  ],
-  "西协甲": [
-    "ligadeascenso"
-  ],
-  "中北美系列赛": [
-    "concacafseries"
-  ],
-  "中北美联": [
-    "concacafseries"
-  ],
-  "中北美联赛": [
-    "concacafseries"
-  ],
-  "中北美金杯": [
-    "concacafseries"
-  ],
-  "ligaproserieb": [
-    "乙级职业联赛",
-    "乙级联赛",
-    "厄乙",
-    "厄瓜乙",
-    "厄瓜多尔乙",
-    "厄瓜多尔乙级",
-    "厄瓜多尔乙级联赛",
-    "厄瓜多尔乙组联赛",
-    "厄瓜甲b"
-  ],
-  "乙级职业联赛": [
-    "ligaproserieb"
-  ],
-  "乙级联赛": [
-    "ligaproserieb",
-    "primerab"
-  ],
-  "厄乙": [
-    "ligaproserieb"
-  ],
-  "厄瓜乙": [
-    "ligaproserieb"
-  ],
-  "厄瓜多尔乙": [
-    "ligaproserieb"
-  ],
-  "厄瓜多尔乙级": [
-    "ligaproserieb"
-  ],
-  "厄瓜多尔乙级联赛": [
-    "ligaproserieb"
-  ],
-  "厄瓜多尔乙组联赛": [
-    "ligaproserieb"
-  ],
-  "厄瓜甲b": [
-    "ligaproserieb"
-  ],
-  "primerab": [
-    "乙级联赛",
-    "哥伦比亚乙组联赛",
-    "智利乙",
-    "智利乙级",
-    "智利乙级联赛",
-    "阿乙"
-  ],
-  "哥伦比亚乙组联赛": [
-    "primerab"
-  ],
-  "智利乙": [
-    "primerab"
-  ],
-  "智利乙级": [
-    "primerab"
-  ],
-  "智利乙级联赛": [
-    "primerab"
-  ],
-  "阿乙": [
-    "primerab"
+  "欧冠": [
+    "euroleague"
   ],
   "worldcupqualificationintercontinentalplayoffs": [
     "世界杯2026洲际在墨西哥附加赛",
     "世界杯洲际附加赛",
     "世界杯附加赛",
+    "世界杯预选赛洲际附加赛",
     "世预赛洲际附加赛",
     "世预赛附加赛"
   ],
@@ -974,6 +1376,9 @@
     "worldcupqualificationintercontinentalplayoffs"
   ],
   "世界杯附加赛": [
+    "worldcupqualificationintercontinentalplayoffs"
+  ],
+  "世界杯预选赛洲际附加赛": [
     "worldcupqualificationintercontinentalplayoffs"
   ],
   "世预赛洲际附加赛": [
@@ -1008,13 +1413,13 @@
   "巴西东北杯": [
     "copadonordeste"
   ],
-  "阿根廷职业联赛": [
-    "ligaprofesionalargentina"
-  ],
   "brasileirowomen": [
     "巴女甲",
     "巴西女甲",
-    "巴西女超"
+    "巴西女联",
+    "巴西女超",
+    "巴西女足",
+    "巴西女足联赛"
   ],
   "巴女甲": [
     "brasileirowomen"
@@ -1022,7 +1427,16 @@
   "巴西女甲": [
     "brasileirowomen"
   ],
+  "巴西女联": [
+    "brasileirowomen"
+  ],
   "巴西女超": [
+    "brasileirowomen"
+  ],
+  "巴西女足": [
+    "brasileirowomen"
+  ],
+  "巴西女足联赛": [
     "brasileirowomen"
   ],
   "divisionprofesionalapertura": [
@@ -1031,6 +1445,15 @@
     "巴拉圭甲级联赛",
     "巴拉圭甲组联赛",
     "巴拉甲",
+    "巴甲",
+    "玻利甲",
+    "玻利维亚甲",
+    "玻利维亚甲级",
+    "玻利维亚甲级春季",
+    "玻利维亚甲级联赛",
+    "玻甲",
+    "玻甲联",
+    "职业甲级联赛",
     "职业联赛开放杯"
   ],
   "巴拉圭甲": [
@@ -1048,7 +1471,614 @@
   "巴拉甲": [
     "divisionprofesionalapertura"
   ],
+  "巴甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲级": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲级春季": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲级联赛": [
+    "divisionprofesionalapertura"
+  ],
+  "玻甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻甲联": [
+    "divisionprofesionalapertura"
+  ],
+  "职业甲级联赛": [
+    "divisionprofesionalapertura"
+  ],
   "职业联赛开放杯": [
     "divisionprofesionalapertura"
+  ],
+  "aleaguewomen": [
+    "澳大利亚女子甲组联赛",
+    "澳大利亚女足联赛",
+    "澳女联",
+    "澳女超",
+    "澳洲女足联赛"
+  ],
+  "澳大利亚女子甲组联赛": [
+    "aleaguewomen"
+  ],
+  "澳大利亚女足联赛": [
+    "aleaguewomen"
+  ],
+  "澳女联": [
+    "aleaguewomen"
+  ],
+  "澳女超": [
+    "aleaguewomen"
+  ],
+  "澳洲女足联赛": [
+    "aleaguewomen"
+  ],
+  "j1league": [
+    "j1联赛",
+    "j联赛",
+    "日本j1百年构想联赛",
+    "日职",
+    "日职联"
+  ],
+  "j1联赛": [
+    "j1league"
+  ],
+  "j联赛": [
+    "j1league"
+  ],
+  "日本j1百年构想联赛": [
+    "j1league"
+  ],
+  "日职": [
+    "j1league"
+  ],
+  "日职联": [
+    "j1league"
+  ],
+  "mma": [
+    "综合格斗"
+  ],
+  "综合格斗": [
+    "mma"
+  ],
+  "ligaleumit": [
+    "以甲",
+    "以色列乙",
+    "以色列乙级",
+    "以色列乙级联赛",
+    "以色列甲",
+    "以色列甲级联赛",
+    "以色列甲组",
+    "以色列甲组联赛"
+  ],
+  "以甲": [
+    "ligaleumit"
+  ],
+  "以色列乙": [
+    "ligaleumit"
+  ],
+  "以色列乙级": [
+    "ligaleumit"
+  ],
+  "以色列乙级联赛": [
+    "ligaleumit"
+  ],
+  "以色列甲": [
+    "ligaleumit"
+  ],
+  "以色列甲级联赛": [
+    "ligaleumit"
+  ],
+  "以色列甲组": [
+    "ligaleumit"
+  ],
+  "以色列甲组联赛": [
+    "ligaleumit"
+  ],
+  "u19uefaeuro": [
+    "u19欧青赛",
+    "欧洲u19锦标赛",
+    "欧洲u19青年锦标赛外围赛联赛b",
+    "欧青u19",
+    "欧青赛u19"
+  ],
+  "u19欧青赛": [
+    "u19uefaeuro"
+  ],
+  "欧洲u19锦标赛": [
+    "u19uefaeuro"
+  ],
+  "欧洲u19青年锦标赛外围赛联赛b": [
+    "u19uefaeuro"
+  ],
+  "欧青u19": [
+    "u19uefaeuro"
+  ],
+  "欧青赛u19": [
+    "u19uefaeuro"
+  ],
+  "ligue2": [
+    "法乙",
+    "阿尔及利亚乙组联赛"
+  ],
+  "法乙": [
+    "ligue2"
+  ],
+  "阿尔及利亚乙组联赛": [
+    "ligue2"
+  ],
+  "conmeboluefafinalissima": [
+    "欧美杯",
+    "欧美超级杯"
+  ],
+  "欧美杯": [
+    "conmeboluefafinalissima"
+  ],
+  "欧美超级杯": [
+    "conmeboluefafinalissima"
+  ],
+  "copaargentina": [
+    "阿根廷杯"
+  ],
+  "阿根廷杯": [
+    "copaargentina"
+  ],
+  "championship": [
+    "苏格兰冠军联赛",
+    "英冠",
+    "英格兰冠军联赛"
+  ],
+  "苏格兰冠军联赛": [
+    "championship"
+  ],
+  "英冠": [
+    "championship"
+  ],
+  "英格兰冠军联赛": [
+    "championship"
+  ],
+  "baseballmlb": [
+    "mlb",
+    "美国职业棒球",
+    "美国职业棒球大联盟",
+    "美国职棒",
+    "美职棒"
+  ],
+  "mlb": [
+    "baseballmlb",
+    "美职棒"
+  ],
+  "美国职业棒球": [
+    "baseballmlb"
+  ],
+  "美国职业棒球大联盟": [
+    "baseballmlb"
+  ],
+  "美国职棒": [
+    "baseballmlb"
+  ],
+  "美职棒": [
+    "baseballmlb",
+    "mlb"
+  ],
+  "promedivishon": [
+    "curacaoleague",
+    "curacaopremierdivision",
+    "库拉索甲",
+    "库拉索甲级",
+    "库拉索甲级联赛",
+    "库拉索联赛",
+    "海地甲",
+    "苏里甲"
+  ],
+  "curacaoleague": [
+    "promedivishon"
+  ],
+  "curacaopremierdivision": [
+    "promedivishon"
+  ],
+  "库拉索甲": [
+    "promedivishon"
+  ],
+  "库拉索甲级": [
+    "promedivishon"
+  ],
+  "库拉索甲级联赛": [
+    "promedivishon"
+  ],
+  "库拉索联赛": [
+    "promedivishon"
+  ],
+  "海地甲": [
+    "promedivishon"
+  ],
+  "苏里甲": [
+    "promedivishon"
+  ],
+  "formula1practice": [
+    "f1练习赛"
+  ],
+  "f1练习赛": [
+    "formula1practice"
+  ],
+  "j2j3league": [
+    "日乙日丙"
+  ],
+  "日乙日丙": [
+    "j2j3league"
+  ],
+  "afcwomenschampionsleague": [
+    "女足亚冠"
+  ],
+  "女足亚冠": [
+    "afcwomenschampionsleague"
+  ],
+  "1lyga": [
+    "立陶宛甲",
+    "立陶宛甲级联赛"
+  ],
+  "立陶宛甲": [
+    "1lyga"
+  ],
+  "立陶宛甲级联赛": [
+    "1lyga"
+  ],
+  "thaileague2": [
+    "泰乙"
+  ],
+  "泰乙": [
+    "thaileague2"
+  ],
+  "1adivisaowomen": [
+    "葡女甲",
+    "葡萄牙女甲",
+    "葡萄牙女足甲级联赛"
+  ],
+  "葡女甲": [
+    "1adivisaowomen"
+  ],
+  "葡萄牙女甲": [
+    "1adivisaowomen"
+  ],
+  "葡萄牙女足甲级联赛": [
+    "1adivisaowomen"
+  ],
+  "diskichallenge": [
+    "南非预备联赛"
+  ],
+  "南非预备联赛": [
+    "diskichallenge"
+  ],
+  "leaguetwo": [
+    "英乙",
+    "英格兰乙级",
+    "英格兰乙级联赛",
+    "英格兰乙组联赛"
+  ],
+  "英乙": [
+    "leaguetwo"
+  ],
+  "英格兰乙级": [
+    "leaguetwo"
+  ],
+  "英格兰乙级联赛": [
+    "leaguetwo"
+  ],
+  "英格兰乙组联赛": [
+    "leaguetwo"
+  ],
+  "womenschampionship": [
+    "女足冠军联赛",
+    "英女冠",
+    "英格兰女子冠军联赛",
+    "英格兰女子超级联赛2",
+    "英格兰女足冠军联赛"
+  ],
+  "女足冠军联赛": [
+    "womenschampionship"
+  ],
+  "英女冠": [
+    "womenschampionship"
+  ],
+  "英格兰女子冠军联赛": [
+    "womenschampionship"
+  ],
+  "英格兰女子超级联赛2": [
+    "womenschampionship"
+  ],
+  "英格兰女足冠军联赛": [
+    "womenschampionship"
+  ],
+  "tweededivisie": [
+    "dutchthirddivision",
+    "荷乙",
+    "荷兰乙级",
+    "荷兰乙级联赛"
+  ],
+  "dutchthirddivision": [
+    "tweededivisie"
+  ],
+  "荷乙": [
+    "eerstedivisie",
+    "tweededivisie"
+  ],
+  "荷兰乙级": [
+    "tweededivisie"
+  ],
+  "荷兰乙级联赛": [
+    "tweededivisie"
+  ],
+  "eerstedivisie": [
+    "荷乙",
+    "荷兰乙组联赛"
+  ],
+  "荷兰乙组联赛": [
+    "eerstedivisie"
+  ],
+  "nationalsoccerleague": [
+    "国家足球联赛"
+  ],
+  "国家足球联赛": [
+    "nationalsoccerleague"
+  ],
+  "seriecgironea": [
+    "意丙a组",
+    "意大利丙组联赛"
+  ],
+  "意丙a组": [
+    "seriecgironea"
+  ],
+  "意大利丙组联赛": [
+    "nikeliga",
+    "seriecgironea",
+    "seriecgironeb",
+    "seriecgironec"
+  ],
+  "nikeliga": [
+    "尼科联赛",
+    "意大利丙组联赛",
+    "葡萄牙丙组联赛附加赛"
+  ],
+  "seriecgironeb": [
+    "意丙b组",
+    "意大利丙组联赛",
+    "葡萄牙丙组联赛附加赛"
+  ],
+  "seriecgironec": [
+    "意丙c组",
+    "意大利丙组联赛"
+  ],
+  "尼科联赛": [
+    "nikeliga"
+  ],
+  "葡萄牙丙组联赛附加赛": [
+    "nikeliga",
+    "seriecgironeb"
+  ],
+  "意丙b组": [
+    "seriecgironeb"
+  ],
+  "意丙c组": [
+    "seriecgironec"
+  ],
+  "superleague2": [
+    "希腊乙级",
+    "希腊乙级联赛"
+  ],
+  "希腊乙级": [
+    "superleague2"
+  ],
+  "希腊乙级联赛": [
+    "superleague2"
+  ],
+  "paulistaa2": [
+    "圣保罗a2"
+  ],
+  "圣保罗a2": [
+    "paulistaa2"
+  ],
+  "copasulsudeste": [
+    "南东南杯",
+    "巴西南东南杯"
+  ],
+  "南东南杯": [
+    "copasulsudeste"
+  ],
+  "巴西南东南杯": [
+    "copasulsudeste"
+  ],
+  "bkfc": [
+    "裸拳格斗冠军赛"
+  ],
+  "裸拳格斗冠军赛": [
+    "bkfc"
+  ],
+  "ufc": [
+    "终极格斗冠军赛"
+  ],
+  "终极格斗冠军赛": [
+    "ufc"
+  ],
+  "boxing": [
+    "拳击"
+  ],
+  "拳击": [
+    "boxing"
+  ],
+  "pflpittsburgh": [
+    "匹兹堡"
+  ],
+  "匹兹堡": [
+    "pflpittsburgh"
+  ],
+  "uslchampionship": [
+    "usl联赛",
+    "美国冠军联赛"
+  ],
+  "usl联赛": [
+    "uslchampionship"
+  ],
+  "美国冠军联赛": [
+    "uslchampionship"
+  ],
+  "copacentrooeste": [
+    "中西部杯"
+  ],
+  "中西部杯": [
+    "copacentrooeste"
+  ],
+  "liganacional": [
+    "国家联赛"
+  ],
+  "国家联赛": [
+    "liganacional"
+  ],
+  "boxingpbc": [
+    "pbc拳击"
+  ],
+  "pbc拳击": [
+    "boxingpbc"
+  ],
+  "formula1": [
+    "f1",
+    "一级方程式"
+  ],
+  "f1": [
+    "formula1"
+  ],
+  "一级方程式": [
+    "formula1"
+  ],
+  "kleague2": [
+    "k2联赛",
+    "韩国k2联赛"
+  ],
+  "k2联赛": [
+    "kleague2"
+  ],
+  "韩国k2联赛": [
+    "kleague2"
+  ],
+  "coppaitaliawomen": [
+    "意大利女子杯"
+  ],
+  "意大利女子杯": [
+    "coppaitaliawomen"
+  ],
+  "africacupofnationsqualification": [
+    "非洲杯预选赛"
+  ],
+  "非洲杯预选赛": [
+    "africacupofnationsqualification"
+  ],
+  "eredivisiewomen": [
+    "荷兰女子甲组联赛",
+    "荷兰女足甲"
+  ],
+  "荷兰女子甲组联赛": [
+    "eredivisiewomen"
+  ],
+  "荷兰女足甲": [
+    "eredivisiewomen"
+  ],
+  "1liga": [
+    "德丙"
+  ],
+  "德丙": [
+    "1liga"
+  ],
+  "firstleague": [
+    "俄罗斯甲组联赛",
+    "首级联赛"
+  ],
+  "俄罗斯甲组联赛": [
+    "firstleague"
+  ],
+  "首级联赛": [
+    "firstleague"
+  ],
+  "iiligaeast": [
+    "波兰丙东",
+    "波兰乙组联赛"
+  ],
+  "波兰丙东": [
+    "iiligaeast"
+  ],
+  "波兰乙组联赛": [
+    "iiligaeast"
+  ],
+  "segundaliga": [
+    "葡甲联赛",
+    "葡萄牙甲组联赛"
+  ],
+  "葡甲联赛": [
+    "segundaliga"
+  ],
+  "葡萄牙甲组联赛": [
+    "segundaliga"
+  ],
+  "d1lonato": [
+    "d1隆加托",
+    "隆加托d1"
+  ],
+  "d1隆加托": [
+    "d1lonato"
+  ],
+  "隆加托d1": [
+    "d1lonato"
+  ],
+  "divisiondihonor": [
+    "荣誉联赛"
+  ],
+  "荣誉联赛": [
+    "divisiondihonor"
+  ],
+  "seriea": [
+    "意甲"
+  ],
+  "意甲": [
+    "seriea"
+  ],
+  "ethiopianhigherleague": [
+    "埃塞俄比亚高级联赛"
+  ],
+  "埃塞俄比亚高级联赛": [
+    "ethiopianhigherleague"
+  ],
+  "u19uefaeurochampqualifleaguebr1": [
+    "u19欧洲杯资格赛b组r1",
+    "u19欧青预选b组r1"
+  ],
+  "u19欧洲杯资格赛b组r1": [
+    "u19uefaeurochampqualifleaguebr1"
+  ],
+  "u19欧青预选b组r1": [
+    "u19uefaeurochampqualifleaguebr1"
+  ],
+  "sierraleonenationalpremierleague": [
+    "塞拉利昂国家超级联赛"
+  ],
+  "塞拉利昂国家超级联赛": [
+    "sierraleonenationalpremierleague"
+  ],
+  "埃及联赛杯": [
+    "leaguecup"
+  ],
+  "juventuddelaspiedrasxbostonriver": [
+    "乌拉圭甲组联赛",
+    "青年拉斯彼德拉斯vs波士顿河"
+  ],
+  "青年拉斯彼德拉斯vs波士顿河": [
+    "juventuddelaspiedrasxbostonriver"
   ]
 }

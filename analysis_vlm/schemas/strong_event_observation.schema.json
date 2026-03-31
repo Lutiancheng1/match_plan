@@ -10,6 +10,10 @@
     "stoppage_seconds_estimate",
     "expected_pricing_impact_direction",
     "expected_pricing_impact_confidence",
+    "entry_window_open",
+    "entry_window_state",
+    "voice_text",
+    "trade_context_short",
     "rationale_short"
   ],
   "properties": {
@@ -63,6 +67,19 @@
       "type": "number",
       "minimum": 0,
       "maximum": 1
+    },
+    "entry_window_open": {
+      "type": "boolean"
+    },
+    "entry_window_state": {
+      "type": "string",
+      "enum": ["watch", "enter_window", "hedge_watch", "invalidated"]
+    },
+    "voice_text": {
+      "type": "string"
+    },
+    "trade_context_short": {
+      "type": "string"
     },
     "rationale_short": {
       "type": "string"

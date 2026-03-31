@@ -6,6 +6,9 @@
     "scene_type",
     "score_detected",
     "match_clock_detected",
+    "scoreboard_visibility",
+    "replay_risk",
+    "tradeability",
     "event_candidates",
     "confidence",
     "explanation_short"
@@ -30,6 +33,18 @@
       "type": "string",
       "description": "例如 67:14；无法确认时允许空字符串。"
     },
+    "scoreboard_visibility": {
+      "type": "string",
+      "enum": ["clear", "partial", "hidden", "unknown"]
+    },
+    "replay_risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "tradeability": {
+      "type": "string",
+      "enum": ["tradeable", "watch_only", "ignore"]
+    },
     "event_candidates": {
       "type": "array",
       "items": {
@@ -42,10 +57,13 @@
               "goal",
               "red_card",
               "penalty",
+              "ball_out_of_play",
+              "corner_candidate",
               "dangerous_attack",
               "celebration",
               "replay_sequence",
               "substitution",
+              "heavy_contact_foul",
               "injury_or_stoppage",
               "none"
             ]

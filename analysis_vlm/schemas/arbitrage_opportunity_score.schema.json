@@ -7,6 +7,19 @@
     "should_enter_first_leg",
     "first_leg_side",
     "first_leg_confidence",
+    "alert_type",
+    "trigger_family",
+    "suggested_side",
+    "entry_window_open",
+    "hedge_watch_open",
+    "pre_event_price",
+    "target_hedge_price",
+    "first_leg_stake",
+    "recommended_hedge_stake",
+    "estimated_locked_profit_low",
+    "estimated_locked_profit_high",
+    "voice_text",
+    "invalid_reason",
     "expected_repricing_direction",
     "expected_repricing_strength",
     "expected_hedge_window_sec",
@@ -30,6 +43,52 @@
       "type": "number",
       "minimum": 0,
       "maximum": 1
+    },
+    "alert_type": {
+      "type": "string",
+      "enum": ["watch", "enter_first_leg", "hedge_ready", "invalidated"]
+    },
+    "trigger_family": {
+      "type": "string",
+      "enum": ["strong_event", "restart_corner"]
+    },
+    "suggested_side": {
+      "type": "string",
+      "enum": ["home", "away", "none"]
+    },
+    "entry_window_open": {
+      "type": "boolean"
+    },
+    "hedge_watch_open": {
+      "type": "boolean"
+    },
+    "pre_event_price": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "target_hedge_price": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "first_leg_stake": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "recommended_hedge_stake": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "estimated_locked_profit_low": {
+      "type": ["number", "null"]
+    },
+    "estimated_locked_profit_high": {
+      "type": ["number", "null"]
+    },
+    "voice_text": {
+      "type": "string"
+    },
+    "invalid_reason": {
+      "type": "string"
     },
     "expected_repricing_direction": {
       "type": "string",

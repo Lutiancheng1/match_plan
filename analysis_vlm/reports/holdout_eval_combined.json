@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-03-30T17:07:35.638148+00:00",
+  "holdout_root": "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/06_training_pool/04_holdout_eval",
+  "frame_count": 400,
+  "models": [
+    {
+      "run_id": "Qwen3.5-VL-9B-8bit-MLX-CRACK__holdout_eval__1774888212",
+      "model": "Qwen3.5-VL-9B-8bit-MLX-CRACK",
+      "frame_count": 400,
+      "json_valid_count": 399,
+      "json_valid_rate": 0.9975,
+      "score_non_null": 157,
+      "clock_non_null": 160,
+      "score_extract_rate": 0.3925,
+      "clock_extract_rate": 0.4,
+      "avg_latency_ms": 5608.33,
+      "output_csv": "/Users/niannianshunjing/match_plan/analysis_vlm/reports/Qwen3.5-VL-9B-8bit-MLX-CRACK__holdout_eval__1774888212/results.csv",
+      "output_dir": "/Users/niannianshunjing/match_plan/analysis_vlm/reports/Qwen3.5-VL-9B-8bit-MLX-CRACK__holdout_eval__1774888212"
+    }
+  ]
+}

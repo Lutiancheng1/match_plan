@@ -13,7 +13,7 @@
     "prompt_mode": "strict_json"
   },
   "candidate_models_round_2": [
-    "Qwen2.5-VL-7B-Instruct-4bit",
+    "Qwen3.5-VL-9B-8bit-MLX-CRACK",
     "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK",
     "InternVL3-8B-MLX-4bit",
     "InternVL3-38B-4bit"

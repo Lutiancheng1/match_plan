@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RestartEventObservation",
+  "type": "object",
+  "required": [
+    "ball_out_of_play_detected",
+    "exit_boundary",
+    "last_touch_side",
+    "restart_type",
+    "corner_candidate",
+    "restart_confidence",
+    "voice_text",
+    "rationale_short"
+  ],
+  "properties": {
+    "ball_out_of_play_detected": {
+      "type": "boolean"
+    },
+    "exit_boundary": {
+      "type": "string",
+      "enum": ["sideline", "endline", "unknown"]
+    },
+    "last_touch_side": {
+      "type": "string",
+      "enum": ["home", "away", "unknown"]
+    },
+    "restart_type": {
+      "type": "string",
+      "enum": ["throw_in", "goal_kick", "corner", "unknown"]
+    },
+    "corner_candidate": {
+      "type": "boolean"
+    },
+    "restart_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "voice_text": {
+      "type": "string"
+    },
+    "rationale_short": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

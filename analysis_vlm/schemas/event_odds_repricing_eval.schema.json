@@ -9,6 +9,11 @@
     "first_leg_side",
     "first_leg_urgency",
     "hedge_window_expected_sec",
+    "trigger_family",
+    "suggested_side",
+    "entry_window_open",
+    "hedge_watch_open",
+    "voice_text",
     "edge_rationale_short"
   ],
   "properties": {
@@ -40,6 +45,23 @@
     "hedge_window_expected_sec": {
       "type": "integer",
       "minimum": 0
+    },
+    "trigger_family": {
+      "type": "string",
+      "enum": ["strong_event", "restart_corner"]
+    },
+    "suggested_side": {
+      "type": "string",
+      "enum": ["home", "away", "none"]
+    },
+    "entry_window_open": {
+      "type": "boolean"
+    },
+    "hedge_watch_open": {
+      "type": "boolean"
+    },
+    "voice_text": {
+      "type": "string"
     },
     "edge_rationale_short": {
       "type": "string"

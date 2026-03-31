@@ -1,7 +1,9 @@
 {
   "defaults": {
     "browser": "safari",
-    "gtypes": [],
+    "gtypes": [
+      "FT"
+    ],
     "duration_minutes": 30,
     "max_streams": 4,
     "check_interval_minutes": 2,
@@ -14,10 +16,12 @@
   "targets": [
     {
       "id": "all_live_any_sport",
-      "name": "全量直播",
+      "name": "全量足球直播",
       "enabled": true,
       "priority": 1000,
-      "gtypes": [],
+      "gtypes": [
+        "FT"
+      ],
       "league_keywords": [],
       "team_keywords": [],
       "match_query": "",

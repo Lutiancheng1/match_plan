@@ -16,7 +16,15 @@ OMLX_BASE_URL = "http://127.0.0.1:8000/v1"
 OMLX_API_KEY = "sk-1234"
 DEFAULT_PROMPT = (
     "请只输出纯JSON，不要解释，也不要使用 markdown 代码块。"
-    "字段固定为 scene_type, visible_score, visible_clock, confidence。"
+    "字段固定为 scene_type, score_detected, match_clock_detected, scoreboard_visibility, "
+    "replay_risk, tradeability, event_candidates, confidence, explanation_short。"
+    "scene_type 只能是 live_play, replay, scoreboard_focus, crowd_or_bench, stoppage, unknown 之一。"
+    "score_detected 必须是类似 1-0 的字符串；看不清时输出空字符串。"
+    "match_clock_detected 必须是类似 45:00 的字符串；看不清时输出空字符串。"
+    "scoreboard_visibility 只能是 clear, partial, hidden, unknown。"
+    "replay_risk 只能是 low, medium, high。"
+    "tradeability 只能是 tradeable, watch_only, ignore。"
+    "event_candidates 必须是数组；每个元素是对象，字段固定为 label 和 confidence。"
 )
 
 
@@ -85,6 +93,25 @@ def extract_json_block(text: str) -> tuple[dict | None, str | None]:
         return None, str(exc)
 
 
+def normalize_score_value(value: object) -> str:
+    if value in (False, None):
+        return ""
+    text = str(value).strip()
+    return text if "-" in text else ""
+
+
+def normalize_clock_value(value: object) -> str:
+    if value in (False, None):
+        return ""
+    text = str(value).strip()
+    return text if ":" in text else ""
+
+
+def normalize_text(value: object, allowed: set[str], fallback: str) -> str:
+    text = str(value or "").strip()
+    return text if text in allowed else fallback
+
+
 def load_manifest(path: Path) -> list[dict]:
     payload = json.loads(path.read_text())
     clips: list[dict] = []
@@ -145,9 +172,14 @@ def main() -> int:
                 "completion_tokens": None,
                 "json_valid": False,
                 "scene_type": None,
-                "visible_score": None,
-                "visible_clock": None,
+                "score_detected": None,
+                "match_clock_detected": None,
+                "scoreboard_visibility": None,
+                "replay_risk": None,
+                "tradeability": None,
+                "event_candidates_json": None,
                 "confidence": None,
+                "explanation_short": None,
                 "error": None,
                 "raw_content": None,
             }
@@ -172,10 +204,27 @@ def main() -> int:
                 result["raw_content"] = content
                 result["json_valid"] = parsed is not None
                 if parsed:
-                    result["scene_type"] = parsed.get("scene_type")
-                    result["visible_score"] = parsed.get("visible_score")
-                    result["visible_clock"] = parsed.get("visible_clock")
+                    result["scene_type"] = normalize_text(
+                        parsed.get("scene_type"),
+                        {"live_play", "replay", "scoreboard_focus", "crowd_or_bench", "stoppage", "unknown"},
+                        "unknown",
+                    )
+                    result["score_detected"] = normalize_score_value(parsed.get("score_detected", ""))
+                    result["match_clock_detected"] = normalize_clock_value(parsed.get("match_clock_detected", ""))
+                    result["scoreboard_visibility"] = normalize_text(
+                        parsed.get("scoreboard_visibility"),
+                        {"clear", "partial", "hidden", "unknown"},
+                        "unknown",
+                    )
+                    result["replay_risk"] = normalize_text(parsed.get("replay_risk"), {"low", "medium", "high"}, "high")
+                    result["tradeability"] = normalize_text(
+                        parsed.get("tradeability"),
+                        {"tradeable", "watch_only", "ignore"},
+                        "watch_only",
+                    )
+                    result["event_candidates_json"] = json.dumps(parsed.get("event_candidates", []), ensure_ascii=False)
                     result["confidence"] = parsed.get("confidence")
+                    result["explanation_short"] = parsed.get("explanation_short")
                 else:
                     result["error"] = f"json_parse_error:{parse_error}"
             except Exception as exc:  # noqa: BLE001
@@ -199,9 +248,14 @@ def main() -> int:
         "completion_tokens",
         "json_valid",
         "scene_type",
-        "visible_score",
-        "visible_clock",
+        "score_detected",
+        "match_clock_detected",
+        "scoreboard_visibility",
+        "replay_risk",
+        "tradeability",
+        "event_candidates_json",
         "confidence",
+        "explanation_short",
         "error",
         "raw_content",
     ]

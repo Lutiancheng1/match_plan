@@ -8,7 +8,10 @@ from pathlib import Path
 
 DEFAULT_MANIFEST = Path("/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/meta/current_golden_sample_manifest.json")
 DEFAULT_OUTPUT_ROOT = Path("/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/04_golden_samples/strong_event_labels")
-DEFAULT_SCHEMA = Path("/Users/niannianshunjing/match_plan/analysis_vlm/schemas/strong_event_observation.schema.json")
+DEFAULT_STRONG_EVENT_SCHEMA = Path("/Users/niannianshunjing/match_plan/analysis_vlm/schemas/strong_event_observation.schema.json")
+DEFAULT_RESTART_EVENT_SCHEMA = Path("/Users/niannianshunjing/match_plan/analysis_vlm/schemas/restart_event_observation.schema.json")
+DEFAULT_ARBITRAGE_SCHEMA = Path("/Users/niannianshunjing/match_plan/analysis_vlm/schemas/arbitrage_opportunity_score.schema.json")
+KNOWN_GTYPES = {"FT", "BK", "ES", "TN", "VB", "BM", "TT", "BS", "SK", "OP"}
 
 
 def load_json(path: Path) -> dict:
@@ -21,6 +24,38 @@ def normalize_clock(raw: str) -> str:
         _, tail = raw.split("^", 1)
         return tail.strip()
     return raw
+
+
+def parse_gtypes(raw: str) -> set[str]:
+    return {item.strip().upper() for item in str(raw or "").split(",") if item.strip()}
+
+
+def prefixed_gtype(value: object) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    for candidate in (Path(text).name, Path(text).stem, text):
+        prefix = candidate.split("_", 1)[0].upper()
+        if prefix in KNOWN_GTYPES:
+            return prefix
+    return ""
+
+
+def infer_match_gtype(match: dict, clip: dict | None = None) -> str:
+    clip = clip or {}
+    for value in (
+        match.get("gtype"),
+        clip.get("gtype"),
+        match.get("source_video"),
+        clip.get("clip_path"),
+        clip.get("label_path"),
+        clip.get("meta_path"),
+        match.get("teams"),
+    ):
+        gtype = prefixed_gtype(value)
+        if gtype:
+            return gtype
+    return "UNKNOWN"
 
 
 def bootstrap_hint(kind: str, reason: str, label: dict, meta: dict) -> dict:
@@ -62,6 +97,7 @@ def build_record(match: dict, clip: dict) -> dict:
 
     record = {
         "clip_id": clip["clip_id"],
+        "gtype": infer_match_gtype(match, clip),
         "teams": match.get("teams", ""),
         "quality_tier": match.get("quality_tier", "gold"),
         "source_match_id": label_payload.get("source_match_id", ""),
@@ -84,6 +120,20 @@ def build_record(match: dict, clip: dict) -> dict:
             "stoppage_seconds_estimate": 0,
             "expected_pricing_impact_direction": "unclear",
             "expected_pricing_impact_confidence": 0.0,
+            "entry_window_open": False,
+            "entry_window_state": "watch",
+            "voice_text": "",
+            "trade_context_short": "",
+            "rationale_short": "",
+        },
+        "restart_event_observation": {
+            "ball_out_of_play_detected": False,
+            "exit_boundary": "unknown",
+            "last_touch_side": "unknown",
+            "restart_type": "unknown",
+            "corner_candidate": False,
+            "restart_confidence": 0.0,
+            "voice_text": "",
             "rationale_short": "",
         },
         "annotation": {
@@ -100,6 +150,11 @@ def build_record(match: dict, clip: dict) -> dict:
             "first_leg_side": "",
             "first_leg_urgency": "",
             "hedge_window_expected_sec": None,
+            "trigger_family": "strong_event",
+            "suggested_side": "none",
+            "entry_window_open": False,
+            "hedge_watch_open": False,
+            "voice_text": "",
             "edge_rationale_short": "",
         },
         "arbitrage_score_stub": {
@@ -107,11 +162,33 @@ def build_record(match: dict, clip: dict) -> dict:
             "should_enter_first_leg": None,
             "first_leg_side": "",
             "first_leg_confidence": None,
+            "alert_type": "watch",
+            "trigger_family": "strong_event",
+            "suggested_side": "none",
+            "entry_window_open": False,
+            "hedge_watch_open": False,
+            "pre_event_price": None,
+            "target_hedge_price": None,
+            "first_leg_stake": None,
+            "recommended_hedge_stake": None,
+            "estimated_locked_profit_low": None,
+            "estimated_locked_profit_high": None,
+            "voice_text": "",
+            "invalid_reason": "",
             "expected_repricing_direction": "",
             "expected_repricing_strength": "",
             "expected_hedge_window_sec": None,
             "expected_arb_feasibility": "",
             "max_risk_flag": "",
+            "rationale_short": "",
+        },
+        "realtime_alert_stub": {
+            "alert_type": "watch",
+            "trigger_family": "strong_event",
+            "suggested_side": "none",
+            "entry_window_open": False,
+            "hedge_watch_open": False,
+            "voice_text": "",
             "rationale_short": "",
         },
         "source_snapshot": {
@@ -134,10 +211,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build strong-event label skeletons for current Gold clips.")
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
-    parser.add_argument("--schema", type=Path, default=DEFAULT_SCHEMA)
+    parser.add_argument("--strong-schema", type=Path, default=DEFAULT_STRONG_EVENT_SCHEMA)
+    parser.add_argument("--restart-schema", type=Path, default=DEFAULT_RESTART_EVENT_SCHEMA)
+    parser.add_argument("--arbitrage-schema", type=Path, default=DEFAULT_ARBITRAGE_SCHEMA)
+    parser.add_argument("--gtypes", default="FT")
     args = parser.parse_args()
 
-    ensure_schema_exists(args.schema)
+    ensure_schema_exists(args.strong_schema)
+    ensure_schema_exists(args.restart_schema)
+    ensure_schema_exists(args.arbitrage_schema)
     payload = load_json(args.manifest)
     output_root = args.output_root
     labels_root = output_root / "labels"
@@ -147,8 +229,12 @@ def main() -> int:
 
     manifest_records: list[dict] = []
     created = 0
+    allowed_gtypes = parse_gtypes(args.gtypes)
 
     for match in payload.get("matches", []):
+        match_gtype = infer_match_gtype(match)
+        if allowed_gtypes and match_gtype not in allowed_gtypes:
+            continue
         teams = match.get("teams", "unknown_match")
         safe_teams = teams.replace(" ", "_").replace("/", "_")
         match_dir = labels_root / safe_teams
@@ -169,6 +255,7 @@ def main() -> int:
                 }
             )
         match_manifest = {
+            "gtype": match_gtype,
             "teams": teams,
             "clip_count": len(per_match),
             "records": per_match,
@@ -179,6 +266,7 @@ def main() -> int:
 
     current_manifest = {
         "source_manifest": str(args.manifest),
+        "gtypes": sorted(allowed_gtypes) if allowed_gtypes else [],
         "match_count": len(manifest_records),
         "record_count": created,
         "matches": manifest_records,

@@ -121,6 +121,11 @@ final class RecordingDelegate: NSObject, SCRecordingOutputDelegate {
     private var started = false
     private var finished = false
     private var finishError: Error?
+    private var stopRequested = false
+
+    func markStopRequested() {
+        stopRequested = true
+    }
 
     func waitForStart() async throws {
         if let finishError {
@@ -155,7 +160,7 @@ final class RecordingDelegate: NSObject, SCRecordingOutputDelegate {
 
     func recordingOutput(_ recordingOutput: SCRecordingOutput, didFailWithError error: any Error) {
         finishError = error
-        logLine("recording failed: \(error.localizedDescription)")
+        logLine("recording failed: \(error.localizedDescription) stop_requested=\(stopRequested)")
         startedContinuation?.resume(throwing: error)
         startedContinuation = nil
         finishedContinuation?.resume(throwing: error)
@@ -164,14 +169,14 @@ final class RecordingDelegate: NSObject, SCRecordingOutputDelegate {
 
     func recordingOutputDidFinishRecording(_ recordingOutput: SCRecordingOutput) {
         finished = true
-        logLine("recording finished")
+        logLine("recording finished stop_requested=\(stopRequested)")
         finishedContinuation?.resume(returning: ())
         finishedContinuation = nil
     }
 }
 
 @MainActor
-final class CaptureRunner {
+final class CaptureRunner: NSObject, SCStreamDelegate {
     private let options: Options
     private let delegate = RecordingDelegate()
     private var signalSources: [DispatchSourceSignal] = []
@@ -180,6 +185,7 @@ final class CaptureRunner {
 
     init(options: Options) {
         self.options = options
+        super.init()
     }
 
     private func installSignals() {
@@ -244,7 +250,7 @@ final class CaptureRunner {
         recordingConfig.outputFileType = .mp4
 
         let recordingOutput = SCRecordingOutput(configuration: recordingConfig, delegate: delegate)
-        let stream = SCStream(filter: filter, configuration: config, delegate: nil)
+        let stream = SCStream(filter: filter, configuration: config, delegate: self)
         try stream.addRecordingOutput(recordingOutput)
 
         self.stream = stream
@@ -263,12 +269,17 @@ final class CaptureRunner {
         guard !isStopping else { return }
         isStopping = true
         guard let stream else { return }
-        logLine("stopping capture")
+        delegate.markStopRequested()
+        logLine("stopping capture (requested by helper)")
         await stopCapture(stream)
     }
 
     func waitUntilFinished() async throws {
         try await delegate.waitForFinish()
+    }
+
+    func stream(_ stream: SCStream, didStopWithError error: Error) {
+        logLine("stream didStopWithError: \(error.localizedDescription)")
     }
 }
 

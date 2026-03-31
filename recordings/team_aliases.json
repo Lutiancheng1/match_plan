@@ -160,19 +160,15 @@
     "baghdad"
   ],
   "kazakhstanu19": [
-    "19",
     "u19"
-  ],
-  "19": [
-    "kazakhstanu19"
   ],
   "u19": [
     "kazakhstanu19"
   ],
   "romaniau19": [
-    "romaniasub19"
+    "罗马尼亚u19"
   ],
-  "romaniasub19": [
+  "罗马尼亚u19": [
     "romaniau19"
   ],
   "luawa": [
@@ -208,6 +204,7 @@
     "wilberforce",
     "wilberforcefc",
     "wilberforceunited",
+    "保顿艾尔宾",
     "威尔伯福斯",
     "威尔伯福斯突击队"
   ],
@@ -223,11 +220,22 @@
   "wilberforceunited": [
     "wilberforcestrikers"
   ],
+  "保顿艾尔宾": [
+    "burtonalbion",
+    "wilberforcestrikers"
+  ],
   "威尔伯福斯": [
     "wilberforcestrikers"
   ],
   "威尔伯福斯突击队": [
     "wilberforcestrikers"
+  ],
+  "burtonalbion": [
+    "伯顿",
+    "保顿艾尔宾"
+  ],
+  "伯顿": [
+    "burtonalbion"
   ],
   "abachacity": [
     "abacha",
@@ -248,17 +256,12 @@
     "abachacity"
   ],
   "serbiau17": [
-    "17",
     "serbiau17nt",
     "srbijau17",
     "u17",
     "塞尔维亚u17",
     "塞尔维亚u17国家队",
     "塞尔维亚u17队"
-  ],
-  "17": [
-    "cyprusu17",
-    "serbiau17"
   ],
   "serbiau17nt": [
     "serbiau17"
@@ -280,7 +283,6 @@
     "serbiau17"
   ],
   "cyprusu17": [
-    "17",
     "cyprusu17nt",
     "kbrsu17",
     "kiprosu17",
@@ -498,19 +500,12 @@
     "alarabisc"
   ],
   "realmadridw": [
-    "realmadridf",
-    "realmadridfemenino",
     "realmadridwomen",
     "realw",
     "w",
+    "皇家马德里女",
     "皇家马德里女足",
     "皇马女足"
-  ],
-  "realmadridf": [
-    "realmadridw"
-  ],
-  "realmadridfemenino": [
-    "realmadridw"
   ],
   "realmadridwomen": [
     "realmadridw"
@@ -522,6 +517,9 @@
     "barcelonaw",
     "realmadridw"
   ],
+  "皇家马德里女": [
+    "realmadridw"
+  ],
   "皇家马德里女足": [
     "realmadridw"
   ],
@@ -529,28 +527,20 @@
     "realmadridw"
   ],
   "barcelonaw": [
-    "barcafemeni",
     "barcawomen",
-    "barcelonafemeni",
-    "barcelonafemenino",
     "barcelonawomen",
     "w",
+    "巴塞罗那女",
     "巴塞罗那女足",
     "巴萨女足"
-  ],
-  "barcafemeni": [
-    "barcelonaw"
   ],
   "barcawomen": [
     "barcelonaw"
   ],
-  "barcelonafemeni": [
-    "barcelonaw"
-  ],
-  "barcelonafemenino": [
-    "barcelonaw"
-  ],
   "barcelonawomen": [
+    "barcelonaw"
+  ],
+  "巴塞罗那女": [
     "barcelonaw"
   ],
   "巴塞罗那女足": [
@@ -690,6 +680,7 @@
   "dallasmavericks": [
     "mavericks",
     "mavericksdedallas",
+    "小牛",
     "独行侠",
     "达拉斯独行侠"
   ],
@@ -697,6 +688,9 @@
     "dallasmavericks"
   ],
   "mavericksdedallas": [
+    "dallasmavericks"
+  ],
+  "小牛": [
     "dallasmavericks"
   ],
   "独行侠": [
@@ -714,10 +708,18 @@
     "goldenstatewarriors"
   ],
   "勇士": [
+    "atlantabraves",
     "goldenstatewarriors"
   ],
   "金州勇士": [
     "goldenstatewarriors"
+  ],
+  "atlantabraves": [
+    "亚特兰大勇士",
+    "勇士"
+  ],
+  "亚特兰大勇士": [
+    "atlantabraves"
   ],
   "brooklynnets": [
     "nets",
@@ -830,16 +832,8 @@
     "deportivosaprissa"
   ],
   "sandiegowavew": [
-    "sandiegowavef",
-    "sandiegowavefemenino",
     "圣地亚哥波浪w",
     "圣地亚哥波浪女足"
-  ],
-  "sandiegowavef": [
-    "sandiegowavew"
-  ],
-  "sandiegowavefemenino": [
-    "sandiegowavew"
   ],
   "圣地亚哥波浪w": [
     "sandiegowavew"
@@ -848,16 +842,8 @@
     "sandiegowavew"
   ],
   "portlandthornsw": [
-    "portlandthornsf",
-    "portlandthornsfemenino",
     "波特兰荆棘w",
     "波特兰荆棘女足"
-  ],
-  "portlandthornsf": [
-    "portlandthornsw"
-  ],
-  "portlandthornsfemenino": [
-    "portlandthornsw"
   ],
   "波特兰荆棘w": [
     "portlandthornsw"
@@ -1188,20 +1174,27 @@
     "egypt",
     "elentagelharby",
     "埃及",
+    "泽德",
     "马斯尔",
     "马斯里"
   ],
   "egypt": [
-    "masr"
+    "masr",
+    "埃及",
+    "孔卡诺"
   ],
   "elentagelharby": [
     "masr"
   ],
   "埃及": [
+    "egypt",
     "masr"
   ],
   "马斯尔": [
     "masr"
+  ],
+  "孔卡诺": [
+    "egypt"
   ],
   "moldova": [
     "摩尔多瓦"
@@ -1239,6 +1232,7 @@
     "蒙特维多竞赛会"
   ],
   "乌拉圭民族": [
+    "nacional",
     "racingmontevideo"
   ],
   "拉科鲁尼亚蒙得维的亚": [
@@ -1264,6 +1258,9 @@
   ],
   "蒙特维多竞赛会": [
     "racingmontevideo"
+  ],
+  "nacional": [
+    "乌拉圭民族"
   ],
   "progreso": [
     "普罗格雷索",
@@ -1412,10 +1409,14 @@
     "atpmiami"
   ],
   "迈阿密公开赛": [
-    "atpmiami"
+    "atpmiami",
+    "wtamiami"
   ],
   "迈阿密大师赛": [
     "atpmiami"
+  ],
+  "wtamiami": [
+    "迈阿密公开赛"
   ],
   "elmokawloon": [
     "arabcontractors",
@@ -1475,11 +1476,9 @@
     "卢森堡u21"
   ],
   "卢森堡u21": [
-    "brazil",
     "luxembourgu21"
   ],
   "brazil": [
-    "卢森堡u21",
     "巴西"
   ],
   "巴西": [
@@ -1489,12 +1488,10 @@
     "法国u21"
   ],
   "法国u21": [
-    "france",
     "franceu21"
   ],
   "france": [
-    "法国",
-    "法国u21"
+    "法国"
   ],
   "法国": [
     "france"
@@ -1738,10 +1735,26 @@
     "法属圣马丁"
   ],
   "圣马丁": [
-    "saintmartin"
+    "saintmartin",
+    "sanmartinsj"
   ],
   "法属圣马丁": [
     "saintmartin"
+  ],
+  "sanmartinsj": [
+    "圣胡安圣马丁",
+    "圣马丁",
+    "圣马丁sj",
+    "圣马丁圣胡安"
+  ],
+  "圣胡安圣马丁": [
+    "sanmartinsj"
+  ],
+  "圣马丁sj": [
+    "sanmartinsj"
+  ],
+  "圣马丁圣胡安": [
+    "sanmartinsj"
   ],
   "barbados": [
     "巴巴多斯",
@@ -1841,13 +1854,19 @@
     "皇家桑坦德"
   ],
   "桑坦德": [
+    "racingsantander",
     "realsantander"
   ],
   "桑坦德竞技": [
+    "racingsantander",
     "realsantander"
   ],
   "皇家桑坦德": [
     "realsantander"
+  ],
+  "racingsantander": [
+    "桑坦德",
+    "桑坦德竞技"
   ],
   "martinique": [
     "马提尼克"
@@ -1878,6 +1897,7 @@
     "蒂格雷斯fc"
   ],
   "老虎": [
+    "detroittigers",
     "tigresfc"
   ],
   "老虎fc": [
@@ -1888,6 +1908,17 @@
   ],
   "蒂格雷斯fc": [
     "tigresfc"
+  ],
+  "detroittigers": [
+    "底特律老虎",
+    "老虎",
+    "老虎队"
+  ],
+  "底特律老虎": [
+    "detroittigers"
+  ],
+  "老虎队": [
+    "detroittigers"
   ],
   "bolivia": [
     "玻利维亚"
@@ -2096,6 +2127,12 @@
     "奥尔索马索",
     "奥索马索"
   ],
+  "奥尔索马尔索": [
+    "orsomarso"
+  ],
+  "奥尔索马索": [
+    "orsomarso"
+  ],
   "奥索马索": [
     "orsomarso"
   ],
@@ -2139,6 +2176,9 @@
     "开曼",
     "开曼群岛"
   ],
+  "开曼": [
+    "caymanislands"
+  ],
   "开曼群岛": [
     "caymanislands"
   ],
@@ -2148,6 +2188,9 @@
     "英属维尔京群岛"
   ],
   "bvi": [
+    "britishvirginislands"
+  ],
+  "英属维京": [
     "britishvirginislands"
   ],
   "英属维尔京群岛": [
@@ -2186,6 +2229,7 @@
     "croatia"
   ],
   "indyumbo": [
+    "independienteyumbo",
     "云博",
     "云博工业",
     "云博独立",
@@ -2234,10 +2278,18 @@
     "雷科莱塔竞技"
   ],
   "雷科莱塔": [
-    "deportivorecoleta"
+    "deportivorecoleta",
+    "recoleta"
   ],
   "雷科莱塔竞技": [
     "deportivorecoleta"
+  ],
+  "recoleta": [
+    "雷科莱塔",
+    "雷科莱塔体育"
+  ],
+  "雷科莱塔体育": [
+    "recoleta"
   ],
   "rubionu": [
     "鲁比奥",
@@ -2321,12 +2373,16 @@
   ],
   "bonaire": [
     "博内尔",
-    "博内尔岛"
+    "博内尔岛",
+    "博奈尔"
   ],
   "博内尔": [
     "bonaire"
   ],
   "博内尔岛": [
+    "bonaire"
+  ],
+  "博奈尔": [
     "bonaire"
   ],
   "stvincentgrenadines": [
@@ -2336,12 +2392,15 @@
   "圣文森特": [
     "stvincentgrenadines"
   ],
-  "奥尔索马索": [
-    "orsomarso"
+  "圣文森特和格林纳丁斯": [
+    "stvincentgrenadines"
   ],
   "newcaledonia": [
     "新喀",
     "新喀里多尼亚"
+  ],
+  "新喀": [
+    "newcaledonia"
   ],
   "新喀里多尼亚": [
     "newcaledonia"
@@ -2352,19 +2411,7416 @@
   "牙买加": [
     "jamaica"
   ],
-  "奥尔索马尔索": [
-    "orsomarso"
+  "brisbaneroarfcw": [
+    "布里斯班狮吼女",
+    "布里斯班狮吼女足"
   ],
-  "新喀": [
-    "newcaledonia"
+  "布里斯班狮吼女": [
+    "brisbaneroarfcw"
   ],
-  "圣文森特和格林纳丁斯": [
-    "stvincentgrenadines"
+  "布里斯班狮吼女足": [
+    "brisbaneroarfcw"
   ],
-  "开曼": [
-    "caymanislands"
+  "perthgloryfcw": [
+    "珀斯光荣女",
+    "珀斯光荣女足"
   ],
-  "英属维京": [
-    "britishvirginislands"
+  "珀斯光荣女": [
+    "perthgloryfcw"
+  ],
+  "珀斯光荣女足": [
+    "perthgloryfcw"
+  ],
+  "visselkobe": [
+    "神户胜利船"
+  ],
+  "神户胜利船": [
+    "visselkobe"
+  ],
+  "sanfreccehiroshima": [
+    "广岛三箭"
+  ],
+  "广岛三箭": [
+    "sanfreccehiroshima"
+  ],
+  "australia": [
+    "澳大利亚",
+    "澳洲"
+  ],
+  "澳大利亚": [
+    "australia"
+  ],
+  "澳洲": [
+    "australia"
+  ],
+  "cameroon": [
+    "喀麦隆"
+  ],
+  "喀麦隆": [
+    "cameroon"
+  ],
+  "solomonislands": [
+    "所罗门",
+    "所罗门群岛"
+  ],
+  "所罗门": [
+    "solomonislands"
+  ],
+  "所罗门群岛": [
+    "solomonislands"
+  ],
+  "bulgaria": [
+    "保加",
+    "保加利亚"
+  ],
+  "保加": [
+    "bulgaria"
+  ],
+  "保加利亚": [
+    "bulgaria"
+  ],
+  "venezuela": [
+    "委内瑞拉"
+  ],
+  "委内瑞拉": [
+    "venezuela"
+  ],
+  "trinidadandtobago": [
+    "千里达及多巴哥",
+    "特立尼达和多巴哥"
+  ],
+  "千里达及多巴哥": [
+    "trinidadandtobago"
+  ],
+  "特立尼达和多巴哥": [
+    "trinidadandtobago"
+  ],
+  "azerbaijanu21": [
+    "阿塞拜疆u21"
+  ],
+  "阿塞拜疆u21": [
+    "azerbaijanu21"
+  ],
+  "portugalu21": [
+    "葡萄牙u21"
+  ],
+  "葡萄牙u21": [
+    "portugalu21"
+  ],
+  "nifassilklaftosubcity": [
+    "尼法斯丝绸",
+    "尼法斯丝绸拉夫托",
+    "尼法斯希尔克拉夫托"
+  ],
+  "尼法斯丝绸": [
+    "nifassilklaftosubcity"
+  ],
+  "尼法斯丝绸拉夫托": [
+    "nifassilklaftosubcity"
+  ],
+  "尼法斯希尔克拉夫托": [
+    "nifassilklaftosubcity"
+  ],
+  "onecampionship": [
+    "one冠军赛",
+    "one格斗赛"
+  ],
+  "one冠军赛": [
+    "onecampionship"
+  ],
+  "one格斗赛": [
+    "onecampionship"
+  ],
+  "hapoelafula": [
+    "阿富拉",
+    "阿富拉夏普尔",
+    "阿富拉工人",
+    "阿福拉哈普尔"
+  ],
+  "阿富拉": [
+    "hapoelafula"
+  ],
+  "阿富拉夏普尔": [
+    "hapoelafula"
+  ],
+  "阿富拉工人": [
+    "hapoelafula"
+  ],
+  "阿福拉哈普尔": [
+    "hapoelafula"
+  ],
+  "bneiyehuda": [
+    "布内叶胡达",
+    "布内耶胡达",
+    "本尼耶胡达",
+    "本耶胡达",
+    "比尼耶胡达",
+    "耶胡达",
+    "耶胡达之子",
+    "贝内耶胡达"
+  ],
+  "布内叶胡达": [
+    "bneiyehuda"
+  ],
+  "布内耶胡达": [
+    "bneiyehuda"
+  ],
+  "本尼耶胡达": [
+    "bneiyehuda"
+  ],
+  "本耶胡达": [
+    "bneiyehuda"
+  ],
+  "比尼耶胡达": [
+    "bneiyehuda"
+  ],
+  "耶胡达": [
+    "bneiyehuda"
+  ],
+  "耶胡达之子": [
+    "bneiyehuda"
+  ],
+  "贝内耶胡达": [
+    "bneiyehuda"
+  ],
+  "hapoelnazarethillit": [
+    "上拿撒勒夏普尔",
+    "上拿撒勒工人",
+    "拿撒勒伊利特",
+    "拿撒勒伊利特夏普尔",
+    "拿撒勒伊利特工人",
+    "拿撒勒伊力工人",
+    "拿撒勒伊工人",
+    "拿撒勒伊里特",
+    "拿撒勒伊里特工人",
+    "拿撒勒工人",
+    "诺夫哈加里夏普尔"
+  ],
+  "上拿撒勒夏普尔": [
+    "hapoelnazarethillit"
+  ],
+  "上拿撒勒工人": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊利特": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊利特夏普尔": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊利特工人": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊力工人": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊工人": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊里特": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊里特工人": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒工人": [
+    "hapoelnazarethillit"
+  ],
+  "诺夫哈加里夏普尔": [
+    "hapoelnazarethillit"
+  ],
+  "maccabikabiliojaffa": [
+    "卡比利奥贾法",
+    "卡比利奥雅法",
+    "卡比利奥雅法马卡比",
+    "卡比利奥马卡比",
+    "雅法马卡比",
+    "马卡比卡比利奥",
+    "马卡比卡比利奥雅法"
+  ],
+  "卡比利奥贾法": [
+    "maccabikabiliojaffa"
+  ],
+  "卡比利奥雅法": [
+    "maccabikabiliojaffa"
+  ],
+  "卡比利奥雅法马卡比": [
+    "maccabikabiliojaffa"
+  ],
+  "卡比利奥马卡比": [
+    "maccabikabiliojaffa"
+  ],
+  "雅法马卡比": [
+    "maccabikabiliojaffa"
+  ],
+  "马卡比卡比利奥": [
+    "maccabikabiliojaffa"
+  ],
+  "马卡比卡比利奥雅法": [
+    "maccabikabiliojaffa"
+  ],
+  "diyala": [
+    "迪亚拉"
+  ],
+  "迪亚拉": [
+    "diyala"
+  ],
+  "alnajaf": [
+    "纳杰夫"
+  ],
+  "纳杰夫": [
+    "alnajaf"
+  ],
+  "naftmaysan": [
+    "米桑石油",
+    "纳夫特米桑",
+    "纳夫特迈桑",
+    "迈桑石油"
+  ],
+  "米桑石油": [
+    "naftmaysan"
+  ],
+  "纳夫特米桑": [
+    "naftmaysan"
+  ],
+  "纳夫特迈桑": [
+    "naftmaysan"
+  ],
+  "迈桑石油": [
+    "naftmaysan"
+  ],
+  "erbil": [
+    "埃尔比勒"
+  ],
+  "埃尔比勒": [
+    "erbil"
+  ],
+  "turkiyeu19": [
+    "turkeyu19",
+    "土耳其u19"
+  ],
+  "turkeyu19": [
+    "turkiyeu19"
+  ],
+  "土耳其u19": [
+    "turkiyeu19"
+  ],
+  "armeniau19": [
+    "亚美尼亚u19",
+    "阿美尼亚u19"
+  ],
+  "亚美尼亚u19": [
+    "armeniau19"
+  ],
+  "阿美尼亚u19": [
+    "armeniau19"
+  ],
+  "halabaketema": [
+    "halabacity",
+    "哈拉巴",
+    "哈拉巴凯特马",
+    "哈拉巴城"
+  ],
+  "halabacity": [
+    "halabaketema"
+  ],
+  "哈拉巴": [
+    "halabaketema"
+  ],
+  "哈拉巴凯特马": [
+    "halabaketema"
+  ],
+  "哈拉巴城": [
+    "halabaketema"
+  ],
+  "addisababaketema": [
+    "addisababacity",
+    "亚的斯亚贝巴",
+    "亚的斯亚贝巴凯特马",
+    "亚的斯亚贝巴城"
+  ],
+  "addisababacity": [
+    "addisababaketema"
+  ],
+  "亚的斯亚贝巴": [
+    "addisababaketema"
+  ],
+  "亚的斯亚贝巴凯特马": [
+    "addisababaketema"
+  ],
+  "亚的斯亚贝巴城": [
+    "addisababaketema"
+  ],
+  "nibfc": [
+    "尼布",
+    "尼布fc"
+  ],
+  "尼布": [
+    "nibfc"
+  ],
+  "尼布fc": [
+    "nibfc"
+  ],
+  "benchmajibunafc": [
+    "本奇马吉",
+    "本奇马吉咖啡",
+    "本奇马吉布纳"
+  ],
+  "本奇马吉": [
+    "benchmajibunafc"
+  ],
+  "本奇马吉咖啡": [
+    "benchmajibunafc"
+  ],
+  "本奇马吉布纳": [
+    "benchmajibunafc"
+  ],
+  "iran": [
+    "伊朗"
+  ],
+  "伊朗": [
+    "iran"
+  ],
+  "nigeria": [
+    "尼日利亚"
+  ],
+  "尼日利亚": [
+    "nigeria"
+  ],
+  "abha": [
+    "亚哈",
+    "艾卜哈",
+    "阿巴"
+  ],
+  "亚哈": [
+    "abha"
+  ],
+  "艾卜哈": [
+    "abha"
+  ],
+  "阿巴": [
+    "abha"
+  ],
+  "aljubail": [
+    "朱拜勒"
+  ],
+  "朱拜勒": [
+    "aljubail"
+  ],
+  "hattasc": [
+    "哈塔"
+  ],
+  "哈塔": [
+    "hattasc"
+  ],
+  "dubaiunited": [
+    "迪拜联"
+  ],
+  "迪拜联": [
+    "dubaiunited"
+  ],
+  "indonesia": [
+    "印尼",
+    "印度尼西亚"
+  ],
+  "印尼": [
+    "indonesia"
+  ],
+  "印度尼西亚": [
+    "indonesia"
+  ],
+  "stkittsandnevis": [
+    "圣基茨",
+    "圣基茨及尼维斯",
+    "圣基茨和尼维斯"
+  ],
+  "圣基茨": [
+    "stkittsandnevis"
+  ],
+  "圣基茨及尼维斯": [
+    "stkittsandnevis"
+  ],
+  "圣基茨和尼维斯": [
+    "stkittsandnevis"
+  ],
+  "jsjijel": [
+    "js吉杰勒",
+    "吉杰勒",
+    "吉杰尔",
+    "吉杰尔js"
+  ],
+  "js吉杰勒": [
+    "jsjijel"
+  ],
+  "吉杰勒": [
+    "jsjijel"
+  ],
+  "吉杰尔": [
+    "jsjijel"
+  ],
+  "吉杰尔js": [
+    "jsjijel"
+  ],
+  "teleghma": [
+    "泰莱格马",
+    "特勒格马",
+    "特莱格马"
+  ],
+  "泰莱格马": [
+    "teleghma"
+  ],
+  "特勒格马": [
+    "teleghma"
+  ],
+  "特莱格马": [
+    "teleghma"
+  ],
+  "mobejaia": [
+    "mo比捷亚",
+    "mo贝贾亚",
+    "穆卢迪亚贝贾亚",
+    "穆斯塔加龙",
+    "穆鲁迪亚贝贾亚",
+    "贝贾亚",
+    "贝贾亚mo",
+    "贝贾亚穆卢迪亚"
+  ],
+  "mo比捷亚": [
+    "mobejaia"
+  ],
+  "mo贝贾亚": [
+    "mobejaia"
+  ],
+  "穆卢迪亚贝贾亚": [
+    "mobejaia"
+  ],
+  "穆斯塔加龙": [
+    "mobejaia",
+    "moconstantine"
+  ],
+  "穆鲁迪亚贝贾亚": [
+    "mobejaia"
+  ],
+  "贝贾亚": [
+    "mobejaia"
+  ],
+  "贝贾亚mo": [
+    "mobejaia"
+  ],
+  "贝贾亚穆卢迪亚": [
+    "mobejaia"
+  ],
+  "moconstantine": [
+    "mo君士坦丁",
+    "君士坦丁",
+    "君士坦丁穆卢迪亚",
+    "康斯坦丁",
+    "穆卢迪亚君士坦丁",
+    "穆斯塔加龙",
+    "穆鲁迪亚君士坦丁"
+  ],
+  "mo君士坦丁": [
+    "moconstantine"
+  ],
+  "君士坦丁": [
+    "moconstantine"
+  ],
+  "君士坦丁穆卢迪亚": [
+    "moconstantine"
+  ],
+  "康斯坦丁": [
+    "moconstantine"
+  ],
+  "穆卢迪亚君士坦丁": [
+    "moconstantine"
+  ],
+  "穆鲁迪亚君士坦丁": [
+    "moconstantine"
+  ],
+  "cabatna": [
+    "ca巴特纳",
+    "巴特纳",
+    "巴特纳ca",
+    "巴特纳竞技"
+  ],
+  "ca巴特纳": [
+    "cabatna"
+  ],
+  "巴特纳": [
+    "cabatna",
+    "mspbatna"
+  ],
+  "巴特纳ca": [
+    "cabatna"
+  ],
+  "巴特纳竞技": [
+    "cabatna"
+  ],
+  "mspbatna": [
+    "msp巴特纳",
+    "巴特纳",
+    "巴特纳msp",
+    "巴特纳人民穆卢迪亚"
+  ],
+  "msp巴特纳": [
+    "mspbatna"
+  ],
+  "巴特纳msp": [
+    "mspbatna"
+  ],
+  "巴特纳人民穆卢迪亚": [
+    "mspbatna"
+  ],
+  "ncmagra": [
+    "nc马格拉",
+    "马格拉",
+    "马格拉nc"
+  ],
+  "nc马格拉": [
+    "ncmagra"
+  ],
+  "马格拉": [
+    "ncmagra"
+  ],
+  "马格拉nc": [
+    "ncmagra"
+  ],
+  "nrbbenioulbene": [
+    "nrb贝尼乌尔贝纳",
+    "本尼乌勒本",
+    "本尼乌尔本",
+    "本尼乌尔贝内",
+    "本尼乌尔贝纳",
+    "贝尼乌勒本",
+    "贝尼乌勒贝纳",
+    "贝尼乌勒邦",
+    "贝尼乌尔本",
+    "贝尼乌尔贝内",
+    "贝尼乌尔贝恩",
+    "贝尼乌尔贝纳"
+  ],
+  "nrb贝尼乌尔贝纳": [
+    "nrbbenioulbene"
+  ],
+  "本尼乌勒本": [
+    "nrbbenioulbene"
+  ],
+  "本尼乌尔本": [
+    "nrbbenioulbene"
+  ],
+  "本尼乌尔贝内": [
+    "nrbbenioulbene"
+  ],
+  "本尼乌尔贝纳": [
+    "nrbbenioulbene"
+  ],
+  "贝尼乌勒本": [
+    "nrbbenioulbene"
+  ],
+  "贝尼乌勒贝纳": [
+    "nrbbenioulbene"
+  ],
+  "贝尼乌勒邦": [
+    "nrbbenioulbene"
+  ],
+  "贝尼乌尔本": [
+    "nrbbenioulbene"
+  ],
+  "贝尼乌尔贝内": [
+    "nrbbenioulbene"
+  ],
+  "贝尼乌尔贝恩": [
+    "nrbbenioulbene"
+  ],
+  "贝尼乌尔贝纳": [
+    "nrbbenioulbene"
+  ],
+  "rckouba": [
+    "rc库巴",
+    "库巴",
+    "库巴竞技"
+  ],
+  "rc库巴": [
+    "rckouba"
+  ],
+  "库巴": [
+    "rckouba"
+  ],
+  "库巴竞技": [
+    "rckouba"
+  ],
+  "kolea": [
+    "科莱亚",
+    "科莱阿"
+  ],
+  "科莱亚": [
+    "kolea"
+  ],
+  "科莱阿": [
+    "kolea"
+  ],
+  "temouchent": [
+    "泰穆尚特",
+    "泰穆森",
+    "特穆尚",
+    "特穆尚特",
+    "特穆森"
+  ],
+  "泰穆尚特": [
+    "temouchent"
+  ],
+  "泰穆森": [
+    "temouchent"
+  ],
+  "特穆尚": [
+    "temouchent"
+  ],
+  "特穆尚特": [
+    "temouchent"
+  ],
+  "特穆森": [
+    "temouchent"
+  ],
+  "bechardjedid": [
+    "贝沙尔",
+    "贝沙尔新队",
+    "贝沙尔杰迪德"
+  ],
+  "贝沙尔": [
+    "bechardjedid"
+  ],
+  "贝沙尔新队": [
+    "bechardjedid"
+  ],
+  "贝沙尔杰迪德": [
+    "bechardjedid"
+  ],
+  "usbiskra": [
+    "比斯克拉"
+  ],
+  "比斯克拉": [
+    "usbiskra"
+  ],
+  "khroub": [
+    "克鲁布",
+    "赫鲁布"
+  ],
+  "克鲁布": [
+    "khroub"
+  ],
+  "赫鲁布": [
+    "khroub"
+  ],
+  "azerbaijan": [
+    "阿塞拜疆"
+  ],
+  "阿塞拜疆": [
+    "azerbaijan"
+  ],
+  "stlucia": [
+    "圣卢西亚",
+    "圣露西亚"
+  ],
+  "圣卢西亚": [
+    "stlucia"
+  ],
+  "圣露西亚": [
+    "stlucia"
+  ],
+  "asmoran": [
+    "asm奥兰",
+    "奥兰",
+    "奥兰asm"
+  ],
+  "asm奥兰": [
+    "asmoran"
+  ],
+  "奥兰": [
+    "asmoran"
+  ],
+  "奥兰asm": [
+    "asmoran"
+  ],
+  "watlemcen": [
+    "特莱姆森",
+    "特莱姆森wa"
+  ],
+  "特莱姆森": [
+    "watlemcen"
+  ],
+  "特莱姆森wa": [
+    "watlemcen"
+  ],
+  "crbenithour": [
+    "cr贝尼图尔",
+    "本尼图尔",
+    "贝尼图尔",
+    "贝尼图尔cr"
+  ],
+  "cr贝尼图尔": [
+    "crbenithour"
+  ],
+  "本尼图尔": [
+    "crbenithour"
+  ],
+  "贝尼图尔": [
+    "crbenithour"
+  ],
+  "贝尼图尔cr": [
+    "crbenithour"
+  ],
+  "jsbordjmenaiel": [
+    "js博尔吉梅纳耶尔",
+    "博尔吉梅纳伊勒",
+    "博尔吉梅纳伊尔",
+    "博尔吉梅纳伊尔js",
+    "博尔吉梅纳耶尔",
+    "博尔吉梅纳耶尔js",
+    "博尔杰梅纳耶尔"
+  ],
+  "js博尔吉梅纳耶尔": [
+    "jsbordjmenaiel"
+  ],
+  "博尔吉梅纳伊勒": [
+    "jsbordjmenaiel"
+  ],
+  "博尔吉梅纳伊尔": [
+    "jsbordjmenaiel"
+  ],
+  "博尔吉梅纳伊尔js": [
+    "jsbordjmenaiel"
+  ],
+  "博尔吉梅纳耶尔": [
+    "jsbordjmenaiel"
+  ],
+  "博尔吉梅纳耶尔js": [
+    "jsbordjmenaiel"
+  ],
+  "博尔杰梅纳耶尔": [
+    "jsbordjmenaiel"
+  ],
+  "hbchelghoumlaid": [
+    "hbchelghoum",
+    "hbc拉伊德",
+    "hb谢尔古姆莱德",
+    "沙格姆莱德",
+    "谢尔古姆",
+    "谢尔古姆莱德",
+    "谢尔古姆莱德hb"
+  ],
+  "hbchelghoum": [
+    "hbchelghoumlaid"
+  ],
+  "hbc拉伊德": [
+    "hbchelghoumlaid"
+  ],
+  "hb谢尔古姆莱德": [
+    "hbchelghoumlaid"
+  ],
+  "沙格姆莱德": [
+    "hbchelghoumlaid"
+  ],
+  "谢尔古姆": [
+    "hbchelghoumlaid"
+  ],
+  "谢尔古姆莱德": [
+    "hbchelghoumlaid"
+  ],
+  "谢尔古姆莱德hb": [
+    "hbchelghoumlaid"
+  ],
+  "uschaouia": [
+    "us沙维亚",
+    "沙维亚",
+    "沙维亚us",
+    "肖维亚",
+    "肖维亚us",
+    "舒维亚"
+  ],
+  "us沙维亚": [
+    "uschaouia"
+  ],
+  "沙维亚": [
+    "uschaouia"
+  ],
+  "沙维亚us": [
+    "uschaouia"
+  ],
+  "肖维亚": [
+    "uschaouia"
+  ],
+  "肖维亚us": [
+    "uschaouia"
+  ],
+  "舒维亚": [
+    "uschaouia"
+  ],
+  "uzbekistan": [
+    "乌兹别克",
+    "乌兹别克斯坦"
+  ],
+  "乌兹别克": [
+    "uzbekistan"
+  ],
+  "乌兹别克斯坦": [
+    "uzbekistan"
+  ],
+  "gabon": [
+    "加蓬"
+  ],
+  "加蓬": [
+    "gabon"
+  ],
+  "italyu20": [
+    "意大利u20"
+  ],
+  "意大利u20": [
+    "italyu20"
+  ],
+  "englandu20": [
+    "英格兰u20"
+  ],
+  "英格兰u20": [
+    "englandu20"
+  ],
+  "cyprusu21": [
+    "塞浦路斯u21"
+  ],
+  "塞浦路斯u21": [
+    "cyprusu21"
+  ],
+  "spainu21": [
+    "西班牙u21"
+  ],
+  "西班牙u21": [
+    "spainu21"
+  ],
+  "georgiau21": [
+    "格鲁吉亚u21"
+  ],
+  "格鲁吉亚u21": [
+    "georgiau21"
+  ],
+  "latviau21": [
+    "拉脱维亚u21"
+  ],
+  "拉脱维亚u21": [
+    "latviau21"
+  ],
+  "kazakhstanu21": [
+    "哈萨克斯坦u21"
+  ],
+  "哈萨克斯坦u21": [
+    "kazakhstanu21"
+  ],
+  "slovakiau21": [
+    "斯洛伐克u21"
+  ],
+  "斯洛伐克u21": [
+    "slovakiau21"
+  ],
+  "romaniau20": [
+    "罗马尼亚u20"
+  ],
+  "罗马尼亚u20": [
+    "romaniau20"
+  ],
+  "polandu20": [
+    "波兰u20"
+  ],
+  "波兰u20": [
+    "polandu20"
+  ],
+  "greeceu21": [
+    "希腊u21"
+  ],
+  "希腊u21": [
+    "greeceu21"
+  ],
+  "maltau21": [
+    "马耳他u21"
+  ],
+  "马耳他u21": [
+    "maltau21"
+  ],
+  "austria": [
+    "奥地利"
+  ],
+  "奥地利": [
+    "austria"
+  ],
+  "ghana": [
+    "加纳"
+  ],
+  "加纳": [
+    "ghana"
+  ],
+  "montenegro": [
+    "黑山"
+  ],
+  "黑山": [
+    "montenegro"
+  ],
+  "andorra": [
+    "安道尔"
+  ],
+  "安道尔": [
+    "andorra"
+  ],
+  "saudiarabia": [
+    "沙特",
+    "沙特阿拉伯",
+    "沙特鲁"
+  ],
+  "沙特": [
+    "saudiarabia"
+  ],
+  "沙特阿拉伯": [
+    "saudiarabia"
+  ],
+  "沙特鲁": [
+    "saudiarabia"
+  ],
+  "russia": [
+    "俄罗斯"
+  ],
+  "俄罗斯": [
+    "russia"
+  ],
+  "nicaragua": [
+    "尼加拉瓜"
+  ],
+  "尼加拉瓜": [
+    "nicaragua"
+  ],
+  "bullomstarsfc": [
+    "bullomstars",
+    "布洛姆星",
+    "布洛姆星队"
+  ],
+  "bullomstars": [
+    "bullomstarsfc"
+  ],
+  "布洛姆星": [
+    "bullomstarsfc"
+  ],
+  "布洛姆星队": [
+    "bullomstarsfc"
+  ],
+  "oldedwardiansfc": [
+    "oldedwardians",
+    "老爱德华",
+    "老爱德华兹",
+    "老爱德华队"
+  ],
+  "oldedwardians": [
+    "oldedwardiansfc"
+  ],
+  "老爱德华": [
+    "oldedwardiansfc"
+  ],
+  "老爱德华兹": [
+    "oldedwardiansfc"
+  ],
+  "老爱德华队": [
+    "oldedwardiansfc"
+  ],
+  "germanyu21": [
+    "德国u21"
+  ],
+  "德国u21": [
+    "germanyu21"
+  ],
+  "northernirelandu21": [
+    "北爱尔兰u21"
+  ],
+  "北爱尔兰u21": [
+    "northernirelandu21"
+  ],
+  "norwayu21": [
+    "挪威u21"
+  ],
+  "挪威u21": [
+    "norwayu21"
+  ],
+  "netherlandsu21": [
+    "荷兰u21"
+  ],
+  "荷兰u21": [
+    "netherlandsu21"
+  ],
+  "fckallon": [
+    "kallon",
+    "卡隆",
+    "卡隆fc"
+  ],
+  "kallon": [
+    "fckallon"
+  ],
+  "卡隆": [
+    "fckallon"
+  ],
+  "卡隆fc": [
+    "fckallon"
+  ],
+  "polandu21": [
+    "波兰u21"
+  ],
+  "波兰u21": [
+    "polandu21"
+  ],
+  "armeniau21": [
+    "亚美尼亚u21",
+    "阿美尼亚u21"
+  ],
+  "亚美尼亚u21": [
+    "armeniau21"
+  ],
+  "阿美尼亚u21": [
+    "armeniau21"
+  ],
+  "bhantalfc": [
+    "bhantal",
+    "班塔尔"
+  ],
+  "bhantal": [
+    "bhantalfc"
+  ],
+  "班塔尔": [
+    "bhantalfc"
+  ],
+  "pohronie": [
+    "普霍尼",
+    "普霍涅",
+    "波罗尼",
+    "波赫罗尼",
+    "波赫罗涅"
+  ],
+  "普霍尼": [
+    "pohronie"
+  ],
+  "普霍涅": [
+    "pohronie"
+  ],
+  "波罗尼": [
+    "pohronie"
+  ],
+  "波赫罗尼": [
+    "pohronie"
+  ],
+  "波赫罗涅": [
+    "pohronie"
+  ],
+  "puchov": [
+    "普霍夫"
+  ],
+  "普霍夫": [
+    "puchov"
+  ],
+  "carlzeissjenaw": [
+    "卡尔蔡司耶拿女足",
+    "耶拿女足",
+    "耶拿女队"
+  ],
+  "卡尔蔡司耶拿女足": [
+    "carlzeissjenaw"
+  ],
+  "耶拿女足": [
+    "carlzeissjenaw"
+  ],
+  "耶拿女队": [
+    "carlzeissjenaw"
+  ],
+  "rbleipzigw": [
+    "莱比锡女足",
+    "莱比锡红牛女足",
+    "莱比锡红牛女队"
+  ],
+  "莱比锡女足": [
+    "rbleipzigw"
+  ],
+  "莱比锡红牛女足": [
+    "rbleipzigw"
+  ],
+  "莱比锡红牛女队": [
+    "rbleipzigw"
+  ],
+  "fenerbahce": [
+    "费内巴切"
+  ],
+  "费内巴切": [
+    "fenerbahce"
+  ],
+  "zalgiriskaunas": [
+    "扎尔吉里斯",
+    "考纳斯萨尔基利斯",
+    "萨基列斯",
+    "萨基利斯",
+    "萨尔吉利斯",
+    "萨尔吉里斯",
+    "萨尔基利斯",
+    "萨尔基里斯"
+  ],
+  "扎尔吉里斯": [
+    "zalgiriskaunas"
+  ],
+  "考纳斯萨尔基利斯": [
+    "zalgiriskaunas"
+  ],
+  "萨基列斯": [
+    "zalgiriskaunas"
+  ],
+  "萨基利斯": [
+    "zalgiriskaunas"
+  ],
+  "萨尔吉利斯": [
+    "zalgiriskaunas"
+  ],
+  "萨尔吉里斯": [
+    "zalgiriskaunas"
+  ],
+  "萨尔基利斯": [
+    "zalgiriskaunas"
+  ],
+  "萨尔基里斯": [
+    "zalgiriskaunas"
+  ],
+  "jordan": [
+    "约旦"
+  ],
+  "约旦": [
+    "jordan"
+  ],
+  "costarica": [
+    "哥斯达黎加"
+  ],
+  "哥斯达黎加": [
+    "costarica"
+  ],
+  "cordoba": [
+    "科尔多瓦"
+  ],
+  "科尔多瓦": [
+    "cordoba"
+  ],
+  "mirandes": [
+    "米兰德斯",
+    "米兰迪斯"
+  ],
+  "米兰德斯": [
+    "mirandes"
+  ],
+  "米兰迪斯": [
+    "mirandes"
+  ],
+  "mmauaewarriors": [
+    "阿联酋勇士"
+  ],
+  "阿联酋勇士": [
+    "mmauaewarriors"
+  ],
+  "spain": [
+    "西班牙"
+  ],
+  "西班牙": [
+    "spain"
+  ],
+  "argentina": [
+    "阿根廷"
+  ],
+  "阿根廷": [
+    "argentina"
+  ],
+  "andorrau21": [
+    "安道尔u21"
+  ],
+  "安道尔u21": [
+    "andorrau21"
+  ],
+  "englandu21": [
+    "英格兰u21"
+  ],
+  "英格兰u21": [
+    "englandu21"
+  ],
+  "greece": [
+    "希腊"
+  ],
+  "希腊": [
+    "greece"
+  ],
+  "paraguay": [
+    "巴拉圭"
+  ],
+  "巴拉圭": [
+    "paraguay"
+  ],
+  "belgiumu21": [
+    "比利时u21"
+  ],
+  "比利时u21": [
+    "belgiumu21"
+  ],
+  "austriau21": [
+    "奥地利u21"
+  ],
+  "奥地利u21": [
+    "austriau21"
+  ],
+  "independiente": [
+    "独立队"
+  ],
+  "独立队": [
+    "independiente"
+  ],
+  "atenas": [
+    "阿特纳斯",
+    "阿特纳斯体育",
+    "雅典",
+    "雅典人",
+    "雅典队"
+  ],
+  "阿特纳斯": [
+    "atenas"
+  ],
+  "阿特纳斯体育": [
+    "atenas",
+    "atenasd"
+  ],
+  "雅典": [
+    "atenas"
+  ],
+  "雅典人": [
+    "atenas",
+    "atenasd"
+  ],
+  "雅典队": [
+    "atenas"
+  ],
+  "atenasd": [
+    "阿特纳斯d",
+    "阿特纳斯体育",
+    "雅典d",
+    "雅典d队",
+    "雅典人",
+    "雅典人d"
+  ],
+  "阿特纳斯d": [
+    "atenasd"
+  ],
+  "雅典d": [
+    "atenasd"
+  ],
+  "雅典d队": [
+    "atenasd"
+  ],
+  "雅典人d": [
+    "atenasd"
+  ],
+  "serbia": [
+    "塞尔维亚"
+  ],
+  "塞尔维亚": [
+    "serbia"
+  ],
+  "england": [
+    "英格兰"
+  ],
+  "英格兰": [
+    "england"
+  ],
+  "uruguay": [
+    "乌拉圭"
+  ],
+  "乌拉圭": [
+    "uruguay"
+  ],
+  "switzerland": [
+    "瑞士"
+  ],
+  "瑞士": [
+    "switzerland"
+  ],
+  "germany": [
+    "德国"
+  ],
+  "德国": [
+    "germany"
+  ],
+  "netherlands": [
+    "荷兰"
+  ],
+  "荷兰": [
+    "netherlands"
+  ],
+  "norway": [
+    "挪威"
+  ],
+  "挪威": [
+    "norway"
+  ],
+  "algeria": [
+    "阿尔及利亚"
+  ],
+  "阿尔及利亚": [
+    "algeria"
+  ],
+  "guatemala": [
+    "危地马拉"
+  ],
+  "危地马拉": [
+    "guatemala"
+  ],
+  "morocco": [
+    "摩洛哥"
+  ],
+  "摩洛哥": [
+    "morocco"
+  ],
+  "ecuador": [
+    "厄瓜多尔"
+  ],
+  "厄瓜多尔": [
+    "ecuador"
+  ],
+  "rwanda": [
+    "卢旺达"
+  ],
+  "卢旺达": [
+    "rwanda"
+  ],
+  "grenada": [
+    "格林纳达",
+    "格瑞那达"
+  ],
+  "格林纳达": [
+    "grenada"
+  ],
+  "格瑞那达": [
+    "grenada"
+  ],
+  "aguilasdoradas": [
+    "金鹰"
+  ],
+  "金鹰": [
+    "aguilasdoradas"
+  ],
+  "alianzavalledupar": [
+    "巴列杜帕尔",
+    "巴列杜帕尔联盟",
+    "巴耶杜帕尔",
+    "巴耶杜帕尔联盟",
+    "巴耶杜帕尔阿里安萨",
+    "瓦列杜帕尔联盟",
+    "阿里安萨巴列杜帕尔"
+  ],
+  "巴列杜帕尔": [
+    "alianzavalledupar"
+  ],
+  "巴列杜帕尔联盟": [
+    "alianzavalledupar"
+  ],
+  "巴耶杜帕尔": [
+    "alianzavalledupar"
+  ],
+  "巴耶杜帕尔联盟": [
+    "alianzavalledupar"
+  ],
+  "巴耶杜帕尔阿里安萨": [
+    "alianzavalledupar"
+  ],
+  "瓦列杜帕尔联盟": [
+    "alianzavalledupar"
+  ],
+  "阿里安萨巴列杜帕尔": [
+    "alianzavalledupar"
+  ],
+  "rouen": [
+    "卢昂",
+    "鲁昂"
+  ],
+  "卢昂": [
+    "rouen"
+  ],
+  "鲁昂": [
+    "rouen"
+  ],
+  "caen": [
+    "卡昂"
+  ],
+  "卡昂": [
+    "caen"
+  ],
+  "partick": [
+    "帕尔蒂克"
+  ],
+  "帕尔蒂克": [
+    "partick"
+  ],
+  "rosscounty": [
+    "罗斯郡"
+  ],
+  "罗斯郡": [
+    "invernessct",
+    "rosscounty"
+  ],
+  "invernessct": [
+    "伊凡尼斯",
+    "因弗内斯",
+    "罗斯郡"
+  ],
+  "伊凡尼斯": [
+    "invernessct"
+  ],
+  "因弗内斯": [
+    "invernessct"
+  ],
+  "raithrovers": [
+    "威夫流浪队",
+    "拉夫流浪",
+    "雷斯流浪者"
+  ],
+  "威夫流浪队": [
+    "raithrovers"
+  ],
+  "拉夫流浪": [
+    "raithrovers"
+  ],
+  "雷斯流浪者": [
+    "raithrovers"
+  ],
+  "ayrutd": [
+    "艾尔联"
+  ],
+  "艾尔联": [
+    "ayrutd"
+  ],
+  "partizan": [
+    "游击队",
+    "贝尔格莱德游击",
+    "贝尔格莱德游击队"
+  ],
+  "游击队": [
+    "partizan"
+  ],
+  "贝尔格莱德游击": [
+    "partizan"
+  ],
+  "贝尔格莱德游击队": [
+    "partizan"
+  ],
+  "valencia": [
+    "巴伦西亚",
+    "瓦伦西亚"
+  ],
+  "巴伦西亚": [
+    "valencia"
+  ],
+  "瓦伦西亚": [
+    "valencia"
+  ],
+  "queenofthesouth": [
+    "南后",
+    "南方皇后",
+    "南部皇后"
+  ],
+  "南后": [
+    "queenofthesouth"
+  ],
+  "南方皇后": [
+    "queenofthesouth"
+  ],
+  "南部皇后": [
+    "queenofthesouth"
+  ],
+  "popayan": [
+    "波帕扬"
+  ],
+  "波帕扬": [
+    "popayan"
+  ],
+  "realcartagena": [
+    "卡塔赫纳",
+    "皇家卡塔赫纳"
+  ],
+  "卡塔赫纳": [
+    "realcartagena"
+  ],
+  "皇家卡塔赫纳": [
+    "realcartagena"
+  ],
+  "lahorquettarangers": [
+    "拉奥凯塔流浪者",
+    "拉奥奎塔流浪者",
+    "拉奥尔凯塔流浪者",
+    "拉奥尔凯塔游骑兵",
+    "拉霍凯塔游骑兵",
+    "拉霍奎塔流浪者",
+    "拉霍奎塔游骑兵",
+    "霍奎塔流浪者",
+    "霍奎塔游骑兵"
+  ],
+  "拉奥凯塔流浪者": [
+    "lahorquettarangers"
+  ],
+  "拉奥奎塔流浪者": [
+    "lahorquettarangers"
+  ],
+  "拉奥尔凯塔流浪者": [
+    "lahorquettarangers"
+  ],
+  "拉奥尔凯塔游骑兵": [
+    "lahorquettarangers"
+  ],
+  "拉霍凯塔游骑兵": [
+    "lahorquettarangers"
+  ],
+  "拉霍奎塔流浪者": [
+    "lahorquettarangers"
+  ],
+  "拉霍奎塔游骑兵": [
+    "lahorquettarangers"
+  ],
+  "霍奎塔流浪者": [
+    "lahorquettarangers"
+  ],
+  "霍奎塔游骑兵": [
+    "lahorquettarangers"
+  ],
+  "phoenix": [
+    "凤凰",
+    "凤凰城",
+    "凤凰队"
+  ],
+  "凤凰": [
+    "phoenix"
+  ],
+  "凤凰城": [
+    "phoenix"
+  ],
+  "凤凰队": [
+    "phoenix"
+  ],
+  "deportestemuco": [
+    "特木科",
+    "特木科体育",
+    "特穆科",
+    "特穆科体育",
+    "迪帕特斯"
+  ],
+  "特木科": [
+    "deportestemuco"
+  ],
+  "特木科体育": [
+    "deportestemuco"
+  ],
+  "特穆科": [
+    "deportestemuco"
+  ],
+  "特穆科体育": [
+    "deportestemuco"
+  ],
+  "迪帕特斯": [
+    "deportestemuco"
+  ],
+  "paysandu": [
+    "佩桑杜",
+    "帕桑度",
+    "帕桑杜",
+    "派桑杜",
+    "派桑杜乌拉圭"
+  ],
+  "佩桑杜": [
+    "paysandu"
+  ],
+  "帕桑度": [
+    "paysandu"
+  ],
+  "帕桑杜": [
+    "paysandu"
+  ],
+  "派桑杜": [
+    "paysandu"
+  ],
+  "派桑杜乌拉圭": [
+    "paysandu"
+  ],
+  "miramar": [
+    "米拉马尔",
+    "米斯奥尼斯队"
+  ],
+  "米拉马尔": [
+    "miramar"
+  ],
+  "米斯奥尼斯队": [
+    "miramar"
+  ],
+  "ciudaddebolivar": [
+    "博利瓦尔",
+    "博利瓦尔城",
+    "玻利瓦尔城"
+  ],
+  "博利瓦尔": [
+    "ciudaddebolivar"
+  ],
+  "博利瓦尔城": [
+    "ciudaddebolivar"
+  ],
+  "玻利瓦尔城": [
+    "ciudaddebolivar"
+  ],
+  "agropecuario": [
+    "阿格罗佩卡里奥"
+  ],
+  "阿格罗佩卡里奥": [
+    "agropecuario"
+  ],
+  "nacionalasuncion": [
+    "亚松森国民",
+    "亚松森国民队"
+  ],
+  "亚松森国民": [
+    "nacionalasuncion"
+  ],
+  "亚松森国民队": [
+    "nacionalasuncion"
+  ],
+  "sportivoluqueno": [
+    "卢克诺体育",
+    "卢克诺体育队",
+    "卢克诺竞技"
+  ],
+  "卢克诺体育": [
+    "sportivoluqueno"
+  ],
+  "卢克诺体育队": [
+    "sportivoluqueno"
+  ],
+  "卢克诺竞技": [
+    "sportivoluqueno"
+  ],
+  "botafogow": [
+    "博塔弗戈女",
+    "博塔弗戈女足"
+  ],
+  "博塔弗戈女": [
+    "botafogow"
+  ],
+  "博塔弗戈女足": [
+    "botafogow"
+  ],
+  "corinthiansw": [
+    "科林蒂安女",
+    "科林蒂安女足"
+  ],
+  "科林蒂安女": [
+    "corinthiansw"
+  ],
+  "科林蒂安女足": [
+    "corinthiansw"
+  ],
+  "prisonservice": [
+    "监狱服务",
+    "监狱服务队"
+  ],
+  "监狱服务": [
+    "prisonservice"
+  ],
+  "监狱服务队": [
+    "prisonservice"
+  ],
+  "morvantcaledoniaunited": [
+    "莫万特卡莱多尼亚",
+    "莫万特卡莱多尼亚联",
+    "莫凡特卡莱多尼亚联",
+    "莫文特加里多尼亚联",
+    "莫文特卡莱多尼亚联"
+  ],
+  "莫万特卡莱多尼亚": [
+    "morvantcaledoniaunited"
+  ],
+  "莫万特卡莱多尼亚联": [
+    "morvantcaledoniaunited"
+  ],
+  "莫凡特卡莱多尼亚联": [
+    "morvantcaledoniaunited"
+  ],
+  "莫文特加里多尼亚联": [
+    "morvantcaledoniaunited"
+  ],
+  "莫文特卡莱多尼亚联": [
+    "morvantcaledoniaunited"
+  ],
+  "santosw": [
+    "桑托斯女",
+    "桑托斯女足"
+  ],
+  "桑托斯女": [
+    "santosw"
+  ],
+  "桑托斯女足": [
+    "santosw"
+  ],
+  "ferroviariaw": [
+    "费罗维亚女足",
+    "费罗维亚里亚女足",
+    "费罗维里亚女",
+    "费罗维里亚女足"
+  ],
+  "费罗维亚女足": [
+    "ferroviariaw"
+  ],
+  "费罗维亚里亚女足": [
+    "ferroviariaw"
+  ],
+  "费罗维里亚女": [
+    "ferroviariaw"
+  ],
+  "费罗维里亚女足": [
+    "ferroviariaw"
+  ],
+  "kansascityroyals": [
+    "堪萨斯城皇家",
+    "皇家"
+  ],
+  "堪萨斯城皇家": [
+    "kansascityroyals"
+  ],
+  "皇家": [
+    "kansascityroyals"
+  ],
+  "alexanderzverev": [
+    "兹维列夫"
+  ],
+  "兹维列夫": [
+    "alexanderzverev"
+  ],
+  "janniksinner": [
+    "辛纳"
+  ],
+  "辛纳": [
+    "janniksinner"
+  ],
+  "saopaulow": [
+    "圣保罗女",
+    "圣保罗女足"
+  ],
+  "圣保罗女": [
+    "saopaulow"
+  ],
+  "圣保罗女足": [
+    "saopaulow"
+  ],
+  "palmeirasw": [
+    "帕尔梅拉斯女",
+    "帕尔梅拉斯女足"
+  ],
+  "帕尔梅拉斯女": [
+    "palmeirasw"
+  ],
+  "帕尔梅拉斯女足": [
+    "palmeirasw"
+  ],
+  "indianapacers": [
+    "印第安纳步行者",
+    "步行者",
+    "步行者队"
+  ],
+  "印第安纳步行者": [
+    "indianapacers"
+  ],
+  "步行者": [
+    "indianapacers"
+  ],
+  "步行者队": [
+    "indianapacers"
+  ],
+  "miamimarlins": [
+    "迈阿密马林鱼",
+    "马林鱼"
+  ],
+  "迈阿密马林鱼": [
+    "miamimarlins"
+  ],
+  "马林鱼": [
+    "miamimarlins"
+  ],
+  "coloradorockies": [
+    "洛基",
+    "洛基山",
+    "洛矶",
+    "洛矶山",
+    "洛矶队",
+    "科罗拉多洛基",
+    "科罗拉多洛矶",
+    "科罗拉多洛矶山",
+    "科罗拉多落基山",
+    "落基山"
+  ],
+  "洛基": [
+    "coloradorockies"
+  ],
+  "洛基山": [
+    "coloradorockies"
+  ],
+  "洛矶": [
+    "coloradorockies"
+  ],
+  "洛矶山": [
+    "coloradorockies"
+  ],
+  "洛矶队": [
+    "coloradorockies"
+  ],
+  "科罗拉多洛基": [
+    "coloradorockies"
+  ],
+  "科罗拉多洛矶": [
+    "coloradorockies"
+  ],
+  "科罗拉多洛矶山": [
+    "coloradorockies"
+  ],
+  "科罗拉多落基山": [
+    "coloradorockies"
+  ],
+  "落基山": [
+    "coloradorockies"
+  ],
+  "mauritania": [
+    "毛里塔尼亚",
+    "茅利塔尼亚"
+  ],
+  "毛里塔尼亚": [
+    "mauritania"
+  ],
+  "茅利塔尼亚": [
+    "mauritania"
+  ],
+  "sportivoameliano": [
+    "亚美利亚诺",
+    "阿梅利亚诺",
+    "阿梅利亚诺体育",
+    "阿梅利亚诺竞技"
+  ],
+  "亚美利亚诺": [
+    "sportivoameliano"
+  ],
+  "阿梅利亚诺": [
+    "sportivoameliano"
+  ],
+  "阿梅利亚诺体育": [
+    "sportivoameliano"
+  ],
+  "阿梅利亚诺竞技": [
+    "sportivoameliano"
+  ],
+  "libertadasuncion": [
+    "亚松森自由",
+    "亚松森自由队",
+    "利伯泰德",
+    "自由队"
+  ],
+  "亚松森自由": [
+    "libertadasuncion"
+  ],
+  "亚松森自由队": [
+    "libertadasuncion"
+  ],
+  "利伯泰德": [
+    "libertadasuncion"
+  ],
+  "自由队": [
+    "libertadasuncion"
+  ],
+  "bostonceltics": [
+    "凯尔特人",
+    "凯尔特人队",
+    "波士顿凯尔特人"
+  ],
+  "凯尔特人": [
+    "bostonceltics"
+  ],
+  "凯尔特人队": [
+    "bostonceltics"
+  ],
+  "波士顿凯尔特人": [
+    "bostonceltics"
+  ],
+  "atlantahawks": [
+    "亚特兰大老鹰",
+    "老鹰"
+  ],
+  "亚特兰大老鹰": [
+    "atlantahawks"
+  ],
+  "老鹰": [
+    "atlantahawks"
+  ],
+  "clevelandcavaliers": [
+    "克利夫兰骑士",
+    "骑士",
+    "骑士队"
+  ],
+  "克利夫兰骑士": [
+    "clevelandcavaliers"
+  ],
+  "骑士": [
+    "clevelandcavaliers"
+  ],
+  "骑士队": [
+    "clevelandcavaliers"
+  ],
+  "miamiheat": [
+    "热火",
+    "迈阿密热火"
+  ],
+  "热火": [
+    "miamiheat"
+  ],
+  "迈阿密热火": [
+    "miamiheat"
+  ],
+  "interwillemstad": [
+    "威廉斯塔德国际"
+  ],
+  "威廉斯塔德国际": [
+    "interwillemstad"
+  ],
+  "memphisgrizzlies": [
+    "孟菲斯灰熊",
+    "灰熊"
+  ],
+  "孟菲斯灰熊": [
+    "memphisgrizzlies"
+  ],
+  "灰熊": [
+    "memphisgrizzlies"
+  ],
+  "oklahomacitythunder": [
+    "俄克拉荷马城雷霆",
+    "俄克拉荷马雷霆",
+    "雷霆",
+    "雷霆队"
+  ],
+  "俄克拉荷马城雷霆": [
+    "oklahomacitythunder"
+  ],
+  "俄克拉荷马雷霆": [
+    "oklahomacitythunder"
+  ],
+  "雷霆": [
+    "oklahomacitythunder"
+  ],
+  "雷霆队": [
+    "oklahomacitythunder"
+  ],
+  "chicagobulls": [
+    "公牛",
+    "芝加哥公牛"
+  ],
+  "公牛": [
+    "chicagobulls"
+  ],
+  "芝加哥公牛": [
+    "chicagobulls"
+  ],
+  "alebrijesdeoaxaca": [
+    "瓦哈卡"
+  ],
+  "瓦哈卡": [
+    "alebrijesdeoaxaca",
+    "venadosfc"
+  ],
+  "venadosfc": [
+    "梅里达",
+    "瓦哈卡",
+    "瓦哈卡马鹿",
+    "瓦哈卡鹿",
+    "瓦哈卡鹿队",
+    "瓦纳多斯",
+    "维纳多斯",
+    "韦纳多斯",
+    "马萨特兰",
+    "鹿队"
+  ],
+  "梅里达": [
+    "venadosfc"
+  ],
+  "瓦哈卡马鹿": [
+    "venadosfc"
+  ],
+  "瓦哈卡鹿": [
+    "venadosfc"
+  ],
+  "瓦哈卡鹿队": [
+    "venadosfc"
+  ],
+  "瓦纳多斯": [
+    "venadosfc"
+  ],
+  "维纳多斯": [
+    "venadosfc"
+  ],
+  "韦纳多斯": [
+    "venadosfc"
+  ],
+  "马萨特兰": [
+    "venadosfc"
+  ],
+  "鹿队": [
+    "venadosfc"
+  ],
+  "leonesnegrosudg": [
+    "瓜达拉哈拉大学",
+    "黑狮",
+    "黑狮udg",
+    "黑狮队",
+    "黑豹"
+  ],
+  "瓜达拉哈拉大学": [
+    "leonesnegrosudg"
+  ],
+  "黑狮": [
+    "leonesnegrosudg"
+  ],
+  "黑狮udg": [
+    "leonesnegrosudg"
+  ],
+  "黑狮队": [
+    "leonesnegrosudg"
+  ],
+  "黑豹": [
+    "leonesnegrosudg"
+  ],
+  "atlantefc": [
+    "亚特兰特",
+    "阿特兰特"
+  ],
+  "亚特兰特": [
+    "atlantefc"
+  ],
+  "阿特兰特": [
+    "atlantefc"
+  ],
+  "belgranocordoba": [
+    "贝尔格拉诺"
+  ],
+  "贝尔格拉诺": [
+    "belgranocordoba"
+  ],
+  "atleticoderafaela": [
+    "拉斐拉竞技",
+    "艾朗迪考瑞法拉"
+  ],
+  "拉斐拉竞技": [
+    "atleticoderafaela"
+  ],
+  "艾朗迪考瑞法拉": [
+    "atleticoderafaela",
+    "atleticoderafaelad"
+  ],
+  "atleticoderafaelad": [
+    "拉斐拉竞技b",
+    "拉斐拉竞技b队",
+    "拉斐拉竞技d",
+    "拉斐拉竞技d队",
+    "艾朗迪考瑞法拉"
+  ],
+  "拉斐拉竞技b": [
+    "atleticoderafaelad"
+  ],
+  "拉斐拉竞技b队": [
+    "atleticoderafaelad"
+  ],
+  "拉斐拉竞技d": [
+    "atleticoderafaelad"
+  ],
+  "拉斐拉竞技d队": [
+    "atleticoderafaelad"
+  ],
+  "chacoforever": [
+    "查科",
+    "查科永远"
+  ],
+  "查科": [
+    "chacoforever"
+  ],
+  "查科永远": [
+    "chacoforever"
+  ],
+  "gimnasiajujuy": [
+    "祖祖尔甘拿斯亚",
+    "胡胡伊体操"
+  ],
+  "祖祖尔甘拿斯亚": [
+    "gimnasiajujuy"
+  ],
+  "胡胡伊体操": [
+    "gimnasiajujuy"
+  ],
+  "bucaramanga": [
+    "布卡拉曼加",
+    "布卡拉曼加体育会"
+  ],
+  "布卡拉曼加": [
+    "bucaramanga"
+  ],
+  "布卡拉曼加体育会": [
+    "bucaramanga"
+  ],
+  "santafe": [
+    "圣塔菲",
+    "圣菲",
+    "圣菲独立",
+    "圣达菲"
+  ],
+  "圣塔菲": [
+    "santafe"
+  ],
+  "圣菲": [
+    "santafe"
+  ],
+  "圣菲独立": [
+    "santafe"
+  ],
+  "圣达菲": [
+    "santafe"
+  ],
+  "racingcordoba": [
+    "科多巴竞技",
+    "科尔多瓦竞技",
+    "竞技科尔多瓦"
+  ],
+  "科多巴竞技": [
+    "racingcordoba"
+  ],
+  "科尔多瓦竞技": [
+    "racingcordoba"
+  ],
+  "竞技科尔多瓦": [
+    "racingcordoba"
+  ],
+  "utahjazz": [
+    "爵士",
+    "犹他爵士"
+  ],
+  "爵士": [
+    "utahjazz"
+  ],
+  "犹他爵士": [
+    "utahjazz"
+  ],
+  "svsubt": [
+    "苏布特"
+  ],
+  "苏布特": [
+    "svsubt"
+  ],
+  "losangelesdodgers": [
+    "洛杉矶道奇",
+    "洛杉矶道奇队",
+    "道奇"
+  ],
+  "洛杉矶道奇": [
+    "losangelesdodgers"
+  ],
+  "洛杉矶道奇队": [
+    "losangelesdodgers"
+  ],
+  "道奇": [
+    "losangelesdodgers"
+  ],
+  "arizonadiamondbacks": [
+    "亚利桑那响尾蛇",
+    "亚利桑那响尾蛇队",
+    "响尾蛇"
+  ],
+  "亚利桑那响尾蛇": [
+    "arizonadiamondbacks"
+  ],
+  "亚利桑那响尾蛇队": [
+    "arizonadiamondbacks"
+  ],
+  "响尾蛇": [
+    "arizonadiamondbacks"
+  ],
+  "sandiegopadres": [
+    "圣地亚哥教士",
+    "圣迭戈教士",
+    "教士",
+    "教士队"
+  ],
+  "圣地亚哥教士": [
+    "sandiegopadres"
+  ],
+  "圣迭戈教士": [
+    "sandiegopadres"
+  ],
+  "教士": [
+    "sandiegopadres"
+  ],
+  "教士队": [
+    "sandiegopadres"
+  ],
+  "angelcityw": [
+    "天使城女",
+    "天使城女足"
+  ],
+  "天使城女": [
+    "angelcityw"
+  ],
+  "天使城女足": [
+    "angelcityw"
+  ],
+  "houstondashw": [
+    "休斯敦女足",
+    "休斯顿女足",
+    "休斯顿达什女",
+    "休斯顿达什女足",
+    "休斯顿达斯女",
+    "休斯顿达斯女足"
+  ],
+  "休斯敦女足": [
+    "houstondashw"
+  ],
+  "休斯顿女足": [
+    "houstondashw"
+  ],
+  "休斯顿达什女": [
+    "houstondashw"
+  ],
+  "休斯顿达什女足": [
+    "houstondashw"
+  ],
+  "休斯顿达斯女": [
+    "houstondashw"
+  ],
+  "休斯顿达斯女足": [
+    "houstondashw"
+  ],
+  "japangrandprix": [
+    "日本大奖赛",
+    "日本站"
+  ],
+  "日本大奖赛": [
+    "f1japangrandprix",
+    "japangrandprix"
+  ],
+  "日本站": [
+    "japangrandprix"
+  ],
+  "f1japangrandprix": [
+    "日本大奖赛"
+  ],
+  "washingtonwizards": [
+    "华盛顿奇才",
+    "奇才"
+  ],
+  "华盛顿奇才": [
+    "washingtonwizards"
+  ],
+  "奇才": [
+    "washingtonwizards"
+  ],
+  "losangeleslakers": [
+    "洛杉矶湖人",
+    "湖人"
+  ],
+  "洛杉矶湖人": [
+    "losangeleslakers"
+  ],
+  "湖人": [
+    "losangeleslakers"
+  ],
+  "calapaz": [
+    "ca拉巴斯",
+    "拉巴斯",
+    "拉巴斯竞技",
+    "拉帕斯"
+  ],
+  "ca拉巴斯": [
+    "calapaz"
+  ],
+  "拉巴斯": [
+    "calapaz"
+  ],
+  "拉巴斯竞技": [
+    "calapaz"
+  ],
+  "拉帕斯": [
+    "calapaz"
+  ],
+  "cdstampicomadero": [
+    "坦皮科马德罗",
+    "贾博布拉瓦"
+  ],
+  "坦皮科马德罗": [
+    "cdstampicomadero"
+  ],
+  "贾博布拉瓦": [
+    "cdstampicomadero"
+  ],
+  "adelaideunitedw": [
+    "阿德莱德联女",
+    "阿德莱德联女足"
+  ],
+  "阿德莱德联女": [
+    "adelaideunitedw"
+  ],
+  "阿德莱德联女足": [
+    "adelaideunitedw"
+  ],
+  "newcastlejetsfcw": [
+    "纽卡斯尔喷气机女",
+    "纽卡斯尔喷气机女足"
+  ],
+  "纽卡斯尔喷气机女": [
+    "newcastlejetsfcw"
+  ],
+  "纽卡斯尔喷气机女足": [
+    "newcastlejetsfcw"
+  ],
+  "machidazelvia": [
+    "町田泽维亚"
+  ],
+  "町田泽维亚": [
+    "machidazelvia"
+  ],
+  "kawasakifrontale": [
+    "川崎前锋"
+  ],
+  "川崎前锋": [
+    "kawasakifrontale"
+  ],
+  "fcgifu": [
+    "fc岐阜"
+  ],
+  "fc岐阜": [
+    "fcgifu"
+  ],
+  "parceironagano": [
+    "长野帕塞罗"
+  ],
+  "长野帕塞罗": [
+    "parceironagano"
+  ],
+  "fujiedamyfc": [
+    "藤枝myfc"
+  ],
+  "藤枝myfc": [
+    "fujiedamyfc"
+  ],
+  "consadolesapporo": [
+    "札幌冈萨多"
+  ],
+  "札幌冈萨多": [
+    "consadolesapporo"
+  ],
+  "naraclub": [
+    "奈良俱乐部"
+  ],
+  "奈良俱乐部": [
+    "naraclub"
+  ],
+  "kanazawa": [
+    "金泽"
+  ],
+  "金泽": [
+    "kanazawa"
+  ],
+  "thespakusatsugunma": [
+    "群马草津温泉"
+  ],
+  "群马草津温泉": [
+    "thespakusatsugunma"
+  ],
+  "tochigisc": [
+    "栃木sc"
+  ],
+  "栃木sc": [
+    "tochigisc"
+  ],
+  "ventforetkofu": [
+    "甲府风林"
+  ],
+  "甲府风林": [
+    "ventforetkofu"
+  ],
+  "omiyaardija": [
+    "大宫松鼠"
+  ],
+  "大宫松鼠": [
+    "omiyaardija"
+  ],
+  "yokohamafc": [
+    "横滨fc"
+  ],
+  "横滨fc": [
+    "yokohamafc"
+  ],
+  "shonanbellmare": [
+    "湘南比马"
+  ],
+  "湘南比马": [
+    "shonanbellmare"
+  ],
+  "tokyoverdybelezaw": [
+    "东京绿茵美女",
+    "东京绿茵贝雷萨女足"
+  ],
+  "东京绿茵美女": [
+    "tokyoverdybelezaw"
+  ],
+  "东京绿茵贝雷萨女足": [
+    "tokyoverdybelezaw"
+  ],
+  "stallionw": [
+    "斯塔利恩女足",
+    "种马女足"
+  ],
+  "斯塔利恩女足": [
+    "stallionw"
+  ],
+  "种马女足": [
+    "stallionw"
+  ],
+  "evertonw": [
+    "埃弗顿女",
+    "埃弗顿女足"
+  ],
+  "埃弗顿女": [
+    "evertonw"
+  ],
+  "埃弗顿女足": [
+    "evertonw"
+  ],
+  "liverpoolw": [
+    "利物浦女",
+    "利物浦女足"
+  ],
+  "利物浦女": [
+    "liverpoolw"
+  ],
+  "利物浦女足": [
+    "liverpoolw"
+  ],
+  "tauras": [
+    "陶拉斯"
+  ],
+  "陶拉斯": [
+    "tauras"
+  ],
+  "dainava": [
+    "代纳瓦",
+    "达伊纳瓦",
+    "达因纳瓦"
+  ],
+  "代纳瓦": [
+    "dainava"
+  ],
+  "达伊纳瓦": [
+    "dainava"
+  ],
+  "达因纳瓦": [
+    "dainava"
+  ],
+  "igalo": [
+    "伊加洛"
+  ],
+  "伊加洛": [
+    "igalo"
+  ],
+  "berane": [
+    "贝拉内"
+  ],
+  "贝拉内": [
+    "berane"
+  ],
+  "fortunaalesundw": [
+    "aalesundw",
+    "奥勒松女",
+    "奥勒松女足",
+    "福图纳奥勒松女足",
+    "阿勒松女足"
+  ],
+  "aalesundw": [
+    "fortunaalesundw"
+  ],
+  "奥勒松女": [
+    "fortunaalesundw"
+  ],
+  "奥勒松女足": [
+    "fortunaalesundw"
+  ],
+  "福图纳奥勒松女足": [
+    "fortunaalesundw"
+  ],
+  "阿勒松女足": [
+    "fortunaalesundw"
+  ],
+  "stabkw": [
+    "斯塔贝克女",
+    "斯塔贝克女足"
+  ],
+  "斯塔贝克女": [
+    "stabkw"
+  ],
+  "斯塔贝克女足": [
+    "stabkw"
+  ],
+  "haugesundw": [
+    "海于格松女",
+    "海于格松女足",
+    "海於格松女"
+  ],
+  "海于格松女": [
+    "haugesundw"
+  ],
+  "海于格松女足": [
+    "haugesundw"
+  ],
+  "海於格松女": [
+    "haugesundw"
+  ],
+  "valerengaw": [
+    "瓦勒伦加女",
+    "瓦勒伦加女足"
+  ],
+  "瓦勒伦加女": [
+    "valerengaw"
+  ],
+  "瓦勒伦加女足": [
+    "valerengaw"
+  ],
+  "hnefossw": [
+    "侯尼霍斯女",
+    "许内福斯女足",
+    "赫讷福斯女",
+    "赫讷福斯女足",
+    "霍内福斯女足"
+  ],
+  "侯尼霍斯女": [
+    "hnefossw"
+  ],
+  "许内福斯女足": [
+    "hnefossw"
+  ],
+  "赫讷福斯女": [
+    "hnefossw"
+  ],
+  "赫讷福斯女足": [
+    "hnefossw"
+  ],
+  "霍内福斯女足": [
+    "hnefossw"
+  ],
+  "moldew": [
+    "莫尔德女",
+    "莫尔德女足"
+  ],
+  "莫尔德女": [
+    "moldew"
+  ],
+  "莫尔德女足": [
+    "moldew"
+  ],
+  "lynw": [
+    "林恩女",
+    "林恩女足"
+  ],
+  "林恩女": [
+    "lynw"
+  ],
+  "林恩女足": [
+    "lynw"
+  ],
+  "lskkvinnerw": [
+    "利勒斯特罗姆女",
+    "利勒斯特罗姆女足",
+    "利恩女足"
+  ],
+  "利勒斯特罗姆女": [
+    "lskkvinnerw"
+  ],
+  "利勒斯特罗姆女足": [
+    "lskkvinnerw"
+  ],
+  "利恩女足": [
+    "lskkvinnerw"
+  ],
+  "raw": [
+    "罗亚女",
+    "罗亚女足"
+  ],
+  "罗亚女": [
+    "raw"
+  ],
+  "罗亚女足": [
+    "raw"
+  ],
+  "bodglimtw": [
+    "博多格林特女足",
+    "博德闪耀女",
+    "博德闪耀女足",
+    "波杜基林特女"
+  ],
+  "博多格林特女足": [
+    "bodglimtw"
+  ],
+  "博德闪耀女": [
+    "bodglimtw"
+  ],
+  "博德闪耀女足": [
+    "bodglimtw"
+  ],
+  "波杜基林特女": [
+    "bodglimtw"
+  ],
+  "koreadpru23": [
+    "朝鲜u23"
+  ],
+  "朝鲜u23": [
+    "koreadpru23"
+  ],
+  "nongbuapitchaya": [
+    "农布亚"
+  ],
+  "农布亚": [
+    "nongbuapitchaya"
+  ],
+  "policetero": [
+    "警察特罗"
+  ],
+  "警察特罗": [
+    "policetero"
+  ],
+  "damaiensew": [
+    "达米安斯女足",
+    "达马延斯女足",
+    "达马恩斯女",
+    "达马恩斯女足"
+  ],
+  "达米安斯女足": [
+    "damaiensew"
+  ],
+  "达马延斯女足": [
+    "damaiensew"
+  ],
+  "达马恩斯女": [
+    "damaiensew"
+  ],
+  "达马恩斯女足": [
+    "damaiensew"
+  ],
+  "vitoriaguimaraesw": [
+    "吉马良斯女",
+    "吉马良斯女足"
+  ],
+  "吉马良斯女": [
+    "vitoriaguimaraesw"
+  ],
+  "吉马良斯女足": [
+    "vitoriaguimaraesw"
+  ],
+  "fclevantebadalona": [
+    "莱万特巴达洛纳"
+  ],
+  "莱万特巴达洛纳": [
+    "fclevantebadalona"
+  ],
+  "alhama": [
+    "阿尔哈马"
+  ],
+  "阿尔哈马": [
+    "alhama"
+  ],
+  "comoros": [
+    "科摩罗"
+  ],
+  "科摩罗": [
+    "comoros"
+  ],
+  "amazuluu23": [
+    "阿马祖鲁u23"
+  ],
+  "阿马祖鲁u23": [
+    "amazuluu23"
+  ],
+  "orbitcollegeu23": [
+    "奥比特学院u23"
+  ],
+  "奥比特学院u23": [
+    "orbitcollegeu23"
+  ],
+  "sanmarino": [
+    "圣马力诺"
+  ],
+  "圣马力诺": [
+    "sanmarino"
+  ],
+  "faroeislands": [
+    "法罗群岛"
+  ],
+  "法罗群岛": [
+    "faroeislands"
+  ],
+  "southkorea": [
+    "韩国"
+  ],
+  "韩国": [
+    "southkorea"
+  ],
+  "ivorycoast": [
+    "科特迪瓦",
+    "象牙海岸"
+  ],
+  "科特迪瓦": [
+    "ivorycoast"
+  ],
+  "象牙海岸": [
+    "ivorycoast"
+  ],
+  "harrogatetown": [
+    "哈罗盖特"
+  ],
+  "哈罗盖特": [
+    "harrogatetown"
+  ],
+  "nottscounty": [
+    "诺茨郡"
+  ],
+  "诺茨郡": [
+    "nottscounty"
+  ],
+  "ipswichtownw": [
+    "伊普斯维奇女",
+    "伊普斯维奇女足",
+    "伊普斯维奇女队"
+  ],
+  "伊普斯维奇女": [
+    "ipswichtownw"
+  ],
+  "伊普斯维奇女足": [
+    "ipswichtownw"
+  ],
+  "伊普斯维奇女队": [
+    "ipswichtownw"
+  ],
+  "southamptonw": [
+    "南安普敦女",
+    "南安普顿女足",
+    "南安普顿女队"
+  ],
+  "南安普敦女": [
+    "southamptonw"
+  ],
+  "南安普顿女足": [
+    "southamptonw"
+  ],
+  "南安普顿女队": [
+    "southamptonw"
+  ],
+  "sheffieldunitedw": [
+    "谢菲尔德联女",
+    "谢菲尔德联女足",
+    "谢菲尔德联女队",
+    "谢菲联女足"
+  ],
+  "谢菲尔德联女": [
+    "sheffieldunitedw"
+  ],
+  "谢菲尔德联女足": [
+    "sheffieldunitedw"
+  ],
+  "谢菲尔德联女队": [
+    "sheffieldunitedw"
+  ],
+  "谢菲联女足": [
+    "sheffieldunitedw"
+  ],
+  "portsmouthw": [
+    "朴茨茅斯女",
+    "朴茨茅斯女足",
+    "朴茨茅斯女队"
+  ],
+  "朴茨茅斯女": [
+    "portsmouthw"
+  ],
+  "朴茨茅斯女足": [
+    "portsmouthw"
+  ],
+  "朴茨茅斯女队": [
+    "portsmouthw"
+  ],
+  "bayernmunichw": [
+    "拜仁女足",
+    "拜仁慕尼黑女",
+    "拜仁慕尼黑女足"
+  ],
+  "拜仁女足": [
+    "bayernmunichw"
+  ],
+  "拜仁慕尼黑女": [
+    "bayernmunichw"
+  ],
+  "拜仁慕尼黑女足": [
+    "bayernmunichw"
+  ],
+  "nurnberg": [
+    "纽伦堡"
+  ],
+  "纽伦堡": [
+    "nurnberg"
+  ],
+  "grbalj": [
+    "格尔巴利",
+    "格巴尔"
+  ],
+  "格尔巴利": [
+    "grbalj"
+  ],
+  "格巴尔": [
+    "grbalj"
+  ],
+  "otrantolympic": [
+    "奥特兰特",
+    "奥特兰特奥林匹克",
+    "奥特朗特",
+    "奥特朗特奥林匹克"
+  ],
+  "奥特兰特": [
+    "otrantolympic"
+  ],
+  "奥特兰特奥林匹克": [
+    "otrantolympic"
+  ],
+  "奥特朗特": [
+    "otrantolympic"
+  ],
+  "奥特朗特奥林匹克": [
+    "otrantolympic"
+  ],
+  "rijnsburgseboys": [
+    "莱恩斯堡",
+    "莱恩斯堡男孩",
+    "赖斯堡男孩"
+  ],
+  "莱恩斯堡": [
+    "rijnsburgseboys"
+  ],
+  "莱恩斯堡男孩": [
+    "rijnsburgseboys"
+  ],
+  "赖斯堡男孩": [
+    "rijnsburgseboys"
+  ],
+  "detreffers": [
+    "德特雷弗斯",
+    "特雷弗斯"
+  ],
+  "德特雷弗斯": [
+    "detreffers"
+  ],
+  "特雷弗斯": [
+    "detreffers"
+  ],
+  "rutsiro": [
+    "鲁齐罗"
+  ],
+  "鲁齐罗": [
+    "rutsiro"
+  ],
+  "alhilalomdurman": [
+    "希拉尔",
+    "希拉尔奥姆杜尔曼",
+    "希拉尔恩图曼",
+    "恩图曼希拉尔",
+    "阿尔希拉尔",
+    "阿尔希拉尔恩图曼"
+  ],
+  "希拉尔": [
+    "alhilalomdurman"
+  ],
+  "希拉尔奥姆杜尔曼": [
+    "alhilalomdurman"
+  ],
+  "希拉尔恩图曼": [
+    "alhilalomdurman"
+  ],
+  "恩图曼希拉尔": [
+    "alhilalomdurman"
+  ],
+  "阿尔希拉尔": [
+    "alhilalomdurman"
+  ],
+  "阿尔希拉尔恩图曼": [
+    "alhilalomdurman"
+  ],
+  "morton": [
+    "格林诺克莫顿",
+    "莫顿"
+  ],
+  "格林诺克莫顿": [
+    "morton"
+  ],
+  "莫顿": [
+    "morton"
+  ],
+  "arbroath": [
+    "阿布罗斯"
+  ],
+  "阿布罗斯": [
+    "arbroath"
+  ],
+  "stjohnstone": [
+    "圣约翰斯通"
+  ],
+  "圣约翰斯通": [
+    "stjohnstone"
+  ],
+  "adceutafc": [
+    "休达",
+    "薛奥泰"
+  ],
+  "休达": [
+    "adceutafc"
+  ],
+  "薛奥泰": [
+    "adceutafc"
+  ],
+  "cadiz": [
+    "加的斯"
+  ],
+  "加的斯": [
+    "cadiz"
+  ],
+  "manchesterunitedw": [
+    "曼联女",
+    "曼联女足"
+  ],
+  "曼联女": [
+    "manchesterunitedw"
+  ],
+  "曼联女足": [
+    "manchesterunitedw"
+  ],
+  "manchestercityw": [
+    "曼城女",
+    "曼城女足"
+  ],
+  "曼城女": [
+    "manchestercityw"
+  ],
+  "曼城女足": [
+    "manchestercityw"
+  ],
+  "lumezzane": [
+    "卢梅扎内"
+  ],
+  "卢梅扎内": [
+    "lumezzane"
+  ],
+  "albinoleffe": [
+    "阿尔比诺莱菲",
+    "阿尔比诺莱费"
+  ],
+  "阿尔比诺莱菲": [
+    "albinoleffe"
+  ],
+  "阿尔比诺莱费": [
+    "albinoleffe"
+  ],
+  "ospitaletto": [
+    "奥斯皮塔莱托"
+  ],
+  "奥斯皮塔莱托": [
+    "ospitaletto"
+  ],
+  "gianaerminio": [
+    "加纳埃米尼奥",
+    "吉亚纳",
+    "吉安纳",
+    "吉安纳埃尔米尼奥"
+  ],
+  "加纳埃米尼奥": [
+    "gianaerminio"
+  ],
+  "吉亚纳": [
+    "gianaerminio"
+  ],
+  "吉安纳": [
+    "gianaerminio"
+  ],
+  "吉安纳埃尔米尼奥": [
+    "gianaerminio"
+  ],
+  "torres": [
+    "多域斯",
+    "托雷斯"
+  ],
+  "多域斯": [
+    "torres"
+  ],
+  "托雷斯": [
+    "torres"
+  ],
+  "livorno": [
+    "利沃诺"
+  ],
+  "利沃诺": [
+    "livorno"
+  ],
+  "latina": [
+    "拉蒂纳"
+  ],
+  "拉蒂纳": [
+    "latina"
+  ],
+  "catania": [
+    "卡坦尼亚",
+    "卡塔尼亚"
+  ],
+  "卡坦尼亚": [
+    "catania"
+  ],
+  "卡塔尼亚": [
+    "catania"
+  ],
+  "potenza": [
+    "波坦察"
+  ],
+  "波坦察": [
+    "potenza"
+  ],
+  "salernitana": [
+    "萨勒尼",
+    "萨勒尼塔纳"
+  ],
+  "萨勒尼": [
+    "salernitana"
+  ],
+  "萨勒尼塔纳": [
+    "salernitana"
+  ],
+  "acv": [
+    "acv阿森",
+    "阿森"
+  ],
+  "acv阿森": [
+    "acv"
+  ],
+  "阿森": [
+    "acv"
+  ],
+  "gvvvveenendaal": [
+    "维恩代尔",
+    "维恩达尔",
+    "芬丹",
+    "芬洛"
+  ],
+  "维恩代尔": [
+    "gvvvveenendaal"
+  ],
+  "维恩达尔": [
+    "gvvvveenendaal"
+  ],
+  "芬丹": [
+    "gvvvveenendaal"
+  ],
+  "芬洛": [
+    "gvvvveenendaal"
+  ],
+  "barendrecht": [
+    "巴伦德勒赫特",
+    "巴伦德雷赫特"
+  ],
+  "巴伦德勒赫特": [
+    "barendrecht"
+  ],
+  "巴伦德雷赫特": [
+    "barendrecht"
+  ],
+  "katwijk": [
+    "卡特韦克"
+  ],
+  "卡特韦克": [
+    "katwijk"
+  ],
+  "hhc": [
+    "hhc哈登堡",
+    "哈登堡",
+    "哈登贝赫"
+  ],
+  "hhc哈登堡": [
+    "hhc"
+  ],
+  "哈登堡": [
+    "hhc"
+  ],
+  "哈登贝赫": [
+    "hhc"
+  ],
+  "excelsiormaassluis": [
+    "马斯路易斯",
+    "马斯路易斯精英",
+    "马瑟路易斯精英"
+  ],
+  "马斯路易斯": [
+    "excelsiormaassluis"
+  ],
+  "马斯路易斯精英": [
+    "excelsiormaassluis"
+  ],
+  "马瑟路易斯精英": [
+    "excelsiormaassluis"
+  ],
+  "aljeel": [
+    "吉达团结",
+    "杰尔",
+    "阿尔杰尔"
+  ],
+  "吉达团结": [
+    "aljeel"
+  ],
+  "杰尔": [
+    "aljeel"
+  ],
+  "阿尔杰尔": [
+    "aljeel"
+  ],
+  "jubbah": [
+    "朱拜"
+  ],
+  "朱拜": [
+    "jubbah"
+  ],
+  "alain": [
+    "艾因",
+    "阿尔艾因"
+  ],
+  "艾因": [
+    "alain"
+  ],
+  "阿尔艾因": [
+    "alain"
+  ],
+  "crbadrar": [
+    "阿德拉尔",
+    "阿德拉尔crb"
+  ],
+  "阿德拉尔": [
+    "crbadrar"
+  ],
+  "阿德拉尔crb": [
+    "crbadrar"
+  ],
+  "jselbiar": [
+    "埃尔比尔js",
+    "比亚尔",
+    "比尔js",
+    "比阿尔"
+  ],
+  "埃尔比尔js": [
+    "jselbiar"
+  ],
+  "比亚尔": [
+    "jselbiar"
+  ],
+  "比尔js": [
+    "jselbiar"
+  ],
+  "比阿尔": [
+    "jselbiar"
+  ],
+  "gcmascara": [
+    "马斯卡拉",
+    "马斯卡拉gc"
+  ],
+  "马斯卡拉": [
+    "gcmascara"
+  ],
+  "马斯卡拉gc": [
+    "gcmascara"
+  ],
+  "jstixeraine": [
+    "提克塞赖恩",
+    "提克萨雷恩",
+    "提克赛恩",
+    "蒂克赛恩",
+    "蒂克赛恩js"
+  ],
+  "提克塞赖恩": [
+    "jstixeraine"
+  ],
+  "提克萨雷恩": [
+    "jstixeraine"
+  ],
+  "提克赛恩": [
+    "jstixeraine"
+  ],
+  "蒂克赛恩": [
+    "jstixeraine"
+  ],
+  "蒂克赛恩js": [
+    "jstixeraine"
+  ],
+  "ibkhemiselkhechna": [
+    "ibkek",
+    "凯米斯",
+    "凯米斯ib",
+    "凯米斯赫纳",
+    "赫米斯",
+    "赫米斯埃尔赫什纳"
+  ],
+  "ibkek": [
+    "ibkhemiselkhechna"
+  ],
+  "凯米斯": [
+    "ibkhemiselkhechna"
+  ],
+  "凯米斯ib": [
+    "ibkhemiselkhechna"
+  ],
+  "凯米斯赫纳": [
+    "ibkhemiselkhechna"
+  ],
+  "赫米斯": [
+    "ibkhemiselkhechna"
+  ],
+  "赫米斯埃尔赫什纳": [
+    "ibkhemiselkhechna"
+  ],
+  "usmannaba": [
+    "usm安纳巴",
+    "安纳巴",
+    "安纳巴usm"
+  ],
+  "usm安纳巴": [
+    "usmannaba"
+  ],
+  "安纳巴": [
+    "usmannaba"
+  ],
+  "安纳巴usm": [
+    "usmannaba"
+  ],
+  "mcsaida": [
+    "mc赛达",
+    "赛伊达",
+    "赛达"
+  ],
+  "mc赛达": [
+    "mcsaida"
+  ],
+  "赛伊达": [
+    "mcsaida"
+  ],
+  "赛达": [
+    "mcsaida"
+  ],
+  "rcarba": [
+    "rca",
+    "阿尔巴"
+  ],
+  "rca": [
+    "rcarba"
+  ],
+  "阿尔巴": [
+    "rcarba"
+  ],
+  "usmelharrach": [
+    "usm哈拉什",
+    "哈拉什"
+  ],
+  "usm哈拉什": [
+    "usmelharrach"
+  ],
+  "哈拉什": [
+    "usmelharrach"
+  ],
+  "tiaret": [
+    "提亚雷特"
+  ],
+  "提亚雷特": [
+    "tiaret"
+  ],
+  "wamostaganem": [
+    "wa莫斯塔加纳姆",
+    "穆斯塔加农",
+    "穆斯塔加奈姆",
+    "穆斯塔加纳姆",
+    "莫斯塔加内姆",
+    "莫斯塔加努姆"
+  ],
+  "wa莫斯塔加纳姆": [
+    "wamostaganem"
+  ],
+  "穆斯塔加农": [
+    "wamostaganem"
+  ],
+  "穆斯塔加奈姆": [
+    "wamostaganem"
+  ],
+  "穆斯塔加纳姆": [
+    "wamostaganem"
+  ],
+  "莫斯塔加内姆": [
+    "wamostaganem"
+  ],
+  "莫斯塔加努姆": [
+    "wamostaganem"
+  ],
+  "husseindey": [
+    "侯赛因代",
+    "侯赛因代伊",
+    "侯赛因德伊"
+  ],
+  "侯赛因代": [
+    "husseindey"
+  ],
+  "侯赛因代伊": [
+    "husseindey"
+  ],
+  "侯赛因德伊": [
+    "husseindey"
+  ],
+  "ijsselmeervogels": [
+    "伊塞尔梅尔",
+    "伊塞尔梅尔沃赫尔斯",
+    "伊瑟尔梅尔",
+    "伊瑟尔梅尔沃赫尔斯",
+    "艾瑟尔梅尔",
+    "艾瑟尔湖鸟"
+  ],
+  "伊塞尔梅尔": [
+    "ijsselmeervogels"
+  ],
+  "伊塞尔梅尔沃赫尔斯": [
+    "ijsselmeervogels"
+  ],
+  "伊瑟尔梅尔": [
+    "ijsselmeervogels"
+  ],
+  "伊瑟尔梅尔沃赫尔斯": [
+    "ijsselmeervogels"
+  ],
+  "艾瑟尔梅尔": [
+    "ijsselmeervogels"
+  ],
+  "艾瑟尔湖鸟": [
+    "ijsselmeervogels"
+  ],
+  "hoek": [
+    "胡克",
+    "霍克"
+  ],
+  "胡克": [
+    "hoek"
+  ],
+  "霍克": [
+    "hoek"
+  ],
+  "kozakkenboys": [
+    "哥萨克男孩",
+    "科扎克男孩",
+    "科扎肯男孩"
+  ],
+  "哥萨克男孩": [
+    "kozakkenboys"
+  ],
+  "科扎克男孩": [
+    "kozakkenboys"
+  ],
+  "科扎肯男孩": [
+    "kozakkenboys"
+  ],
+  "spartarotterdamii": [
+    "鹿特丹斯巴达b队",
+    "鹿特丹斯巴达二队"
+  ],
+  "鹿特丹斯巴达b队": [
+    "spartarotterdamii"
+  ],
+  "鹿特丹斯巴达二队": [
+    "spartarotterdamii"
+  ],
+  "quickboys": [
+    "奎克男孩",
+    "快男孩"
+  ],
+  "奎克男孩": [
+    "quickboys"
+  ],
+  "快男孩": [
+    "quickboys"
+  ],
+  "rkavvolendam": [
+    "沃伦丹"
+  ],
+  "沃伦丹": [
+    "rkavvolendam"
+  ],
+  "lokomotivazvolen": [
+    "兹沃伦",
+    "兹沃伦火车头"
+  ],
+  "兹沃伦": [
+    "lokomotivazvolen"
+  ],
+  "兹沃伦火车头": [
+    "lokomotivazvolen"
+  ],
+  "duklabanskabystrica": [
+    "拜斯迪卡",
+    "杜克拉班斯卡",
+    "班斯卡比斯特里察杜克拉"
+  ],
+  "拜斯迪卡": [
+    "duklabanskabystrica"
+  ],
+  "杜克拉班斯卡": [
+    "duklabanskabystrica"
+  ],
+  "班斯卡比斯特里察杜克拉": [
+    "duklabanskabystrica"
+  ],
+  "povazskabystrica": [
+    "波瓦兹斯卡",
+    "波瓦兹斯卡比斯特里察",
+    "波瓦日斯卡",
+    "波瓦日斯卡比斯特里察"
+  ],
+  "波瓦兹斯卡": [
+    "povazskabystrica"
+  ],
+  "波瓦兹斯卡比斯特里察": [
+    "povazskabystrica"
+  ],
+  "波瓦日斯卡": [
+    "povazskabystrica"
+  ],
+  "波瓦日斯卡比斯特里察": [
+    "povazskabystrica"
+  ],
+  "slaviatukosice": [
+    "科希策斯拉维亚"
+  ],
+  "科希策斯拉维亚": [
+    "slaviatukosice"
+  ],
+  "samorin": [
+    "沙莫林",
+    "萨莫林"
+  ],
+  "沙莫林": [
+    "samorin"
+  ],
+  "萨莫林": [
+    "samorin"
+  ],
+  "taweek": [
+    "塔威克",
+    "塔维克"
+  ],
+  "塔威克": [
+    "taweek"
+  ],
+  "塔维克": [
+    "taweek"
+  ],
+  "iskra": [
+    "伊斯克拉",
+    "伊斯拉"
+  ],
+  "伊斯克拉": [
+    "iskra"
+  ],
+  "伊斯拉": [
+    "iskra"
+  ],
+  "internacionalpodgorica": [
+    "国际波德戈里察",
+    "波德戈里察国际"
+  ],
+  "国际波德戈里察": [
+    "internacionalpodgorica"
+  ],
+  "波德戈里察国际": [
+    "internacionalpodgorica"
+  ],
+  "baniklehotapvtacnikom": [
+    "巴尼克莱霍塔",
+    "莱霍塔矿工"
+  ],
+  "巴尼克莱霍塔": [
+    "baniklehotapvtacnikom"
+  ],
+  "莱霍塔矿工": [
+    "baniklehotapvtacnikom"
+  ],
+  "staralubovna": [
+    "redfoxstaralubovna",
+    "旧柳博夫尼亚"
+  ],
+  "redfoxstaralubovna": [
+    "staralubovna"
+  ],
+  "旧柳博夫尼亚": [
+    "staralubovna"
+  ],
+  "petrzalka": [
+    "佩特扎尔卡",
+    "佩特拉尔卡",
+    "佩特萨尔卡",
+    "柏沙卡"
+  ],
+  "佩特扎尔卡": [
+    "petrzalka"
+  ],
+  "佩特拉尔卡": [
+    "petrzalka"
+  ],
+  "佩特萨尔卡": [
+    "petrzalka"
+  ],
+  "柏沙卡": [
+    "petrzalka"
+  ],
+  "zilinaii": [
+    "日利纳b队",
+    "日利纳二队"
+  ],
+  "日利纳b队": [
+    "zilinaii"
+  ],
+  "日利纳二队": [
+    "zilinaii"
+  ],
+  "interbratislava": [
+    "布拉迪斯拉发国际"
+  ],
+  "布拉迪斯拉发国际": [
+    "interbratislava"
+  ],
+  "almerecityii": [
+    "阿尔梅勒城二队"
+  ],
+  "阿尔梅勒城二队": [
+    "almerecityii"
+  ],
+  "koninklijkehfc": [
+    "哈勒姆fc",
+    "皇家hfc",
+    "皇家哈勒姆"
+  ],
+  "哈勒姆fc": [
+    "koninklijkehfc"
+  ],
+  "皇家hfc": [
+    "koninklijkehfc"
+  ],
+  "皇家哈勒姆": [
+    "koninklijkehfc"
+  ],
+  "northernirelandu19": [
+    "北爱尔兰u19"
+  ],
+  "北爱尔兰u19": [
+    "northernirelandu19"
+  ],
+  "afcamsterdam": [
+    "阿姆斯特丹afc",
+    "阿姆斯特丹fc"
+  ],
+  "阿姆斯特丹afc": [
+    "afcamsterdam"
+  ],
+  "阿姆斯特丹fc": [
+    "afcamsterdam"
+  ],
+  "spakenburg": [
+    "斯帕肯堡"
+  ],
+  "斯帕肯堡": [
+    "spakenburg"
+  ],
+  "senegal": [
+    "塞内加尔"
+  ],
+  "塞内加尔": [
+    "senegal"
+  ],
+  "peru": [
+    "秘鲁"
+  ],
+  "秘鲁": [
+    "peru"
+  ],
+  "blackpool": [
+    "布莱克浦",
+    "黑池"
+  ],
+  "布莱克浦": [
+    "blackpool",
+    "mightyblackpool"
+  ],
+  "黑池": [
+    "blackpool"
+  ],
+  "mightyblackpool": [
+    "布莱克浦",
+    "强力布莱克浦",
+    "强大布莱克浦",
+    "强大黑池"
+  ],
+  "强力布莱克浦": [
+    "mightyblackpool"
+  ],
+  "强大布莱克浦": [
+    "mightyblackpool"
+  ],
+  "强大黑池": [
+    "mightyblackpool"
+  ],
+  "exetercity": [
+    "埃克塞特",
+    "埃克塞特城",
+    "艾斯特城"
+  ],
+  "埃克塞特": [
+    "exetercity"
+  ],
+  "埃克塞特城": [
+    "exetercity"
+  ],
+  "艾斯特城": [
+    "exetercity"
+  ],
+  "leytonorient": [
+    "莱顿东方"
+  ],
+  "莱顿东方": [
+    "leytonorient"
+  ],
+  "reading": [
+    "雷丁"
+  ],
+  "雷丁": [
+    "reading"
+  ],
+  "wigan": [
+    "维冈",
+    "维冈竞技"
+  ],
+  "维冈": [
+    "wigan"
+  ],
+  "维冈竞技": [
+    "wigan"
+  ],
+  "stockportcounty": [
+    "史托港",
+    "斯托克波特",
+    "斯托克港"
+  ],
+  "史托港": [
+    "stockportcounty"
+  ],
+  "斯托克波特": [
+    "stockportcounty"
+  ],
+  "斯托克港": [
+    "stockportcounty"
+  ],
+  "afcwimbledon": [
+    "afc温布尔登",
+    "温布尔登"
+  ],
+  "afc温布尔登": [
+    "afcwimbledon"
+  ],
+  "温布尔登": [
+    "afcwimbledon"
+  ],
+  "wycombe": [
+    "威科姆",
+    "韦康比",
+    "韦康比流浪者"
+  ],
+  "威科姆": [
+    "wycombe"
+  ],
+  "韦康比": [
+    "wycombe"
+  ],
+  "韦康比流浪者": [
+    "wycombe"
+  ],
+  "portvale": [
+    "维尔港",
+    "韦尔港"
+  ],
+  "维尔港": [
+    "portvale"
+  ],
+  "韦尔港": [
+    "portvale"
+  ],
+  "barnet": [
+    "巴内特",
+    "巴尼特"
+  ],
+  "巴内特": [
+    "barnet"
+  ],
+  "巴尼特": [
+    "barnet"
+  ],
+  "cambridgeunited": [
+    "剑桥联"
+  ],
+  "剑桥联": [
+    "cambridgeunited"
+  ],
+  "bromley": [
+    "布罗姆利"
+  ],
+  "布罗姆利": [
+    "bromley"
+  ],
+  "bristolrovers": [
+    "布里斯托流浪"
+  ],
+  "布里斯托流浪": [
+    "bristolrovers"
+  ],
+  "accringtonst": [
+    "艾宁顿",
+    "阿克宁顿",
+    "阿克灵顿"
+  ],
+  "艾宁顿": [
+    "accringtonst"
+  ],
+  "阿克宁顿": [
+    "accringtonst"
+  ],
+  "阿克灵顿": [
+    "accringtonst"
+  ],
+  "colchester": [
+    "科尔切斯特",
+    "科尔切斯特联"
+  ],
+  "科尔切斯特": [
+    "colchester"
+  ],
+  "科尔切斯特联": [
+    "colchester"
+  ],
+  "walsall": [
+    "沃尔索尔"
+  ],
+  "沃尔索尔": [
+    "walsall"
+  ],
+  "crawleytown": [
+    "克劳利"
+  ],
+  "克劳利": [
+    "crawleytown"
+  ],
+  "gillingham": [
+    "吉灵汉姆"
+  ],
+  "吉灵汉姆": [
+    "gillingham"
+  ],
+  "crewe": [
+    "克鲁"
+  ],
+  "克鲁": [
+    "crewe"
+  ],
+  "oldham": [
+    "奥尔德姆"
+  ],
+  "奥尔德姆": [
+    "oldham"
+  ],
+  "newportcounty": [
+    "纽波特",
+    "纽波特郡"
+  ],
+  "纽波特": [
+    "newportcounty"
+  ],
+  "纽波特郡": [
+    "newportcounty"
+  ],
+  "shrewsbury": [
+    "什鲁斯伯里"
+  ],
+  "什鲁斯伯里": [
+    "shrewsbury"
+  ],
+  "salfordcity": [
+    "索尔福德城",
+    "莎尔福德城",
+    "萨尔福德城"
+  ],
+  "索尔福德城": [
+    "salfordcity"
+  ],
+  "莎尔福德城": [
+    "salfordcity"
+  ],
+  "萨尔福德城": [
+    "salfordcity"
+  ],
+  "miltonkeynesdons": [
+    "mk唐斯",
+    "米尔顿凯恩斯"
+  ],
+  "mk唐斯": [
+    "miltonkeynesdons"
+  ],
+  "米尔顿凯恩斯": [
+    "miltonkeynesdons"
+  ],
+  "swindontown": [
+    "斯文登"
+  ],
+  "斯文登": [
+    "swindontown"
+  ],
+  "fleetwoodtown": [
+    "弗利特伍德"
+  ],
+  "弗利特伍德": [
+    "fleetwoodtown"
+  ],
+  "carrickrangers": [
+    "卡里克流浪者"
+  ],
+  "卡里克流浪者": [
+    "carrickrangers"
+  ],
+  "crusadersfc": [
+    "十字军"
+  ],
+  "十字军": [
+    "crusadersfc"
+  ],
+  "dungannonswifts": [
+    "邓甘嫩",
+    "邓甘嫩斯威夫特",
+    "邓甘嫩斯威夫特斯",
+    "邓甘嫩斯威夫茨"
+  ],
+  "邓甘嫩": [
+    "dungannonswifts"
+  ],
+  "邓甘嫩斯威夫特": [
+    "dungannonswifts"
+  ],
+  "邓甘嫩斯威夫特斯": [
+    "dungannonswifts"
+  ],
+  "邓甘嫩斯威夫茨": [
+    "dungannonswifts"
+  ],
+  "colerainefc": [
+    "科尔雷恩"
+  ],
+  "科尔雷恩": [
+    "colerainefc"
+  ],
+  "glentoran": [
+    "格伦托兰"
+  ],
+  "格伦托兰": [
+    "glentoran"
+  ],
+  "linfield": [
+    "林菲尔德"
+  ],
+  "林菲尔德": [
+    "linfield"
+  ],
+  "larne": [
+    "拉恩"
+  ],
+  "拉恩": [
+    "larne"
+  ],
+  "cliftonvillefc": [
+    "克利夫顿维尔",
+    "克里夫顿维尔"
+  ],
+  "克利夫顿维尔": [
+    "cliftonvillefc"
+  ],
+  "克里夫顿维尔": [
+    "cliftonvillefc"
+  ],
+  "espanyolw": [
+    "西班牙人女",
+    "西班牙人女足"
+  ],
+  "西班牙人女": [
+    "espanyolw"
+  ],
+  "西班牙人女足": [
+    "espanyolw"
+  ],
+  "levantew": [
+    "莱万特女",
+    "莱万特女足"
+  ],
+  "莱万特女": [
+    "levantew"
+  ],
+  "莱万特女足": [
+    "levantew"
+  ],
+  "granadacf": [
+    "格拉纳达"
+  ],
+  "格拉纳达": [
+    "granada",
+    "granadacf"
+  ],
+  "granada": [
+    "格拉纳达"
+  ],
+  "huesca": [
+    "韦斯卡"
+  ],
+  "韦斯卡": [
+    "huesca"
+  ],
+  "valladolid": [
+    "巴利亚多",
+    "巴利亚多利德",
+    "巴拉多利德",
+    "瓦拉多利德"
+  ],
+  "巴利亚多": [
+    "valladolid"
+  ],
+  "巴利亚多利德": [
+    "valladolid"
+  ],
+  "巴拉多利德": [
+    "valladolid"
+  ],
+  "瓦拉多利德": [
+    "valladolid"
+  ],
+  "burgos": [
+    "布尔戈斯"
+  ],
+  "布尔戈斯": [
+    "burgos"
+  ],
+  "alrayyansc": [
+    "赖扬"
+  ],
+  "赖扬": [
+    "alrayyansc"
+  ],
+  "ummsalal": [
+    "乌姆萨拉勒",
+    "乌姆萨拉尔"
+  ],
+  "乌姆萨拉勒": [
+    "ummsalal"
+  ],
+  "乌姆萨拉尔": [
+    "ummsalal"
+  ],
+  "etoilefilante": [
+    "etoile",
+    "流星"
+  ],
+  "etoile": [
+    "etoilefilante"
+  ],
+  "流星": [
+    "etoilefilante"
+  ],
+  "gomido": [
+    "戈米多"
+  ],
+  "戈米多": [
+    "gomido"
+  ],
+  "semassi": [
+    "塞马西"
+  ],
+  "塞马西": [
+    "semassi"
+  ],
+  "barracuda": [
+    "巴拉库达",
+    "梭鱼"
+  ],
+  "巴拉库达": [
+    "barracuda"
+  ],
+  "梭鱼": [
+    "barracuda"
+  ],
+  "atlanta": [
+    "亚特兰大",
+    "亚特兰大联"
+  ],
+  "亚特兰大": [
+    "atlanta"
+  ],
+  "亚特兰大联": [
+    "atlanta"
+  ],
+  "ferrocarriloeste": [
+    "ferro",
+    "西部铁路",
+    "费罗卡利尔"
+  ],
+  "ferro": [
+    "ferrocarriloeste"
+  ],
+  "西部铁路": [
+    "ferrocarriloeste"
+  ],
+  "费罗卡利尔": [
+    "ferrocarriloeste"
+  ],
+  "bostonlegacyw": [
+    "波士顿遗产w",
+    "波士顿遗产女",
+    "波士顿遗产女足"
+  ],
+  "波士顿遗产w": [
+    "bostonlegacyw"
+  ],
+  "波士顿遗产女": [
+    "bostonlegacyw"
+  ],
+  "波士顿遗产女足": [
+    "bostonlegacyw"
+  ],
+  "utahroyalsw": [
+    "犹他皇家w",
+    "犹他皇家女",
+    "犹他皇家女足"
+  ],
+  "犹他皇家w": [
+    "utahroyalsw"
+  ],
+  "犹他皇家女": [
+    "utahroyalsw"
+  ],
+  "犹他皇家女足": [
+    "utahroyalsw"
+  ],
+  "sanmarcosdearica": [
+    "圣马科斯",
+    "阿里卡圣马科斯"
+  ],
+  "圣马科斯": [
+    "sanmarcosdearica"
+  ],
+  "阿里卡圣马科斯": [
+    "sanmarcosdearica"
+  ],
+  "unionespanolad": [
+    "西班牙人b队",
+    "西班牙联b",
+    "西班牙联合d"
+  ],
+  "西班牙人b队": [
+    "unionespanolad"
+  ],
+  "西班牙联b": [
+    "unionespanolad"
+  ],
+  "西班牙联合d": [
+    "unionespanolad"
+  ],
+  "iraklis1908": [
+    "伊拉克利斯",
+    "伊拉克里斯"
+  ],
+  "伊拉克利斯": [
+    "iraklis1908"
+  ],
+  "伊拉克里斯": [
+    "iraklis1908"
+  ],
+  "kalamata": [
+    "卡拉马塔"
+  ],
+  "卡拉马塔": [
+    "kalamata"
+  ],
+  "alcione": [
+    "阿尔乔内",
+    "阿尔奇奥内"
+  ],
+  "阿尔乔内": [
+    "alcione"
+  ],
+  "阿尔奇奥内": [
+    "alcione"
+  ],
+  "provercelli": [
+    "普罗韦尔切利"
+  ],
+  "普罗韦尔切利": [
+    "provercelli"
+  ],
+  "dolomitibellunesi": [
+    "多洛米蒂贝卢内西"
+  ],
+  "多洛米蒂贝卢内西": [
+    "dolomitibellunesi"
+  ],
+  "arzignanovalchiampo": [
+    "阿尔齐尼亚诺"
+  ],
+  "阿尔齐尼亚诺": [
+    "arzignanovalchiampo"
+  ],
+  "pergolettese": [
+    "佩尔戈莱特塞"
+  ],
+  "佩尔戈莱特塞": [
+    "pergolettese"
+  ],
+  "propatria": [
+    "普罗帕特里亚"
+  ],
+  "普罗帕特里亚": [
+    "propatria"
+  ],
+  "renate": [
+    "雷纳泰",
+    "雷纳特"
+  ],
+  "雷纳泰": [
+    "renate"
+  ],
+  "雷纳特": [
+    "renate"
+  ],
+  "novara": [
+    "诺和华",
+    "诺瓦拉"
+  ],
+  "诺和华": [
+    "novara"
+  ],
+  "诺瓦拉": [
+    "novara"
+  ],
+  "triestina": [
+    "泰利斯天拿",
+    "的里雅斯特"
+  ],
+  "泰利斯天拿": [
+    "triestina"
+  ],
+  "的里雅斯特": [
+    "triestina"
+  ],
+  "virtusverona": [
+    "维图斯维罗纳",
+    "维罗纳维图斯"
+  ],
+  "维图斯维罗纳": [
+    "virtusverona"
+  ],
+  "维罗纳维图斯": [
+    "virtusverona"
+  ],
+  "freetowncity": [
+    "弗里敦城"
+  ],
+  "弗里敦城": [
+    "freetowncity"
+  ],
+  "borangers": [
+    "博流浪者",
+    "博游骑兵"
+  ],
+  "博流浪者": [
+    "borangers"
+  ],
+  "博游骑兵": [
+    "borangers"
+  ],
+  "kambaieagles": [
+    "坎拜老鹰",
+    "坎拜鹰"
+  ],
+  "坎拜老鹰": [
+    "kambaieagles"
+  ],
+  "坎拜鹰": [
+    "kambaieagles"
+  ],
+  "starsportacademy": [
+    "明星体育学院",
+    "星体育学院"
+  ],
+  "明星体育学院": [
+    "starsportacademy"
+  ],
+  "星体育学院": [
+    "starsportacademy"
+  ],
+  "fckolnw": [
+    "科隆女",
+    "科隆女足"
+  ],
+  "科隆女": [
+    "fckolnw"
+  ],
+  "科隆女足": [
+    "fckolnw"
+  ],
+  "eintrachtfrankfurtw": [
+    "法兰克福女",
+    "法兰克福女足"
+  ],
+  "法兰克福女": [
+    "eintrachtfrankfurtw"
+  ],
+  "法兰克福女足": [
+    "eintrachtfrankfurtw"
+  ],
+  "belgiumu17": [
+    "比利时u17"
+  ],
+  "比利时u17": [
+    "belgiumu17"
+  ],
+  "malaga": [
+    "马拉加"
+  ],
+  "马拉加": [
+    "malaga"
+  ],
+  "leganes": [
+    "莱加内斯",
+    "雷加利斯"
+  ],
+  "莱加内斯": [
+    "leganes"
+  ],
+  "雷加利斯": [
+    "leganes"
+  ],
+  "deportivodelacorunaw": [
+    "拉科鲁尼亚女",
+    "拉科鲁尼亚女足"
+  ],
+  "拉科鲁尼亚女": [
+    "deportivodelacorunaw"
+  ],
+  "拉科鲁尼亚女足": [
+    "deportivodelacorunaw"
+  ],
+  "eibarw": [
+    "埃瓦尔女",
+    "埃瓦尔女足"
+  ],
+  "埃瓦尔女": [
+    "eibarw"
+  ],
+  "埃瓦尔女足": [
+    "eibarw"
+  ],
+  "canada": [
+    "加拿大"
+  ],
+  "加拿大": [
+    "canada"
+  ],
+  "iceland": [
+    "冰岛"
+  ],
+  "冰岛": [
+    "iceland"
+  ],
+  "hungary": [
+    "匈牙利"
+  ],
+  "匈牙利": [
+    "hungary"
+  ],
+  "slovenia": [
+    "斯洛文尼亚"
+  ],
+  "斯洛文尼亚": [
+    "slovenia"
+  ],
+  "scotland": [
+    "苏格兰"
+  ],
+  "苏格兰": [
+    "scotland"
+  ],
+  "japan": [
+    "日本"
+  ],
+  "日本": [
+    "japan"
+  ],
+  "willemii": [
+    "威廉二世"
+  ],
+  "威廉二世": [
+    "willemii"
+  ],
+  "degraafschap": [
+    "格拉夫夏普"
+  ],
+  "格拉夫夏普": [
+    "degraafschap"
+  ],
+  "marseillew": [
+    "马赛女足"
+  ],
+  "马赛女足": [
+    "marseillew"
+  ],
+  "montpellierw": [
+    "蒙彼利埃女足"
+  ],
+  "蒙彼利埃女足": [
+    "montpellierw"
+  ],
+  "colon": [
+    "科隆"
+  ],
+  "科隆": [
+    "colon"
+  ],
+  "rentistas": [
+    "伦蒂斯塔斯"
+  ],
+  "伦蒂斯塔斯": [
+    "rentistas"
+  ],
+  "denversummitw": [
+    "丹佛峰会女足"
+  ],
+  "丹佛峰会女足": [
+    "denversummitw"
+  ],
+  "washingtonspiritw": [
+    "华盛顿精神女足"
+  ],
+  "华盛顿精神女足": [
+    "washingtonspiritw"
+  ],
+  "arsenalw": [
+    "阿森纳女",
+    "阿森纳女足"
+  ],
+  "阿森纳女": [
+    "arsenalw"
+  ],
+  "阿森纳女足": [
+    "arsenalw"
+  ],
+  "tottenhamhotspurw": [
+    "托特纳姆热刺女",
+    "热刺女足"
+  ],
+  "托特纳姆热刺女": [
+    "tottenhamhotspurw"
+  ],
+  "热刺女足": [
+    "tottenhamhotspurw"
+  ],
+  "chicagocubs": [
+    "芝加哥小熊"
+  ],
+  "芝加哥小熊": [
+    "chicagocubs"
+  ],
+  "washingtonnationals": [
+    "华盛顿国民"
+  ],
+  "华盛顿国民": [
+    "washingtonnationals"
+  ],
+  "stlouiscardinals": [
+    "圣路易斯红雀"
+  ],
+  "圣路易斯红雀": [
+    "stlouiscardinals"
+  ],
+  "tampabayrays": [
+    "坦帕湾光芒"
+  ],
+  "坦帕湾光芒": [
+    "tampabayrays"
+  ],
+  "aguasanta": [
+    "圣水"
+  ],
+  "圣水": [
+    "aguasanta"
+  ],
+  "ituano": [
+    "伊图阿诺"
+  ],
+  "伊图阿诺": [
+    "ituano"
+  ],
+  "almagro": [
+    "阿尔马格罗"
+  ],
+  "阿尔马格罗": [
+    "almagro"
+  ],
+  "deportivomoron": [
+    "玛伦",
+    "莫龙竞技"
+  ],
+  "玛伦": [
+    "deportivomoron"
+  ],
+  "莫龙竞技": [
+    "deportivomoron"
+  ],
+  "internacionalrsw": [
+    "国际女足"
+  ],
+  "国际女足": [
+    "internacionalrsw"
+  ],
+  "gremiow": [
+    "格雷米奥女足"
+  ],
+  "格雷米奥女足": [
+    "gremiow"
+  ],
+  "sevillaw": [
+    "塞维利亚女足"
+  ],
+  "塞维利亚女足": [
+    "sevillaw"
+  ],
+  "cerro": [
+    "cerroporteno"
+  ],
+  "cerroporteno": [
+    "cerro"
+  ],
+  "torontobluejays": [
+    "多伦多蓝鸟",
+    "蓝鸟"
+  ],
+  "多伦多蓝鸟": [
+    "torontobluejays"
+  ],
+  "蓝鸟": [
+    "torontobluejays"
+  ],
+  "athletics": [
+    "运动家"
+  ],
+  "运动家": [
+    "athletics"
+  ],
+  "sanantoniospurs": [
+    "圣安东尼奥马刺",
+    "马刺"
+  ],
+  "圣安东尼奥马刺": [
+    "sanantoniospurs"
+  ],
+  "马刺": [
+    "sanantoniospurs"
+  ],
+  "sportinggijon": [
+    "希洪竞技"
+  ],
+  "希洪竞技": [
+    "sportinggijon"
+  ],
+  "deportivolacoruna": [
+    "拉科鲁尼亚"
+  ],
+  "拉科鲁尼亚": [
+    "deportivolacoruna"
+  ],
+  "operariopr": [
+    "奥帕拉里奥"
+  ],
+  "奥帕拉里奥": [
+    "operariopr"
+  ],
+  "tombense": [
+    "通本斯"
+  ],
+  "通本斯": [
+    "tombense"
+  ],
+  "minerosdeguyana": [
+    "圭亚那矿工"
+  ],
+  "圭亚那矿工": [
+    "minerosdeguyana"
+  ],
+  "araguafc": [
+    "阿拉瓜"
+  ],
+  "阿拉瓜": [
+    "araguafc"
+  ],
+  "usa": [
+    "美国"
+  ],
+  "美国": [
+    "usa"
+  ],
+  "belgium": [
+    "比利时"
+  ],
+  "比利时": [
+    "belgium"
+  ],
+  "crb": [
+    "雷加塔斯"
+  ],
+  "雷加塔斯": [
+    "crb"
+  ],
+  "vitoria": [
+    "维多利亚"
+  ],
+  "维多利亚": [
+    "vitoria"
+  ],
+  "maranhao": [
+    "马拉尼昂"
+  ],
+  "马拉尼昂": [
+    "maranhao"
+  ],
+  "ferroviario": [
+    "费罗维亚里奥"
+  ],
+  "费罗维亚里奥": [
+    "ferroviario"
+  ],
+  "retro": [
+    "雷特罗"
+  ],
+  "雷特罗": [
+    "retro"
+  ],
+  "ceara": [
+    "塞阿拉"
+  ],
+  "塞阿拉": [
+    "ceara"
+  ],
+  "nantesw": [
+    "南特女足"
+  ],
+  "南特女足": [
+    "nantesw"
+  ],
+  "parissaintgermainw": [
+    "巴黎女足"
+  ],
+  "巴黎女足": [
+    "parissaintgermainw"
+  ],
+  "fceindhoven": [
+    "埃因霍温fc"
+  ],
+  "埃因霍温fc": [
+    "fceindhoven"
+  ],
+  "albacete": [
+    "阿尔瓦塞特"
+  ],
+  "阿尔瓦塞特": [
+    "albacete"
+  ],
+  "castellon": [
+    "卡斯特利翁"
+  ],
+  "卡斯特利翁": [
+    "castellon"
+  ],
+  "kansascityw": [
+    "堪萨斯城女足"
+  ],
+  "堪萨斯城女足": [
+    "kansascityw"
+  ],
+  "philadelphia76ers": [
+    "76人",
+    "费城76人"
+  ],
+  "76人": [
+    "philadelphia76ers"
+  ],
+  "费城76人": [
+    "philadelphia76ers"
+  ],
+  "fortalezaec": [
+    "福塔雷萨"
+  ],
+  "福塔雷萨": [
+    "fortalezaec",
+    "fortalezafc"
+  ],
+  "imperatriz": [
+    "因佩拉特里斯"
+  ],
+  "因佩拉特里斯": [
+    "imperatriz"
+  ],
+  "voltaredonda": [
+    "沃尔塔雷东达"
+  ],
+  "沃尔塔雷东达": [
+    "voltaredonda"
+  ],
+  "chapecoensesc": [
+    "沙佩科恩斯"
+  ],
+  "沙佩科恩斯": [
+    "chapecoensesc"
+  ],
+  "americadecaliw": [
+    "卡利美洲女足",
+    "卡利阿美利加女"
+  ],
+  "卡利美洲女足": [
+    "americadecaliw"
+  ],
+  "卡利阿美利加女": [
+    "americadecaliw"
+  ],
+  "santafew": [
+    "圣塔菲女",
+    "圣塔菲女足"
+  ],
+  "圣塔菲女": [
+    "santafew"
+  ],
+  "圣塔菲女足": [
+    "santafew"
+  ],
+  "cunupia": [
+    "库努皮亚"
+  ],
+  "库努皮亚": [
+    "cunupia"
+  ],
+  "clubsando": [
+    "桑多"
+  ],
+  "桑多": [
+    "clubsando"
+  ],
+  "brazilu20": [
+    "巴西u20"
+  ],
+  "巴西u20": [
+    "brazilu20"
+  ],
+  "paraguayu20": [
+    "巴拉圭u20"
+  ],
+  "巴拉圭u20": [
+    "paraguayu20"
+  ],
+  "unionlacalera": [
+    "拉塞雷纳联合"
+  ],
+  "拉塞雷纳联合": [
+    "unionlacalera"
+  ],
+  "dlaserena": [
+    "拉塞雷纳"
+  ],
+  "拉塞雷纳": [
+    "dlaserena"
+  ],
+  "olimpia": [
+    "奥林匹亚"
+  ],
+  "奥林匹亚": [
+    "olimpia"
+  ],
+  "2demayo": [
+    "五月二日"
+  ],
+  "五月二日": [
+    "2demayo"
+  ],
+  "votuporanguense": [
+    "沃图波朗"
+  ],
+  "沃图波朗": [
+    "votuporanguense"
+  ],
+  "xvdepiracicaba": [
+    "皮拉西卡巴十五"
+  ],
+  "皮拉西卡巴十五": [
+    "xvdepiracicaba"
+  ],
+  "dpuertomontt": [
+    "蒙特港"
+  ],
+  "蒙特港": [
+    "dpuertomontt"
+  ],
+  "santiagowanderersd": [
+    "圣地亚哥流浪者d"
+  ],
+  "圣地亚哥流浪者d": [
+    "santiagowanderersd"
+  ],
+  "chico": [
+    "奇科"
+  ],
+  "奇科": [
+    "chico"
+  ],
+  "lduportoviejo": [
+    "波托维耶霍大学"
+  ],
+  "波托维耶霍大学": [
+    "lduportoviejo"
+  ],
+  "elnacional": [
+    "国民队"
+  ],
+  "国民队": [
+    "elnacional"
+  ],
+  "plazacolonia": [
+    "佩拉扎科朗尼亚",
+    "科洛尼亚广场"
+  ],
+  "佩拉扎科朗尼亚": [
+    "plazacolonia"
+  ],
+  "科洛尼亚广场": [
+    "plazacolonia"
+  ],
+  "cariverplate": [
+    "河床",
+    "蒙特维多河床队"
+  ],
+  "河床": [
+    "cariverplate",
+    "riverplate"
+  ],
+  "蒙特维多河床队": [
+    "cariverplate"
+  ],
+  "baltimoreorioles": [
+    "金莺"
+  ],
+  "金莺": [
+    "baltimoreorioles"
+  ],
+  "minnesotatwins": [
+    "双城"
+  ],
+  "双城": [
+    "minnesotatwins"
+  ],
+  "cincinnatireds": [
+    "红人"
+  ],
+  "红人": [
+    "cincinnatireds"
+  ],
+  "bostonredsox": [
+    "红袜"
+  ],
+  "红袜": [
+    "bostonredsox"
+  ],
+  "newyorkmets": [
+    "大都会"
+  ],
+  "大都会": [
+    "newyorkmets"
+  ],
+  "pittsburghpirates": [
+    "海盗"
+  ],
+  "海盗": [
+    "pittsburghpirates"
+  ],
+  "sertaozinho": [
+    "塞尔唐齐尼奥"
+  ],
+  "塞尔唐齐尼奥": [
+    "sertaozinho"
+  ],
+  "juventus": [
+    "尤文图斯"
+  ],
+  "尤文图斯": [
+    "juventus"
+  ],
+  "atleticotorque": [
+    "托克竞技"
+  ],
+  "托克竞技": [
+    "atleticotorque"
+  ],
+  "clubnacional": [
+    "民族竞技"
+  ],
+  "民族竞技": [
+    "clubnacional"
+  ],
+  "seattlereignfc": [
+    "西雅图君主"
+  ],
+  "西雅图君主": [
+    "seattlereignfc"
+  ],
+  "racinglouisvillew": [
+    "路易斯维尔竞技女足"
+  ],
+  "路易斯维尔竞技女足": [
+    "racinglouisvillew"
+  ],
+  "colegiales": [
+    "科莱希亚莱斯"
+  ],
+  "科莱希亚莱斯": [
+    "colegiales"
+  ],
+  "sanmiguel": [
+    "圣米格尔"
+  ],
+  "圣米格尔": [
+    "sanmiguel"
+  ],
+  "csdbarber": [
+    "巴伯"
+  ],
+  "巴伯": [
+    "csdbarber"
+  ],
+  "svvictoryboys": [
+    "胜利男孩"
+  ],
+  "胜利男孩": [
+    "svvictoryboys"
+  ],
+  "fcinterwanica": [
+    "瓦尼卡国际"
+  ],
+  "瓦尼卡国际": [
+    "fcinterwanica"
+  ],
+  "intermoengotapoe": [
+    "莫恩戈塔波国际"
+  ],
+  "莫恩戈塔波国际": [
+    "intermoengotapoe"
+  ],
+  "northcarolinacouragew": [
+    "北卡罗来纳勇气女足"
+  ],
+  "北卡罗来纳勇气女足": [
+    "northcarolinacouragew"
+  ],
+  "bayfc": [
+    "海湾fc"
+  ],
+  "海湾fc": [
+    "bayfc"
+  ],
+  "itauma": [
+    "伊陶马"
+  ],
+  "伊陶马": [
+    "itauma"
+  ],
+  "franklin": [
+    "富兰克林"
+  ],
+  "富兰克林": [
+    "franklin"
+  ],
+  "israeladesanya": [
+    "伊斯雷尔阿迪萨尼亚"
+  ],
+  "伊斯雷尔阿迪萨尼亚": [
+    "israeladesanya"
+  ],
+  "joepyfer": [
+    "乔派弗"
+  ],
+  "乔派弗": [
+    "joepyfer"
+  ],
+  "curicounido": [
+    "库里科联"
+  ],
+  "库里科联": [
+    "curicounido"
+  ],
+  "deportescopiapo": [
+    "科皮亚波"
+  ],
+  "科皮亚波": [
+    "deportescopiapo"
+  ],
+  "clubspsanlorenzo": [
+    "圣洛伦索"
+  ],
+  "圣洛伦索": [
+    "clubspsanlorenzo"
+  ],
+  "deportestolima": [
+    "托利马体育"
+  ],
+  "托利马体育": [
+    "deportestolima"
+  ],
+  "jaguares": [
+    "美洲虎"
+  ],
+  "美洲虎": [
+    "jaguares"
+  ],
+  "sanfranciscogiants": [
+    "旧金山巨人"
+  ],
+  "旧金山巨人": [
+    "sanfranciscogiants"
+  ],
+  "newyorkyankees": [
+    "纽约洋基"
+  ],
+  "纽约洋基": [
+    "newyorkyankees"
+  ],
+  "houstonastros": [
+    "休斯顿太空人"
+  ],
+  "休斯顿太空人": [
+    "houstonastros"
+  ],
+  "losangelesangels": [
+    "洛杉矶天使"
+  ],
+  "洛杉矶天使": [
+    "losangelesangels"
+  ],
+  "milwaukeebrewers": [
+    "密尔沃基酿酒人"
+  ],
+  "密尔沃基酿酒人": [
+    "milwaukeebrewers"
+  ],
+  "chicagowhitesox": [
+    "芝加哥白袜"
+  ],
+  "芝加哥白袜": [
+    "chicagowhitesox"
+  ],
+  "brooklyn": [
+    "布鲁克林"
+  ],
+  "布鲁克林": [
+    "brooklyn"
+  ],
+  "louisvillecity": [
+    "路易斯维尔城"
+  ],
+  "路易斯维尔城": [
+    "louisvillecity"
+  ],
+  "miamifc": [
+    "迈阿密fc"
+  ],
+  "迈阿密fc": [
+    "miamifc"
+  ],
+  "rhodeisland": [
+    "罗德岛"
+  ],
+  "罗德岛": [
+    "rhodeisland"
+  ],
+  "pittsburghriverhounds": [
+    "匹兹堡河犬"
+  ],
+  "匹兹堡河犬": [
+    "pittsburghriverhounds"
+  ],
+  "sportingjax": [
+    "杰克逊维尔竞技"
+  ],
+  "杰克逊维尔竞技": [
+    "sportingjax"
+  ],
+  "racingclub": [
+    "竞技俱乐部"
+  ],
+  "竞技俱乐部": [
+    "racingclub"
+  ],
+  "sanmartinformosa": [
+    "圣马丁福尔摩沙"
+  ],
+  "圣马丁福尔摩沙": [
+    "sanmartinformosa"
+  ],
+  "puntarenasfc": [
+    "蓬塔雷纳斯"
+  ],
+  "蓬塔雷纳斯": [
+    "puntarenasfc"
+  ],
+  "sportingsanjose": [
+    "圣何塞体育"
+  ],
+  "圣何塞体育": [
+    "sportingsanjose"
+  ],
+  "defenceforce": [
+    "国防军"
+  ],
+  "国防军": [
+    "defenceforce"
+  ],
+  "athleticclub": [
+    "毕尔巴鄂竞技"
+  ],
+  "毕尔巴鄂竞技": [
+    "athleticclub"
+  ],
+  "haiti": [
+    "海地"
+  ],
+  "海地": [
+    "haiti"
+  ],
+  "tunisia": [
+    "突尼斯"
+  ],
+  "突尼斯": [
+    "tunisia"
+  ],
+  "tampabayrowdies": [
+    "坦帕湾"
+  ],
+  "坦帕湾": [
+    "tampabayrowdies"
+  ],
+  "loudoununited": [
+    "劳登联"
+  ],
+  "劳登联": [
+    "loudoununited"
+  ],
+  "sanmartinformosad": [
+    "圣马丁福尔莫萨d"
+  ],
+  "圣马丁福尔莫萨d": [
+    "sanmartinformosad"
+  ],
+  "fctulsa": [
+    "塔尔萨fc"
+  ],
+  "塔尔萨fc": [
+    "fctulsa"
+  ],
+  "phoenixrising": [
+    "凤凰城崛起"
+  ],
+  "凤凰城崛起": [
+    "phoenixrising"
+  ],
+  "oaklandroots": [
+    "奥克兰根"
+  ],
+  "奥克兰根": [
+    "oaklandroots"
+  ],
+  "orangecountysc": [
+    "橙县sc"
+  ],
+  "橙县sc": [
+    "orangecountysc"
+  ],
+  "vilanova": [
+    "维拉诺瓦"
+  ],
+  "维拉诺瓦": [
+    "vilanova"
+  ],
+  "operarioferroviario": [
+    "奥佩拉里奥"
+  ],
+  "奥佩拉里奥": [
+    "operarioferroviario"
+  ],
+  "juventude": [
+    "尤文图德"
+  ],
+  "尤文图德": [
+    "juventude"
+  ],
+  "novorizontino": [
+    "诺沃里宗蒂诺"
+  ],
+  "诺沃里宗蒂诺": [
+    "novorizontino"
+  ],
+  "municipal": [
+    "市政"
+  ],
+  "市政": [
+    "municipal"
+  ],
+  "malacateco": [
+    "马拉卡特科"
+  ],
+  "马拉卡特科": [
+    "malacateco"
+  ],
+  "deportivocali": [
+    "卡利体育"
+  ],
+  "卡利体育": [
+    "deportivocali"
+  ],
+  "chicagoredstarsw": [
+    "芝加哥红星女足"
+  ],
+  "芝加哥红星女足": [
+    "chicagoredstarsw"
+  ],
+  "atletikosalina": [
+    "阿特蒂科萨利纳"
+  ],
+  "阿特蒂科萨利纳": [
+    "atletikosalina"
+  ],
+  "rksvcentrodominguito": [
+    "森特罗多米尼吉托"
+  ],
+  "森特罗多米尼吉托": [
+    "rksvcentrodominguito"
+  ],
+  "cancun": [
+    "坎昆"
+  ],
+  "坎昆": [
+    "cancun"
+  ],
+  "tepatitlan": [
+    "特帕蒂特兰"
+  ],
+  "特帕蒂特兰": [
+    "tepatitlan"
+  ],
+  "dorados": [
+    "多拉多斯"
+  ],
+  "多拉多斯": [
+    "dorados"
+  ],
+  "correcaminosuat": [
+    "科雷卡米诺斯"
+  ],
+  "科雷卡米诺斯": [
+    "correcaminosuat"
+  ],
+  "monarcas": [
+    "莫纳卡斯"
+  ],
+  "莫纳卡斯": [
+    "monarcas"
+  ],
+  "irapuato": [
+    "伊拉普阿托"
+  ],
+  "伊拉普阿托": [
+    "irapuato"
+  ],
+  "mexico": [
+    "墨西哥"
+  ],
+  "墨西哥": [
+    "mexico"
+  ],
+  "portugal": [
+    "葡萄牙"
+  ],
+  "葡萄牙": [
+    "portugal"
+  ],
+  "johnnyeblen": [
+    "eblen"
+  ],
+  "eblen": [
+    "johnnyeblen"
+  ],
+  "bryanbattle": [
+    "battle"
+  ],
+  "battle": [
+    "bryanbattle"
+  ],
+  "parkerporter": [
+    "porter"
+  ],
+  "porter": [
+    "parkerporter"
+  ],
+  "joshwatson": [
+    "watson"
+  ],
+  "watson": [
+    "joshwatson"
+  ],
+  "phoenixsuns": [
+    "太阳"
+  ],
+  "太阳": [
+    "phoenixsuns"
+  ],
+  "sacramentorepublic": [
+    "萨克拉门托共和"
+  ],
+  "萨克拉门托共和": [
+    "sacramentorepublic"
+  ],
+  "elpasolocomotive": [
+    "埃尔帕索机车"
+  ],
+  "埃尔帕索机车": [
+    "elpasolocomotive"
+  ],
+  "lasvegaslights": [
+    "拉斯维加斯光芒"
+  ],
+  "拉斯维加斯光芒": [
+    "lasvegaslights"
+  ],
+  "montereybay": [
+    "蒙特雷湾"
+  ],
+  "蒙特雷湾": [
+    "montereybay"
+  ],
+  "wellingtonphoenixw": [
+    "惠灵顿凤凰女"
+  ],
+  "惠灵顿凤凰女": [
+    "wellingtonphoenixw"
+  ],
+  "westernsydneywanderersw": [
+    "西悉尼流浪者女"
+  ],
+  "西悉尼流浪者女": [
+    "westernsydneywanderersw"
+  ],
+  "roassokumamoto": [
+    "熊本深红"
+  ],
+  "熊本深红": [
+    "roassokumamoto"
+  ],
+  "kagoshimaunited": [
+    "鹿儿岛联"
+  ],
+  "鹿儿岛联": [
+    "kagoshimaunited"
+  ],
+  "melbournecityw": [
+    "墨尔本城女足"
+  ],
+  "墨尔本城女足": [
+    "melbournecityw"
+  ],
+  "nasafw": [
+    "纳萨夫女足"
+  ],
+  "纳萨夫女足": [
+    "nasafw"
+  ],
+  "vanraurehachinohe": [
+    "八户"
+  ],
+  "八户": [
+    "vanraurehachinohe"
+  ],
+  "sagamihara": [
+    "相模原"
+  ],
+  "相模原": [
+    "sagamihara"
+  ],
+  "centralcoastmarinersw": [
+    "中央海岸水手女足"
+  ],
+  "中央海岸水手女足": [
+    "centralcoastmarinersw"
+  ],
+  "canberraunitedw": [
+    "堪培拉联女足"
+  ],
+  "堪培拉联女足": [
+    "canberraunitedw"
+  ],
+  "biwakoshiga": [
+    "滋贺湖王"
+  ],
+  "滋贺湖王": [
+    "biwakoshiga"
+  ],
+  "tegevajaromiyazaki": [
+    "宫崎棒牛鸟"
+  ],
+  "宫崎棒牛鸟": [
+    "tegevajaromiyazaki"
+  ],
+  "fukushimaunited": [
+    "福岛联"
+  ],
+  "福岛联": [
+    "fukushimaunited"
+  ],
+  "matsumotoyamaga": [
+    "松本山雅"
+  ],
+  "松本山雅": [
+    "matsumotoyamaga"
+  ],
+  "gainaretottori": [
+    "鸟取飞翔"
+  ],
+  "鸟取飞翔": [
+    "gainaretottori"
+  ],
+  "sagantosu": [
+    "鸟栖砂岩"
+  ],
+  "鸟栖砂岩": [
+    "sagantosu"
+  ],
+  "iwaki": [
+    "岩手盛冈仙鹤"
+  ],
+  "岩手盛冈仙鹤": [
+    "iwaki"
+  ],
+  "jubiloiwata": [
+    "磐田喜悦"
+  ],
+  "磐田喜悦": [
+    "jubiloiwata"
+  ],
+  "kamatamaresanuki": [
+    "赞岐釜玉海"
+  ],
+  "赞岐釜玉海": [
+    "kamatamaresanuki"
+  ],
+  "kochiunited": [
+    "高知联"
+  ],
+  "高知联": [
+    "kochiunited"
+  ],
+  "cheongju": [
+    "清州"
+  ],
+  "清州": [
+    "cheongju"
+  ],
+  "busanipark": [
+    "釜山"
+  ],
+  "釜山": [
+    "busanipark"
+  ],
+  "suwoncityfc": [
+    "水原城"
+  ],
+  "水原城": [
+    "suwoncityfc"
+  ],
+  "pajucitizen": [
+    "坡州市民"
+  ],
+  "坡州市民": [
+    "pajucitizen"
+  ],
+  "ehimefc": [
+    "爱媛fc"
+  ],
+  "爱媛fc": [
+    "ehimefc"
+  ],
+  "katallertoyama": [
+    "富山胜利"
+  ],
+  "富山胜利": [
+    "katallertoyama"
+  ],
+  "imabari": [
+    "今治"
+  ],
+  "今治": [
+    "imabari"
+  ],
+  "kitakyushu": [
+    "北九州"
+  ],
+  "北九州": [
+    "kitakyushu"
+  ],
+  "fcryukyu": [
+    "琉球fc"
+  ],
+  "琉球fc": [
+    "fcryukyu"
+  ],
+  "montedioyamagata": [
+    "山形山神"
+  ],
+  "山形山神": [
+    "montedioyamagata"
+  ],
+  "tochigicity": [
+    "栃木市"
+  ],
+  "栃木市": [
+    "tochigicity"
+  ],
+  "osaka": [
+    "大阪"
+  ],
+  "大阪": [
+    "osaka"
+  ],
+  "albirexniigata": [
+    "新潟天鹅"
+  ],
+  "新潟天鹅": [
+    "albirexniigata"
+  ],
+  "renofayamaguchi": [
+    "山口雷法"
+  ],
+  "山口雷法": [
+    "renofayamaguchi"
+  ],
+  "oitatrinita": [
+    "大分三神"
+  ],
+  "大分三神": [
+    "oitatrinita"
+  ],
+  "tokushimavortis": [
+    "德岛漩涡"
+  ],
+  "德岛漩涡": [
+    "tokushimavortis"
+  ],
+  "youngboys": [
+    "年轻人"
+  ],
+  "年轻人": [
+    "youngboys"
+  ],
+  "servettechenois": [
+    "塞尔维特"
+  ],
+  "塞尔维特": [
+    "servettechenois"
+  ],
+  "austriawienw": [
+    "奥地利维也纳女足"
+  ],
+  "奥地利维也纳女足": [
+    "austriawienw"
+  ],
+  "bristolcityw": [
+    "布里斯托尔城女足"
+  ],
+  "布里斯托尔城女足": [
+    "bristolcityw"
+  ],
+  "birminghamcityw": [
+    "伯明翰城女足"
+  ],
+  "伯明翰城女足": [
+    "birminghamcityw"
+  ],
+  "crystalpalacew": [
+    "水晶宫女",
+    "水晶宫女足"
+  ],
+  "水晶宫女": [
+    "crystalpalacew"
+  ],
+  "水晶宫女足": [
+    "crystalpalacew"
+  ],
+  "charltonathleticw": [
+    "查尔顿女",
+    "查尔顿竞技女足"
+  ],
+  "查尔顿女": [
+    "charltonathleticw"
+  ],
+  "查尔顿竞技女足": [
+    "charltonathleticw"
+  ],
+  "nottinghamforestw": [
+    "诺丁汉森林女",
+    "诺丁汉森林女足"
+  ],
+  "诺丁汉森林女": [
+    "nottinghamforestw"
+  ],
+  "诺丁汉森林女足": [
+    "nottinghamforestw"
+  ],
+  "durhamw": [
+    "杜伦女足",
+    "达勒姆女"
+  ],
+  "杜伦女足": [
+    "durhamw"
+  ],
+  "达勒姆女": [
+    "durhamw"
+  ],
+  "sunderlandw": [
+    "桑德兰女",
+    "桑德兰女足"
+  ],
+  "桑德兰女": [
+    "sunderlandw"
+  ],
+  "桑德兰女足": [
+    "sunderlandw"
+  ],
+  "newcastleunitedw": [
+    "纽卡斯尔女",
+    "纽卡斯尔联女足"
+  ],
+  "纽卡斯尔女": [
+    "newcastleunitedw"
+  ],
+  "纽卡斯尔联女足": [
+    "newcastleunitedw"
+  ],
+  "intermilanow": [
+    "国际米兰女足",
+    "國際米蘭女"
+  ],
+  "国际米兰女足": [
+    "intermilanow"
+  ],
+  "國際米蘭女": [
+    "intermilanow"
+  ],
+  "romaw": [
+    "罗马女",
+    "罗马女足"
+  ],
+  "罗马女": [
+    "romaw"
+  ],
+  "罗马女足": [
+    "romaw"
+  ],
+  "hacken": [
+    "哈肯"
+  ],
+  "哈肯": [
+    "hacken"
+  ],
+  "brommapojkarnaw": [
+    "布洛马波卡纳女",
+    "布洛马波卡纳女足"
+  ],
+  "布洛马波卡纳女": [
+    "brommapojkarnaw"
+  ],
+  "布洛马波卡纳女足": [
+    "brommapojkarnaw"
+  ],
+  "liverpoolmontevideo": [
+    "蒙得维的亚利物浦"
+  ],
+  "蒙得维的亚利物浦": [
+    "liverpoolmontevideo"
+  ],
+  "southsudan": [
+    "南苏丹"
+  ],
+  "南苏丹": [
+    "southsudan"
+  ],
+  "djibouti": [
+    "吉布提"
+  ],
+  "吉布提": [
+    "djibouti"
+  ],
+  "armenia": [
+    "亚美尼亚",
+    "阿美尼亚"
+  ],
+  "亚美尼亚": [
+    "armenia"
+  ],
+  "阿美尼亚": [
+    "armenia"
+  ],
+  "vicenzavirtus": [
+    "lr维琴察",
+    "维琴察"
+  ],
+  "lr维琴察": [
+    "vicenzavirtus"
+  ],
+  "维琴察": [
+    "vicenzavirtus"
+  ],
+  "unionbrescia": [
+    "布雷西亚联"
+  ],
+  "布雷西亚联": [
+    "unionbrescia"
+  ],
+  "pontedera": [
+    "蓬泰代拉",
+    "邦特德拉",
+    "阿马兰特"
+  ],
+  "蓬泰代拉": [
+    "pontedera"
+  ],
+  "邦特德拉": [
+    "pontedera",
+    "skobecnyponiky"
+  ],
+  "阿马兰特": [
+    "pontedera",
+    "skobecnyponiky"
+  ],
+  "skobecnyponiky": [
+    "sk奥贝奇尼波尼基",
+    "邦特德拉",
+    "阿马兰特"
+  ],
+  "sk奥贝奇尼波尼基": [
+    "skobecnyponiky"
+  ],
+  "bra": [
+    "布拉",
+    "科英布拉大学"
+  ],
+  "布拉": [
+    "bra",
+    "bravacovo"
+  ],
+  "科英布拉大学": [
+    "bra",
+    "bravacovo"
+  ],
+  "bravacovo": [
+    "布拉",
+    "布拉瓦科沃",
+    "科英布拉大学"
+  ],
+  "布拉瓦科沃": [
+    "bravacovo"
+  ],
+  "crotone": [
+    "克罗托内"
+  ],
+  "克罗托内": [
+    "crotone"
+  ],
+  "audacecerignola": [
+    "奥迪斯"
+  ],
+  "奥迪斯": [
+    "audacecerignola"
+  ],
+  "foggia": [
+    "福贾"
+  ],
+  "福贾": [
+    "foggia"
+  ],
+  "trapani1905": [
+    "特拉帕尼",
+    "特拉帕尼1905"
+  ],
+  "特拉帕尼": [
+    "trapani1905"
+  ],
+  "特拉帕尼1905": [
+    "trapani1905"
+  ],
+  "teamaltamura": [
+    "阿尔塔穆拉"
+  ],
+  "阿尔塔穆拉": [
+    "teamaltamura"
+  ],
+  "siracusa": [
+    "锡拉库萨"
+  ],
+  "锡拉库萨": [
+    "siracusa"
+  ],
+  "psveindhovenw": [
+    "psv埃因霍温w"
+  ],
+  "psv埃因霍温w": [
+    "psveindhovenw"
+  ],
+  "nacbredaw": [
+    "nac布雷达w"
+  ],
+  "nac布雷达w": [
+    "nacbredaw"
+  ],
+  "werderbremenw": [
+    "云达不莱梅w"
+  ],
+  "云达不莱梅w": [
+    "werderbremenw"
+  ],
+  "sgsessenw": [
+    "埃森w"
+  ],
+  "埃森w": [
+    "sgsessenw"
+  ],
+  "rigasfsii": [
+    "里加二队"
+  ],
+  "里加二队": [
+    "rigasfsii"
+  ],
+  "valmierabss": [
+    "瓦尔米耶拉"
+  ],
+  "瓦尔米耶拉": [
+    "valmierabss"
+  ],
+  "eibar": [
+    "埃瓦尔"
+  ],
+  "埃瓦尔": [
+    "eibar"
+  ],
+  "laspalmas": [
+    "拉斯帕尔马斯",
+    "拉斯彭马斯"
+  ],
+  "拉斯帕尔马斯": [
+    "laspalmas"
+  ],
+  "拉斯彭马斯": [
+    "laspalmas"
+  ],
+  "chelseaw": [
+    "切尔西女",
+    "切尔西女足"
+  ],
+  "切尔西女": [
+    "chelseaw"
+  ],
+  "切尔西女足": [
+    "chelseaw"
+  ],
+  "astonvillaw": [
+    "阿斯顿维拉女",
+    "阿斯顿维拉女足"
+  ],
+  "阿斯顿维拉女": [
+    "astonvillaw"
+  ],
+  "阿斯顿维拉女足": [
+    "astonvillaw"
+  ],
+  "westhamw": [
+    "西汉姆联女",
+    "西汉姆联女足"
+  ],
+  "西汉姆联女": [
+    "westhamw"
+  ],
+  "西汉姆联女足": [
+    "westhamw"
+  ],
+  "granadtenerifew": [
+    "特内里费女足",
+    "科斯塔阿德赫特内里费女"
+  ],
+  "特内里费女足": [
+    "granadtenerifew"
+  ],
+  "科斯塔阿德赫特内里费女": [
+    "granadtenerifew"
+  ],
+  "madridcffw": [
+    "马德里cff女",
+    "马德里cff女足"
+  ],
+  "马德里cff女": [
+    "madridcffw"
+  ],
+  "马德里cff女足": [
+    "madridcffw"
+  ],
+  "nakhonsithammarat": [
+    "洛坤府"
+  ],
+  "洛坤府": [
+    "nakhonsithammarat"
+  ],
+  "tratfc": [
+    "桐艾府"
+  ],
+  "桐艾府": [
+    "tratfc"
+  ],
+  "wuhanjiangdaw": [
+    "武汉江大女足"
+  ],
+  "武汉江大女足": [
+    "wuhanjiangdaw"
+  ],
+  "suwonfmc": [
+    "水原fc"
+  ],
+  "水原fc": [
+    "suwonfmc"
+  ],
+  "kleinmunchenbwlinz": [
+    "克莱因明兴林茨蓝白"
+  ],
+  "克莱因明兴林茨蓝白": [
+    "kleinmunchenbwlinz"
+  ],
+  "londoncitylionesses": [
+    "伦敦城雌狮"
+  ],
+  "伦敦城雌狮": [
+    "londoncitylionesses"
+  ],
+  "macao": [
+    "澳门",
+    "马桑"
+  ],
+  "澳门": [
+    "macao"
+  ],
+  "马桑": [
+    "macao"
+  ],
+  "tanzania": [
+    "坦桑尼亚"
+  ],
+  "坦桑尼亚": [
+    "tanzania"
+  ],
+  "chernomorets": [
+    "查路摩列斯",
+    "黑海人"
+  ],
+  "查路摩列斯": [
+    "chernomorets"
+  ],
+  "黑海人": [
+    "chernomorets"
+  ],
+  "rotorvolgograd": [
+    "伏尔加格勒",
+    "伏尔加格勒转子"
+  ],
+  "伏尔加格勒": [
+    "rotorvolgograd"
+  ],
+  "伏尔加格勒转子": [
+    "rotorvolgograd"
+  ],
+  "vflwolfsburgw": [
+    "沃尔夫斯堡女",
+    "沃尔夫斯堡女足"
+  ],
+  "沃尔夫斯堡女": [
+    "vflwolfsburgw"
+  ],
+  "沃尔夫斯堡女足": [
+    "vflwolfsburgw"
+  ],
+  "unionberlinw": [
+    "柏林联女",
+    "柏林联女足"
+  ],
+  "柏林联女": [
+    "unionberlinw"
+  ],
+  "柏林联女足": [
+    "unionberlinw"
+  ],
+  "glasgowcityw": [
+    "格拉斯哥城女",
+    "格拉斯哥城女足"
+  ],
+  "格拉斯哥城女": [
+    "glasgowcityw"
+  ],
+  "格拉斯哥城女足": [
+    "glasgowcityw"
+  ],
+  "rangersw": [
+    "格拉斯哥流浪女",
+    "流浪者女足"
+  ],
+  "格拉斯哥流浪女": [
+    "rangersw"
+  ],
+  "流浪者女足": [
+    "rangersw"
+  ],
+  "brightonw": [
+    "布莱顿女",
+    "布莱顿女足"
+  ],
+  "布莱顿女": [
+    "brightonw"
+  ],
+  "布莱顿女足": [
+    "brightonw"
+  ],
+  "zaglebiesosnowiec": [
+    "索斯诺维茨"
+  ],
+  "索斯诺维茨": [
+    "zaglebiesosnowiec"
+  ],
+  "rekordbielskobiaa": [
+    "别尔斯科比亚瓦",
+    "瑞科德别尔斯科"
+  ],
+  "别尔斯科比亚瓦": [
+    "rekordbielskobiaa"
+  ],
+  "瑞科德别尔斯科": [
+    "rekordbielskobiaa"
+  ],
+  "culturalleonesa": [
+    "莱昂内萨文化"
+  ],
+  "莱昂内萨文化": [
+    "culturalleonesa"
+  ],
+  "fcandorra": [
+    "安道尔fc"
+  ],
+  "安道尔fc": [
+    "fcandorra"
+  ],
+  "twentew": [
+    "特温特女",
+    "特温特女足"
+  ],
+  "特温特女": [
+    "twentew"
+  ],
+  "特温特女足": [
+    "twentew"
+  ],
+  "heraunitedw": [
+    "赫拉联女足",
+    "赫里联女"
+  ],
+  "赫拉联女足": [
+    "heraunitedw"
+  ],
+  "赫里联女": [
+    "heraunitedw"
+  ],
+  "uniaodeleiria": [
+    "利亚拿",
+    "莱里亚联"
+  ],
+  "利亚拿": [
+    "uniaodeleiria"
+  ],
+  "莱里亚联": [
+    "uniaodeleiria"
+  ],
+  "pacosferreira": [
+    "费雷拉"
+  ],
+  "费雷拉": [
+    "pacosferreira"
+  ],
+  "adodenhaagw": [
+    "海牙女",
+    "海牙女足"
+  ],
+  "海牙女": [
+    "adodenhaagw"
+  ],
+  "海牙女足": [
+    "adodenhaagw"
+  ],
+  "excelsiorw": [
+    "sbv精英女足",
+    "鹿特丹精英女"
+  ],
+  "sbv精英女足": [
+    "excelsiorw"
+  ],
+  "鹿特丹精英女": [
+    "excelsiorw"
+  ],
+  "az": [
+    "阿尔克马尔"
+  ],
+  "阿尔克马尔": [
+    "az"
+  ],
+  "utrechtw": [
+    "乌得勒支女足",
+    "乌德勒支女"
+  ],
+  "乌得勒支女足": [
+    "utrechtw"
+  ],
+  "乌德勒支女": [
+    "utrechtw"
+  ],
+  "heerenveenw": [
+    "海伦维恩女",
+    "海伦芬女足"
+  ],
+  "海伦维恩女": [
+    "heerenveenw"
+  ],
+  "海伦芬女足": [
+    "heerenveenw"
+  ],
+  "feyenoordw": [
+    "费耶诺德女",
+    "费耶诺德女足"
+  ],
+  "费耶诺德女": [
+    "feyenoordw"
+  ],
+  "费耶诺德女足": [
+    "feyenoordw"
+  ],
+  "athleticclubw": [
+    "毕尔巴鄂竞技女",
+    "毕尔巴鄂竞技女足"
+  ],
+  "毕尔巴鄂竞技女": [
+    "athleticclubw"
+  ],
+  "毕尔巴鄂竞技女足": [
+    "athleticclubw"
+  ],
+  "atleticomadridw": [
+    "马德里竞技女",
+    "马德里竞技女足"
+  ],
+  "马德里竞技女": [
+    "atleticomadridw"
+  ],
+  "马德里竞技女足": [
+    "atleticomadridw"
+  ],
+  "asotr": [
+    "as奥特"
+  ],
+  "as奥特": [
+    "asotr"
+  ],
+  "asckara": [
+    "卡拉体育会"
+  ],
+  "卡拉体育会": [
+    "asckara"
+  ],
+  "askokara": [
+    "卡拉asko"
+  ],
+  "卡拉asko": [
+    "askokara"
+  ],
+  "entente2": [
+    "协约二队"
+  ],
+  "协约二队": [
+    "entente2"
+  ],
+  "espoirtsevie": [
+    "特塞维希望队"
+  ],
+  "特塞维希望队": [
+    "espoirtsevie"
+  ],
+  "tambo": [
+    "坦博"
+  ],
+  "坦博": [
+    "tambo"
+  ],
+  "unisportdesokode": [
+    "索科德联合体育"
+  ],
+  "索科德联合体育": [
+    "unisportdesokode"
+  ],
+  "cittadella": [
+    "奇塔代拉"
+  ],
+  "奇塔代拉": [
+    "cittadella"
+  ],
+  "lecco": [
+    "莱可",
+    "莱科"
+  ],
+  "莱可": [
+    "lecco"
+  ],
+  "莱科": [
+    "lecco"
+  ],
+  "campobassofc": [
+    "坎波巴索"
+  ],
+  "坎波巴索": [
+    "campobassofc"
+  ],
+  "guidoniamontecelio1937": [
+    "圭多尼亚蒙特切利奥"
+  ],
+  "圭多尼亚蒙特切利奥": [
+    "guidoniamontecelio1937"
+  ],
+  "forli": [
+    "弗利"
+  ],
+  "弗利": [
+    "forli"
+  ],
+  "pianese": [
+    "匹安斯",
+    "皮亚内塞"
+  ],
+  "匹安斯": [
+    "pianese"
+  ],
+  "皮亚内塞": [
+    "pianese"
+  ],
+  "vispesaro": [
+    "比沙奴",
+    "维斯佩萨罗"
+  ],
+  "比沙奴": [
+    "vispesaro"
+  ],
+  "维斯佩萨罗": [
+    "vispesaro"
+  ],
+  "perugia": [
+    "佩鲁贾"
+  ],
+  "佩鲁贾": [
+    "perugia"
+  ],
+  "casarano": [
+    "卡萨拉诺"
+  ],
+  "卡萨拉诺": [
+    "casarano"
+  ],
+  "giugliano": [
+    "朱利亚诺"
+  ],
+  "朱利亚诺": [
+    "giugliano"
+  ],
+  "antofagasta": [
+    "安托法加斯塔"
+  ],
+  "安托法加斯塔": [
+    "antofagasta"
+  ],
+  "deportesiquiqued": [
+    "伊基克体育d队"
+  ],
+  "伊基克体育d队": [
+    "deportesiquiqued"
+  ],
+  "zaragoza": [
+    "萨拉戈萨"
+  ],
+  "萨拉戈萨": [
+    "zaragoza"
+  ],
+  "rodinamoskva": [
+    "罗迪那",
+    "莫斯科罗迪纳"
+  ],
+  "罗迪那": [
+    "rodinamoskva"
+  ],
+  "莫斯科罗迪纳": [
+    "rodinamoskva"
+  ],
+  "ural": [
+    "乌拉尔"
+  ],
+  "乌拉尔": [
+    "ural"
+  ],
+  "aruba": [
+    "阿鲁巴"
+  ],
+  "阿鲁巴": [
+    "aruba"
+  ],
+  "liechtenstein": [
+    "列支敦士登"
+  ],
+  "列支敦士登": [
+    "liechtenstein"
+  ],
+  "dyto": [
+    "迪托"
+  ],
+  "迪托": [
+    "dyto"
+  ],
+  "scfreiburgw": [
+    "弗赖堡女",
+    "弗赖堡女足"
+  ],
+  "弗赖堡女": [
+    "scfreiburgw"
+  ],
+  "弗赖堡女足": [
+    "scfreiburgw"
+  ],
+  "1899hoffenheimw": [
+    "霍芬海姆女",
+    "霍芬海姆女足"
+  ],
+  "霍芬海姆女": [
+    "1899hoffenheimw"
+  ],
+  "霍芬海姆女足": [
+    "1899hoffenheimw"
+  ],
+  "switskolwin": [
+    "斯维特斯科尔温"
+  ],
+  "斯维特斯科尔温": [
+    "switskolwin"
+  ],
+  "losandes": [
+    "安第斯",
+    "洛斯安第斯"
+  ],
+  "安第斯": [
+    "losandes"
+  ],
+  "洛斯安第斯": [
+    "losandes"
+  ],
+  "temperley": [
+    "坦波利",
+    "坦珀利"
+  ],
+  "坦波利": [
+    "temperley"
+  ],
+  "坦珀利": [
+    "temperley"
+  ],
+  "nuevachicago": [
+    "新芝加哥"
+  ],
+  "新芝加哥": [
+    "nuevachicago"
+  ],
+  "allboys": [
+    "全男孩",
+    "男孩竞技"
+  ],
+  "全男孩": [
+    "allboys"
+  ],
+  "男孩竞技": [
+    "allboys"
+  ],
+  "juazeirense": [
+    "茹阿泽伦塞"
+  ],
+  "茹阿泽伦塞": [
+    "juazeirense"
+  ],
+  "aoitabaiana": [
+    "伊塔拜亚纳"
+  ],
+  "伊塔拜亚纳": [
+    "aoitabaiana"
+  ],
+  "gubbio": [
+    "古比奥"
+  ],
+  "古比奥": [
+    "gubbio"
+  ],
+  "ravenna": [
+    "拉文纳"
+  ],
+  "拉文纳": [
+    "ravenna"
+  ],
+  "pineto": [
+    "皮内托"
+  ],
+  "皮内托": [
+    "pineto"
+  ],
+  "sambenedettese": [
+    "圣贝内代托"
+  ],
+  "圣贝内代托": [
+    "sambenedettese"
+  ],
+  "azpicerno": [
+    "皮切尔诺"
+  ],
+  "皮切尔诺": [
+    "azpicerno"
+  ],
+  "ssmonopoli": [
+    "莫诺波利"
+  ],
+  "莫诺波利": [
+    "ssmonopoli"
+  ],
+  "deportivomadryn": [
+    "德波蒂沃马德林"
+  ],
+  "德波蒂沃马德林": [
+    "deportivomadryn"
+  ],
+  "sanmartintucuman": [
+    "圣马丁图库曼"
+  ],
+  "圣马丁图库曼": [
+    "sanmartintucuman"
+  ],
+  "santelmo": [
+    "圣太摩",
+    "圣特尔莫",
+    "皇家皮拉尔"
+  ],
+  "圣太摩": [
+    "santelmo"
+  ],
+  "圣特尔莫": [
+    "santelmo"
+  ],
+  "皇家皮拉尔": [
+    "santelmo"
+  ],
+  "quilmes": [
+    "基尔梅斯",
+    "阿根廷基尔梅斯"
+  ],
+  "基尔梅斯": [
+    "quilmes"
+  ],
+  "阿根廷基尔梅斯": [
+    "quilmes"
+  ],
+  "cariaripococi": [
+    "卡里亚里波科西",
+    "卡里阿利波科奇"
+  ],
+  "卡里亚里波科西": [
+    "cariaripococi"
+  ],
+  "卡里阿利波科奇": [
+    "cariaripococi"
+  ],
+  "patronato": [
+    "帕特罗纳图"
+  ],
+  "帕特罗纳图": [
+    "patronato"
+  ],
+  "colonsantafe": [
+    "圣塔菲科隆"
+  ],
+  "圣塔菲科隆": [
+    "colonsantafe"
+  ],
+  "chacaritajuniors": [
+    "查卡里塔青年"
+  ],
+  "查卡里塔青年": [
+    "chacaritajuniors"
+  ],
+  "caestudiantes": [
+    "拉普拉塔大学生"
+  ],
+  "拉普拉塔大学生": [
+    "caestudiantes"
+  ],
+  "bolivar": [
+    "玻利瓦尔",
+    "玻利瓦尔sc"
+  ],
+  "玻利瓦尔": [
+    "bolivar"
+  ],
+  "玻利瓦尔sc": [
+    "bolivar"
+  ],
+  "maritimo": [
+    "马林汉斯",
+    "马里迪莫拉瓜"
+  ],
+  "马林汉斯": [
+    "maritimo"
+  ],
+  "马里迪莫拉瓜": [
+    "maritimo"
+  ],
+  "almeria": [
+    "阿尔梅里亚"
+  ],
+  "阿尔梅里亚": [
+    "almeria"
+  ],
+  "realsociedadii": [
+    "皇家社会二队",
+    "皇家苏斯达b队"
+  ],
+  "皇家社会二队": [
+    "realsociedadii"
+  ],
+  "皇家苏斯达b队": [
+    "realsociedadii"
+  ],
+  "puertocabelloii": [
+    "academiapuertocabelloii",
+    "波多卡瓦洛二队"
+  ],
+  "academiapuertocabelloii": [
+    "puertocabelloii"
+  ],
+  "波多卡瓦洛二队": [
+    "puertocabelloii"
+  ],
+  "realfrontera": [
+    "皇家富恩特拉",
+    "皇家弗龙特拉"
+  ],
+  "皇家富恩特拉": [
+    "realfrontera"
+  ],
+  "皇家弗龙特拉": [
+    "realfrontera"
+  ],
+  "urenasc": [
+    "乌雷尼亚sc"
+  ],
+  "乌雷尼亚sc": [
+    "urenasc"
+  ],
+  "atleticoelvigiafc": [
+    "比亚维森西奥竞技"
+  ],
+  "比亚维森西奥竞技": [
+    "atleticoelvigiafc"
+  ],
+  "zamorafcb": [
+    "萨莫拉fcb队"
+  ],
+  "萨莫拉fcb队": [
+    "zamorafcb"
+  ],
+  "deportivolara": [
+    "拉腊体育"
+  ],
+  "拉腊体育": [
+    "deportivolara"
+  ],
+  "clubatleticoguemes": [
+    "圭梅斯竞技"
+  ],
+  "圭梅斯竞技": [
+    "clubatleticoguemes"
+  ],
+  "atleticomitre": [
+    "米特雷竞技"
+  ],
+  "米特雷竞技": [
+    "atleticomitre"
+  ],
+  "deportivomaipu": [
+    "迈普",
+    "迈普竞技"
+  ],
+  "迈普": [
+    "deportivomaipu"
+  ],
+  "迈普竞技": [
+    "deportivomaipu"
+  ],
+  "godoycruz": [
+    "戈多伊克鲁斯",
+    "葛度尔古斯"
+  ],
+  "戈多伊克鲁斯": [
+    "godoycruz"
+  ],
+  "葛度尔古斯": [
+    "godoycruz"
+  ],
+  "atleticoavilafc": [
+    "atleticoavila",
+    "阿維拉fc"
+  ],
+  "atleticoavila": [
+    "atleticoavilafc"
+  ],
+  "阿維拉fc": [
+    "atleticoavilafc"
+  ],
+  "monagasii": [
+    "摩纳加斯b队",
+    "莫納加斯二隊"
+  ],
+  "摩纳加斯b队": [
+    "monagasii"
+  ],
+  "莫納加斯二隊": [
+    "monagasii"
+  ],
+  "dinamodepuertolacruz": [
+    "拉克鲁斯港迪纳摩"
+  ],
+  "拉克鲁斯港迪纳摩": [
+    "dinamodepuertolacruz"
+  ],
+  "petarefc": [
+    "佩塔雷fc"
+  ],
+  "佩塔雷fc": [
+    "petarefc"
+  ],
+  "fundacionlaradeportiva": [
+    "拉拉体育基金会"
+  ],
+  "拉拉体育基金会": [
+    "fundacionlaradeportiva"
+  ],
+  "yaracuyanosfc": [
+    "亚拉奎人fc"
+  ],
+  "亚拉奎人fc": [
+    "yaracuyanosfc"
+  ],
+  "abc": [
+    "abcrn",
+    "abc足球俱乐部"
+  ],
+  "abcrn": [
+    "abc"
+  ],
+  "abc足球俱乐部": [
+    "abc"
+  ],
+  "sportrecife": [
+    "利斯菲体育会pe",
+    "累西腓体育"
+  ],
+  "利斯菲体育会pe": [
+    "sportrecife"
+  ],
+  "累西腓体育": [
+    "sportrecife"
+  ],
+  "fluminensepi": [
+    "皮奥伊弗鲁米嫩塞"
+  ],
+  "皮奥伊弗鲁米嫩塞": [
+    "fluminensepi"
+  ],
+  "gimnasiaytiro": [
+    "吉姆纳西亚与提罗"
+  ],
+  "吉姆纳西亚与提罗": [
+    "gimnasiaytiro"
+  ],
+  "centralnorte": [
+    "北中央队"
+  ],
+  "北中央队": [
+    "centralnorte"
+  ],
+  "internacionaldebogota": [
+    "波哥大国际"
+  ],
+  "波哥大国际": [
+    "internacionaldebogota"
+  ],
+  "junior": [
+    "小巴兰哈拉",
+    "青年体育会"
+  ],
+  "小巴兰哈拉": [
+    "junior"
+  ],
+  "青年体育会": [
+    "junior"
+  ],
+  "huracan": [
+    "飓风队"
+  ],
+  "飓风队": [
+    "huracan"
+  ],
+  "olimpobahiablancad": [
+    "奥林波后备队"
+  ],
+  "奥林波后备队": [
+    "olimpobahiablancad"
+  ],
+  "olimpobahiablanca": [
+    "奥林波巴伊亚布兰卡"
+  ],
+  "奥林波巴伊亚布兰卡": [
+    "olimpobahiablanca"
+  ],
+  "cobreloa": [
+    "科布雷洛",
+    "科布雷洛亚"
+  ],
+  "科布雷洛": [
+    "cobreloa"
+  ],
+  "科布雷洛亚": [
+    "cobreloa"
+  ],
+  "unionsanfeliped": [
+    "圣菲利浦联",
+    "圣费利佩联盟d"
+  ],
+  "圣菲利浦联": [
+    "unionsanfeliped"
+  ],
+  "圣费利佩联盟d": [
+    "unionsanfeliped"
+  ],
+  "piaui": [
+    "皮奥伊州队"
+  ],
+  "皮奥伊州队": [
+    "piaui"
+  ],
+  "ferroviaria": [
+    "费罗维亚里亚"
+  ],
+  "费罗维亚里亚": [
+    "ferroviaria"
+  ],
+  "saojoseec": [
+    "圣若泽ec"
+  ],
+  "圣若泽ec": [
+    "saojoseec"
+  ],
+  "tacuarembo": [
+    "塔库阿伦博"
+  ],
+  "塔库阿伦博": [
+    "tacuarembo"
+  ],
+  "cerrito": [
+    "塞里托"
+  ],
+  "塞里托": [
+    "cerrito"
+  ],
+  "central": [
+    "中央",
+    "中央队"
+  ],
+  "中央": [
+    "central"
+  ],
+  "中央队": [
+    "central"
+  ],
+  "pointfortin": [
+    "波因特福廷",
+    "福特角"
+  ],
+  "波因特福廷": [
+    "pointfortin"
+  ],
+  "福特角": [
+    "pointfortin"
+  ],
+  "avai": [
+    "阿瓦伊",
+    "阿瓦伊sc",
+    "阿维"
+  ],
+  "阿瓦伊": [
+    "avai"
+  ],
+  "阿瓦伊sc": [
+    "avai"
+  ],
+  "阿维": [
+    "avai"
+  ],
+  "cianorte": [
+    "斯尔诺特pr",
+    "西亚诺尔蒂",
+    "西亚诺特"
+  ],
+  "斯尔诺特pr": [
+    "cianorte"
+  ],
+  "西亚诺尔蒂": [
+    "cianorte"
+  ],
+  "西亚诺特": [
+    "cianorte"
+  ],
+  "cobanimperial": [
+    "科班帝国",
+    "科班帝国队"
+  ],
+  "科班帝国": [
+    "cobanimperial"
+  ],
+  "科班帝国队": [
+    "cobanimperial"
+  ],
+  "mictlan": [
+    "米克特兰"
+  ],
+  "米克特兰": [
+    "mictlan"
+  ],
+  "botafogopb": [
+    "博塔弗戈pb",
+    "博塔福格pb"
+  ],
+  "博塔弗戈pb": [
+    "botafogopb"
+  ],
+  "博塔福格pb": [
+    "botafogopb"
+  ],
+  "jongcolombia": [
+    "哥伦比亚青年队"
+  ],
+  "哥伦比亚青年队": [
+    "jongcolombia"
+  ],
+  "jongholland": [
+    "荷兰青年队"
+  ],
+  "荷兰青年队": [
+    "jongholland"
+  ],
+  "asa": [
+    "asaal",
+    "阿萨"
+  ],
+  "asaal": [
+    "asa"
+  ],
+  "阿萨": [
+    "asa"
+  ],
+  "broki": [
+    "布罗基"
+  ],
+  "布罗基": [
+    "broki"
+  ],
+  "voorwaarts": [
+    "前进队"
+  ],
+  "前进队": [
+    "voorwaarts"
+  ],
+  "penarol": [
+    "佩纳罗尔"
+  ],
+  "佩纳罗尔": [
+    "penarol"
+  ],
+  "caravel": [
+    "卡拉维尔"
+  ],
+  "卡拉维尔": [
+    "caravel"
+  ],
+  "realkoyari": [
+    "皇家科亚里"
+  ],
+  "皇家科亚里": [
+    "realkoyari"
+  ],
+  "clubguarani": [
+    "瓜拉尼",
+    "瓜拉尼俱乐部"
+  ],
+  "瓜拉尼": [
+    "clubguarani"
+  ],
+  "瓜拉尼俱乐部": [
+    "clubguarani"
+  ],
+  "sportivotrinidense": [
+    "泰里尼登斯",
+    "特里尼登斯体育"
+  ],
+  "泰里尼登斯": [
+    "sportivotrinidense"
+  ],
+  "特里尼登斯体育": [
+    "sportivotrinidense"
+  ],
+  "atleticoparanaense": [
+    "巴拉纳竞技"
+  ],
+  "巴拉纳竞技": [
+    "atleticoparanaense"
+  ],
+  "botafogo": [
+    "博塔弗戈"
+  ],
+  "博塔弗戈": [
+    "botafogo"
+  ],
+  "minerosdezacatecas": [
+    "萨卡特卡斯矿工"
+  ],
+  "萨卡特卡斯矿工": [
+    "minerosdezacatecas"
+  ],
+  "tapatio": [
+    "瓜达拉哈拉预备队"
+  ],
+  "瓜达拉哈拉预备队": [
+    "tapatio"
+  ],
+  "njnygothamfcw": [
+    "哥谭女",
+    "纽约新泽西哥谭女足"
+  ],
+  "哥谭女": [
+    "njnygothamfcw"
+  ],
+  "纽约新泽西哥谭女足": [
+    "njnygothamfcw"
+  ],
+  "orlandopridew": [
+    "奥兰多普德女",
+    "奥兰多荣耀女足"
+  ],
+  "奥兰多普德女": [
+    "orlandopridew"
+  ],
+  "奥兰多荣耀女足": [
+    "orlandopridew"
+  ],
+  "newellsoldboys": [
+    "纽维尔旧生",
+    "纽维尔老男孩"
+  ],
+  "纽维尔旧生": [
+    "newellsoldboys"
+  ],
+  "纽维尔老男孩": [
+    "newellsoldboys"
+  ],
+  "acassuso": [
+    "阿卡苏索"
+  ],
+  "阿卡苏索": [
+    "acassuso",
+    "acassusod"
+  ],
+  "acassusod": [
+    "阿卡苏索",
+    "阿卡苏索d队"
+  ],
+  "阿卡苏索d队": [
+    "acassusod"
+  ],
+  "deportivopasto": [
+    "帕斯托体育"
+  ],
+  "帕斯托体育": [
+    "deportivopasto"
+  ],
+  "atleticonacional": [
+    "国民竞技"
+  ],
+  "国民竞技": [
+    "atleticonacional"
+  ],
+  "sanluis": [
+    "圣路易斯"
+  ],
+  "圣路易斯": [
+    "sanluis"
+  ],
+  "deportessantacruz": [
+    "圣克鲁斯体育"
+  ],
+  "圣克鲁斯体育": [
+    "deportessantacruz"
+  ],
+  "saobernardo": [
+    "圣贝尔纳多"
+  ],
+  "圣贝尔纳多": [
+    "saobernardo"
+  ],
+  "sampaiocorrearj": [
+    "桑帕约科雷亚rj"
+  ],
+  "桑帕约科雷亚rj": [
+    "sampaiocorrearj"
+  ],
+  "svundeba": [
+    "sv温德巴"
+  ],
+  "sv温德巴": [
+    "svundeba"
+  ],
+  "rksvscherpenheuvel": [
+    "rksv舍彭海韦尔"
+  ],
+  "rksv舍彭海韦尔": [
+    "rksvscherpenheuvel"
+  ],
+  "estudiantessolito": [
+    "索利托学生队"
+  ],
+  "索利托学生队": [
+    "estudiantessolito"
+  ],
+  "llaneros": [
+    "拉内罗斯"
+  ],
+  "拉内罗斯": [
+    "llaneros"
+  ],
+  "oncecaldas": [
+    "卡尔达斯十一人"
+  ],
+  "卡尔达斯十一人": [
+    "oncecaldas"
+  ],
+  "yekakifleketema": [
+    "耶卡区球队"
+  ],
+  "耶卡区球队": [
+    "yekakifleketema"
+  ],
+  "kosovou19": [
+    "科索沃u19"
+  ],
+  "科索沃u19": [
+    "kosovou19"
+  ],
+  "naft": [
+    "纳夫特"
+  ],
+  "纳夫特": [
+    "naft"
+  ],
+  "hapoelrishonlezion": [
+    "哈泊尔里雄莱锡安"
+  ],
+  "哈泊尔里雄莱锡安": [
+    "hapoelrishonlezion"
+  ],
+  "kafrqasim": [
+    "卡尔卡西姆"
+  ],
+  "卡尔卡西姆": [
+    "kafrqasim"
+  ],
+  "ironimodiin": [
+    "伊罗尼莫迪因",
+    "莫迪因"
+  ],
+  "伊罗尼莫迪因": [
+    "ironimodiin"
+  ],
+  "莫迪因": [
+    "ironimodiin"
+  ],
+  "hapoelkfarsaba": [
+    "哈泊尔卡法萨巴",
+    "法萨巴夏普尔"
+  ],
+  "哈泊尔卡法萨巴": [
+    "hapoelkfarsaba"
+  ],
+  "法萨巴夏普尔": [
+    "hapoelkfarsaba"
+  ],
+  "kiryatyamsc": [
+    "基里亚特亚姆sc"
+  ],
+  "基里亚特亚姆sc": [
+    "kiryatyamsc"
+  ],
+  "hapoelacre": [
+    "哈泊尔阿卡"
+  ],
+  "哈泊尔阿卡": [
+    "hapoelacre"
+  ],
+  "maccabiherzliya": [
+    "马卡比赫兹利亚"
+  ],
+  "马卡比赫兹利亚": [
+    "maccabiherzliya"
+  ],
+  "hapoelhadera": [
+    "哈泊尔哈代拉"
+  ],
+  "哈泊尔哈代拉": [
+    "hapoelhadera"
+  ],
+  "albaniau21": [
+    "阿尔巴尼亚u21"
+  ],
+  "阿尔巴尼亚u21": [
+    "albaniau21"
+  ],
+  "uzbekistanu23": [
+    "乌兹别克斯坦u23"
+  ],
+  "乌兹别克斯坦u23": [
+    "uzbekistanu23"
+  ],
+  "duhok": [
+    "杜胡克"
+  ],
+  "杜胡克": [
+    "duhok"
+  ],
+  "czechrepublicu20": [
+    "捷克u20"
+  ],
+  "捷克u20": [
+    "czechrepublicu20"
+  ],
+  "portugalu20": [
+    "葡萄牙u20"
+  ],
+  "葡萄牙u20": [
+    "portugalu20"
+  ],
+  "sierraleone": [
+    "塞拉利昂"
+  ],
+  "塞拉利昂": [
+    "sierraleone"
+  ],
+  "hamburgersvw": [
+    "汉堡女",
+    "汉堡女足"
+  ],
+  "汉堡女": [
+    "hamburgersvw"
+  ],
+  "汉堡女足": [
+    "hamburgersvw"
+  ],
+  "bayerleverkusenw": [
+    "勒沃库森女",
+    "勒沃库森女足"
+  ],
+  "勒沃库森女": [
+    "bayerleverkusenw"
+  ],
+  "勒沃库森女足": [
+    "bayerleverkusenw"
+  ],
+  "torpedomoskva": [
+    "莫斯科鱼雷"
+  ],
+  "莫斯科鱼雷": [
+    "torpedomoskva"
+  ],
+  "skakhabarovsk": [
+    "ska哈巴罗夫斯克",
+    "哈巴罗夫斯克ska"
+  ],
+  "哈巴罗夫斯克ska": [
+    "skakhabarovsk"
+  ],
+  "abachacityfc": [
+    "阿巴查城fc"
+  ],
+  "阿巴查城fc": [
+    "abachacityfc"
+  ],
+  "portsauthorityfc": [
+    "港务局fc"
+  ],
+  "港务局fc": [
+    "portsauthorityfc"
+  ],
+  "ska哈巴罗夫斯克": [
+    "skakhabarovsk"
+  ],
+  "arezzo": [
+    "阿雷佐",
+    "阿雷素"
+  ],
+  "阿雷佐": [
+    "arezzo"
+  ],
+  "ascoli": [
+    "阿斯科利"
+  ],
+  "阿斯科利": [
+    "ascoli"
+  ],
+  "泽德": [
+    "masr"
+  ],
+  "casertana": [
+    "卡塞塔纳"
+  ],
+  "卡塞塔纳": [
+    "casertana"
+  ],
+  "sorrento": [
+    "索伦托"
+  ],
+  "索伦托": [
+    "sorrento"
+  ],
+  "juventuddelaspiedras": [
+    "尤文都德彼德拉斯",
+    "青年皮耶德拉斯"
+  ],
+  "青年皮耶德拉斯": [
+    "juventuddelaspiedras"
+  ],
+  "bostonriver": [
+    "波士顿河"
+  ],
+  "波士顿河": [
+    "bostonriver"
+  ],
+  "尤文都德彼德拉斯": [
+    "juventuddelaspiedras"
+  ],
+  "阿雷素": [
+    "arezzo"
+  ],
+  "defensoresdebelgrano": [
+    "贝尔格拉诺防卫者",
+    "贝尔格拉诺防卫队"
+  ],
+  "贝尔格拉诺防卫者": [
+    "defensoresdebelgrano"
+  ],
+  "贝尔格拉诺防卫队": [
+    "defensoresdebelgrano"
+  ],
+  "independienteyumbo": [
+    "indyumbo"
+  ],
+  "cerrolargo": [
+    "塞罗拉尔戈"
+  ],
+  "塞罗拉尔戈": [
+    "cerrolargo"
+  ],
+  "cobresal": [
+    "科布雷萨尔"
+  ],
+  "科布雷萨尔": [
+    "cobresal"
+  ],
+  "ucatolica": [
+    "智利大学"
+  ],
+  "智利大学": [
+    "ucatolica"
+  ],
+  "jacuipense": [
+    "雅库伊彭塞"
+  ],
+  "雅库伊彭塞": [
+    "jacuipense"
+  ],
+  "americarn": [
+    "美洲队rn"
+  ],
+  "美洲队rn": [
+    "americarn"
+  ],
+  "racingunited": [
+    "竞速联队"
+  ],
+  "竞速联队": [
+    "racingunited"
+  ],
+  "treasurebeach": [
+    "珍宝沙滩队"
+  ],
+  "珍宝沙滩队": [
+    "treasurebeach"
+  ],
+  "atleticomineirow": [
+    "米内罗竞技女足"
+  ],
+  "米内罗竞技女足": [
+    "atleticomineirow"
+  ],
+  "independientemedellin": [
+    "麦德林独立"
+  ],
+  "麦德林独立": [
+    "independientemedellin"
+  ],
+  "americadecali": [
+    "卡利美洲"
+  ],
+  "卡利美洲": [
+    "americadecali"
+  ],
+  "centralespanol": [
+    "中西班牙",
+    "艾斯潘诺中心"
+  ],
+  "中西班牙": [
+    "centralespanol"
+  ],
+  "deportivomaldonado": [
+    "马尔多纳多",
+    "马尔多纳多竞技"
+  ],
+  "马尔多纳多竞技": [
+    "deportivomaldonado"
+  ],
+  "艾斯潘诺中心": [
+    "centralespanol"
+  ],
+  "马尔多纳多": [
+    "deportivomaldonado"
+  ],
+  "unionsantafe": [
+    "圣达菲联"
+  ],
+  "圣达菲联": [
+    "unionsantafe"
+  ],
+  "agropecuariod": [
+    "阿格罗佩库阿里奥d队"
+  ],
+  "阿格罗佩库阿里奥d队": [
+    "agropecuariod"
+  ],
+  "unistars": [
+    "明星队"
+  ],
+  "明星队": [
+    "unistars"
+  ],
+  "riverplate": [
+    "河床"
+  ],
+  "arnettgardens": [
+    "阿内特花园"
+  ],
+  "阿内特花园": [
+    "arnettgardens"
+  ],
+  "mountpleasantacademy": [
+    "普莱森特山学院"
+  ],
+  "普莱森特山学院": [
+    "mountpleasantacademy"
+  ],
+  "intersancarlos": [
+    "因特聖卡洛斯"
+  ],
+  "因特聖卡洛斯": [
+    "intersancarlos"
+  ],
+  "municipalgrecia": [
+    "市鎮格雷西亞"
+  ],
+  "市鎮格雷西亞": [
+    "municipalgrecia"
+  ],
+  "millonarios": [
+    "百万富翁"
+  ],
+  "百万富翁": [
+    "millonarios"
+  ],
+  "fortalezafc": [
+    "福塔雷萨"
   ]
 }

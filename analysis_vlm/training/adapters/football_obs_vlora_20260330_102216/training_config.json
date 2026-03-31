@@ -1,0 +1,15 @@
+{
+  "run_name": "football_obs_vlora_20260330_102216",
+  "model": "/Users/niannianshunjing/.omlx/models/Qwen3.5-VL-9B-8bit-MLX-CRACK",
+  "train_data": "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/06_training_pool/training_data/frame_conversations.jsonl",
+  "eval_data": "/Volumes/990 PRO PCIe 4T/match_plan_dataset_library/06_training_pool/training_data/holdout_eval.jsonl",
+  "adapter_path": "/Users/niannianshunjing/match_plan/analysis_vlm/training/adapters/football_obs_vlora_20260330_102216",
+  "lora_rank": 16,
+  "batch_size": 1,
+  "learning_rate": 1e-05,
+  "iters": 1000,
+  "max_seq_length": 2048,
+  "grad_checkpoint": true,
+  "framework": "mlx-vlm",
+  "started_at": "2026-03-30T17:22:16.331377+00:00"
+}

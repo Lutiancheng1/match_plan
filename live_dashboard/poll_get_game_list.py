@@ -21,6 +21,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+RECORDINGS_DIR = SCRIPT_DIR.parent / "recordings"
+if str(RECORDINGS_DIR) not in sys.path:
+    sys.path.insert(0, str(RECORDINGS_DIR))
+
+from recording_proxy_runtime import update_observed_domains
+
 
 DEFAULT_URL = "https://112.121.42.168/transform.php?ver=2026-03-19-fireicon_142"
 DEFAULT_GTYPE_ORDER = ("FT", "BK", "ES", "TN", "VB", "BM", "TT", "BS", "SK", "OP")
@@ -648,14 +655,34 @@ def fetch_xml(url: str, body: str, cookie: str | None, timeout: float) -> str:
     # The target uses an invalid / self-signed certificate.
     context = ssl._create_unverified_context()
     last_error: Exception | None = None
+    started_at = time.time()
     for _attempt in range(2):
         try:
             with urllib.request.urlopen(request, timeout=timeout, context=context) as resp:
+                update_observed_domains(
+                    source="live_dashboard.poll_get_game_list.fetch_xml",
+                    requested_url=url,
+                    final_url=resp.geturl() or url,
+                    elapsed_seconds=time.time() - started_at,
+                )
                 return resp.read().decode("utf-8", errors="replace")
         except IncompleteRead as exc:
+            update_observed_domains(
+                source="live_dashboard.poll_get_game_list.fetch_xml",
+                requested_url=url,
+                final_url=url,
+                error="IncompleteRead",
+                elapsed_seconds=time.time() - started_at,
+            )
             return exc.partial.decode("utf-8", errors="replace")
         except (socket.timeout, TimeoutError, urllib.error.URLError, OSError) as exc:
             last_error = exc
+            update_observed_domains(
+                source="live_dashboard.poll_get_game_list.fetch_xml",
+                requested_url=url,
+                error=f"{type(exc).__name__}: {exc}",
+                elapsed_seconds=time.time() - started_at,
+            )
             time.sleep(0.35)
     if last_error is not None:
         raise last_error

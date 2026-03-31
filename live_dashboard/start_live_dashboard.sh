@@ -3,6 +3,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ENV_FILE="${1:-$SCRIPT_DIR/live_dashboard.env}"
+RECORDINGS_DIR="$SCRIPT_DIR/../recordings"
+PROXY_ENV_FILE="$RECORDINGS_DIR/watch_runtime/proxy_runtime/recording_proxy.env"
 cd "$SCRIPT_DIR"
 
 if [[ ! -f "$ENV_FILE" ]]; then
@@ -14,6 +16,15 @@ fi
 set -a
 source "$ENV_FILE"
 set +a
+
+if [[ -f "$RECORDINGS_DIR/recording_proxy_runtime.py" ]]; then
+  python3 "$RECORDINGS_DIR/recording_proxy_runtime.py" ensure --policy safari_system_fallback >/dev/null 2>&1 || true
+fi
+if [[ -f "$PROXY_ENV_FILE" ]]; then
+  set -a
+  source "$PROXY_ENV_FILE"
+  set +a
+fi
 
 # Require either auto-login credentials or manual cookie/body
 if [[ -z "${LOGIN_USERNAME:-}" || -z "${LOGIN_PASSWORD:-}" ]]; then
@@ -28,11 +39,11 @@ OUTPUT_DIR="${OUTPUT_DIR:-$SCRIPT_DIR/live_service_data}"
 if [[ "$OUTPUT_DIR" != /* ]]; then
   OUTPUT_DIR="$SCRIPT_DIR/$OUTPUT_DIR"
 fi
-POLL_INTERVAL="${POLL_INTERVAL:-10}"
+POLL_INTERVAL="${POLL_INTERVAL:-1}"
 REFRESH_MS="${REFRESH_MS:-1000}"
 TIMEOUT="${TIMEOUT:-30}"
 MORE_FILTER="${MORE_FILTER:-All}"
-GTYPES="${GTYPES:-ft,bk,es,tn,vb,bm,tt,bs,sk,op}"
+GTYPES="${GTYPES:-ft}"
 INCLUDE_MORE="${INCLUDE_MORE:-1}"
 
 mkdir -p "$OUTPUT_DIR"

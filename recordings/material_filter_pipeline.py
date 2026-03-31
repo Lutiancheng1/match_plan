@@ -153,8 +153,19 @@ def classify_tier(
     coverage_ratio: float,
     gold_threshold: float,
     silver_threshold: float,
+    is_pgstapp: bool = False,
+    raw_betting_rows: int = 0,
 ) -> str:
     base_ok = status == "completed" and binding == "bound" and matched_rows > 0
+
+    # pgstapp sessions: direct LiveKit capture with confirmed data binding.
+    # They don't produce timeline/viewer, but raw_betting_data proves data
+    # was polled throughout the match.
+    if is_pgstapp and base_ok and raw_betting_rows >= 50:
+        return "gold"
+    if is_pgstapp and base_ok and raw_betting_rows >= 5:
+        return "silver_review"
+
     has_sync_files = bool(timeline) and bool(viewer)
     if base_ok and has_sync_files and coverage_ratio >= gold_threshold:
         return "gold"
@@ -196,6 +207,8 @@ def build_material_row(
         coverage_ratio=coverage_ratio,
         gold_threshold=gold_threshold,
         silver_threshold=silver_threshold,
+        is_pgstapp=bool(rec.get("_pgstapp")),
+        raw_betting_rows=int(rec.get("_raw_betting_rows") or 0),
     )
 
     return MaterialRow(
@@ -219,6 +232,35 @@ def build_material_row(
     )
 
 
+def _normalize_pgstapp_record(payload: dict[str, Any], session_dir: Path) -> dict[str, Any]:
+    """Convert flat pgstapp session_result into the streams-compatible dict."""
+    state = payload.get("status", {})
+    effective_status = "completed" if isinstance(state, dict) and state.get("state") == "completed" else str(state)
+    matched_rows = int(payload.get("matched_rows") or 0)
+
+    # Check raw_betting_data row count as a proxy for data quality
+    raw_betting = session_dir / "raw_betting_data.jsonl"
+    raw_betting_rows = 0
+    if raw_betting.exists():
+        with raw_betting.open() as fh:
+            raw_betting_rows = sum(1 for _ in fh)
+
+    binding = "bound" if matched_rows > 0 and raw_betting_rows >= 5 else "unbound"
+
+    return {
+        "match_id": payload.get("match_id", ""),
+        "teams": payload.get("teams", ""),
+        "merged_video": payload.get("merged_video", ""),
+        "matched_rows": matched_rows,
+        "status": effective_status,
+        "data_binding_status": binding,
+        "recording_note": "",
+        "gtype": payload.get("match_id", "").split("_", 1)[0] if payload.get("match_id") else "",
+        "_pgstapp": True,
+        "_raw_betting_rows": raw_betting_rows,
+    }
+
+
 def scan_materials(
     recordings_root: Path, *, gold_threshold: float, silver_threshold: float
 ) -> list[MaterialRow]:
@@ -228,7 +270,15 @@ def scan_materials(
             payload = json.loads(session_result.read_text())
         except Exception:
             continue
-        for rec in payload.get("streams", []):
+
+        # Old format: has "streams" array
+        if "streams" in payload:
+            records = payload["streams"]
+        else:
+            # New pgstapp flat format
+            records = [_normalize_pgstapp_record(payload, session_result.parent)]
+
+        for rec in records:
             if not isinstance(rec, dict):
                 continue
             row = build_material_row(

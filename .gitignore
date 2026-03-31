@@ -21,3 +21,17 @@ __pycache__/
 # Common local logs and pid files
 *.log
 *.pid
+
+# Large binaries — not source code
+recordings/.bin/
+recordings/pion_gst_direct_chain/pion_gst_direct_chain
+recordings/mac_app/MatchPlanRecorderApp/dist/
+
+# LoRA adapter weights (large, reproducible from training script)
+analysis_vlm/training/adapters/*/*.safetensors
+
+# Benchmark report data (reproducible)
+analysis_vlm/reports/*/
+
+# Video pipeline removed — ignore stale paths
+/video_pipeline/

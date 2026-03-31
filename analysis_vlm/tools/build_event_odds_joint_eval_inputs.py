@@ -20,10 +20,44 @@ DEFAULT_SCHEMA = Path(
 PRIMARY_HOME_FIELD = "ior_reh"
 PRIMARY_AWAY_FIELD = "ior_rec"
 WINDOW_OFFSETS = (-15, 0, 15, 30, 60)
+KNOWN_GTYPES = {"FT", "BK", "ES", "TN", "VB", "BM", "TT", "BS", "SK", "OP"}
 
 
 def load_json(path: Path):
     return json.loads(path.read_text())
+
+
+def parse_gtypes(raw: str) -> set[str]:
+    return {item.strip().upper() for item in str(raw or "").split(",") if item.strip()}
+
+
+def prefixed_gtype(value: object) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    for candidate in (Path(text).name, Path(text).stem, text):
+        prefix = candidate.split("_", 1)[0].upper()
+        if prefix in KNOWN_GTYPES:
+            return prefix
+    return ""
+
+
+def infer_record_gtype(match: dict, record_stub: dict | None = None, strong_event_record: dict | None = None) -> str:
+    record_stub = record_stub or {}
+    strong_event_record = strong_event_record or {}
+    for value in (
+        strong_event_record.get("gtype"),
+        match.get("gtype"),
+        record_stub.get("gtype"),
+        strong_event_record.get("clip_path"),
+        record_stub.get("clip_path"),
+        record_stub.get("output_path"),
+        match.get("teams"),
+    ):
+        gtype = prefixed_gtype(value)
+        if gtype:
+            return gtype
+    return "UNKNOWN"
 
 
 def ensure_schema_exists(schema_path: Path) -> None:
@@ -109,6 +143,11 @@ def compute_repricing_ground_truth(window_rows: dict[str, dict]) -> dict:
     first_leg_urgency = "none"
     hedge_window_expected_sec = 0
     rationale = "No stable repricing signal computed yet."
+    trigger_family = "strong_event"
+    suggested_side = "none"
+    entry_window_open = False
+    hedge_watch_open = False
+    voice_text = ""
 
     deltas: dict[str, float] = {}
     if pivot_home is not None and future_home is not None:
@@ -138,12 +177,20 @@ def compute_repricing_ground_truth(window_rows: dict[str, dict]) -> dict:
                 first_leg_side = "home"
             elif direction.startswith("away_"):
                 first_leg_side = "away"
+            suggested_side = first_leg_side
             first_leg_urgency = "immediate" if abs_delta >= 0.08 else "soon"
             hedge_window_expected_sec = 30 if abs_delta >= 0.08 else 60
+            entry_window_open = True
+            hedge_watch_open = True
             rationale = (
                 f"Primary handicap odds moved on {side} side by {delta:+.3f} "
                 f"between pivot and later evaluation window."
             )
+            if first_leg_side in {"home", "away"}:
+                voice_text = (
+                    f"{first_leg_side} 方向进入观察窗口，"
+                    f"预计 {hedge_window_expected_sec} 秒内关注反手价。"
+                )
 
     return {
         "repricing_expected": repricing_expected,
@@ -152,6 +199,11 @@ def compute_repricing_ground_truth(window_rows: dict[str, dict]) -> dict:
         "first_leg_side": first_leg_side,
         "first_leg_urgency": first_leg_urgency,
         "hedge_window_expected_sec": hedge_window_expected_sec,
+        "trigger_family": trigger_family,
+        "suggested_side": suggested_side,
+        "entry_window_open": entry_window_open,
+        "hedge_watch_open": hedge_watch_open,
+        "voice_text": voice_text,
         "edge_rationale_short": rationale,
         "ground_truth_delta": {
             "home_ior_reh_delta": deltas.get("home"),
@@ -177,6 +229,7 @@ def build_joint_eval_record(strong_event_record: dict) -> dict:
     ground_truth = compute_repricing_ground_truth(window_rows)
     record = {
         "clip_id": strong_event_record["clip_id"],
+        "gtype": strong_event_record.get("gtype", "UNKNOWN"),
         "teams": strong_event_record.get("teams", ""),
         "quality_tier": strong_event_record.get("quality_tier", "gold"),
         "clip_path": strong_event_record.get("clip_path", ""),
@@ -217,7 +270,21 @@ def build_joint_eval_record(strong_event_record: dict) -> dict:
             "first_leg_side": "",
             "first_leg_urgency": "",
             "hedge_window_expected_sec": None,
+            "trigger_family": "strong_event",
+            "suggested_side": "none",
+            "entry_window_open": False,
+            "hedge_watch_open": False,
+            "voice_text": "",
             "edge_rationale_short": "",
+        },
+        "realtime_trade_alert_stub": {
+            "alert_type": "watch",
+            "trigger_family": "strong_event",
+            "suggested_side": "none",
+            "entry_window_open": False,
+            "hedge_watch_open": False,
+            "voice_text": "",
+            "rationale_short": "",
         },
     }
     return record
@@ -228,6 +295,7 @@ def main() -> int:
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--schema", type=Path, default=DEFAULT_SCHEMA)
+    parser.add_argument("--gtypes", default="FT")
     args = parser.parse_args()
 
     ensure_schema_exists(args.schema)
@@ -241,8 +309,12 @@ def main() -> int:
 
     manifest_records: list[dict] = []
     created = 0
+    allowed_gtypes = parse_gtypes(args.gtypes)
 
     for match in payload.get("matches", []):
+        match_gtype = infer_record_gtype(match)
+        if allowed_gtypes and match_gtype not in allowed_gtypes:
+            continue
         teams = match.get("teams", "unknown_match")
         safe_teams = teams.replace(" ", "_").replace("/", "_")
         match_dir = labels_root / safe_teams
@@ -251,6 +323,10 @@ def main() -> int:
         for record_stub in match.get("records", []):
             strong_event_path = Path(record_stub["output_path"])
             strong_event_record = load_json(strong_event_path)
+            record_gtype = infer_record_gtype(match, record_stub, strong_event_record)
+            if allowed_gtypes and record_gtype not in allowed_gtypes:
+                continue
+            strong_event_record["gtype"] = record_gtype
             joint_record = build_joint_eval_record(strong_event_record)
             out_path = match_dir / f"{record_stub['clip_id']}.json"
             out_path.write_text(json.dumps(joint_record, ensure_ascii=False, indent=2))
@@ -258,6 +334,7 @@ def main() -> int:
             per_match.append(
                 {
                     "clip_id": record_stub["clip_id"],
+                    "gtype": record_gtype,
                     "output_path": str(out_path),
                     "clip_path": record_stub["clip_path"],
                     "source_strong_event_path": str(strong_event_path),
@@ -265,6 +342,7 @@ def main() -> int:
             )
 
         match_manifest = {
+            "gtype": match_gtype,
             "teams": teams,
             "clip_count": len(per_match),
             "records": per_match,
@@ -275,6 +353,7 @@ def main() -> int:
 
     current_manifest = {
         "source_manifest": str(args.manifest),
+        "gtypes": sorted(allowed_gtypes) if allowed_gtypes else [],
         "match_count": len(manifest_records),
         "record_count": created,
         "matches": manifest_records,

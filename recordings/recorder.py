@@ -3,12 +3,16 @@
 recorder.py - 足球比赛屏幕录制器（含卡顿检测 + 断流处理）
 ============================================================
 功能：
-  1. 用 ffmpeg avfoundation 捕获指定屏幕
+  1. 主链优先使用 ScreenCaptureKit 录制指定浏览器窗口
   2. 每隔 N 分钟自动分段保存（避免单个文件过大）
   3. 每2秒检查录制是否在进行（文件大小是否增长）
   4. 卡顿超过阈值 → 插入黑帧填补空白 → 重启录制
   5. 断流 → 记录空白段 → 等待恢复 → 继续录制
   6. 全程写入 manifest.json（视频文件 + 时间轴 + 空白段）
+
+说明：
+  - 当前生产主链是 ScreenCaptureKit 指定窗口录制
+  - ffmpeg avfoundation 屏幕裁剪仅保留为遗留兜底，不再视为常规主链方案
 
 使用方法：
   # 基本录制（主屏幕，自动分段30分钟）
@@ -54,10 +58,20 @@ DEFAULT_SEGMENT_MINUTES = 30     # 每个分段的时长（分钟）
 DEFAULT_OUTPUT_DIR = os.path.expanduser("~/Desktop/recordings")
 
 FREEZE_CHECK_INTERVAL = 2.0      # 每隔几秒检查一次文件大小
-FREEZE_THRESHOLD_SECONDS = 8.0   # 文件大小超过几秒不增长 → 判定为卡顿
-CONCURRENT_FREEZE_THRESHOLD = 20.0  # 并发模式下容忍度更高（多路编码更慢）
+FREEZE_THRESHOLD_SECONDS = 60.0   # 文件大小超过几秒不增长 → 判定为卡顿
+CONCURRENT_FREEZE_THRESHOLD = 60.0  # 并发模式下容忍度更高（多路编码更慢）
 RECONNECT_WAIT_SECONDS = 5.0     # 检测到断流后等待几秒再重试
 MAX_RECONNECT_ATTEMPTS = 10      # 最多重试次数
+WINDOW_START_STAGGER_BASE_SECONDS = 0.35
+WINDOW_START_STAGGER_DENSE_SECONDS = 0.8
+WINDOW_START_STAGGER_HEAVY_SECONDS = 1.2
+WINDOW_START_STAGGER_DENSE_THRESHOLD = 6
+WINDOW_START_STAGGER_HEAVY_THRESHOLD = 10
+WINDOW_BACKEND_BATCH_EXIT_WINDOW_SECONDS = 8.0
+WINDOW_BACKEND_BATCH_EXIT_MIN_FAILED = 3
+WINDOW_BACKEND_BATCH_REATTACH_DELAY_SECONDS = 3.0
+WINDOW_BACKEND_BATCH_REATTACH_MAX_ATTEMPTS = 2
+WINDOW_BACKEND_BATCH_RECOVERY_RESET_SECONDS = 90.0
 
 # ffmpeg 编码参数（单路和多路共用）
 FFMPEG_ENCODE_ARGS = [
@@ -493,6 +507,11 @@ class WindowCaptureProcess:
     def is_running(self):
         return self._process is not None and self._process.poll() is None
 
+    def exit_code(self):
+        if self._process is None:
+            return None
+        return self._process.poll()
+
     def get_elapsed(self):
         if self._start_time:
             return now_ts() - self._start_time
@@ -844,7 +863,9 @@ class ConcurrentRecorder:
                  width=DEFAULT_WIDTH, height=DEFAULT_HEIGHT,
                  segment_minutes=DEFAULT_SEGMENT_MINUTES,
                  issue_callback=None,
-                 auto_rotate_segments=True):
+                 auto_rotate_segments=True,
+                 freeze_threshold_seconds=CONCURRENT_FREEZE_THRESHOLD,
+                 issue_recovery_enabled=True):
         """
         streams: [{"match_id": str, "output_dir": str, "crop": (x, y, w, h)}, ...]
         width/height: 每路输出的分辨率（缩放后）
@@ -857,6 +878,8 @@ class ConcurrentRecorder:
         self.segment_duration = segment_minutes * 60
         self.issue_callback = issue_callback
         self.auto_rotate_segments = auto_rotate_segments
+        self.freeze_threshold_seconds = max(1.0, float(freeze_threshold_seconds))
+        self.issue_recovery_enabled = bool(issue_recovery_enabled)
         self.n = len(streams)
         self._window_backend_requested = all(s.get("window_id") for s in streams)
         self._window_backend_available = bool(build_window_capture_helper()) if self._window_backend_requested else False
@@ -884,7 +907,7 @@ class ConcurrentRecorder:
             self._output_dirs.append(out_dir)
             self._manifests.append(Manifest(out_dir, s["match_id"], self.recording_start_iso))
             # 并发模式下 ffmpeg 编码更慢，给更大容忍度
-            self._freeze_detectors.append(FreezeDetector(threshold=CONCURRENT_FREEZE_THRESHOLD))
+            self._freeze_detectors.append(FreezeDetector(threshold=self.freeze_threshold_seconds))
             self._segment_idxs.append(0)
             self._current_paths.append(None)
             self._stream_prefixes.append(
@@ -893,13 +916,21 @@ class ConcurrentRecorder:
 
         self._stop_event = threading.Event()
         self._process = None
-        self._window_recorders = []
-        self._seg_start_wall = 0.0
+        self._window_recorders = [None] * self.n
+        self._stream_enabled = [True] * self.n
+        self._segment_start_walls = [0.0] * self.n
+        self._batch_seg_start_wall = 0.0
         self._last_log_wall = 0.0
         self._stderr_handle = None
         self._recovery_lock = threading.Lock()
         self._segment_lock = threading.RLock()
         self._pending_restart_reason = None
+        self._planned_segment_transition_count = 0
+        self._recent_backend_exit_events = []
+        self._window_batch_recovery_attempts = 0
+        self._last_window_batch_recovery_wall = 0.0
+        self._last_window_backend_healthy_wall = 0.0
+        self.termination_reason = "running"
 
         log(f"并发录制器初始化完成: {self.n} 路输出")
         if self._backend == "window":
@@ -920,17 +951,223 @@ class ConcurrentRecorder:
             else:
                 cx, cy, cw, ch = s["crop"]
                 log(f"  [{i+1}] {s['match_id']}: crop {cw}x{ch}@({cx},{cy}) → {width}x{height}")
+        log(f"  卡顿阈值   : {self.freeze_threshold_seconds:.0f}s")
 
     def _backend_alive(self):
         if self._backend == "window":
-            return bool(self._window_recorders) and all(r.is_running() for r in self._window_recorders)
+            active_indices = self._active_stream_indices()
+            if not active_indices:
+                return False
+            return all(
+                self._window_recorders[idx] is not None and self._window_recorders[idx].is_running()
+                for idx in active_indices
+            )
         return self._process is not None and self._process.poll() is None
+
+    def stream_backend_healthy(self, stream_idx):
+        if stream_idx < 0 or stream_idx >= self.n:
+            return False
+        if self._backend == "window" and not self._stream_enabled[stream_idx]:
+            return False
+        if self._backend == "window":
+            recorder = self._window_recorders[stream_idx]
+            return recorder is not None and recorder.is_running()
+        return self._backend_alive()
+
+    def _failed_backend_stream_indices(self):
+        if self._backend == "window":
+            failed = [
+                idx
+                for idx, recorder in enumerate(self._window_recorders)
+                if self._stream_enabled[idx] and (recorder is None or not recorder.is_running())
+            ]
+            if failed:
+                return failed
+            return [idx for idx, enabled in enumerate(self._stream_enabled) if enabled] if not self._window_recorders else []
+        return list(range(self.n))
+
+    def _active_stream_indices(self):
+        return [idx for idx, enabled in enumerate(self._stream_enabled) if enabled]
+
+    def _enabled_stream_count(self):
+        return len(self._active_stream_indices())
+
+    def _window_start_stagger_seconds(self, enabled_count=None):
+        enabled_count = self._enabled_stream_count() if enabled_count is None else max(0, int(enabled_count))
+        if enabled_count >= WINDOW_START_STAGGER_HEAVY_THRESHOLD:
+            return WINDOW_START_STAGGER_HEAVY_SECONDS
+        if enabled_count >= WINDOW_START_STAGGER_DENSE_THRESHOLD:
+            return WINDOW_START_STAGGER_DENSE_SECONDS
+        return WINDOW_START_STAGGER_BASE_SECONDS
+
+    def _wait_window_start_stagger(self, enabled_count=None):
+        pause = self._window_start_stagger_seconds(enabled_count=enabled_count)
+        if pause <= 0:
+            return
+        self._stop_event.wait(timeout=pause)
+
+    def _trim_recent_backend_exit_events(self, now_wall=None):
+        now_wall = self._wall_time() if now_wall is None else now_wall
+        cutoff = now_wall - WINDOW_BACKEND_BATCH_EXIT_WINDOW_SECONDS
+        self._recent_backend_exit_events = [
+            event for event in self._recent_backend_exit_events
+            if event["wall"] >= cutoff
+        ]
+        return self._recent_backend_exit_events
+
+    def _register_backend_exit_events(self, failed_stream_indices, now_wall=None):
+        now_wall = self._wall_time() if now_wall is None else now_wall
+        existing = {
+            event["stream_idx"]
+            for event in self._trim_recent_backend_exit_events(now_wall)
+        }
+        for stream_idx in failed_stream_indices:
+            if stream_idx in existing:
+                continue
+            self._recent_backend_exit_events.append({"wall": now_wall, "stream_idx": stream_idx})
+        recent = self._trim_recent_backend_exit_events(now_wall)
+        return sorted({event["stream_idx"] for event in recent})
+
+    def _window_batch_exit_threshold(self, enabled_count=None):
+        enabled_count = self._enabled_stream_count() if enabled_count is None else max(0, int(enabled_count))
+        if enabled_count <= 1:
+            return 1
+        return min(enabled_count, max(WINDOW_BACKEND_BATCH_EXIT_MIN_FAILED, (enabled_count + 1) // 2))
+
+    def _should_attempt_window_batch_recovery(self, failed_stream_indices, now_wall=None):
+        if self._backend != "window":
+            return False, []
+        enabled_count = self._enabled_stream_count()
+        if enabled_count <= 1 or not failed_stream_indices:
+            return False, []
+        now_wall = self._wall_time() if now_wall is None else now_wall
+        recent_unique = self._register_backend_exit_events(failed_stream_indices, now_wall=now_wall)
+        threshold = self._window_batch_exit_threshold(enabled_count=enabled_count)
+        should_attempt = (
+            len(failed_stream_indices) >= threshold
+            or len(recent_unique) >= threshold
+            or len(failed_stream_indices) >= enabled_count
+        )
+        return should_attempt, recent_unique
+
+    def _reset_window_batch_recovery_state(self, reason=None):
+        if self._backend != "window":
+            return
+        if self._window_batch_recovery_attempts > 0 or self._recent_backend_exit_events:
+            if reason:
+                log(f"窗口批量 backend_exit 恢复状态已重置: {reason}")
+        self._window_batch_recovery_attempts = 0
+        self._recent_backend_exit_events = []
+        self._last_window_batch_recovery_wall = 0.0
+
+    def _maybe_reset_window_batch_recovery_state(self, now_wall=None):
+        if self._backend != "window":
+            return
+        now_wall = self._wall_time() if now_wall is None else now_wall
+        if self._backend_alive():
+            self._last_window_backend_healthy_wall = now_wall
+        if (
+            self._window_batch_recovery_attempts > 0
+            and self._backend_alive()
+            and self._last_window_batch_recovery_wall > 0
+            and (now_wall - self._last_window_batch_recovery_wall) >= WINDOW_BACKEND_BATCH_RECOVERY_RESET_SECONDS
+        ):
+            self._reset_window_batch_recovery_state(
+                f"距离上次批量重接管已稳定运行 {int(now_wall - self._last_window_batch_recovery_wall)} 秒"
+            )
+
+    def _attempt_window_batch_recovery(self, failed_stream_indices, recent_failed_indices):
+        enabled_before = self._enabled_stream_count()
+        if enabled_before <= 1:
+            return "skip"
+        if self._window_batch_recovery_attempts >= WINDOW_BACKEND_BATCH_REATTACH_MAX_ATTEMPTS:
+            log(
+                f"窗口录制批量 backend_exit 已达到最大重接管次数 "
+                f"({WINDOW_BACKEND_BATCH_REATTACH_MAX_ATTEMPTS})，不再继续尝试",
+                "ERROR",
+            )
+            return "exhausted"
+
+        self._window_batch_recovery_attempts += 1
+        self._last_window_batch_recovery_wall = self._wall_time()
+        attempt_no = self._window_batch_recovery_attempts
+        recent_count = len(recent_failed_indices or [])
+        log(
+            f"检测到窗口录制批量 backend_exit：本轮失败 {len(failed_stream_indices)} 路，"
+            f"{int(WINDOW_BACKEND_BATCH_EXIT_WINDOW_SECONDS)} 秒内累计 {recent_count} 路；"
+            f"等待 {WINDOW_BACKEND_BATCH_REATTACH_DELAY_SECONDS:.0f}s 后尝试重接管 "
+            f"({attempt_no}/{WINDOW_BACKEND_BATCH_REATTACH_MAX_ATTEMPTS})",
+            "WARN",
+        )
+        if self._stop_event.wait(timeout=WINDOW_BACKEND_BATCH_REATTACH_DELAY_SECONDS):
+            return "stopped"
+
+        with self._segment_lock:
+            current_failed = [
+                idx for idx in failed_stream_indices
+                if self._stream_enabled[idx] and not self.stream_backend_healthy(idx)
+            ]
+            if not current_failed:
+                self._last_window_backend_healthy_wall = self._wall_time()
+                log("窗口录制批量 backend_exit 已在宽限期内恢复，无需重新接管")
+                return "recovered"
+
+            self._ensure_stderr_handle(reset=False)
+            recovered = []
+            unrecovered = []
+            for pos, failed_idx in enumerate(current_failed):
+                ok = self._restart_window_stream(failed_idx, reason="backend_batch_exit")
+                if ok:
+                    recovered.append(failed_idx)
+                else:
+                    unrecovered.append(failed_idx)
+                if pos < len(current_failed) - 1:
+                    self._wait_window_start_stagger(enabled_count=len(current_failed))
+
+            healthy_after = [
+                idx for idx in self._active_stream_indices()
+                if self.stream_backend_healthy(idx)
+            ]
+            if recovered:
+                self._last_window_backend_healthy_wall = self._wall_time()
+                log(
+                    "窗口录制批量 backend_exit 已部分恢复: "
+                    + ", ".join(str(idx + 1) for idx in recovered),
+                    "WARN",
+                )
+
+            if unrecovered:
+                if healthy_after:
+                    for failed_idx in unrecovered:
+                        log(
+                            f"第 {failed_idx + 1} 路批量重接管失败，已移除该路，其余路继续",
+                            "ERROR",
+                        )
+                        self.disable_stream(failed_idx, reason="backend_batch_exit_recovery_failed")
+                    return "partial"
+                if attempt_no < WINDOW_BACKEND_BATCH_REATTACH_MAX_ATTEMPTS:
+                    log(
+                        "窗口录制批量 backend_exit 本轮仍未恢复；保留当前页面，下一轮继续尝试重接管",
+                        "WARN",
+                    )
+                    return "retry_later"
+                for failed_idx in unrecovered:
+                    log(
+                        f"第 {failed_idx + 1} 路批量重接管失败，且已无存活路；标记该路退出",
+                        "ERROR",
+                    )
+                    self.disable_stream(failed_idx, reason="backend_batch_exit_recovery_failed")
+                return "exhausted"
+
+            self._reset_window_batch_recovery_state("批量 backend_exit 已恢复")
+            return "recovered"
 
     def _stop_backend(self):
         if self._backend == "window":
             for recorder in self._window_recorders:
-                recorder.stop()
-            self._window_recorders = []
+                if recorder:
+                    recorder.stop()
+            self._window_recorders = [None] * self.n
             return
         terminate_process(self._process)
 
@@ -951,19 +1188,114 @@ class ConcurrentRecorder:
     def segment_transition(self):
         return self._segment_lock
 
+    def begin_planned_segment_transition(self):
+        with self._segment_lock:
+            self._planned_segment_transition_count += 1
+
+    def end_planned_segment_transition(self):
+        with self._segment_lock:
+            if self._planned_segment_transition_count > 0:
+                self._planned_segment_transition_count -= 1
+
+    def in_planned_segment_transition(self):
+        return self._planned_segment_transition_count > 0
+
+    def _next_segment_path(self, stream_idx):
+        self._segment_idxs[stream_idx] += 1
+        start_label = wall_time_label(self._wall_time())
+        path = os.path.join(
+            self._output_dirs[stream_idx],
+            f"{self._stream_prefixes[stream_idx]}__seg_{self._segment_idxs[stream_idx]:03d}__t{start_label}.mp4"
+        )
+        self._current_paths[stream_idx] = path
+        self._segment_start_walls[stream_idx] = self._wall_time()
+        return path
+
     def _next_segment_paths(self):
         """为所有流生成下一组分段文件路径"""
-        paths = []
-        for i in range(self.n):
-            self._segment_idxs[i] += 1
-            start_label = wall_time_label(self._wall_time())
-            path = os.path.join(
-                self._output_dirs[i],
-                f"{self._stream_prefixes[i]}__seg_{self._segment_idxs[i]:03d}__t{start_label}.mp4"
+        return [self._next_segment_path(i) for i in range(self.n)]
+
+    def _ensure_stderr_handle(self, reset=False):
+        if reset and self._stderr_handle:
+            try:
+                self._stderr_handle.close()
+            except Exception:
+                pass
+            self._stderr_handle = None
+        if self._stderr_handle:
+            return
+        stderr_path = os.path.join(self._output_dirs[0], "ffmpeg_stderr.log")
+        self._stderr_handle = open(stderr_path, "a", encoding="utf-8")
+        self._stderr_handle.write("\n=== start segment ===\n")
+        self._stderr_handle.flush()
+
+    def _start_window_stream(self, stream_idx):
+        path = self._next_segment_path(stream_idx)
+        stream = self.streams[stream_idx]
+        recorder = WindowCaptureProcess(
+            window_id=stream["window_id"],
+            output_path=path,
+            fps=self.fps,
+            width=0,
+            height=0,
+            content_crop=stream.get("content_crop"),
+            stderr_handle=self._stderr_handle,
+        )
+        self._window_recorders[stream_idx] = recorder
+        cmd = recorder._build_command() or []
+        self._stderr_handle.write("CMD: " + " ".join(cmd) + "\n")
+        self._stderr_handle.flush()
+        recorder.start()
+        ready = wait_for_files(path, max_wait=20.0)
+        if not ready:
+            log(f"window 后端启动后 20 秒内未看到第 {stream_idx + 1} 路分段写入: {get_file_size(path)}", "WARN")
+        if not recorder.is_running():
+            log(f"第 {stream_idx + 1} 路窗口录制启动失败！检查屏幕录制权限和 ScreenCaptureKit 日志。", "ERROR")
+            return False
+        self._freeze_detectors[stream_idx].reset(path)
+        log(f"  ▶ [{stream_idx+1}] 分段 {self._segment_idxs[stream_idx]}: {os.path.basename(path)}")
+        return True
+
+    def _record_stream_segment(self, stream_idx, reason="segment_end", wall_end=None):
+        wall_end = self._wall_time() if wall_end is None else wall_end
+        path = self._current_paths[stream_idx]
+        if path and os.path.exists(path) and get_file_size(path) > 0:
+            self._manifests[stream_idx].add_segment(
+                "live",
+                self._segment_start_walls[stream_idx],
+                wall_end,
+                os.path.basename(path),
+                reason=reason,
             )
-            paths.append(path)
-            self._current_paths[i] = path
-        return paths
+
+    def _stop_window_stream(self, stream_idx, reason="segment_end"):
+        recorder = self._window_recorders[stream_idx]
+        if recorder:
+            recorder.stop()
+        self._window_recorders[stream_idx] = None
+        self._record_stream_segment(stream_idx, reason=reason)
+
+    def disable_stream(self, stream_idx, reason="stream_disabled"):
+        if self._backend != "window":
+            return
+        if stream_idx < 0 or stream_idx >= self.n:
+            return
+        if not self._stream_enabled[stream_idx]:
+            return
+        self._stop_window_stream(stream_idx, reason=reason)
+        self._stream_enabled[stream_idx] = False
+        self._current_paths[stream_idx] = None
+        self._freeze_detectors[stream_idx].reset(None)
+
+    def revive_window_stream(self, stream_idx, reason="external_recovery"):
+        if self._backend != "window":
+            return False
+        if stream_idx < 0 or stream_idx >= self.n:
+            return False
+        with self._segment_lock:
+            self._ensure_stderr_handle(reset=False)
+            self._stream_enabled[stream_idx] = True
+            return self._start_window_stream(stream_idx)
 
     def _build_command(self, output_paths):
         """构建带 filter_complex 的多路输出 ffmpeg 命令"""
@@ -997,39 +1329,34 @@ class ConcurrentRecorder:
 
     def _start_segment(self):
         """启动一组新的分段录制"""
-        paths = self._next_segment_paths()
-        self._seg_start_wall = self._wall_time()
-
-        if self._stderr_handle:
-            try:
-                self._stderr_handle.close()
-            except Exception:
-                pass
-        stderr_path = os.path.join(self._output_dirs[0], "ffmpeg_stderr.log")
-        self._stderr_handle = open(stderr_path, "a", encoding="utf-8")
-        self._stderr_handle.write("\n=== start segment ===\n")
-
+        self._batch_seg_start_wall = self._wall_time()
+        self._ensure_stderr_handle(reset=True)
         if self._backend == "window":
             log(f"启动窗口多路录制 ({self.n} 路)...")
-            self._window_recorders = []
-            for i, path in enumerate(paths):
-                stream = self.streams[i]
-                recorder = WindowCaptureProcess(
-                    window_id=stream["window_id"],
-                    output_path=path,
-                    fps=self.fps,
-                    width=0,
-                    height=0,
-                    content_crop=stream.get("content_crop"),
-                    stderr_handle=self._stderr_handle,
+            self._window_recorders = [None] * self.n
+            start_ok = False
+            failed_start_indices = []
+            for i in range(self.n):
+                if not self._stream_enabled[i]:
+                    self._current_paths[i] = None
+                    continue
+                ok = self._start_window_stream(i)
+                start_ok = ok or start_ok
+                if not ok:
+                    failed_start_indices.append(i)
+                if i < self.n - 1:
+                    self._wait_window_start_stagger()
+            for failed_idx in failed_start_indices:
+                log(
+                    f"第 {failed_idx + 1} 路窗口录制启动失败，已将该路从当前批次移除，其余路继续",
+                    "ERROR",
                 )
-                self._window_recorders.append(recorder)
-                cmd = recorder._build_command() or []
-                self._stderr_handle.write("CMD: " + " ".join(cmd) + "\n")
-                self._stderr_handle.flush()
-                recorder.start()
+                self.disable_stream(failed_idx, reason="startup_failed")
             self._process = None
+            self._last_window_backend_healthy_wall = self._wall_time()
+            self._trim_recent_backend_exit_events(self._last_window_backend_healthy_wall)
         else:
+            paths = self._next_segment_paths()
             cmd = self._build_command(paths)
             log(f"启动 ffmpeg 多路录制 ({self.n} 路)...")
             self._stderr_handle.write("CMD: " + " ".join(cmd) + "\n")
@@ -1040,21 +1367,18 @@ class ConcurrentRecorder:
                 stderr=self._stderr_handle,
             )
 
-        ready = wait_for_files(paths, max_wait=20.0)
-        if not ready:
-            sizes = [get_file_size(p) for p in paths]
-            log(f"{self._backend} 后端启动后 20 秒内未看到分段写入: {sizes}", "WARN")
-
-        if not self._backend_alive():
-            if self._backend == "window":
+        if self._backend != "window":
+            ready = wait_for_files(paths, max_wait=20.0)
+            if not ready:
+                sizes = [get_file_size(p) for p in paths]
+                log(f"{self._backend} 后端启动后 20 秒内未看到分段写入: {sizes}", "WARN")
+        if self._backend == "window":
+            if not start_ok or not any(self._stream_enabled):
                 log("窗口录制启动失败！检查屏幕录制权限和 ScreenCaptureKit 日志。", "ERROR")
-            else:
+                return False
+        elif not self._backend_alive():
                 log("ffmpeg 启动失败！检查屏幕录制权限。", "ERROR")
-            return False
-
-        for i, path in enumerate(paths):
-            self._freeze_detectors[i].reset(path)
-            log(f"  ▶ [{i+1}] 分段 {self._segment_idxs[i]}: {os.path.basename(path)}")
+                return False
 
         return True
 
@@ -1062,17 +1386,23 @@ class ConcurrentRecorder:
         """将当前各路分段记录到 manifest"""
         wall_end = self._wall_time()
         for i in range(self.n):
-            path = self._current_paths[i]
-            if path and os.path.exists(path) and get_file_size(path) > 0:
-                self._manifests[i].add_segment(
-                    "live", self._seg_start_wall, wall_end,
-                    os.path.basename(path), reason=reason
-                )
+            self._record_stream_segment(i, reason=reason, wall_end=wall_end)
 
     def _stop_segment(self):
         """停止当前分段"""
-        self._stop_backend()
-        self._record_segments("segment_end")
+        if self._backend == "window":
+            for i in range(self.n):
+                self._stop_window_stream(i, reason="segment_end")
+        else:
+            self._stop_backend()
+            self._record_segments("segment_end")
+
+    def _restart_window_stream(self, stream_idx, reason="segment_end"):
+        if self._backend != "window":
+            return False
+        self._ensure_stderr_handle(reset=False)
+        self._stop_window_stream(stream_idx, reason=reason)
+        return self._start_window_stream(stream_idx)
 
     def _wall_time(self):
         return now_ts() - self.recording_start_ts
@@ -1096,6 +1426,7 @@ class ConcurrentRecorder:
 
         if not self._start_segment():
             log("ffmpeg 启动失败！", "ERROR")
+            self.termination_reason = "startup_failed"
             return False
 
         try:
@@ -1104,6 +1435,9 @@ class ConcurrentRecorder:
 
                 if self._stop_event.is_set():
                     break
+
+                if self.in_planned_segment_transition():
+                    continue
 
                 pending_restart_reason = self._consume_pending_restart()
                 if pending_restart_reason:
@@ -1116,30 +1450,95 @@ class ConcurrentRecorder:
 
                 # 检查 ffmpeg 进程是否还活着
                 if not self._backend_alive():
+                    failed_stream_indices = self._failed_backend_stream_indices()
+                    now_wall = self._wall_time()
+                    recent_failed_indices = []
+                    should_attempt_batch_recovery = False
+                    if self._backend == "window":
+                        should_attempt_batch_recovery, recent_failed_indices = self._should_attempt_window_batch_recovery(
+                            failed_stream_indices,
+                            now_wall=now_wall,
+                        )
                     if self.issue_callback:
                         try:
-                            self.issue_callback("backend_exit", {"stream_index": None})
+                            self.issue_callback(
+                                "backend_exit",
+                                {
+                                    "stream_index": failed_stream_indices[0] if len(failed_stream_indices) == 1 else None,
+                                    "stream_indices": failed_stream_indices,
+                                    "backend": self._backend,
+                                },
+                            )
                         except Exception as exc:
                             log(f"issue_callback(backend_exit) 失败: {exc}", "WARN")
+                    if self._backend == "window" and should_attempt_batch_recovery:
+                        recovery_result = self._attempt_window_batch_recovery(
+                            failed_stream_indices,
+                            recent_failed_indices,
+                        )
+                        if recovery_result in {"recovered", "partial", "retry_later", "stopped"}:
+                            continue
                     if self._backend == "window":
-                        log("窗口录制进程意外退出，尝试重启...", "WARN")
+                        if self.issue_recovery_enabled:
+                            log("窗口录制进程意外退出，尝试重启...", "WARN")
+                        else:
+                            log("窗口录制进程意外退出；当前已关闭自愈，不再自动重启该路", "ERROR")
                     else:
-                        log("ffmpeg 进程意外退出，尝试重启...", "WARN")
+                        if self.issue_recovery_enabled:
+                            log("ffmpeg 进程意外退出，尝试重启...", "WARN")
+                        else:
+                            log("ffmpeg 进程意外退出；当前已关闭自愈，不再自动重启", "ERROR")
                     with self._segment_lock:
-                        self._stop_segment()
-                        if not self._start_segment():
-                            break
+                        if not self.issue_recovery_enabled:
+                            if self._backend == "window" and failed_stream_indices:
+                                for failed_idx in failed_stream_indices:
+                                    log(
+                                        f"第 {failed_idx + 1} 路窗口录制后端退出；当前已关闭自愈，直接停掉该路，其余路继续",
+                                        "ERROR",
+                                    )
+                                    self.disable_stream(failed_idx, reason="backend_exit_no_recovery")
+                                if not any(self._stream_enabled):
+                                    self.termination_reason = "all_streams_backend_exit"
+                                    break
+                            else:
+                                self.termination_reason = "backend_exit"
+                                break
+                        elif self._backend == "window" and failed_stream_indices and len(failed_stream_indices) < self.n:
+                            restart_ok = True
+                            failed_restart_indices = []
+                            for failed_idx in failed_stream_indices:
+                                ok = self._restart_window_stream(failed_idx, reason="backend_exit")
+                                restart_ok = ok and restart_ok
+                                if not ok:
+                                    failed_restart_indices.append(failed_idx)
+                            if failed_restart_indices:
+                                for failed_idx in failed_restart_indices:
+                                    log(
+                                        f"第 {failed_idx + 1} 路窗口录制重启失败，已移除该路，其余路继续录制",
+                                        "ERROR",
+                                    )
+                                    self.disable_stream(failed_idx, reason="backend_exit")
+                                if not any(self._stream_enabled):
+                                    break
+                        else:
+                            self._stop_segment()
+                            if not self._start_segment():
+                                break
                     continue
 
-                # 检查各路是否卡顿（任一路卡顿 → 全部重启）
+                # 检查各路是否卡顿（窗口录制优先单路恢复；共享屏幕录制仍按整批重启）
                 any_frozen = False
                 actual_frozen_sec = 0.0
+                frozen_stream_idx = None
                 for i in range(self.n):
+                    if not self._stream_enabled[i]:
+                        continue
                     is_frozen, frozen_sec = self._freeze_detectors[i].check()
                     if is_frozen:
                         log(f"⚠ 检测到第 {i+1} 路卡顿（{frozen_sec:.0f}秒）", "WARN")
                         any_frozen = True
                         actual_frozen_sec = frozen_sec
+                        frozen_stream_idx = i
                         break
 
                 if any_frozen:
@@ -1147,15 +1546,32 @@ class ConcurrentRecorder:
                         try:
                             self.issue_callback(
                                 "freeze",
-                                {"stream_index": i, "frozen_sec": actual_frozen_sec},
+                                {"stream_index": frozen_stream_idx, "frozen_sec": actual_frozen_sec},
                             )
                         except Exception as exc:
                             log(f"issue_callback(freeze) 失败: {exc}", "WARN")
                     with self._segment_lock:
-                        self._stop_segment()
+                        if not self.issue_recovery_enabled:
+                            if self._backend == "window" and frozen_stream_idx is not None:
+                                log(
+                                    f"第 {frozen_stream_idx + 1} 路检测到卡顿；当前已关闭自愈，直接停掉该路，其余路继续",
+                                    "ERROR",
+                                )
+                                self.disable_stream(frozen_stream_idx, reason="freeze_no_recovery")
+                                if not any(self._stream_enabled):
+                                    self.termination_reason = "all_streams_freeze"
+                                    break
+                                continue
+                            self.termination_reason = "freeze"
+                            break
                         wall_now = self._wall_time()
                         gap_dur = actual_frozen_sec  # 用实际冻结时长，不用硬编码阈值
-                        for i in range(self.n):
+                        target_indices = [frozen_stream_idx] if self._backend == "window" and frozen_stream_idx is not None else list(range(self.n))
+                        if self._backend == "window" and frozen_stream_idx is not None:
+                            self._stop_window_stream(frozen_stream_idx, reason="freeze")
+                        else:
+                            self._stop_segment()
+                        for i in target_indices:
                             gap_path = os.path.join(
                                 self._output_dirs[i],
                                 f"{self._stream_prefixes[i]}__gap_{self._segment_idxs[i]:03d}__t{wall_time_label(wall_now - gap_dur)}.mp4",
@@ -1165,12 +1581,22 @@ class ConcurrentRecorder:
                                 "freeze", wall_now - gap_dur, wall_now,
                                 os.path.basename(gap_path)
                             )
-                        if not self._start_segment():
-                            break
+                        if self._backend == "window" and frozen_stream_idx is not None:
+                            if not self._start_window_stream(frozen_stream_idx):
+                                log(
+                                    f"第 {frozen_stream_idx + 1} 路窗口录制在 freeze 后重启失败，已移除该路，其余路继续录制",
+                                    "ERROR",
+                                )
+                                self.disable_stream(frozen_stream_idx, reason="freeze")
+                                if not any(self._stream_enabled):
+                                    break
+                        else:
+                            if not self._start_segment():
+                                break
                     continue
 
                 # 分段时间检查
-                if self.auto_rotate_segments and self._wall_time() - self._seg_start_wall >= self.segment_duration:
+                if self.auto_rotate_segments and self._wall_time() - self._batch_seg_start_wall >= self.segment_duration:
                     log("分段时间到，切换新分段...")
                     with self._segment_lock:
                         self._stop_segment()
@@ -1179,6 +1605,7 @@ class ConcurrentRecorder:
 
                 # 状态日志（每 30 秒一次）
                 wall_now = self._wall_time()
+                self._maybe_reset_window_batch_recovery_state(now_wall=wall_now)
                 if wall_now - self._last_log_wall >= 30.0:
                     self._last_log_wall = wall_now
                     sizes = [get_file_size(p) / 1024 / 1024 for p in self._current_paths if p]
@@ -1187,15 +1614,25 @@ class ConcurrentRecorder:
 
         except Exception as e:
             log(f"并发录制异常: {e}", "ERROR")
+            self.termination_reason = "exception"
             import traceback
             traceback.print_exc()
 
         finally:
+            if self.termination_reason == "running":
+                if self._stop_event.is_set():
+                    self.termination_reason = "stopped"
+                else:
+                    self.termination_reason = "completed"
             log(f"\n{'─'*60}")
             log("停止并发录制...")
             with self._segment_lock:
-                self._stop_backend()
-                self._record_segments("recording_stopped")
+                if self._backend == "window":
+                    for i in range(self.n):
+                        self._stop_window_stream(i, reason="recording_stopped")
+                else:
+                    self._stop_backend()
+                    self._record_segments("recording_stopped")
             if self._stderr_handle:
                 try:
                     self._stderr_handle.close()
@@ -1203,7 +1640,10 @@ class ConcurrentRecorder:
                     pass
                 self._stderr_handle = None
             for i in range(self.n):
-                self._manifests[i].set_status("completed")
+                manifest_status = "completed"
+                if self.termination_reason not in {"completed", "stopped"}:
+                    manifest_status = "interrupted"
+                self._manifests[i].set_status(manifest_status)
 
             wall_end = self._wall_time()
             log(f"\n{'='*60}")

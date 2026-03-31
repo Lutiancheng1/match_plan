@@ -40,27 +40,27 @@
     "right_normalized": "摩尔多瓦",
     "left_example": "Moldova",
     "right_example": "摩尔多瓦",
-    "count": 34,
+    "count": 289,
     "promoted": true,
-    "last_seen_at": "2026-03-26T16:53:07.701615+00:00"
+    "last_seen_at": "2026-03-30T17:51:08.509688+00:00"
   },
   "lithuania <-> 立陶宛": {
     "left_normalized": "lithuania",
     "right_normalized": "立陶宛",
     "left_example": "Lithuania",
     "right_example": "立陶宛",
-    "count": 34,
+    "count": 206,
     "promoted": true,
-    "last_seen_at": "2026-03-26T16:53:07.701782+00:00"
+    "last_seen_at": "2026-03-29T14:51:46.442340+00:00"
   },
   "racingmontevideo <-> 蒙特维多竞赛会": {
     "left_normalized": "racingmontevideo",
     "right_normalized": "蒙特维多竞赛会",
     "left_example": "Racing Montevideo",
     "right_example": "蒙特维多竞赛会",
-    "count": 29,
+    "count": 350,
     "promoted": true,
-    "last_seen_at": "2026-03-26T17:48:40.091664+00:00"
+    "last_seen_at": "2026-03-30T00:29:26.694820+00:00"
   },
   "progreso <-> 普罗格雷索": {
     "left_normalized": "progreso",
@@ -76,9 +76,9 @@
     "right_normalized": "冰岛u21",
     "left_example": "Iceland U21",
     "right_example": "冰岛U21",
-    "count": 21,
+    "count": 321,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:20:43.926741+00:00"
+    "last_seen_at": "2026-03-30T18:52:12.879868+00:00"
   },
   "estoniau21 <-> 爱沙尼亚u21": {
     "left_normalized": "estoniau21",
@@ -94,27 +94,27 @@
     "right_normalized": "塞浦路斯",
     "left_example": "Cyprus",
     "right_example": "塞浦路斯",
-    "count": 27,
+    "count": 282,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:57:02.908129+00:00"
+    "last_seen_at": "2026-03-30T17:51:08.504868+00:00"
   },
   "belarus <-> 白俄罗斯": {
     "left_normalized": "belarus",
     "right_normalized": "白俄罗斯",
     "left_example": "Belarus",
     "right_example": "白俄罗斯",
-    "count": 27,
+    "count": 228,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:57:02.909103+00:00"
+    "last_seen_at": "2026-03-29T15:55:18.428437+00:00"
   },
   "georgia <-> 格鲁吉亚": {
     "left_normalized": "georgia",
     "right_normalized": "格鲁吉亚",
     "left_example": "Georgia",
     "right_example": "格鲁吉亚",
-    "count": 25,
+    "count": 197,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:50:36.249637+00:00"
+    "last_seen_at": "2026-03-29T14:51:46.445901+00:00"
   },
   "israel <-> 以色列": {
     "left_normalized": "israel",
@@ -242,24 +242,6 @@
     "promoted": true,
     "last_seen_at": "2026-03-26T18:24:06.736841+00:00"
   },
-  "hungaryu21 <-> 格鲁吉亚": {
-    "left_normalized": "hungaryu21",
-    "right_normalized": "格鲁吉亚",
-    "left_example": "Hungary U21",
-    "right_example": "格鲁吉亚",
-    "count": 1,
-    "promoted": false,
-    "last_seen_at": "2026-03-26T18:30:15.318276+00:00"
-  },
-  "israelu21 <-> 以色列": {
-    "left_normalized": "israelu21",
-    "right_normalized": "以色列",
-    "left_example": "Israel U21",
-    "right_example": "以色列",
-    "count": 1,
-    "promoted": false,
-    "last_seen_at": "2026-03-26T18:30:15.319385+00:00"
-  },
   "hungaryu21 <-> 匈牙利u21": {
     "left_normalized": "hungaryu21",
     "right_normalized": "匈牙利u21",
@@ -292,9 +274,9 @@
     "right_normalized": "法国u21",
     "left_example": "France U21",
     "right_example": "法国U21",
-    "count": 28,
+    "count": 328,
     "promoted": true,
-    "last_seen_at": "2026-03-26T20:25:20.326269+00:00"
+    "last_seen_at": "2026-03-30T18:52:12.874961+00:00"
   },
   "atpmiami <-> 科里加夫美国": {
     "left_normalized": "atpmiami",
@@ -413,24 +395,6 @@
     "promoted": true,
     "last_seen_at": "2026-03-26T21:37:26.009205+00:00"
   },
-  "brazil <-> 卢森堡u21": {
-    "left_normalized": "brazil",
-    "right_normalized": "卢森堡u21",
-    "left_example": "Brazil",
-    "right_example": "卢森堡U21",
-    "count": 3,
-    "promoted": true,
-    "last_seen_at": "2026-03-26T19:58:03.927235+00:00"
-  },
-  "france <-> 法国u21": {
-    "left_normalized": "france",
-    "right_normalized": "法国u21",
-    "left_example": "France",
-    "right_example": "法国U21",
-    "count": 3,
-    "promoted": true,
-    "last_seen_at": "2026-03-26T19:58:03.928545+00:00"
-  },
   "maccabitelaviv <-> 特拉维夫马卡比": {
     "left_normalized": "maccabitelaviv",
     "right_normalized": "特拉维夫马卡比",
@@ -481,9 +445,9 @@
     "right_normalized": "法国",
     "left_example": "France",
     "right_example": "法国",
-    "count": 33,
+    "count": 361,
     "promoted": true,
-    "last_seen_at": "2026-03-26T22:06:15.517109+00:00"
+    "last_seen_at": "2026-03-29T21:02:19.673362+00:00"
   },
   "realmadrid <-> 皇家马德里": {
     "left_normalized": "realmadrid",
@@ -517,18 +481,18 @@
     "right_normalized": "乌拉圭科罗纳多",
     "left_example": "CS Uruguay",
     "right_example": "乌拉圭科罗纳多",
-    "count": 30,
+    "count": 348,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:58:32.969021+00:00"
+    "last_seen_at": "2026-03-29T20:58:31.435989+00:00"
   },
   "saintmartin <-> 法属圣马丁": {
     "left_normalized": "saintmartin",
     "right_normalized": "法属圣马丁",
     "left_example": "Saint Martin",
     "right_example": "法属圣马丁",
-    "count": 27,
+    "count": 328,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:51:48.930836+00:00"
+    "last_seen_at": "2026-03-30T02:21:33.336538+00:00"
   },
   "barbados <-> 巴贝多": {
     "left_normalized": "barbados",
@@ -562,9 +526,9 @@
     "right_normalized": "马大雷拿",
     "left_example": "Union Magdalena",
     "right_example": "马大雷拿",
-    "count": 31,
+    "count": 357,
     "promoted": true,
-    "last_seen_at": "2026-03-26T22:47:54.494773+00:00"
+    "last_seen_at": "2026-03-30T21:54:32.975903+00:00"
   },
   "realsantander <-> 皇家桑坦德": {
     "left_normalized": "realsantander",
@@ -580,45 +544,45 @@
     "right_normalized": "马提尼克",
     "left_example": "Martinique",
     "right_example": "马提尼克",
-    "count": 32,
+    "count": 319,
     "promoted": true,
-    "last_seen_at": "2026-03-26T22:50:58.824281+00:00"
+    "last_seen_at": "2026-03-29T20:47:45.091277+00:00"
   },
   "cuba <-> 古巴": {
     "left_normalized": "cuba",
     "right_normalized": "古巴",
     "left_example": "Cuba",
     "right_example": "古巴",
-    "count": 32,
+    "count": 326,
     "promoted": true,
-    "last_seen_at": "2026-03-26T22:50:58.824700+00:00"
+    "last_seen_at": "2026-03-29T23:49:27.572790+00:00"
   },
   "bahamas <-> 巴哈马": {
     "left_normalized": "bahamas",
     "right_normalized": "巴哈马",
     "left_example": "Bahamas",
     "right_example": "巴哈马",
-    "count": 24,
+    "count": 288,
     "promoted": true,
-    "last_seen_at": "2026-03-26T23:15:58.984506+00:00"
+    "last_seen_at": "2026-03-30T01:50:49.533239+00:00"
   },
   "anguilla <-> 安圭拉": {
     "left_normalized": "anguilla",
     "right_normalized": "安圭拉",
     "left_example": "Anguilla",
     "right_example": "安圭拉",
-    "count": 24,
+    "count": 303,
     "promoted": true,
-    "last_seen_at": "2026-03-26T23:15:58.984891+00:00"
+    "last_seen_at": "2026-03-29T23:19:16.921721+00:00"
   },
   "internacionalpalmira <-> 国际帕尔米拉": {
     "left_normalized": "internacionalpalmira",
     "right_normalized": "国际帕尔米拉",
     "left_example": "Internacional Palmira",
     "right_example": "国际帕尔米拉",
-    "count": 34,
+    "count": 262,
     "promoted": true,
-    "last_seen_at": "2026-03-26T23:50:25.744088+00:00"
+    "last_seen_at": "2026-03-31T01:53:58.819689+00:00"
   },
   "tigresfc <-> 老虎": {
     "left_normalized": "tigresfc",
@@ -697,45 +661,45 @@
     "right_normalized": "开曼群岛",
     "left_example": "Cayman Islands",
     "right_example": "开曼群岛",
-    "count": 21,
+    "count": 285,
     "promoted": true,
-    "last_seen_at": "2026-03-27T01:50:54.575990+00:00"
+    "last_seen_at": "2026-03-30T01:50:49.527025+00:00"
   },
   "britishvirginislands <-> 英属维尔京群岛": {
     "left_normalized": "britishvirginislands",
     "right_normalized": "英属维尔京群岛",
     "left_example": "British Virgin Islands",
     "right_example": "英属维尔京群岛",
-    "count": 21,
+    "count": 300,
     "promoted": true,
-    "last_seen_at": "2026-03-27T01:50:54.576510+00:00"
+    "last_seen_at": "2026-03-29T23:19:16.917341+00:00"
   },
   "dominicanrepublic <-> 多明尼加共和国": {
     "left_normalized": "dominicanrepublic",
     "right_normalized": "多明尼加共和国",
     "left_example": "Dominican Republic",
     "right_example": "多明尼加共和国",
-    "count": 20,
+    "count": 314,
     "promoted": true,
-    "last_seen_at": "2026-03-27T01:47:36.754654+00:00"
+    "last_seen_at": "2026-03-29T23:49:27.568630+00:00"
   },
   "elsalvador <-> 萨尔瓦多": {
     "left_normalized": "elsalvador",
     "right_normalized": "萨尔瓦多",
     "left_example": "El Salvador",
     "right_example": "萨尔瓦多",
-    "count": 20,
+    "count": 307,
     "promoted": true,
-    "last_seen_at": "2026-03-27T01:47:36.755386+00:00"
+    "last_seen_at": "2026-03-29T20:47:45.095574+00:00"
   },
   "colombia <-> 哥伦比亚": {
     "left_normalized": "colombia",
     "right_normalized": "哥伦比亚",
     "left_example": "Colombia",
     "right_example": "哥伦比亚",
-    "count": 17,
+    "count": 345,
     "promoted": true,
-    "last_seen_at": "2026-03-27T01:31:10.193904+00:00"
+    "last_seen_at": "2026-03-29T21:02:19.668648+00:00"
   },
   "croatia <-> 克罗地亚": {
     "left_normalized": "croatia",
@@ -751,9 +715,9 @@
     "right_normalized": "雷科莱塔",
     "left_example": "Deportivo Recoleta",
     "right_example": "雷科莱塔",
-    "count": 7,
+    "count": 253,
     "promoted": true,
-    "last_seen_at": "2026-03-27T00:51:18.400123+00:00"
+    "last_seen_at": "2026-03-31T01:24:49.702588+00:00"
   },
   "rubionu <-> 鲁毕奥": {
     "left_normalized": "rubionu",
@@ -841,8 +805,4058 @@
     "right_normalized": "奥尔索马索",
     "left_example": "Orsomarso",
     "right_example": "奥尔索马索",
+    "count": 233,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T01:53:58.814345+00:00"
+  },
+  "newcaledonia <-> 新喀里多尼亚": {
+    "left_normalized": "newcaledonia",
+    "right_normalized": "新喀里多尼亚",
+    "left_example": "New Caledonia",
+    "right_example": "新喀里多尼亚",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T03:58:44.564729+00:00"
+  },
+  "jamaica <-> 牙买加": {
+    "left_normalized": "jamaica",
+    "right_normalized": "牙买加",
+    "left_example": "Jamaica",
+    "right_example": "牙买加",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T03:58:44.567528+00:00"
+  },
+  "brisbaneroarfcw <-> 布里斯班狮吼女": {
+    "left_normalized": "brisbaneroarfcw",
+    "right_normalized": "布里斯班狮吼女",
+    "left_example": "Brisbane Roar FC W",
+    "right_example": "布里斯班狮吼(女)",
+    "count": 13,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T10:55:17.505490+00:00"
+  },
+  "perthgloryfcw <-> 珀斯光荣女": {
+    "left_normalized": "perthgloryfcw",
+    "right_normalized": "珀斯光荣女",
+    "left_example": "Perth Glory FC W",
+    "right_example": "珀斯光荣(女)",
+    "count": 13,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T10:55:17.505885+00:00"
+  },
+  "visselkobe <-> 神户胜利船": {
+    "left_normalized": "visselkobe",
+    "right_normalized": "神户胜利船",
+    "left_example": "Vissel Kobe",
+    "right_example": "神户胜利船",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T11:57:40.897624+00:00"
+  },
+  "sanfreccehiroshima <-> 广岛三箭": {
+    "left_normalized": "sanfreccehiroshima",
+    "right_normalized": "广岛三箭",
+    "left_example": "Sanfrecce Hiroshima",
+    "right_example": "广岛三箭",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T11:57:40.898075+00:00"
+  },
+  "australia <-> 澳大利亚": {
+    "left_normalized": "australia",
+    "right_normalized": "澳大利亚",
+    "left_example": "Australia",
+    "right_example": "澳大利亚",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T11:03:07.936974+00:00"
+  },
+  "cameroon <-> 喀麦隆": {
+    "left_normalized": "cameroon",
+    "right_normalized": "喀麦隆",
+    "left_example": "Cameroon",
+    "right_example": "喀麦隆",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T11:03:07.937417+00:00"
+  },
+  "solomonislands <-> 索罗门群岛": {
+    "left_normalized": "solomonislands",
+    "right_normalized": "索罗门群岛",
+    "left_example": "Solomon Islands",
+    "right_example": "索罗门群岛",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-27T10:03:55.982880+00:00"
+  },
+  "bulgaria <-> 保加利亚": {
+    "left_normalized": "bulgaria",
+    "right_normalized": "保加利亚",
+    "left_example": "Bulgaria",
+    "right_example": "保加利亚",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-27T10:03:55.983317+00:00"
+  },
+  "venezuela <-> 委内瑞拉": {
+    "left_normalized": "venezuela",
+    "right_normalized": "委内瑞拉",
+    "left_example": "Venezuela",
+    "right_example": "委内瑞拉",
+    "count": 267,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T15:52:57.132023+00:00"
+  },
+  "trinidadandtobago <-> 千里达及多巴哥": {
+    "left_normalized": "trinidadandtobago",
+    "right_normalized": "千里达及多巴哥",
+    "left_example": "Trinidad and Tobago",
+    "right_example": "千里达及多巴哥",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T11:57:40.900008+00:00"
+  },
+  "azerbaijanu21 <-> 阿塞拜疆u21": {
+    "left_normalized": "azerbaijanu21",
+    "right_normalized": "阿塞拜疆u21",
+    "left_example": "Azerbaijan U21",
+    "right_example": "阿塞拜疆U21",
+    "count": 44,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T12:51:52.139037+00:00"
+  },
+  "portugalu21 <-> 葡萄牙u21": {
+    "left_normalized": "portugalu21",
+    "right_normalized": "葡萄牙u21",
+    "left_example": "Portugal U21",
+    "right_example": "葡萄牙U21",
+    "count": 44,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T12:51:52.139376+00:00"
+  },
+  "hapoelafula <-> 阿福拉哈普尔": {
+    "left_normalized": "hapoelafula",
+    "right_normalized": "阿福拉哈普尔",
+    "left_example": "Hapoel Afula",
+    "right_example": "阿福拉哈普尔",
+    "count": 43,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T13:51:27.660002+00:00"
+  },
+  "bneiyehuda <-> 耶胡达": {
+    "left_normalized": "bneiyehuda",
+    "right_normalized": "耶胡达",
+    "left_example": "Bnei Yehuda",
+    "right_example": "耶胡达",
+    "count": 43,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T13:51:27.660434+00:00"
+  },
+  "hapoelnazarethillit <-> 诺夫哈加里夏普尔": {
+    "left_normalized": "hapoelnazarethillit",
+    "right_normalized": "诺夫哈加里夏普尔",
+    "left_example": "Hapoel Nazareth Illit",
+    "right_example": "诺夫哈加里夏普尔",
+    "count": 32,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T13:51:27.663090+00:00"
+  },
+  "maccabikabiliojaffa <-> 卡比利奥马卡比": {
+    "left_normalized": "maccabikabiliojaffa",
+    "right_normalized": "卡比利奥马卡比",
+    "left_example": "Maccabi Kabilio Jaffa",
+    "right_example": "卡比利奥马卡比",
+    "count": 32,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T13:51:27.663484+00:00"
+  },
+  "turkiyeu19 <-> 土耳其u19": {
+    "left_normalized": "turkiyeu19",
+    "right_normalized": "土耳其u19",
+    "left_example": "Türkiye U19",
+    "right_example": "土耳其U19",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T14:51:14.600009+00:00"
+  },
+  "armeniau19 <-> 阿美尼亚u19": {
+    "left_normalized": "armeniau19",
+    "right_normalized": "阿美尼亚u19",
+    "left_example": "Armenia U19",
+    "right_example": "阿美尼亚U19",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T14:51:14.600475+00:00"
+  },
+  "abha <-> 亚哈": {
+    "left_normalized": "abha",
+    "right_normalized": "亚哈",
+    "left_example": "Abha",
+    "right_example": "亚哈",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T15:07:17.963751+00:00"
+  },
+  "aljubail <-> 朱拜勒": {
+    "left_normalized": "aljubail",
+    "right_normalized": "朱拜勒",
+    "left_example": "Al Jubail",
+    "right_example": "朱拜勒",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T15:07:17.964297+00:00"
+  },
+  "indonesia <-> 印尼": {
+    "left_normalized": "indonesia",
+    "right_normalized": "印尼",
+    "left_example": "Indonesia",
+    "right_example": "印尼",
+    "count": 28,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T14:57:44.984145+00:00"
+  },
+  "stkittsandnevis <-> 圣基茨和尼维斯": {
+    "left_normalized": "stkittsandnevis",
+    "right_normalized": "圣基茨和尼维斯",
+    "left_example": "St. Kitts and Nevis",
+    "right_example": "圣基茨和尼维斯",
+    "count": 28,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T14:57:44.984682+00:00"
+  },
+  "mobejaia <-> mo比捷亚": {
+    "left_normalized": "mobejaia",
+    "right_normalized": "mo比捷亚",
+    "left_example": "MO Bejaia",
+    "right_example": "MO比捷亚",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T15:57:56.449707+00:00"
+  },
+  "cabatna <-> 巴特纳": {
+    "left_normalized": "cabatna",
+    "right_normalized": "巴特纳",
+    "left_example": "CA Batna",
+    "right_example": "巴特纳",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T15:57:56.450272+00:00"
+  },
+  "uzbekistan <-> 乌兹别克": {
+    "left_normalized": "uzbekistan",
+    "right_normalized": "乌兹别克",
+    "left_example": "Uzbekistan",
+    "right_example": "乌兹别克",
+    "count": 266,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T15:52:57.126800+00:00"
+  },
+  "gabon <-> 加蓬": {
+    "left_normalized": "gabon",
+    "right_normalized": "加蓬",
+    "left_example": "Gabon",
+    "right_example": "加蓬",
+    "count": 34,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T15:54:49.195940+00:00"
+  },
+  "asmoran <-> asm奥兰": {
+    "left_normalized": "asmoran",
+    "right_normalized": "asm奥兰",
+    "left_example": "ASM Oran",
+    "right_example": "ASM奥兰",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:04:40.783365+00:00"
+  },
+  "watlemcen <-> 特莱姆森": {
+    "left_normalized": "watlemcen",
+    "right_normalized": "特莱姆森",
+    "left_example": "WA Tlemcen",
+    "right_example": "特莱姆森",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:04:40.783790+00:00"
+  },
+  "italyu20 <-> 意大利u20": {
+    "left_normalized": "italyu20",
+    "right_normalized": "意大利u20",
+    "left_example": "Italy U20",
+    "right_example": "意大利U20",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:25:59.512499+00:00"
+  },
+  "englandu20 <-> 英格兰u20": {
+    "left_normalized": "englandu20",
+    "right_normalized": "英格兰u20",
+    "left_example": "England U20",
+    "right_example": "英格兰U20",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:25:59.512903+00:00"
+  },
+  "cyprusu21 <-> 塞浦路斯u21": {
+    "left_normalized": "cyprusu21",
+    "right_normalized": "塞浦路斯u21",
+    "left_example": "Cyprus U21",
+    "right_example": "塞浦路斯U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:53:25.128141+00:00"
+  },
+  "spainu21 <-> 西班牙u21": {
+    "left_normalized": "spainu21",
+    "right_normalized": "西班牙u21",
+    "left_example": "Spain U21",
+    "right_example": "西班牙U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:53:25.128588+00:00"
+  },
+  "georgiau21 <-> 格鲁吉亚u21": {
+    "left_normalized": "georgiau21",
+    "right_normalized": "格鲁吉亚u21",
+    "left_example": "Georgia U21",
+    "right_example": "格鲁吉亚U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:53:25.130759+00:00"
+  },
+  "latviau21 <-> 拉脱维亚u21": {
+    "left_normalized": "latviau21",
+    "right_normalized": "拉脱维亚u21",
+    "left_example": "Latvia U21",
+    "right_example": "拉脱维亚U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:53:25.131174+00:00"
+  },
+  "kazakhstanu21 <-> 哈萨克斯坦u21": {
+    "left_normalized": "kazakhstanu21",
+    "right_normalized": "哈萨克斯坦u21",
+    "left_example": "Kazakhstan U21",
+    "right_example": "哈萨克斯坦U21",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:50:08.498424+00:00"
+  },
+  "slovakiau21 <-> 斯洛伐克u21": {
+    "left_normalized": "slovakiau21",
+    "right_normalized": "斯洛伐克u21",
+    "left_example": "Slovakia U21",
+    "right_example": "斯洛伐克U21",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:50:08.498822+00:00"
+  },
+  "azerbaijan <-> 阿塞拜疆": {
+    "left_normalized": "azerbaijan",
+    "right_normalized": "阿塞拜疆",
+    "left_example": "Azerbaijan",
+    "right_example": "阿塞拜疆",
+    "count": 307,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T16:58:40.205624+00:00"
+  },
+  "stlucia <-> 圣露西亚": {
+    "left_normalized": "stlucia",
+    "right_normalized": "圣露西亚",
+    "left_example": "St. Lucia",
+    "right_example": "圣露西亚",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T16:59:58.159975+00:00"
+  },
+  "romaniau20 <-> 罗马尼亚u20": {
+    "left_normalized": "romaniau20",
+    "right_normalized": "罗马尼亚u20",
+    "left_example": "Romania U20",
+    "right_example": "罗马尼亚U20",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T17:22:05.284539+00:00"
+  },
+  "polandu20 <-> 波兰u20": {
+    "left_normalized": "polandu20",
+    "right_normalized": "波兰u20",
+    "left_example": "Poland U20",
+    "right_example": "波兰U20",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T17:22:05.285052+00:00"
+  },
+  "greeceu21 <-> 希腊u21": {
+    "left_normalized": "greeceu21",
+    "right_normalized": "希腊u21",
+    "left_example": "Greece U21",
+    "right_example": "希腊U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T17:53:10.049470+00:00"
+  },
+  "maltau21 <-> 马耳他u21": {
+    "left_normalized": "maltau21",
+    "right_normalized": "马耳他u21",
+    "left_example": "Malta U21",
+    "right_example": "马耳他U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T17:53:10.049995+00:00"
+  },
+  "russia <-> 俄罗斯": {
+    "left_normalized": "russia",
+    "right_normalized": "俄罗斯",
+    "left_example": "Russia",
+    "right_example": "俄罗斯",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:27:01.712761+00:00"
+  },
+  "nicaragua <-> 尼加拉瓜": {
+    "left_normalized": "nicaragua",
+    "right_normalized": "尼加拉瓜",
+    "left_example": "Nicaragua",
+    "right_example": "尼加拉瓜",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:27:01.713248+00:00"
+  },
+  "austria <-> 奥地利": {
+    "left_normalized": "austria",
+    "right_normalized": "奥地利",
+    "left_example": "Austria",
+    "right_example": "奥地利",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:56:34.618584+00:00"
+  },
+  "ghana <-> 加纳": {
+    "left_normalized": "ghana",
+    "right_normalized": "加纳",
+    "left_example": "Ghana",
+    "right_example": "加纳",
+    "count": 368,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:42:19.412305+00:00"
+  },
+  "montenegro <-> 黑山": {
+    "left_normalized": "montenegro",
+    "right_normalized": "黑山",
+    "left_example": "Montenegro",
+    "right_example": "黑山",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T17:27:32.610657+00:00"
+  },
+  "andorra <-> 安道尔": {
+    "left_normalized": "andorra",
+    "right_normalized": "安道尔",
+    "left_example": "Andorra",
+    "right_example": "安道尔",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T17:27:32.611114+00:00"
+  },
+  "germanyu21 <-> 德国u21": {
+    "left_normalized": "germanyu21",
+    "right_normalized": "德国u21",
+    "left_example": "Germany U21",
+    "right_example": "德国U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:50:04.460043+00:00"
+  },
+  "northernirelandu21 <-> 北爱尔兰u21": {
+    "left_normalized": "northernirelandu21",
+    "right_normalized": "北爱尔兰u21",
+    "left_example": "Northern Ireland U21",
+    "right_example": "北爱尔兰U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:50:04.460667+00:00"
+  },
+  "norwayu21 <-> 挪威u21": {
+    "left_normalized": "norwayu21",
+    "right_normalized": "挪威u21",
+    "left_example": "Norway U21",
+    "right_example": "挪威U21",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:53:20.787143+00:00"
+  },
+  "netherlandsu21 <-> 荷兰u21": {
+    "left_normalized": "netherlandsu21",
+    "right_normalized": "荷兰u21",
+    "left_example": "Netherlands U21",
+    "right_example": "荷兰U21",
+    "count": 330,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T18:21:40.437405+00:00"
+  },
+  "polandu21 <-> 波兰u21": {
+    "left_normalized": "polandu21",
+    "right_normalized": "波兰u21",
+    "left_example": "Poland U21",
+    "right_example": "波兰U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:50:04.469986+00:00"
+  },
+  "armeniau21 <-> 阿美尼亚u21": {
+    "left_normalized": "armeniau21",
+    "right_normalized": "阿美尼亚u21",
+    "left_example": "Armenia U21",
+    "right_example": "阿美尼亚U21",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T18:50:04.470534+00:00"
+  },
+  "saudiarabia <-> 沙特阿拉伯": {
+    "left_normalized": "saudiarabia",
+    "right_normalized": "沙特阿拉伯",
+    "left_example": "Saudi Arabia",
+    "right_example": "沙特阿拉伯",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:24:56.824821+00:00"
+  },
+  "egypt <-> 埃及": {
+    "left_normalized": "egypt",
+    "right_normalized": "埃及",
+    "left_example": "Egypt",
+    "right_example": "埃及",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:24:56.825389+00:00"
+  },
+  "jordan <-> 约旦": {
+    "left_normalized": "jordan",
+    "right_normalized": "约旦",
+    "left_example": "Jordan",
+    "right_example": "约旦",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:24:56.829642+00:00"
+  },
+  "costarica <-> 哥斯达黎加": {
+    "left_normalized": "costarica",
+    "right_normalized": "哥斯达黎加",
+    "left_example": "Costa Rica",
+    "right_example": "哥斯达黎加",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:24:56.830272+00:00"
+  },
+  "cordoba <-> 科尔多瓦": {
+    "left_normalized": "cordoba",
+    "right_normalized": "科尔多瓦",
+    "left_example": "Cordoba",
+    "right_example": "科尔多瓦",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:50:01.504820+00:00"
+  },
+  "mirandes <-> 米兰迪斯": {
+    "left_normalized": "mirandes",
+    "right_normalized": "米兰迪斯",
+    "left_example": "Mirandes",
+    "right_example": "米兰迪斯",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:50:01.505387+00:00"
+  },
+  "andorrau21 <-> 安道尔u21": {
+    "left_normalized": "andorrau21",
+    "right_normalized": "安道尔u21",
+    "left_example": "Andorra U21",
+    "right_example": "安道尔U21",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T20:22:49.661166+00:00"
+  },
+  "englandu21 <-> 英格兰u21": {
+    "left_normalized": "englandu21",
+    "right_normalized": "英格兰u21",
+    "left_example": "England U21",
+    "right_example": "英格兰U21",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T20:22:49.661742+00:00"
+  },
+  "greece <-> 希腊": {
+    "left_normalized": "greece",
+    "right_normalized": "希腊",
+    "left_example": "Greece",
+    "right_example": "希腊",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T20:57:43.548706+00:00"
+  },
+  "paraguay <-> 巴拉圭": {
+    "left_normalized": "paraguay",
+    "right_normalized": "巴拉圭",
+    "left_example": "Paraguay",
+    "right_example": "巴拉圭",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T20:57:43.549342+00:00"
+  },
+  "belgiumu21 <-> 比利时u21": {
+    "left_normalized": "belgiumu21",
+    "right_normalized": "比利时u21",
+    "left_example": "Belgium U21",
+    "right_example": "比利时U21",
+    "count": 331,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T18:21:40.442354+00:00"
+  },
+  "austriau21 <-> 奥地利u21": {
+    "left_normalized": "austriau21",
+    "right_normalized": "奥地利u21",
+    "left_example": "Austria U21",
+    "right_example": "奥地利U21",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T20:52:03.337055+00:00"
+  },
+  "rwanda <-> 卢旺达": {
+    "left_normalized": "rwanda",
+    "right_normalized": "卢旺达",
+    "left_example": "Rwanda",
+    "right_example": "卢旺达",
+    "count": 33,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:01:35.212971+00:00"
+  },
+  "grenada <-> 格瑞那达": {
+    "left_normalized": "grenada",
+    "right_normalized": "格瑞那达",
+    "left_example": "Grenada",
+    "right_example": "格瑞那达",
+    "count": 33,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:01:35.213598+00:00"
+  },
+  "saudiarabia <-> 沙特鲁": {
+    "left_normalized": "saudiarabia",
+    "right_normalized": "沙特鲁",
+    "left_example": "Saudi Arabia",
+    "right_example": "沙特鲁",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:35:50.049698+00:00"
+  },
+  "egypt <-> 孔卡诺": {
+    "left_normalized": "egypt",
+    "right_normalized": "孔卡诺",
+    "left_example": "Egypt",
+    "right_example": "孔卡诺",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T19:35:50.050261+00:00"
+  },
+  "algeria <-> 阿尔及利亚": {
+    "left_normalized": "algeria",
+    "right_normalized": "阿尔及利亚",
+    "left_example": "Algeria",
+    "right_example": "阿尔及利亚",
+    "count": 39,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:23:51.788186+00:00"
+  },
+  "guatemala <-> 危地马拉": {
+    "left_normalized": "guatemala",
+    "right_normalized": "危地马拉",
+    "left_example": "Guatemala",
+    "right_example": "危地马拉",
+    "count": 39,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:23:51.788751+00:00"
+  },
+  "rouen <-> 卢昂": {
+    "left_normalized": "rouen",
+    "right_normalized": "卢昂",
+    "left_example": "Rouen",
+    "right_example": "卢昂",
+    "count": 29,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T20:54:56.040631+00:00"
+  },
+  "caen <-> 卡昂": {
+    "left_normalized": "caen",
+    "right_normalized": "卡昂",
+    "left_example": "Caen",
+    "right_example": "卡昂",
+    "count": 29,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T20:54:56.041190+00:00"
+  },
+  "partick <-> 帕尔蒂克": {
+    "left_normalized": "partick",
+    "right_normalized": "帕尔蒂克",
+    "left_example": "Partick",
+    "right_example": "帕尔蒂克",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:32:38.348309+00:00"
+  },
+  "rosscounty <-> 罗斯郡": {
+    "left_normalized": "rosscounty",
+    "right_normalized": "罗斯郡",
+    "left_example": "Ross County",
+    "right_example": "罗斯郡",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:32:38.349173+00:00"
+  },
+  "raithrovers <-> 威夫流浪队": {
+    "left_normalized": "raithrovers",
+    "right_normalized": "威夫流浪队",
+    "left_example": "Raith Rovers",
+    "right_example": "威夫流浪队",
+    "count": 39,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:38:38.702494+00:00"
+  },
+  "ayrutd <-> 艾尔联": {
+    "left_normalized": "ayrutd",
+    "right_normalized": "艾尔联",
+    "left_example": "Ayr Utd",
+    "right_example": "艾尔联",
+    "count": 39,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:38:38.703340+00:00"
+  },
+  "england <-> 英格兰": {
+    "left_normalized": "england",
+    "right_normalized": "英格兰",
+    "left_example": "England",
+    "right_example": "英格兰",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:48:30.806550+00:00"
+  },
+  "uruguay <-> 乌拉圭": {
+    "left_normalized": "uruguay",
+    "right_normalized": "乌拉圭",
+    "left_example": "Uruguay",
+    "right_example": "乌拉圭",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:48:30.807179+00:00"
+  },
+  "netherlands <-> 荷兰": {
+    "left_normalized": "netherlands",
+    "right_normalized": "荷兰",
+    "left_example": "Netherlands",
+    "right_example": "荷兰",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:35:31.116499+00:00"
+  },
+  "norway <-> 挪威": {
+    "left_normalized": "norway",
+    "right_normalized": "挪威",
+    "left_example": "Norway",
+    "right_example": "挪威",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:35:31.117060+00:00"
+  },
+  "switzerland <-> 瑞士": {
+    "left_normalized": "switzerland",
+    "right_normalized": "瑞士",
+    "left_example": "Switzerland",
+    "right_example": "瑞士",
+    "count": 38,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:35:31.118497+00:00"
+  },
+  "germany <-> 德国": {
+    "left_normalized": "germany",
+    "right_normalized": "德国",
+    "left_example": "Germany",
+    "right_example": "德国",
+    "count": 368,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:42:19.407639+00:00"
+  },
+  "independiente <-> 独立队": {
+    "left_normalized": "independiente",
+    "right_normalized": "独立队",
+    "left_example": "Independiente",
+    "right_example": "独立队",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:49:53.220690+00:00"
+  },
+  "atenas <-> 阿特纳斯体育": {
+    "left_normalized": "atenas",
+    "right_normalized": "阿特纳斯体育",
+    "left_example": "Atenas",
+    "right_example": "阿特纳斯体育",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:38:38.693494+00:00"
+  },
+  "spain <-> 西班牙": {
+    "left_normalized": "spain",
+    "right_normalized": "西班牙",
+    "left_example": "Spain",
+    "right_example": "西班牙",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:49:53.226014+00:00"
+  },
+  "serbia <-> 塞尔维亚": {
+    "left_normalized": "serbia",
+    "right_normalized": "塞尔维亚",
+    "left_example": "Serbia",
+    "right_example": "塞尔维亚",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:49:53.226566+00:00"
+  },
+  "invernessct <-> 因弗内斯": {
+    "left_normalized": "invernessct",
+    "right_normalized": "因弗内斯",
+    "left_example": "Inverness CT",
+    "right_example": "因弗内斯",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:32:38.354874+00:00"
+  },
+  "queenofthesouth <-> 南后": {
+    "left_normalized": "queenofthesouth",
+    "right_normalized": "南后",
+    "left_example": "Queen of the South",
+    "right_example": "南后",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:32:38.355731+00:00"
+  },
+  "morocco <-> 摩洛哥": {
+    "left_normalized": "morocco",
+    "right_normalized": "摩洛哥",
+    "left_example": "Morocco",
+    "right_example": "摩洛哥",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T22:13:21.530673+00:00"
+  },
+  "ecuador <-> 厄瓜多尔": {
+    "left_normalized": "ecuador",
+    "right_normalized": "厄瓜多尔",
+    "left_example": "Ecuador",
+    "right_example": "厄瓜多尔",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T22:13:21.531460+00:00"
+  },
+  "atenasd <-> 阿特纳斯体育": {
+    "left_normalized": "atenasd",
+    "right_normalized": "阿特纳斯体育",
+    "left_example": "Atenas D",
+    "right_example": "阿特纳斯体育",
+    "count": 13,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T21:49:53.221197+00:00"
+  },
+  "recoleta <-> 雷科莱塔体育": {
+    "left_normalized": "recoleta",
+    "right_normalized": "雷科莱塔体育",
+    "left_example": "Recoleta",
+    "right_example": "雷科莱塔体育",
+    "count": 32,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T22:53:10.141150+00:00"
+  },
+  "deportestemuco <-> 迪帕特斯": {
+    "left_normalized": "deportestemuco",
+    "right_normalized": "迪帕特斯",
+    "left_example": "Deportes Temuco",
+    "right_example": "迪帕特斯",
+    "count": 32,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T22:53:10.142000+00:00"
+  },
+  "paysandu <-> 派桑杜乌拉圭": {
+    "left_normalized": "paysandu",
+    "right_normalized": "派桑杜乌拉圭",
+    "left_example": "Paysandu",
+    "right_example": "派桑杜乌拉圭",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T23:17:20.877887+00:00"
+  },
+  "miramar <-> 米斯奥尼斯队": {
+    "left_normalized": "miramar",
+    "right_normalized": "米斯奥尼斯队",
+    "left_example": "Miramar",
+    "right_example": "米斯奥尼斯队",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-27T23:17:20.878881+00:00"
+  },
+  "argentina <-> 阿根廷": {
+    "left_normalized": "argentina",
+    "right_normalized": "阿根廷",
+    "left_example": "Argentina",
+    "right_example": "阿根廷",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T01:15:49.814274+00:00"
+  },
+  "mauritania <-> 茅利塔尼亚": {
+    "left_normalized": "mauritania",
+    "right_normalized": "茅利塔尼亚",
+    "left_example": "Mauritania",
+    "right_example": "茅利塔尼亚",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T01:15:49.815055+00:00"
+  },
+  "sportivoameliano <-> 阿梅利亚诺": {
+    "left_normalized": "sportivoameliano",
+    "right_normalized": "阿梅利亚诺",
+    "left_example": "Sportivo Ameliano",
+    "right_example": "阿梅利亚诺",
+    "count": 29,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T01:19:34.515915+00:00"
+  },
+  "libertadasuncion <-> 利伯泰德": {
+    "left_normalized": "libertadasuncion",
+    "right_normalized": "利伯泰德",
+    "left_example": "Libertad Asuncion",
+    "right_example": "利伯泰德",
+    "count": 275,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T01:24:49.697676+00:00"
+  },
+  "venadosfc <-> 维纳多斯": {
+    "left_normalized": "venadosfc",
+    "right_normalized": "维纳多斯",
+    "left_example": "Venados FC",
+    "right_example": "维纳多斯",
+    "count": 34,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T02:57:49.104180+00:00"
+  },
+  "atlantefc <-> 亚特兰特": {
+    "left_normalized": "atlantefc",
+    "right_normalized": "亚特兰特",
+    "left_example": "Atlante FC",
+    "right_example": "亚特兰特",
+    "count": 34,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T02:57:49.104859+00:00"
+  },
+  "chacoforever <-> 查科": {
+    "left_normalized": "chacoforever",
+    "right_normalized": "查科",
+    "left_example": "Chaco For Ever",
+    "right_example": "查科",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:06:38.930756+00:00"
+  },
+  "gimnasiajujuy <-> 祖祖尔甘拿斯亚": {
+    "left_normalized": "gimnasiajujuy",
+    "right_normalized": "祖祖尔甘拿斯亚",
+    "left_example": "Gimnasia Jujuy",
+    "right_example": "祖祖尔甘拿斯亚",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:06:38.931724+00:00"
+  },
+  "bucaramanga <-> 布卡拉曼加体育会": {
+    "left_normalized": "bucaramanga",
+    "right_normalized": "布卡拉曼加体育会",
+    "left_example": "Bucaramanga",
+    "right_example": "布卡拉曼加体育会",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:06:38.940470+00:00"
+  },
+  "santafe <-> 圣塔菲": {
+    "left_normalized": "santafe",
+    "right_normalized": "圣塔菲",
+    "left_example": "Santa Fe",
+    "right_example": "圣塔菲",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:06:38.941333+00:00"
+  },
+  "belgranocordoba <-> 贝尔格拉诺": {
+    "left_normalized": "belgranocordoba",
+    "right_normalized": "贝尔格拉诺",
+    "left_example": "Belgrano Cordoba",
+    "right_example": "贝尔格拉诺",
+    "count": 35,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:09:32.940696+00:00"
+  },
+  "atleticoderafaelad <-> 艾朗迪考瑞法拉": {
+    "left_normalized": "atleticoderafaelad",
+    "right_normalized": "艾朗迪考瑞法拉",
+    "left_example": "Atletico DE Rafaela D",
+    "right_example": "艾朗迪考瑞法拉",
+    "count": 32,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:09:32.941758+00:00"
+  },
+  "sanmartinsj <-> 圣马丁sj": {
+    "left_normalized": "sanmartinsj",
+    "right_normalized": "圣马丁sj",
+    "left_example": "San Martin S.J.",
+    "right_example": "圣马丁SJ",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:09:32.952504+00:00"
+  },
+  "racingcordoba <-> 科多巴竞技": {
+    "left_normalized": "racingcordoba",
+    "right_normalized": "科多巴竞技",
+    "left_example": "Racing Cordoba",
+    "right_example": "科多巴竞技",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T03:09:32.953502+00:00"
+  },
+  "atleticoderafaela <-> 艾朗迪考瑞法拉": {
+    "left_normalized": "atleticoderafaela",
+    "right_normalized": "艾朗迪考瑞法拉",
+    "left_example": "Atletico DE Rafaela",
+    "right_example": "艾朗迪考瑞法拉",
+    "count": 327,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:53:57.181294+00:00"
+  },
+  "calapaz <-> ca拉巴斯": {
+    "left_normalized": "calapaz",
+    "right_normalized": "ca拉巴斯",
+    "left_example": "CA La Paz",
+    "right_example": "CA拉巴斯",
+    "count": 22,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:02:45.226628+00:00"
+  },
+  "cdstampicomadero <-> 贾博布拉瓦": {
+    "left_normalized": "cdstampicomadero",
+    "right_normalized": "贾博布拉瓦",
+    "left_example": "CDS Tampico Madero",
+    "right_example": "贾博布拉瓦",
+    "count": 22,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:02:45.227566+00:00"
+  },
+  "adelaideunitedw <-> 阿德莱德联女": {
+    "left_normalized": "adelaideunitedw",
+    "right_normalized": "阿德莱德联女",
+    "left_example": "Adelaide United W",
+    "right_example": "阿德莱德联(女)",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:02:45.219190+00:00"
+  },
+  "newcastlejetsfcw <-> 纽卡斯尔喷气机女": {
+    "left_normalized": "newcastlejetsfcw",
+    "right_normalized": "纽卡斯尔喷气机女",
+    "left_example": "Newcastle Jets FC W",
+    "right_example": "纽卡斯尔喷气机(女)",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:02:45.220503+00:00"
+  },
+  "losangeleslakers <-> 洛杉矶湖人": {
+    "left_normalized": "losangeleslakers",
+    "right_normalized": "洛杉矶湖人",
+    "left_example": "Los Angeles Lakers",
+    "right_example": "洛杉矶湖人",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:58:03.363086+00:00"
+  },
+  "brooklynnets <-> 布鲁克林篮网": {
+    "left_normalized": "brooklynnets",
+    "right_normalized": "布鲁克林篮网",
+    "left_example": "Brooklyn Nets",
+    "right_example": "布鲁克林篮网",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:58:03.364197+00:00"
+  },
+  "losangelesdodgers <-> 洛杉矶道奇队": {
+    "left_normalized": "losangelesdodgers",
+    "right_normalized": "洛杉矶道奇队",
+    "left_example": "Los Angeles Dodgers",
+    "right_example": "洛杉矶道奇队",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:58:03.365926+00:00"
+  },
+  "arizonadiamondbacks <-> 亚利桑那响尾蛇队": {
+    "left_normalized": "arizonadiamondbacks",
+    "right_normalized": "亚利桑那响尾蛇队",
+    "left_example": "Arizona Diamondbacks",
+    "right_example": "亚利桑那响尾蛇队",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T04:58:03.367657+00:00"
+  },
+  "evertonw <-> 埃弗顿女": {
+    "left_normalized": "evertonw",
+    "right_normalized": "埃弗顿女",
+    "left_example": "Everton W",
+    "right_example": "埃弗顿(女)",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.689275+00:00"
+  },
+  "liverpoolw <-> 利物浦女": {
+    "left_normalized": "liverpoolw",
+    "right_normalized": "利物浦女",
+    "left_example": "Liverpool W",
+    "right_example": "利物浦(女)",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.690043+00:00"
+  },
+  "aalesundw <-> fortunaalesundw": {
+    "left_normalized": "fortunaalesundw",
+    "right_normalized": "aalesundw",
+    "left_example": "Fortuna Ålesund W",
+    "right_example": "Aalesund (W)",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.710378+00:00"
+  },
+  "stabkw <-> 斯塔贝克女": {
+    "left_normalized": "stabkw",
+    "right_normalized": "斯塔贝克女",
+    "left_example": "Stabæk W",
+    "right_example": "斯塔贝克(女)",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.711136+00:00"
+  },
+  "haugesundw <-> 海於格松女": {
+    "left_normalized": "haugesundw",
+    "right_normalized": "海於格松女",
+    "left_example": "Haugesund W",
+    "right_example": "海於格松(女)",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.719178+00:00"
+  },
+  "valerengaw <-> 瓦勒伦加女": {
+    "left_normalized": "valerengaw",
+    "right_normalized": "瓦勒伦加女",
+    "left_example": "Vålerenga W",
+    "right_example": "瓦勒伦加(女)",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.720029+00:00"
+  },
+  "hnefossw <-> 侯尼霍斯女": {
+    "left_normalized": "hnefossw",
+    "right_normalized": "侯尼霍斯女",
+    "left_example": "Hønefoss W",
+    "right_example": "侯尼霍斯(女)",
+    "count": 9,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:31:42.953409+00:00"
+  },
+  "moldew <-> 莫尔德女": {
+    "left_normalized": "moldew",
+    "right_normalized": "莫尔德女",
+    "left_example": "Molde W",
+    "right_example": "莫尔德(女)",
+    "count": 9,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:31:42.954069+00:00"
+  },
+  "chinapru23 <-> 中国u23": {
+    "left_normalized": "chinapru23",
+    "right_normalized": "中国u23",
+    "left_example": "China PR U23",
+    "right_example": "中国U23",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:14:38.260530+00:00"
+  },
+  "koreadpru23 <-> 朝鲜u23": {
+    "left_normalized": "koreadpru23",
+    "right_normalized": "朝鲜u23",
+    "left_example": "Korea DPR U23",
+    "right_example": "朝鲜U23",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:14:38.261220+00:00"
+  },
+  "namibia <-> 纳米比亚": {
+    "left_normalized": "namibia",
+    "right_normalized": "纳米比亚",
+    "left_example": "Namibia",
+    "right_example": "纳米比亚",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.747750+00:00"
+  },
+  "comoros <-> 科摩罗": {
+    "left_normalized": "comoros",
+    "right_normalized": "科摩罗",
+    "left_example": "Comoros",
+    "right_example": "科摩罗",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.748532+00:00"
+  },
+  "raw <-> 罗亚女": {
+    "left_normalized": "raw",
+    "right_normalized": "罗亚女",
+    "left_example": "Røa W",
+    "right_example": "罗亚(女)",
+    "count": 9,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.739908+00:00"
+  },
+  "bodglimtw <-> 波杜基林特女": {
+    "left_normalized": "bodglimtw",
+    "right_normalized": "波杜基林特女",
+    "left_example": "Bodø / Glimt W",
+    "right_example": "波杜基林特(女)",
+    "count": 9,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T13:49:19.740647+00:00"
+  },
+  "ipswichtownw <-> 伊普斯维奇女": {
+    "left_normalized": "ipswichtownw",
+    "right_normalized": "伊普斯维奇女",
+    "left_example": "Ipswich Town W",
+    "right_example": "伊普斯维奇(女)",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T14:23:48.486005+00:00"
+  },
+  "southamptonw <-> 南安普敦女": {
+    "left_normalized": "southamptonw",
+    "right_normalized": "南安普敦女",
+    "left_example": "Southampton W",
+    "right_example": "南安普敦(女)",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T14:23:48.486796+00:00"
+  },
+  "sheffieldunitedw <-> 谢菲尔德联女": {
+    "left_normalized": "sheffieldunitedw",
+    "right_normalized": "谢菲尔德联女",
+    "left_example": "Sheffield United W",
+    "right_example": "谢菲尔德联(女)",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T14:23:48.495686+00:00"
+  },
+  "portsmouthw <-> 朴茨茅斯女": {
+    "left_normalized": "portsmouthw",
+    "right_normalized": "朴茨茅斯女",
+    "left_example": "Portsmouth W",
+    "right_example": "朴茨茅斯(女)",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T14:23:48.496427+00:00"
+  },
+  "bayernmunichw <-> 拜仁慕尼黑女": {
+    "left_normalized": "bayernmunichw",
+    "right_normalized": "拜仁慕尼黑女",
+    "left_example": "Bayern Munich W",
+    "right_example": "拜仁慕尼黑(女)",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T14:41:29.798161+00:00"
+  },
+  "adceutafc <-> 薛奥泰": {
+    "left_normalized": "adceutafc",
+    "right_normalized": "薛奥泰",
+    "left_example": "AD Ceuta FC",
+    "right_example": "薛奥泰",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T14:41:29.843320+00:00"
+  },
+  "cadiz <-> 加的斯": {
+    "left_normalized": "cadiz",
+    "right_normalized": "加的斯",
+    "left_example": "Cadiz",
+    "right_example": "加的斯",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T14:41:29.844036+00:00"
+  },
+  "manchesterunitedw <-> 曼联女": {
+    "left_normalized": "manchesterunitedw",
+    "right_normalized": "曼联女",
+    "left_example": "Manchester United W",
+    "right_example": "曼联(女)",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.121629+00:00"
+  },
+  "manchestercityw <-> 曼城女": {
+    "left_normalized": "manchestercityw",
+    "right_normalized": "曼城女",
+    "left_example": "Manchester City W",
+    "right_example": "曼城(女)",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.122460+00:00"
+  },
+  "ospitaletto <-> 奥斯皮塔莱托": {
+    "left_normalized": "ospitaletto",
+    "right_normalized": "奥斯皮塔莱托",
+    "left_example": "Ospitaletto",
+    "right_example": "奥斯皮塔莱托",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.139571+00:00"
+  },
+  "gianaerminio <-> 加纳埃米尼奥": {
+    "left_normalized": "gianaerminio",
+    "right_normalized": "加纳埃米尼奥",
+    "left_example": "Giana Erminio",
+    "right_example": "加纳埃米尼奥",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.140461+00:00"
+  },
+  "torres <-> 多域斯": {
+    "left_normalized": "torres",
+    "right_normalized": "多域斯",
+    "left_example": "Torres",
+    "right_example": "多域斯",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.149550+00:00"
+  },
+  "livorno <-> 利沃诺": {
+    "left_normalized": "livorno",
+    "right_normalized": "利沃诺",
+    "left_example": "Livorno",
+    "right_example": "利沃诺",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.150349+00:00"
+  },
+  "latina <-> 拉蒂纳": {
+    "left_normalized": "latina",
+    "right_normalized": "拉蒂纳",
+    "left_example": "Latina",
+    "right_example": "拉蒂纳",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.158911+00:00"
+  },
+  "catania <-> 卡坦尼亚": {
+    "left_normalized": "catania",
+    "right_normalized": "卡坦尼亚",
+    "left_example": "Catania",
+    "right_example": "卡坦尼亚",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:17:09.159796+00:00"
+  },
+  "potenza <-> 波坦察": {
+    "left_normalized": "potenza",
+    "right_normalized": "波坦察",
+    "left_example": "Potenza",
+    "right_example": "波坦察",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:34:52.913299+00:00"
+  },
+  "salernitana <-> 萨勒尼塔纳": {
+    "left_normalized": "salernitana",
+    "right_normalized": "萨勒尼塔纳",
+    "left_example": "Salernitana",
+    "right_example": "萨勒尼塔纳",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:34:52.914423+00:00"
+  },
+  "lokomotivazvolen <-> 兹沃伦": {
+    "left_normalized": "lokomotivazvolen",
+    "right_normalized": "兹沃伦",
+    "left_example": "Lokomotíva Zvolen",
+    "right_example": "兹沃伦",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.902970+00:00"
+  },
+  "duklabanskabystrica <-> 拜斯迪卡": {
+    "left_normalized": "duklabanskabystrica",
+    "right_normalized": "拜斯迪卡",
+    "left_example": "Dukla Banská Bystrica",
+    "right_example": "拜斯迪卡",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.904163+00:00"
+  },
+  "redfoxstaralubovna <-> staralubovna": {
+    "left_normalized": "staralubovna",
+    "right_normalized": "redfoxstaralubovna",
+    "left_example": "Stará Ľubovňa",
+    "right_example": "Redfox Stara Lubovna",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.926179+00:00"
+  },
+  "petrzalka <-> 柏沙卡": {
+    "left_normalized": "petrzalka",
+    "right_normalized": "柏沙卡",
+    "left_example": "Petržalka",
+    "right_example": "柏沙卡",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.927076+00:00"
+  },
+  "sanmarino <-> 圣马力诺": {
+    "left_normalized": "sanmarino",
+    "right_normalized": "圣马力诺",
+    "left_example": "San Marino",
+    "right_example": "圣马力诺",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.940996+00:00"
+  },
+  "faroeislands <-> 法罗群岛": {
+    "left_normalized": "faroeislands",
+    "right_normalized": "法罗群岛",
+    "left_example": "Faroe Islands",
+    "right_example": "法罗群岛",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.941896+00:00"
+  },
+  "southkorea <-> 韩国": {
+    "left_normalized": "southkorea",
+    "right_normalized": "韩国",
+    "left_example": "South Korea",
+    "right_example": "韩国",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.949506+00:00"
+  },
+  "ivorycoast <-> 象牙海岸": {
+    "left_normalized": "ivorycoast",
+    "right_normalized": "象牙海岸",
+    "left_example": "Ivory Coast",
+    "right_example": "象牙海岸",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T15:52:26.950338+00:00"
+  },
+  "romaniau19 <-> 罗马尼亚u19": {
+    "left_normalized": "romaniau19",
+    "right_normalized": "罗马尼亚u19",
+    "left_example": "Romania U19",
+    "right_example": "罗马尼亚U19",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:09:21.010374+00:00"
+  },
+  "northernirelandu19 <-> 北爱尔兰u19": {
+    "left_normalized": "northernirelandu19",
+    "right_normalized": "北爱尔兰u19",
+    "left_example": "Northern Ireland U19",
+    "right_example": "北爱尔兰U19",
+    "count": 6,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:09:21.011150+00:00"
+  },
+  "blackpool <-> 布莱克浦": {
+    "left_normalized": "blackpool",
+    "right_normalized": "布莱克浦",
+    "left_example": "Blackpool",
+    "right_example": "布莱克浦",
+    "count": 4,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:09:20.881927+00:00"
+  },
+  "burtonalbion <-> 保顿艾尔宾": {
+    "left_normalized": "burtonalbion",
+    "right_normalized": "保顿艾尔宾",
+    "left_example": "Burton Albion",
+    "right_example": "保顿艾尔宾",
+    "count": 4,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:09:20.882715+00:00"
+  },
+  "exetercity <-> 艾斯特城": {
+    "left_normalized": "exetercity",
+    "right_normalized": "艾斯特城",
+    "left_example": "Exeter City",
+    "right_example": "艾斯特城",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.359111+00:00"
+  },
+  "leytonorient <-> 莱顿东方": {
+    "left_normalized": "leytonorient",
+    "right_normalized": "莱顿东方",
+    "left_example": "Leyton Orient",
+    "right_example": "莱顿东方",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.360123+00:00"
+  },
+  "reading <-> 雷丁": {
+    "left_normalized": "reading",
+    "right_normalized": "雷丁",
+    "left_example": "Reading",
+    "right_example": "雷丁",
+    "count": 9,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:57:11.140476+00:00"
+  },
+  "wigan <-> 维冈竞技": {
+    "left_normalized": "wigan",
+    "right_normalized": "维冈竞技",
+    "left_example": "Wigan",
+    "right_example": "维冈竞技",
+    "count": 9,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:57:11.141367+00:00"
+  },
+  "stockportcounty <-> 史托港": {
+    "left_normalized": "stockportcounty",
+    "right_normalized": "史托港",
+    "left_example": "Stockport County",
+    "right_example": "史托港",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.373742+00:00"
+  },
+  "afcwimbledon <-> 温布尔登": {
+    "left_normalized": "afcwimbledon",
+    "right_normalized": "温布尔登",
+    "left_example": "AFC Wimbledon",
+    "right_example": "温布尔登",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.374695+00:00"
+  },
+  "wycombe <-> 韦康比流浪者": {
+    "left_normalized": "wycombe",
+    "right_normalized": "韦康比流浪者",
+    "left_example": "Wycombe",
+    "right_example": "韦康比流浪者",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.380938+00:00"
+  },
+  "portvale <-> 维尔港": {
+    "left_normalized": "portvale",
+    "right_normalized": "维尔港",
+    "left_example": "Port Vale",
+    "right_example": "维尔港",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.381850+00:00"
+  },
+  "barnet <-> 巴尼特": {
+    "left_normalized": "barnet",
+    "right_normalized": "巴尼特",
+    "left_example": "Barnet",
+    "right_example": "巴尼特",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.387862+00:00"
+  },
+  "cambridgeunited <-> 剑桥联": {
+    "left_normalized": "cambridgeunited",
+    "right_normalized": "剑桥联",
+    "left_example": "Cambridge United",
+    "right_example": "剑桥联",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.388776+00:00"
+  },
+  "bristolrovers <-> 布里斯托流浪": {
+    "left_normalized": "bristolrovers",
+    "right_normalized": "布里斯托流浪",
+    "left_example": "Bristol Rovers",
+    "right_example": "布里斯托流浪",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.399213+00:00"
+  },
+  "accringtonst <-> 艾宁顿": {
+    "left_normalized": "accringtonst",
+    "right_normalized": "艾宁顿",
+    "left_example": "Accrington ST",
+    "right_example": "艾宁顿",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.400162+00:00"
+  },
+  "colchester <-> 科尔切斯特联": {
+    "left_normalized": "colchester",
+    "right_normalized": "科尔切斯特联",
+    "left_example": "Colchester",
+    "right_example": "科尔切斯特联",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:57:11.160313+00:00"
+  },
+  "walsall <-> 沃尔索尔": {
+    "left_normalized": "walsall",
+    "right_normalized": "沃尔索尔",
+    "left_example": "Walsall",
+    "right_example": "沃尔索尔",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:57:11.161197+00:00"
+  },
+  "crewe <-> 克鲁": {
+    "left_normalized": "crewe",
+    "right_normalized": "克鲁",
+    "left_example": "Crewe",
+    "right_example": "克鲁",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.414610+00:00"
+  },
+  "oldham <-> 奥尔德姆": {
+    "left_normalized": "oldham",
+    "right_normalized": "奥尔德姆",
+    "left_example": "Oldham",
+    "right_example": "奥尔德姆",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.415520+00:00"
+  },
+  "newportcounty <-> 纽波特郡": {
+    "left_normalized": "newportcounty",
+    "right_normalized": "纽波特郡",
+    "left_example": "Newport County",
+    "right_example": "纽波特郡",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:36:06.926830+00:00"
+  },
+  "shrewsbury <-> 什鲁斯伯里": {
+    "left_normalized": "shrewsbury",
+    "right_normalized": "什鲁斯伯里",
+    "left_example": "Shrewsbury",
+    "right_example": "什鲁斯伯里",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:36:06.927668+00:00"
+  },
+  "granadacf <-> 格拉纳达": {
+    "left_normalized": "granadacf",
+    "right_normalized": "格拉纳达",
+    "left_example": "Granada CF",
+    "right_example": "格拉纳达",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:10:15.071326+00:00"
+  },
+  "huesca <-> 韦斯卡": {
+    "left_normalized": "huesca",
+    "right_normalized": "韦斯卡",
+    "left_example": "Huesca",
+    "right_example": "韦斯卡",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:10:15.073751+00:00"
+  },
+  "valladolid <-> 巴拉多利德": {
+    "left_normalized": "valladolid",
+    "right_normalized": "巴拉多利德",
+    "left_example": "Valladolid",
+    "right_example": "巴拉多利德",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:10:15.080155+00:00"
+  },
+  "burgos <-> 布尔戈斯": {
+    "left_normalized": "burgos",
+    "right_normalized": "布尔戈斯",
+    "left_example": "Burgos",
+    "right_example": "布尔戈斯",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:10:15.082447+00:00"
+  },
+  "atlanta <-> 亚特兰大": {
+    "left_normalized": "atlanta",
+    "right_normalized": "亚特兰大",
+    "left_example": "Atlanta",
+    "right_example": "亚特兰大",
+    "count": 11,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:57:06.041200+00:00"
+  },
+  "ferrocarriloeste <-> 费罗卡利尔": {
+    "left_normalized": "ferrocarriloeste",
+    "right_normalized": "费罗卡利尔",
+    "left_example": "Ferro Carril Oeste",
+    "right_example": "费罗卡利尔",
+    "count": 11,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:57:06.043942+00:00"
+  },
+  "senegal <-> 塞内加尔": {
+    "left_normalized": "senegal",
+    "right_normalized": "塞内加尔",
+    "left_example": "Senegal",
+    "right_example": "塞内加尔",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:41:17.629551+00:00"
+  },
+  "peru <-> 秘鲁": {
+    "left_normalized": "peru",
+    "right_normalized": "秘鲁",
+    "left_example": "Peru",
+    "right_example": "秘鲁",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T17:41:17.632122+00:00"
+  },
+  "mightyblackpool <-> 布莱克浦": {
+    "left_normalized": "mightyblackpool",
+    "right_normalized": "布莱克浦",
+    "left_example": "Mighty Blackpool",
+    "right_example": "布莱克浦",
     "count": 5,
     "promoted": true,
-    "last_seen_at": "2026-03-27T01:50:54.569073+00:00"
+    "last_seen_at": "2026-03-28T16:57:11.087488+00:00"
+  },
+  "wilberforcestrikers <-> 保顿艾尔宾": {
+    "left_normalized": "wilberforcestrikers",
+    "right_normalized": "保顿艾尔宾",
+    "left_example": "Wilberforce Strikers",
+    "right_example": "保顿艾尔宾",
+    "count": 5,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:57:11.088442+00:00"
+  },
+  "romaniau19 <-> 苏格兰u19": {
+    "left_normalized": "romaniau19",
+    "right_normalized": "苏格兰u19",
+    "left_example": "Romania U19",
+    "right_example": "苏格兰U19",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-28T16:26:44.804421+00:00"
+  },
+  "northernirelandu19 <-> 爱尔兰u19": {
+    "left_normalized": "northernirelandu19",
+    "right_normalized": "爱尔兰u19",
+    "left_example": "Northern Ireland U19",
+    "right_example": "爱尔兰U19",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-28T16:26:44.805392+00:00"
+  },
+  "renate <-> 雷纳特": {
+    "left_normalized": "renate",
+    "right_normalized": "雷纳特",
+    "left_example": "Renate",
+    "right_example": "雷纳特",
+    "count": 11,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:28:12.968467+00:00"
+  },
+  "novara <-> 诺和华": {
+    "left_normalized": "novara",
+    "right_normalized": "诺和华",
+    "left_example": "Novara",
+    "right_example": "诺和华",
+    "count": 11,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:28:12.970989+00:00"
+  },
+  "triestina <-> 泰利斯天拿": {
+    "left_normalized": "triestina",
+    "right_normalized": "泰利斯天拿",
+    "left_example": "Triestina",
+    "right_example": "泰利斯天拿",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:24:14.379407+00:00"
+  },
+  "virtusverona <-> 维图斯维罗纳": {
+    "left_normalized": "virtusverona",
+    "right_normalized": "维图斯维罗纳",
+    "left_example": "Virtus Verona",
+    "right_example": "维图斯维罗纳",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:24:14.382327+00:00"
+  },
+  "salfordcity <-> 莎尔福德城": {
+    "left_normalized": "salfordcity",
+    "right_normalized": "莎尔福德城",
+    "left_example": "Salford City",
+    "right_example": "莎尔福德城",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.425370+00:00"
+  },
+  "miltonkeynesdons <-> 米尔顿凯恩斯": {
+    "left_normalized": "miltonkeynesdons",
+    "right_normalized": "米尔顿凯恩斯",
+    "left_example": "Milton Keynes Dons",
+    "right_example": "米尔顿凯恩斯",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T16:52:57.427654+00:00"
+  },
+  "deportivodelacorunaw <-> 拉科鲁尼亚女": {
+    "left_normalized": "deportivodelacorunaw",
+    "right_normalized": "拉科鲁尼亚女",
+    "left_example": "Deportivo de La Coruña W",
+    "right_example": "拉科鲁尼亚(女)",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:01:41.443595+00:00"
+  },
+  "eibarw <-> 埃瓦尔女": {
+    "left_normalized": "eibarw",
+    "right_normalized": "埃瓦尔女",
+    "left_example": "Eibar W",
+    "right_example": "埃瓦尔(女)",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:01:41.446146+00:00"
+  },
+  "hungary <-> 匈牙利": {
+    "left_normalized": "hungary",
+    "right_normalized": "匈牙利",
+    "left_example": "Hungary",
+    "right_example": "匈牙利",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:46:09.971521+00:00"
+  },
+  "slovenia <-> 斯洛文尼亚": {
+    "left_normalized": "slovenia",
+    "right_normalized": "斯洛文尼亚",
+    "left_example": "Slovenia",
+    "right_example": "斯洛文尼亚",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:46:09.974258+00:00"
+  },
+  "scotland <-> 苏格兰": {
+    "left_normalized": "scotland",
+    "right_normalized": "苏格兰",
+    "left_example": "Scotland",
+    "right_example": "苏格兰",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:46:09.981593+00:00"
+  },
+  "japan <-> 日本": {
+    "left_normalized": "japan",
+    "right_normalized": "日本",
+    "left_example": "Japan",
+    "right_example": "日本",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:46:09.984316+00:00"
+  },
+  "fckolnw <-> 科隆女": {
+    "left_normalized": "fckolnw",
+    "right_normalized": "科隆女",
+    "left_example": "FC Koln W",
+    "right_example": "科隆(女)",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:46:09.991645+00:00"
+  },
+  "eintrachtfrankfurtw <-> 法兰克福女": {
+    "left_normalized": "eintrachtfrankfurtw",
+    "right_normalized": "法兰克福女",
+    "left_example": "Eintracht Frankfurt W",
+    "right_example": "法兰克福(女)",
+    "count": 14,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T18:46:09.994357+00:00"
+  },
+  "canada <-> 加拿大": {
+    "left_normalized": "canada",
+    "right_normalized": "加拿大",
+    "left_example": "Canada",
+    "right_example": "加拿大",
+    "count": 17,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:05:27.343497+00:00"
+  },
+  "iceland <-> 冰岛": {
+    "left_normalized": "iceland",
+    "right_normalized": "冰岛",
+    "left_example": "Iceland",
+    "right_example": "冰岛",
+    "count": 17,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:05:27.346614+00:00"
+  },
+  "malaga <-> 马拉加": {
+    "left_normalized": "malaga",
+    "right_normalized": "马拉加",
+    "left_example": "Malaga",
+    "right_example": "马拉加",
+    "count": 23,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:20:01.550289+00:00"
+  },
+  "leganes <-> 雷加利斯": {
+    "left_normalized": "leganes",
+    "right_normalized": "雷加利斯",
+    "left_example": "Leganes",
+    "right_example": "雷加利斯",
+    "count": 23,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:20:01.552846+00:00"
+  },
+  "willemii <-> 威廉二世": {
+    "left_normalized": "willemii",
+    "right_normalized": "威廉二世",
+    "left_example": "Willem II",
+    "right_example": "威廉二世",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:38:22.019382+00:00"
+  },
+  "degraafschap <-> 格拉夫夏普": {
+    "left_normalized": "degraafschap",
+    "right_normalized": "格拉夫夏普",
+    "left_example": "De Graafschap",
+    "right_example": "格拉夫夏普",
+    "count": 40,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:38:22.022389+00:00"
+  },
+  "arsenalw <-> 阿森纳女": {
+    "left_normalized": "arsenalw",
+    "right_normalized": "阿森纳女",
+    "left_example": "Arsenal W",
+    "right_example": "阿森纳(女)",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:26:11.284098+00:00"
+  },
+  "tottenhamhotspurw <-> 托特纳姆热刺女": {
+    "left_normalized": "tottenhamhotspurw",
+    "right_normalized": "托特纳姆热刺女",
+    "left_example": "Tottenham Hotspur W",
+    "right_example": "托特纳姆热刺(女)",
+    "count": 27,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:26:11.287299+00:00"
+  },
+  "aguasanta <-> 阿故圣塔sp": {
+    "left_normalized": "aguasanta",
+    "right_normalized": "阿故圣塔sp",
+    "left_example": "Água Santa",
+    "right_example": "阿故圣塔SP",
+    "count": 63,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:54:36.541551+00:00"
+  },
+  "ituano <-> 伊图阿诺sp": {
+    "left_normalized": "ituano",
+    "right_normalized": "伊图阿诺sp",
+    "left_example": "Ituano",
+    "right_example": "伊图阿诺SP",
+    "count": 63,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:54:36.544844+00:00"
+  },
+  "colon <-> 科隆蒙得维的亚": {
+    "left_normalized": "colon",
+    "right_normalized": "科隆蒙得维的亚",
+    "left_example": "Colón",
+    "right_example": "科隆蒙得维的亚",
+    "count": 67,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:57:35.117224+00:00"
+  },
+  "rentistas <-> 壬提塔斯": {
+    "left_normalized": "rentistas",
+    "right_normalized": "壬提塔斯",
+    "left_example": "Rentistas",
+    "right_example": "壬提塔斯",
+    "count": 67,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T19:57:35.120269+00:00"
+  },
+  "almagro <-> 阿尔马格罗": {
+    "left_normalized": "almagro",
+    "right_normalized": "阿尔马格罗",
+    "left_example": "Almagro",
+    "right_example": "阿尔马格罗",
+    "count": 81,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.320307+00:00"
+  },
+  "deportivomoron <-> 玛伦": {
+    "left_normalized": "deportivomoron",
+    "right_normalized": "玛伦",
+    "left_example": "Deportivo Moron",
+    "right_example": "玛伦",
+    "count": 81,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.323349+00:00"
+  },
+  "sevillaw <-> 塞维利亚女": {
+    "left_normalized": "sevillaw",
+    "right_normalized": "塞维利亚女",
+    "left_example": "Sevilla W",
+    "right_example": "塞维利亚(女)",
+    "count": 73,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.308685+00:00"
+  },
+  "minerosdeguyana <-> 麦尼拉斯": {
+    "left_normalized": "minerosdeguyana",
+    "right_normalized": "麦尼拉斯",
+    "left_example": "Mineros de Guyana",
+    "right_example": "麦尼拉斯",
+    "count": 53,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.281801+00:00"
+  },
+  "araguafc <-> 阿拉瓜": {
+    "left_normalized": "araguafc",
+    "right_normalized": "阿拉瓜",
+    "left_example": "Aragua FC",
+    "right_example": "阿拉瓜",
+    "count": 53,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.284784+00:00"
+  },
+  "usa <-> 美国": {
+    "left_normalized": "usa",
+    "right_normalized": "美国",
+    "left_example": "USA",
+    "right_example": "美国",
+    "count": 44,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.292685+00:00"
+  },
+  "belgium <-> 比利时": {
+    "left_normalized": "belgium",
+    "right_normalized": "比利时",
+    "left_example": "Belgium",
+    "right_example": "比利时",
+    "count": 44,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.295776+00:00"
+  },
+  "crb <-> crbal": {
+    "left_normalized": "crb",
+    "right_normalized": "crbal",
+    "left_example": "CRB",
+    "right_example": "CRB AL",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:41.909580+00:00"
+  },
+  "vitoria <-> 维多利亚ba": {
+    "left_normalized": "vitoria",
+    "right_normalized": "维多利亚ba",
+    "left_example": "Vitoria",
+    "right_example": "维多利亚BA",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:41.913028+00:00"
+  },
+  "maranhao <-> 马拉尼昂ma": {
+    "left_normalized": "maranhao",
+    "right_normalized": "马拉尼昂ma",
+    "left_example": "Maranhão",
+    "right_example": "马拉尼昂MA",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:41.922248+00:00"
+  },
+  "ferroviario <-> 费罗维里亚ce": {
+    "left_normalized": "ferroviario",
+    "right_normalized": "费罗维里亚ce",
+    "left_example": "Ferroviario",
+    "right_example": "费罗维里亚CE",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:41.925734+00:00"
+  },
+  "nantesw <-> 南特女": {
+    "left_normalized": "nantesw",
+    "right_normalized": "南特女",
+    "left_example": "Nantes W",
+    "right_example": "南特(女)",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.232245+00:00"
+  },
+  "parissaintgermainw <-> 巴黎圣日耳曼女": {
+    "left_normalized": "parissaintgermainw",
+    "right_normalized": "巴黎圣日耳曼女",
+    "left_example": "Paris Saint Germain W",
+    "right_example": "巴黎圣日耳曼(女)",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.235786+00:00"
+  },
+  "fceindhoven <-> 埃因霍温": {
+    "left_normalized": "fceindhoven",
+    "right_normalized": "埃因霍温",
+    "left_example": "FC Eindhoven",
+    "right_example": "埃因霍温",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.244132+00:00"
+  },
+  "emmen <-> 埃门": {
+    "left_normalized": "emmen",
+    "right_normalized": "埃门",
+    "left_example": "Emmen",
+    "right_example": "埃门",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.247605+00:00"
+  },
+  "sportinggijon <-> 希洪竞技": {
+    "left_normalized": "sportinggijon",
+    "right_normalized": "希洪竞技",
+    "left_example": "Sporting Gijon",
+    "right_example": "希洪竞技",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.261287+00:00"
+  },
+  "deportivolacoruna <-> 拉科鲁尼亚": {
+    "left_normalized": "deportivolacoruna",
+    "right_normalized": "拉科鲁尼亚",
+    "left_example": "Deportivo La Coruna",
+    "right_example": "拉科鲁尼亚",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T20:12:48.264277+00:00"
+  },
+  "americadecaliw <-> 卡利阿美利加女": {
+    "left_normalized": "americadecaliw",
+    "right_normalized": "卡利阿美利加女",
+    "left_example": "América de Cali W",
+    "right_example": "卡利阿美利加(女)",
+    "count": 61,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:52:53.464998+00:00"
+  },
+  "santafew <-> 圣塔菲女": {
+    "left_normalized": "santafew",
+    "right_normalized": "圣塔菲女",
+    "left_example": "Santa Fe W",
+    "right_example": "圣塔菲(女)",
+    "count": 61,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:52:53.468559+00:00"
+  },
+  "brazilu20 <-> 巴西u20": {
+    "left_normalized": "brazilu20",
+    "right_normalized": "巴西u20",
+    "left_example": "Brazil U20",
+    "right_example": "巴西 U20",
+    "count": 122,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:53:44.393737+00:00"
+  },
+  "paraguayu20 <-> 巴拉圭u20": {
+    "left_normalized": "paraguayu20",
+    "right_normalized": "巴拉圭u20",
+    "left_example": "Paraguay U20",
+    "right_example": "巴拉圭U20",
+    "count": 122,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:53:44.397158+00:00"
+  },
+  "olimpia <-> 奥林匹亚": {
+    "left_normalized": "olimpia",
+    "right_normalized": "奥林匹亚",
+    "left_example": "Olimpia",
+    "right_example": "奥林匹亚",
+    "count": 96,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:27:20.128507+00:00"
+  },
+  "2demayo <-> 马约": {
+    "left_normalized": "2demayo",
+    "right_normalized": "马约",
+    "left_example": "2 de Mayo",
+    "right_example": "马约",
+    "count": 96,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:27:20.131843+00:00"
+  },
+  "cucuta <-> 库库塔": {
+    "left_normalized": "cucuta",
+    "right_normalized": "库库塔",
+    "left_example": "Cucuta",
+    "right_example": "库库塔",
+    "count": 60,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T22:59:34.627573+00:00"
+  },
+  "chico <-> 奇科": {
+    "left_normalized": "chico",
+    "right_normalized": "奇科",
+    "left_example": "Chico",
+    "right_example": "奇科",
+    "count": 60,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T22:59:34.630828+00:00"
+  },
+  "plazacolonia <-> 佩拉扎科朗尼亚": {
+    "left_normalized": "plazacolonia",
+    "right_normalized": "佩拉扎科朗尼亚",
+    "left_example": "Plaza Colonia",
+    "right_example": "佩拉扎科朗尼亚",
+    "count": 55,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T22:53:37.637455+00:00"
+  },
+  "cariverplate <-> 蒙特维多河床队": {
+    "left_normalized": "cariverplate",
+    "right_normalized": "蒙特维多河床队",
+    "left_example": "CA River Plate",
+    "right_example": "蒙特维多河床队",
+    "count": 55,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T22:53:37.640513+00:00"
+  },
+  "lduportoviejo <-> 蒙特维多城图尔克": {
+    "left_normalized": "lduportoviejo",
+    "right_normalized": "蒙特维多城图尔克",
+    "left_example": "LDU Portoviejo",
+    "right_example": "蒙特维多城图尔克",
+    "count": 45,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:10:44.931614+00:00"
+  },
+  "elnacional <-> 蒙特维多国民队": {
+    "left_normalized": "elnacional",
+    "right_normalized": "蒙特维多国民队",
+    "left_example": "El Nacional",
+    "right_example": "蒙特维多国民队",
+    "count": 45,
+    "promoted": true,
+    "last_seen_at": "2026-03-28T23:10:44.934697+00:00"
+  },
+  "colegiales <-> 科勒加勒斯": {
+    "left_normalized": "colegiales",
+    "right_normalized": "科勒加勒斯",
+    "left_example": "Colegiales",
+    "right_example": "科勒加勒斯",
+    "count": 111,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T00:52:45.343079+00:00"
+  },
+  "sanmiguel <-> 圣米格尔": {
+    "left_normalized": "sanmiguel",
+    "right_normalized": "圣米格尔",
+    "left_example": "San Miguel",
+    "right_example": "圣米格尔",
+    "count": 110,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T00:52:45.346576+00:00"
+  },
+  "deportestolima <-> 托利马": {
+    "left_normalized": "deportestolima",
+    "right_normalized": "托利马",
+    "left_example": "Deportes Tolima",
+    "right_example": "托利马",
+    "count": 109,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:03:06.704999+00:00"
+  },
+  "jaguares <-> 贾奎斯科尔多瓦": {
+    "left_normalized": "jaguares",
+    "right_normalized": "贾奎斯科尔多瓦",
+    "left_example": "Jaguares",
+    "right_example": "贾奎斯科尔多瓦",
+    "count": 108,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:03:06.708164+00:00"
+  },
+  "curicounido <-> 克里科": {
+    "left_normalized": "curicounido",
+    "right_normalized": "克里科",
+    "left_example": "Curico Unido",
+    "right_example": "克里科",
+    "count": 99,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:29:31.835300+00:00"
+  },
+  "deportescopiapo <-> 科皮亚波": {
+    "left_normalized": "deportescopiapo",
+    "right_normalized": "科皮亚波",
+    "left_example": "Deportes Copiapo",
+    "right_example": "科皮亚波",
+    "count": 98,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:29:31.838617+00:00"
+  },
+  "miamifc <-> 迈阿密": {
+    "left_normalized": "miamifc",
+    "right_normalized": "迈阿密",
+    "left_example": "Miami FC",
+    "right_example": "迈阿密",
+    "count": 77,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T00:59:51.211208+00:00"
+  },
+  "rhodeisland <-> 罗得岛": {
+    "left_normalized": "rhodeisland",
+    "right_normalized": "罗得岛",
+    "left_example": "Rhode Island",
+    "right_example": "罗得岛",
+    "count": 77,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T00:59:51.214608+00:00"
+  },
+  "brooklyn <-> 布鲁克林": {
+    "left_normalized": "brooklyn",
+    "right_normalized": "布鲁克林",
+    "left_example": "Brooklyn",
+    "right_example": "布鲁克林",
+    "count": 90,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:24:49.836811+00:00"
+  },
+  "louisvillecity <-> 路易斯维尔城": {
+    "left_normalized": "louisvillecity",
+    "right_normalized": "路易斯维尔城",
+    "left_example": "Louisville City",
+    "right_example": "路易斯维尔城",
+    "count": 89,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:24:49.840114+00:00"
+  },
+  "tampabayrowdies <-> 坦帕湾暴徒": {
+    "left_normalized": "tampabayrowdies",
+    "right_normalized": "坦帕湾暴徒",
+    "left_example": "Tampa Bay Rowdies",
+    "right_example": "坦帕湾暴徒",
+    "count": 44,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:24:49.846189+00:00"
+  },
+  "loudoununited <-> 劳顿联": {
+    "left_normalized": "loudoununited",
+    "right_normalized": "劳顿联",
+    "left_example": "Loudoun United",
+    "right_example": "劳顿联",
+    "count": 43,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:24:49.849574+00:00"
+  },
+  "haiti <-> 海地": {
+    "left_normalized": "haiti",
+    "right_normalized": "海地",
+    "left_example": "Haiti",
+    "right_example": "海地",
+    "count": 84,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:59:30.076593+00:00"
+  },
+  "tunisia <-> 突尼斯": {
+    "left_normalized": "tunisia",
+    "right_normalized": "突尼斯",
+    "left_example": "Tunisia",
+    "right_example": "突尼斯",
+    "count": 84,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:59:30.079866+00:00"
+  },
+  "vilanova <-> 维拉诺瓦go": {
+    "left_normalized": "vilanova",
+    "right_normalized": "维拉诺瓦go",
+    "left_example": "Vila Nova",
+    "right_example": "维拉诺瓦GO",
+    "count": 63,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:24:49.815622+00:00"
+  },
+  "operarioferroviario <-> 欧帕瑞欧ms": {
+    "left_normalized": "operarioferroviario",
+    "right_normalized": "欧帕瑞欧ms",
+    "left_example": "Operario Ferroviario",
+    "right_example": "欧帕瑞欧MS",
+    "count": 63,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T01:24:49.818835+00:00"
+  },
+  "cancun <-> 坎昆": {
+    "left_normalized": "cancun",
+    "right_normalized": "坎昆",
+    "left_example": "Cancún",
+    "right_example": "坎昆",
+    "count": 96,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:58:23.320702+00:00"
+  },
+  "tepatitlan <-> 特帕蒂特兰": {
+    "left_normalized": "tepatitlan",
+    "right_normalized": "特帕蒂特兰",
+    "left_example": "Tepatitlán",
+    "right_example": "特帕蒂特兰",
+    "count": 96,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:58:23.324125+00:00"
+  },
+  "dorados <-> 多拉多斯": {
+    "left_normalized": "dorados",
+    "right_normalized": "多拉多斯",
+    "left_example": "Dorados",
+    "right_example": "多拉多斯",
+    "count": 96,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:58:23.328639+00:00"
+  },
+  "correcaminosuat <-> 克雷卡米诺斯": {
+    "left_normalized": "correcaminosuat",
+    "right_normalized": "克雷卡米诺斯",
+    "left_example": "Correcaminos Uat",
+    "right_example": "克雷卡米诺斯",
+    "count": 96,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:58:23.332218+00:00"
+  },
+  "monarcas <-> 莫雷利亚竞技": {
+    "left_normalized": "monarcas",
+    "right_normalized": "莫雷利亚竞技",
+    "left_example": "Monarcas",
+    "right_example": "莫雷利亚竞技",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:56:41.722758+00:00"
+  },
+  "irapuato <-> 伊拉波图": {
+    "left_normalized": "irapuato",
+    "right_normalized": "伊拉波图",
+    "left_example": "Irapuato",
+    "right_example": "伊拉波图",
+    "count": 37,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:56:41.726383+00:00"
+  },
+  "mexico <-> 墨西哥": {
+    "left_normalized": "mexico",
+    "right_normalized": "墨西哥",
+    "left_example": "Mexico",
+    "right_example": "墨西哥",
+    "count": 92,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:54:36.099059+00:00"
+  },
+  "portugal <-> 葡萄牙": {
+    "left_normalized": "portugal",
+    "right_normalized": "葡萄牙",
+    "left_example": "Portugal",
+    "right_example": "葡萄牙",
+    "count": 92,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T02:54:36.102616+00:00"
+  },
+  "deportivocali <-> 卡利体育会": {
+    "left_normalized": "deportivocali",
+    "right_normalized": "卡利体育会",
+    "left_example": "Deportivo Cali",
+    "right_example": "卡利体育会",
+    "count": 108,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T03:14:43.486444+00:00"
+  },
+  "deportivopereira <-> 佩雷拉": {
+    "left_normalized": "deportivopereira",
+    "right_normalized": "佩雷拉",
+    "left_example": "Deportivo Pereira",
+    "right_example": "佩雷拉",
+    "count": 108,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T03:14:43.489691+00:00"
+  },
+  "sacramentorepublic <-> 萨克拉门托": {
+    "left_normalized": "sacramentorepublic",
+    "right_normalized": "萨克拉门托",
+    "left_example": "Sacramento Republic",
+    "right_example": "萨克拉门托",
+    "count": 122,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.630204+00:00"
+  },
+  "elpasolocomotive <-> 巴索火车头": {
+    "left_normalized": "elpasolocomotive",
+    "right_normalized": "巴索火车头",
+    "left_example": "El Paso Locomotive",
+    "right_example": "巴索火车头",
+    "count": 122,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.634028+00:00"
+  },
+  "lasvegaslights <-> 拉斯维加斯之光": {
+    "left_normalized": "lasvegaslights",
+    "right_normalized": "拉斯维加斯之光",
+    "left_example": "Las Vegas Lights",
+    "right_example": "拉斯维加斯之光",
+    "count": 93,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.621323+00:00"
+  },
+  "montereybay <-> 蒙特雷湾": {
+    "left_normalized": "montereybay",
+    "right_normalized": "蒙特雷湾",
+    "left_example": "Monterey Bay",
+    "right_example": "蒙特雷湾",
+    "count": 93,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.624483+00:00"
+  },
+  "wellingtonphoenixw <-> 威灵顿凤凰女": {
+    "left_normalized": "wellingtonphoenixw",
+    "right_normalized": "威灵顿凤凰女",
+    "left_example": "Wellington Phoenix W",
+    "right_example": "威灵顿凤凰(女)",
+    "count": 74,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.611783+00:00"
+  },
+  "westernsydneywanderersw <-> 西悉尼流浪者女": {
+    "left_normalized": "westernsydneywanderersw",
+    "right_normalized": "西悉尼流浪者女",
+    "left_example": "Western Sydney Wanderers W",
+    "right_example": "西悉尼流浪者(女)",
+    "count": 74,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.615370+00:00"
+  },
+  "roassokumamoto <-> 熊本深红": {
+    "left_normalized": "roassokumamoto",
+    "right_normalized": "熊本深红",
+    "left_example": "Roasso Kumamoto",
+    "right_example": "熊本深红",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.588293+00:00"
+  },
+  "kagoshimaunited <-> 鹿儿岛联": {
+    "left_normalized": "kagoshimaunited",
+    "right_normalized": "鹿儿岛联",
+    "left_example": "Kagoshima United",
+    "right_example": "鹿儿岛联",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.592144+00:00"
+  },
+  "vanraurehachinohe <-> 万劳雷八户": {
+    "left_normalized": "vanraurehachinohe",
+    "right_normalized": "万劳雷八户",
+    "left_example": "Vanraure Hachinohe",
+    "right_example": "万劳雷八户",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.599453+00:00"
+  },
+  "sagamihara <-> 相模原": {
+    "left_normalized": "sagamihara",
+    "right_normalized": "相模原",
+    "left_example": "Sagamihara",
+    "right_example": "相模原",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T04:03:05.602994+00:00"
+  },
+  "melbournecityw <-> 墨尔本城女": {
+    "left_normalized": "melbournecityw",
+    "right_normalized": "墨尔本城女",
+    "left_example": "Melbourne City W",
+    "right_example": "墨尔本城(女)",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-29T04:01:20.501211+00:00"
+  },
+  "nasafw <-> 纳萨夫女": {
+    "left_normalized": "nasafw",
+    "right_normalized": "纳萨夫女",
+    "left_example": "Nasaf W",
+    "right_example": "纳萨夫(女)",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-29T04:01:20.504589+00:00"
+  },
+  "centralcoastmarinersw <-> 中央海岸水手女": {
+    "left_normalized": "centralcoastmarinersw",
+    "right_normalized": "中央海岸水手女",
+    "left_example": "Central Coast Mariners W",
+    "right_example": "中央海岸水手(女)",
+    "count": 53,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.936690+00:00"
+  },
+  "canberraunitedw <-> 堪培拉联女": {
+    "left_normalized": "canberraunitedw",
+    "right_normalized": "堪培拉联女",
+    "left_example": "Canberra United W",
+    "right_example": "堪培拉联(女)",
+    "count": 53,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.940615+00:00"
+  },
+  "renofayamaguchi <-> 山口雷法": {
+    "left_normalized": "renofayamaguchi",
+    "right_normalized": "山口雷法",
+    "left_example": "Renofa Yamaguchi",
+    "right_example": "山口雷法",
+    "count": 51,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.048883+00:00"
+  },
+  "oitatrinita <-> 大分三神": {
+    "left_normalized": "oitatrinita",
+    "right_normalized": "大分三神",
+    "left_example": "Oita Trinita",
+    "right_example": "大分三神",
+    "count": 51,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.052341+00:00"
+  },
+  "biwakoshiga <-> 滋贺湖王": {
+    "left_normalized": "biwakoshiga",
+    "right_normalized": "滋贺湖王",
+    "left_example": "Biwako Shiga",
+    "right_example": "滋贺湖王",
+    "count": 34,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.952364+00:00"
+  },
+  "tegevajaromiyazaki <-> 特格瓦嘉洛宫崎": {
+    "left_normalized": "tegevajaromiyazaki",
+    "right_normalized": "特格瓦嘉洛宫崎",
+    "left_example": "Tegevajaro Miyazaki",
+    "right_example": "特格瓦嘉洛宫崎",
+    "count": 34,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.956393+00:00"
+  },
+  "fukushimaunited <-> 福岛联队": {
+    "left_normalized": "fukushimaunited",
+    "right_normalized": "福岛联队",
+    "left_example": "Fukushima United",
+    "right_example": "福岛联队",
+    "count": 52,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.965963+00:00"
+  },
+  "matsumotoyamaga <-> 松本山雅": {
+    "left_normalized": "matsumotoyamaga",
+    "right_normalized": "松本山雅",
+    "left_example": "Matsumoto Yamaga",
+    "right_example": "松本山雅",
+    "count": 52,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.969921+00:00"
+  },
+  "kitakyushu <-> 北九州向日葵": {
+    "left_normalized": "kitakyushu",
+    "right_normalized": "北九州向日葵",
+    "left_example": "Kitakyushu",
+    "right_example": "北九州向日葵",
+    "count": 50,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.013204+00:00"
+  },
+  "fcryukyu <-> 琉球": {
+    "left_normalized": "fcryukyu",
+    "right_normalized": "琉球",
+    "left_example": "FC Ryukyu",
+    "right_example": "琉球",
+    "count": 50,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.017123+00:00"
+  },
+  "iwaki <-> 磐城": {
+    "left_normalized": "iwaki",
+    "right_normalized": "磐城",
+    "left_example": "Iwaki",
+    "right_example": "磐城",
+    "count": 41,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:12:30.969220+00:00"
+  },
+  "jubiloiwata <-> 磐田山叶": {
+    "left_normalized": "jubiloiwata",
+    "right_normalized": "磐田山叶",
+    "left_example": "Jubilo Iwata",
+    "right_example": "磐田山叶",
+    "count": 41,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:12:30.973088+00:00"
+  },
+  "kamatamaresanuki <-> 卡马塔马尔赞岐": {
+    "left_normalized": "kamatamaresanuki",
+    "right_normalized": "卡马塔马尔赞岐",
+    "left_example": "Kamatamare Sanuki",
+    "right_example": "卡马塔马尔赞岐",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.987517+00:00"
+  },
+  "ehimefc <-> 爱媛": {
+    "left_normalized": "ehimefc",
+    "right_normalized": "爱媛",
+    "left_example": "Ehime FC",
+    "right_example": "爱媛",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:38.991175+00:00"
+  },
+  "katallertoyama <-> 富山胜利": {
+    "left_normalized": "katallertoyama",
+    "right_normalized": "富山胜利",
+    "left_example": "Kataller Toyama",
+    "right_example": "富山胜利",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.000363+00:00"
+  },
+  "imabari <-> 今治": {
+    "left_normalized": "imabari",
+    "right_normalized": "今治",
+    "left_example": "Imabari",
+    "right_example": "今治",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.004227+00:00"
+  },
+  "montedioyamagata <-> 山形山神": {
+    "left_normalized": "montedioyamagata",
+    "right_normalized": "山形山神",
+    "left_example": "Montedio Yamagata",
+    "right_example": "山形山神",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.025466+00:00"
+  },
+  "tochigicity <-> 栃木城": {
+    "left_normalized": "tochigicity",
+    "right_normalized": "栃木城",
+    "left_example": "Tochigi City",
+    "right_example": "栃木城",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.029193+00:00"
+  },
+  "osaka <-> 大阪": {
+    "left_normalized": "osaka",
+    "right_normalized": "大阪",
+    "left_example": "Osaka",
+    "right_example": "大阪",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.037516+00:00"
+  },
+  "albirexniigata <-> 新泻天鹅": {
+    "left_normalized": "albirexniigata",
+    "right_normalized": "新泻天鹅",
+    "left_example": "Albirex Niigata",
+    "right_example": "新泻天鹅",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.041019+00:00"
+  },
+  "tokushimavortis <-> 德岛漩涡": {
+    "left_normalized": "tokushimavortis",
+    "right_normalized": "德岛漩涡",
+    "left_example": "Tokushima Vortis",
+    "right_example": "德岛漩涡",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.060451+00:00"
+  },
+  "kochiunited <-> 高知联": {
+    "left_normalized": "kochiunited",
+    "right_normalized": "高知联",
+    "left_example": "Kochi United",
+    "right_example": "高知联",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.064158+00:00"
+  },
+  "cheongju <-> 忠北清州": {
+    "left_normalized": "cheongju",
+    "right_normalized": "忠北清州",
+    "left_example": "Cheongju",
+    "right_example": "忠北清州",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.071820+00:00"
+  },
+  "busanipark <-> 釜山偶像": {
+    "left_normalized": "busanipark",
+    "right_normalized": "釜山偶像",
+    "left_example": "Busan I Park",
+    "right_example": "釜山偶像",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.075853+00:00"
+  },
+  "suwoncityfc <-> 水原": {
+    "left_normalized": "suwoncityfc",
+    "right_normalized": "水原",
+    "left_example": "Suwon City FC",
+    "right_example": "水原",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.083107+00:00"
+  },
+  "pajucitizen <-> pajufrontier": {
+    "left_normalized": "pajucitizen",
+    "right_normalized": "pajufrontier",
+    "left_example": "Paju Citizen",
+    "right_example": "Paju Frontier",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T06:47:39.087324+00:00"
+  },
+  "lr维琴察 <-> vicenzavirtus": {
+    "left_normalized": "vicenzavirtus",
+    "right_normalized": "lr维琴察",
+    "left_example": "Vicenza Virtus",
+    "right_example": "LR维琴察",
+    "count": 138,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:25:17.335540+00:00"
+  },
+  "unionbrescia <-> 布雷西亚联": {
+    "left_normalized": "unionbrescia",
+    "right_normalized": "布雷西亚联",
+    "left_example": "Union Brescia",
+    "right_example": "布雷西亚联",
+    "count": 138,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:25:17.339307+00:00"
+  },
+  "pontedera <-> 邦特德拉": {
+    "left_normalized": "pontedera",
+    "right_normalized": "邦特德拉",
+    "left_example": "Pontedera",
+    "right_example": "邦特德拉",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T12:57:42.387513+00:00"
+  },
+  "bra <-> 布拉": {
+    "left_normalized": "bra",
+    "right_normalized": "布拉",
+    "left_example": "Bra",
+    "right_example": "布拉",
+    "count": 7,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T12:57:42.391185+00:00"
+  },
+  "crotone <-> 克努托内": {
+    "left_normalized": "crotone",
+    "right_normalized": "克努托内",
+    "left_example": "Crotone",
+    "right_example": "克努托内",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-29T12:53:37.465314+00:00"
+  },
+  "audacecerignola <-> 奥达彻切里尼奥拉": {
+    "left_normalized": "audacecerignola",
+    "right_normalized": "奥达彻切里尼奥拉",
+    "left_example": "Audace Cerignola",
+    "right_example": "奥达彻切里尼奥拉",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-29T12:53:37.469054+00:00"
+  },
+  "foggia <-> 福贾": {
+    "left_normalized": "foggia",
+    "right_normalized": "福贾",
+    "left_example": "Foggia",
+    "right_example": "福贾",
+    "count": 138,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:25:17.368710+00:00"
+  },
+  "trapani1905 <-> 特拉帕尼": {
+    "left_normalized": "trapani1905",
+    "right_normalized": "特拉帕尼",
+    "left_example": "Trapani 1905",
+    "right_example": "特拉帕尼",
+    "count": 138,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:25:17.372724+00:00"
+  },
+  "teamaltamura <-> 阿尔塔穆拉": {
+    "left_normalized": "teamaltamura",
+    "right_normalized": "阿尔塔穆拉",
+    "left_example": "Team Altamura",
+    "right_example": "阿尔塔穆拉",
+    "count": 132,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:20:11.887611+00:00"
+  },
+  "siracusa <-> 锡拉库萨": {
+    "left_normalized": "siracusa",
+    "right_normalized": "锡拉库萨",
+    "left_example": "Siracusa",
+    "right_example": "锡拉库萨",
+    "count": 132,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:20:11.891952+00:00"
+  },
+  "werderbremenw <-> 云达不莱梅女": {
+    "left_normalized": "werderbremenw",
+    "right_normalized": "云达不莱梅女",
+    "left_example": "Werder Bremen W",
+    "right_example": "云达不莱梅(女)",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-29T12:53:37.506477+00:00"
+  },
+  "sgsessenw <-> 埃森女": {
+    "left_normalized": "sgsessenw",
+    "right_normalized": "埃森女",
+    "left_example": "SGS Essen W",
+    "right_example": "埃森(女)",
+    "count": 1,
+    "promoted": false,
+    "last_seen_at": "2026-03-29T12:53:37.509752+00:00"
+  },
+  "eibar <-> 埃瓦尔": {
+    "left_normalized": "eibar",
+    "right_normalized": "埃瓦尔",
+    "left_example": "Eibar",
+    "right_example": "埃瓦尔",
+    "count": 99,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T13:59:09.828184+00:00"
+  },
+  "laspalmas <-> 拉斯彭马斯": {
+    "left_normalized": "laspalmas",
+    "right_normalized": "拉斯彭马斯",
+    "left_example": "Las Palmas",
+    "right_example": "拉斯彭马斯",
+    "count": 99,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T13:59:09.832262+00:00"
+  },
+  "chelseaw <-> 切尔西女": {
+    "left_normalized": "chelseaw",
+    "right_normalized": "切尔西女",
+    "left_example": "Chelsea W",
+    "right_example": "切尔西(女)",
+    "count": 4,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T12:56:12.162401+00:00"
+  },
+  "astonvillaw <-> 阿斯顿维拉女": {
+    "left_normalized": "astonvillaw",
+    "right_normalized": "阿斯顿维拉女",
+    "left_example": "Aston Villa W",
+    "right_example": "阿斯顿维拉(女)",
+    "count": 4,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T12:56:12.165685+00:00"
+  },
+  "westhamw <-> 西汉姆联女": {
+    "left_normalized": "westhamw",
+    "right_normalized": "西汉姆联女",
+    "left_example": "West Ham W",
+    "right_example": "西汉姆联(女)",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T12:55:29.341633+00:00"
+  },
+  "granadtenerifew <-> 科斯塔阿德赫特内里费女": {
+    "left_normalized": "granadtenerifew",
+    "right_normalized": "科斯塔阿德赫特内里费女",
+    "left_example": "Granad. Tenerife W",
+    "right_example": "科斯塔阿德赫特内里费(女)",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T12:58:06.143295+00:00"
+  },
+  "madridcffw <-> 马德里cff女": {
+    "left_normalized": "madridcffw",
+    "right_normalized": "马德里cff女",
+    "left_example": "Madrid CFF W",
+    "right_example": "马德里CFF(女)",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T12:58:06.146606+00:00"
+  },
+  "skobecnyponiky <-> 邦特德拉": {
+    "left_normalized": "skobecnyponiky",
+    "right_normalized": "邦特德拉",
+    "left_example": "SK Obecny Poniky",
+    "right_example": "邦特德拉",
+    "count": 130,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:24:42.604198+00:00"
+  },
+  "bravacovo <-> 布拉": {
+    "left_normalized": "bravacovo",
+    "right_normalized": "布拉",
+    "left_example": "Bravacovo",
+    "right_example": "布拉",
+    "count": 130,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:24:42.607823+00:00"
+  },
+  "crystalpalacew <-> 水晶宫女": {
+    "left_normalized": "crystalpalacew",
+    "right_normalized": "水晶宫女",
+    "left_example": "Crystal Palace W",
+    "right_example": "水晶宫(女)",
+    "count": 181,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:55:43.014592+00:00"
+  },
+  "charltonathleticw <-> 查尔顿女": {
+    "left_normalized": "charltonathleticw",
+    "right_normalized": "查尔顿女",
+    "left_example": "Charlton Athletic W",
+    "right_example": "查尔顿(女)",
+    "count": 181,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:55:43.018241+00:00"
+  },
+  "nottinghamforestw <-> 诺丁汉森林女": {
+    "left_normalized": "nottinghamforestw",
+    "right_normalized": "诺丁汉森林女",
+    "left_example": "Nottingham Forest W",
+    "right_example": "诺丁汉森林(女)",
+    "count": 176,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:53:33.764778+00:00"
+  },
+  "durhamw <-> 达勒姆女": {
+    "left_normalized": "durhamw",
+    "right_normalized": "达勒姆女",
+    "left_example": "Durham W",
+    "right_example": "达勒姆(女)",
+    "count": 176,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:53:33.768449+00:00"
+  },
+  "sunderlandw <-> 桑德兰女": {
+    "left_normalized": "sunderlandw",
+    "right_normalized": "桑德兰女",
+    "left_example": "Sunderland W",
+    "right_example": "桑德兰(女)",
+    "count": 171,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:51:26.748177+00:00"
+  },
+  "newcastleunitedw <-> 纽卡斯尔女": {
+    "left_normalized": "newcastleunitedw",
+    "right_normalized": "纽卡斯尔女",
+    "left_example": "Newcastle United W",
+    "right_example": "纽卡斯尔(女)",
+    "count": 171,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:51:26.751750+00:00"
+  },
+  "intermilanow <-> 國際米蘭女": {
+    "left_normalized": "intermilanow",
+    "right_normalized": "國際米蘭女",
+    "left_example": "Inter Milano W",
+    "right_example": "國際米蘭(女)",
+    "count": 186,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:59:09.696534+00:00"
+  },
+  "romaw <-> 罗马女": {
+    "left_normalized": "romaw",
+    "right_normalized": "罗马女",
+    "left_example": "Roma W",
+    "right_example": "罗马(女)",
+    "count": 186,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:59:09.700378+00:00"
+  },
+  "brommapojkarnaw <-> 布洛马波卡纳女": {
+    "left_normalized": "brommapojkarnaw",
+    "right_normalized": "布洛马波卡纳女",
+    "left_example": "Brommapojkarna W",
+    "right_example": "布洛马波卡纳 (女)",
+    "count": 158,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:49:55.440237+00:00"
+  },
+  "macao <-> 澳门": {
+    "left_normalized": "macao",
+    "right_normalized": "澳门",
+    "left_example": "Mação",
+    "right_example": "澳门",
+    "count": 171,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:52:29.119500+00:00"
+  },
+  "tanzania <-> 坦桑尼亚": {
+    "left_normalized": "tanzania",
+    "right_normalized": "坦桑尼亚",
+    "left_example": "Tanzania",
+    "right_example": "坦桑尼亚",
+    "count": 171,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:52:29.123068+00:00"
+  },
+  "chernomorets <-> 查路摩列斯": {
+    "left_normalized": "chernomorets",
+    "right_normalized": "查路摩列斯",
+    "left_example": "Chernomorets",
+    "right_example": "查路摩列斯",
+    "count": 177,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:24:32.568483+00:00"
+  },
+  "rotorvolgograd <-> 伏尔加格勒": {
+    "left_normalized": "rotorvolgograd",
+    "right_normalized": "伏尔加格勒",
+    "left_example": "Rotor Volgograd",
+    "right_example": "伏尔加格勒",
+    "count": 177,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:24:32.572289+00:00"
+  },
+  "brightonw <-> 布莱顿女": {
+    "left_normalized": "brightonw",
+    "right_normalized": "布莱顿女",
+    "left_example": "Brighton W",
+    "right_example": "布莱顿(女)",
+    "count": 199,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:54:23.279070+00:00"
+  },
+  "vflwolfsburgw <-> 沃尔夫斯堡女": {
+    "left_normalized": "vflwolfsburgw",
+    "right_normalized": "沃尔夫斯堡女",
+    "left_example": "VfL Wolfsburg W",
+    "right_example": "沃尔夫斯堡(女)",
+    "count": 199,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:54:23.289453+00:00"
+  },
+  "unionberlinw <-> 柏林联女": {
+    "left_normalized": "unionberlinw",
+    "right_normalized": "柏林联女",
+    "left_example": "Union Berlin W",
+    "right_example": "柏林联(女)",
+    "count": 199,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:54:23.293848+00:00"
+  },
+  "zaglebiesosnowiec <-> 索斯诺维茨": {
+    "left_normalized": "zaglebiesosnowiec",
+    "right_normalized": "索斯诺维茨",
+    "left_example": "Zaglebie Sosnowiec",
+    "right_example": "索斯诺维茨",
+    "count": 190,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:50:28.700462+00:00"
+  },
+  "rekordbielskobiaa <-> 瑞科德别尔斯科": {
+    "left_normalized": "rekordbielskobiaa",
+    "right_normalized": "瑞科德别尔斯科",
+    "left_example": "Rekord Bielsko-Biała",
+    "right_example": "瑞科德别尔斯科",
+    "count": 190,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:50:28.704515+00:00"
+  },
+  "glasgowcityw <-> 格拉斯哥城女": {
+    "left_normalized": "glasgowcityw",
+    "right_normalized": "格拉斯哥城女",
+    "left_example": "Glasgow City W",
+    "right_example": "格拉斯哥城(女)",
+    "count": 199,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:54:23.310453+00:00"
+  },
+  "rangersw <-> 格拉斯哥流浪女": {
+    "left_normalized": "rangersw",
+    "right_normalized": "格拉斯哥流浪女",
+    "left_example": "Rangers W",
+    "right_example": "格拉斯哥流浪(女)",
+    "count": 199,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:54:23.314433+00:00"
+  },
+  "armenia <-> 阿美尼亚": {
+    "left_normalized": "armenia",
+    "right_normalized": "阿美尼亚",
+    "left_example": "Armenia",
+    "right_example": "阿美尼亚",
+    "count": 201,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:55:18.424450+00:00"
+  },
+  "pontedera <-> 阿马兰特": {
+    "left_normalized": "pontedera",
+    "right_normalized": "阿马兰特",
+    "left_example": "Pontedera",
+    "right_example": "阿马兰特",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:24:42.785741+00:00"
+  },
+  "bra <-> 科英布拉大学": {
+    "left_normalized": "bra",
+    "right_normalized": "科英布拉大学",
+    "left_example": "Bra",
+    "right_example": "科英布拉大学",
+    "count": 36,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T14:24:42.789768+00:00"
+  },
+  "skobecnyponiky <-> 阿马兰特": {
+    "left_normalized": "skobecnyponiky",
+    "right_normalized": "阿马兰特",
+    "left_example": "SK Obecny Poniky",
+    "right_example": "阿马兰特",
+    "count": 81,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:11:41.351144+00:00"
+  },
+  "bravacovo <-> 科英布拉大学": {
+    "left_normalized": "bravacovo",
+    "right_normalized": "科英布拉大学",
+    "left_example": "Bravacovo",
+    "right_example": "科英布拉大学",
+    "count": 81,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T15:11:41.355098+00:00"
+  },
+  "uniaodeleiria <-> 利亚拿": {
+    "left_normalized": "uniaodeleiria",
+    "right_normalized": "利亚拿",
+    "left_example": "União de Leiria",
+    "right_example": "利亚拿",
+    "count": 229,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:31:40.622383+00:00"
+  },
+  "pacosferreira <-> 费雷拉": {
+    "left_normalized": "pacosferreira",
+    "right_normalized": "费雷拉",
+    "left_example": "Pacos Ferreira",
+    "right_example": "费雷拉",
+    "count": 229,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:31:40.626331+00:00"
+  },
+  "adodenhaagw <-> 海牙女": {
+    "left_normalized": "adodenhaagw",
+    "right_normalized": "海牙女",
+    "left_example": "ADO Den Haag W",
+    "right_example": "海牙(女)",
+    "count": 221,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:39:26.336399+00:00"
+  },
+  "excelsiorw <-> 鹿特丹精英女": {
+    "left_normalized": "excelsiorw",
+    "right_normalized": "鹿特丹精英女",
+    "left_example": "Excelsior W",
+    "right_example": "鹿特丹精英(女)",
+    "count": 221,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:39:26.340078+00:00"
+  },
+  "utrechtw <-> 乌德勒支女": {
+    "left_normalized": "utrechtw",
+    "right_normalized": "乌德勒支女",
+    "left_example": "Utrecht W",
+    "right_example": "乌德勒支(女)",
+    "count": 218,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:37:24.435651+00:00"
+  },
+  "twentew <-> 特温特女": {
+    "left_normalized": "twentew",
+    "right_normalized": "特温特女",
+    "left_example": "Twente W",
+    "right_example": "特温特(女)",
+    "count": 217,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:37:03.990276+00:00"
+  },
+  "heraunitedw <-> 赫里联女": {
+    "left_normalized": "heraunitedw",
+    "right_normalized": "赫里联女",
+    "left_example": "Hera United W",
+    "right_example": "赫里联(女)",
+    "count": 217,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:37:03.994193+00:00"
+  },
+  "heerenveenw <-> 海伦维恩女": {
+    "left_normalized": "heerenveenw",
+    "right_normalized": "海伦维恩女",
+    "left_example": "Heerenveen W",
+    "right_example": "海伦维恩(女)",
+    "count": 221,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:39:26.355208+00:00"
+  },
+  "feyenoordw <-> 费耶诺德女": {
+    "left_normalized": "feyenoordw",
+    "right_normalized": "费耶诺德女",
+    "left_example": "Feyenoord W",
+    "right_example": "费耶诺德(女)",
+    "count": 221,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T16:39:26.358882+00:00"
+  },
+  "athleticclubw <-> 毕尔巴鄂竞技女": {
+    "left_normalized": "athleticclubw",
+    "right_normalized": "毕尔巴鄂竞技女",
+    "left_example": "Athletic Club W",
+    "right_example": "毕尔巴鄂竞技(女)",
+    "count": 213,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:00:46.594550+00:00"
+  },
+  "atleticomadridw <-> 马德里竞技女": {
+    "left_normalized": "atleticomadridw",
+    "right_normalized": "马德里竞技女",
+    "left_example": "Atletico Madrid W",
+    "right_example": "马德里竞技(女)",
+    "count": 213,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:00:46.598390+00:00"
+  },
+  "cittadella <-> 奇塔代拉": {
+    "left_normalized": "cittadella",
+    "right_normalized": "奇塔代拉",
+    "left_example": "Cittadella",
+    "right_example": "奇塔代拉",
+    "count": 211,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:23:30.579012+00:00"
+  },
+  "lecco <-> 莱可": {
+    "left_normalized": "lecco",
+    "right_normalized": "莱可",
+    "left_example": "Lecco",
+    "right_example": "莱可",
+    "count": 211,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:23:30.583072+00:00"
+  },
+  "forli <-> 弗利": {
+    "left_normalized": "forli",
+    "right_normalized": "弗利",
+    "left_example": "Forli",
+    "right_example": "弗利",
+    "count": 211,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:23:30.594612+00:00"
+  },
+  "pianese <-> 匹安斯": {
+    "left_normalized": "pianese",
+    "right_normalized": "匹安斯",
+    "left_example": "Pianese",
+    "right_example": "匹安斯",
+    "count": 211,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:23:30.598828+00:00"
+  },
+  "vispesaro <-> 比沙奴": {
+    "left_normalized": "vispesaro",
+    "right_normalized": "比沙奴",
+    "left_example": "Vis Pesaro",
+    "right_example": "比沙奴",
+    "count": 211,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:23:30.606600+00:00"
+  },
+  "perugia <-> 佩鲁贾": {
+    "left_normalized": "perugia",
+    "right_normalized": "佩鲁贾",
+    "left_example": "Perugia",
+    "right_example": "佩鲁贾",
+    "count": 211,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:23:30.610648+00:00"
+  },
+  "casarano <-> 卡萨拉诺": {
+    "left_normalized": "casarano",
+    "right_normalized": "卡萨拉诺",
+    "left_example": "Casarano",
+    "right_example": "卡萨拉诺",
+    "count": 209,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:22:24.755128+00:00"
+  },
+  "giugliano <-> 朱利亚诺": {
+    "left_normalized": "giugliano",
+    "right_normalized": "朱利亚诺",
+    "left_example": "Giugliano",
+    "right_example": "朱利亚诺",
+    "count": 209,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:22:24.759030+00:00"
+  },
+  "rodinamoskva <-> 罗迪那": {
+    "left_normalized": "rodinamoskva",
+    "right_normalized": "罗迪那",
+    "left_example": "Rodina Moskva",
+    "right_example": "罗迪那",
+    "count": 237,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:52:19.754486+00:00"
+  },
+  "ural <-> 乌拉尔": {
+    "left_normalized": "ural",
+    "right_normalized": "乌拉尔",
+    "left_example": "Ural",
+    "right_example": "乌拉尔",
+    "count": 237,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:52:19.758919+00:00"
+  },
+  "aruba <-> 阿鲁巴": {
+    "left_normalized": "aruba",
+    "right_normalized": "阿鲁巴",
+    "left_example": "Aruba",
+    "right_example": "阿鲁巴",
+    "count": 240,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:55:03.585758+00:00"
+  },
+  "liechtenstein <-> 列支敦士登": {
+    "left_normalized": "liechtenstein",
+    "right_normalized": "列支敦士登",
+    "left_example": "Liechtenstein",
+    "right_example": "列支敦士登",
+    "count": 240,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T17:55:03.590949+00:00"
+  },
+  "scfreiburgw <-> 弗赖堡女": {
+    "left_normalized": "scfreiburgw",
+    "right_normalized": "弗赖堡女",
+    "left_example": "SC Freiburg W",
+    "right_example": "弗赖堡(女)",
+    "count": 259,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T18:24:27.206516+00:00"
+  },
+  "1899hoffenheimw <-> 霍芬海姆女": {
+    "left_normalized": "1899hoffenheimw",
+    "right_normalized": "霍芬海姆女",
+    "left_example": "1899 Hoffenheim W",
+    "right_example": "霍芬海姆(女)",
+    "count": 259,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T18:24:27.212167+00:00"
+  },
+  "zaragoza <-> 萨拉戈萨": {
+    "left_normalized": "zaragoza",
+    "right_normalized": "萨拉戈萨",
+    "left_example": "Zaragoza",
+    "right_example": "萨拉戈萨",
+    "count": 280,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T18:31:56.672641+00:00"
+  },
+  "racingsantander <-> 桑坦德": {
+    "left_normalized": "racingsantander",
+    "right_normalized": "桑坦德",
+    "left_example": "Racing Santander",
+    "right_example": "桑坦德",
+    "count": 280,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T18:31:56.676762+00:00"
+  },
+  "losandes <-> 洛斯安第斯": {
+    "left_normalized": "losandes",
+    "right_normalized": "洛斯安第斯",
+    "left_example": "Los Andes",
+    "right_example": "洛斯安第斯",
+    "count": 320,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T19:57:37.017969+00:00"
+  },
+  "temperley <-> 坦波利": {
+    "left_normalized": "temperley",
+    "right_normalized": "坦波利",
+    "left_example": "Temperley",
+    "right_example": "坦波利",
+    "count": 320,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T19:57:37.021962+00:00"
+  },
+  "gubbio <-> 古比奥": {
+    "left_normalized": "gubbio",
+    "right_normalized": "古比奥",
+    "left_example": "Gubbio",
+    "right_example": "古比奥",
+    "count": 306,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:25:21.067003+00:00"
+  },
+  "ravenna <-> 拉文纳": {
+    "left_normalized": "ravenna",
+    "right_normalized": "拉文纳",
+    "left_example": "Ravenna",
+    "right_example": "拉文纳",
+    "count": 306,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:25:21.071230+00:00"
+  },
+  "nuevachicago <-> 新芝加哥": {
+    "left_normalized": "nuevachicago",
+    "right_normalized": "新芝加哥",
+    "left_example": "Nueva Chicago",
+    "right_example": "新芝加哥",
+    "count": 324,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:34:35.598131+00:00"
+  },
+  "allboys <-> 男孩竞技": {
+    "left_normalized": "allboys",
+    "right_normalized": "男孩竞技",
+    "left_example": "All Boys",
+    "right_example": "男孩竞技",
+    "count": 324,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:34:35.602615+00:00"
+  },
+  "santelmo <-> 圣太摩": {
+    "left_normalized": "santelmo",
+    "right_normalized": "圣太摩",
+    "left_example": "San Telmo",
+    "right_example": "圣太摩",
+    "count": 300,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:52:21.326062+00:00"
+  },
+  "quilmes <-> 基尔梅斯": {
+    "left_normalized": "quilmes",
+    "right_normalized": "基尔梅斯",
+    "left_example": "Quilmes",
+    "right_example": "基尔梅斯",
+    "count": 300,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:52:21.330560+00:00"
+  },
+  "cariaripococi <-> 卡里阿利波科奇": {
+    "left_normalized": "cariaripococi",
+    "right_normalized": "卡里阿利波科奇",
+    "left_example": "Cariari Pococi",
+    "right_example": "卡里阿利波科奇",
+    "count": 318,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:58:31.439999+00:00"
+  },
+  "realmadridw <-> 皇家马德里女": {
+    "left_normalized": "realmadridw",
+    "right_normalized": "皇家马德里女",
+    "left_example": "Real Madrid W",
+    "right_example": "皇家马德里(女)",
+    "count": 293,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:49:39.219445+00:00"
+  },
+  "barcelonaw <-> 巴塞罗那女": {
+    "left_normalized": "barcelonaw",
+    "right_normalized": "巴塞罗那女",
+    "left_example": "Barcelona W",
+    "right_example": "巴塞罗那(女)",
+    "count": 293,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:49:39.223992+00:00"
+  },
+  "almeria <-> 阿尔梅里亚": {
+    "left_normalized": "almeria",
+    "right_normalized": "阿尔梅里亚",
+    "left_example": "Almeria",
+    "right_example": "阿尔梅里亚",
+    "count": 310,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:55:39.418295+00:00"
+  },
+  "realsociedadii <-> 皇家苏斯达b队": {
+    "left_normalized": "realsociedadii",
+    "right_normalized": "皇家苏斯达b队",
+    "left_example": "Real Sociedad II",
+    "right_example": "皇家苏斯达B队",
+    "count": 310,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:55:39.423056+00:00"
+  },
+  "bolivar <-> 玻利瓦尔sc": {
+    "left_normalized": "bolivar",
+    "right_normalized": "玻利瓦尔sc",
+    "left_example": "Bolívar",
+    "right_example": "玻利瓦尔SC",
+    "count": 299,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:51:54.932867+00:00"
+  },
+  "maritimo <-> 马里迪莫拉瓜": {
+    "left_normalized": "maritimo",
+    "right_normalized": "马里迪莫拉瓜",
+    "left_example": "Marítimo",
+    "right_example": "马里迪莫拉瓜",
+    "count": 299,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:51:54.937302+00:00"
+  },
+  "academiapuertocabelloii <-> puertocabelloii": {
+    "left_normalized": "puertocabelloii",
+    "right_normalized": "academiapuertocabelloii",
+    "left_example": "Puerto Cabello II",
+    "right_example": "Academia Puerto Cabello II",
+    "count": 293,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T21:19:08.510075+00:00"
+  },
+  "realfrontera <-> 皇家富恩特拉": {
+    "left_normalized": "realfrontera",
+    "right_normalized": "皇家富恩特拉",
+    "left_example": "Real Frontera",
+    "right_example": "皇家富恩特拉",
+    "count": 293,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T21:19:08.514710+00:00"
+  },
+  "deportivomaipu <-> 迈普": {
+    "left_normalized": "deportivomaipu",
+    "right_normalized": "迈普",
+    "left_example": "Deportivo Maipu",
+    "right_example": "迈普",
+    "count": 289,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T22:00:19.727348+00:00"
+  },
+  "godoycruz <-> 葛度尔古斯": {
+    "left_normalized": "godoycruz",
+    "right_normalized": "葛度尔古斯",
+    "left_example": "Godoy Cruz",
+    "right_example": "葛度尔古斯",
+    "count": 289,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T22:00:19.732027+00:00"
+  },
+  "abc <-> abcrn": {
+    "left_normalized": "abc",
+    "right_normalized": "abcrn",
+    "left_example": "ABC",
+    "right_example": "ABC RN",
+    "count": 303,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T21:52:30.935107+00:00"
+  },
+  "sportrecife <-> 利斯菲体育会pe": {
+    "left_normalized": "sportrecife",
+    "right_normalized": "利斯菲体育会pe",
+    "left_example": "Sport Recife",
+    "right_example": "利斯菲体育会PE",
+    "count": 303,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T21:52:30.939506+00:00"
+  },
+  "atleticoavila <-> atleticoavilafc": {
+    "left_normalized": "atleticoavilafc",
+    "right_normalized": "atleticoavila",
+    "left_example": "Atletico Avila FC",
+    "right_example": "Atletico Avila",
+    "count": 309,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T21:54:24.764769+00:00"
+  },
+  "monagasii <-> 摩纳加斯b队": {
+    "left_normalized": "monagasii",
+    "right_normalized": "摩纳加斯b队",
+    "left_example": "Monagas II",
+    "right_example": "摩纳加斯B队",
+    "count": 309,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T21:54:24.769412+00:00"
+  },
+  "santelmo <-> 皇家皮拉尔": {
+    "left_normalized": "santelmo",
+    "right_normalized": "皇家皮拉尔",
+    "left_example": "San Telmo",
+    "right_example": "皇家皮拉尔",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:55:39.388062+00:00"
+  },
+  "quilmes <-> 阿根廷基尔梅斯": {
+    "left_normalized": "quilmes",
+    "right_normalized": "阿根廷基尔梅斯",
+    "left_example": "Quilmes",
+    "right_example": "阿根廷基尔梅斯",
+    "count": 10,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T20:55:39.392279+00:00"
+  },
+  "cobreloa <-> 科布雷洛": {
+    "left_normalized": "cobreloa",
+    "right_normalized": "科布雷洛",
+    "left_example": "Cobreloa",
+    "right_example": "科布雷洛",
+    "count": 314,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T22:59:15.849094+00:00"
+  },
+  "unionsanfeliped <-> 圣菲利浦联": {
+    "left_normalized": "unionsanfeliped",
+    "right_normalized": "圣菲利浦联",
+    "left_example": "Union San Felipe D",
+    "right_example": "圣菲利浦联",
+    "count": 314,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T22:59:15.853433+00:00"
+  },
+  "internacionaldebogota <-> 波哥大国际": {
+    "left_normalized": "internacionaldebogota",
+    "right_normalized": "波哥大国际",
+    "left_example": "Internacional de Bogota",
+    "right_example": "波哥大国际",
+    "count": 309,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:05:52.826235+00:00"
+  },
+  "junior <-> 小巴兰哈拉": {
+    "left_normalized": "junior",
+    "right_normalized": "小巴兰哈拉",
+    "left_example": "Junior",
+    "right_example": "小巴兰哈拉",
+    "count": 309,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:05:52.830339+00:00"
+  },
+  "avai <-> 阿瓦伊sc": {
+    "left_normalized": "avai",
+    "right_normalized": "阿瓦伊sc",
+    "left_example": "Avai",
+    "right_example": "阿瓦伊SC",
+    "count": 284,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:10:40.885568+00:00"
+  },
+  "cianorte <-> 斯尔诺特pr": {
+    "left_normalized": "cianorte",
+    "right_normalized": "斯尔诺特pr",
+    "left_example": "Cianorte",
+    "right_example": "斯尔诺特PR",
+    "count": 284,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:10:40.890234+00:00"
+  },
+  "botafogopb <-> 博塔福格pb": {
+    "left_normalized": "botafogopb",
+    "right_normalized": "博塔福格pb",
+    "left_example": "Botafogo PB",
+    "right_example": "博塔福格PB",
+    "count": 326,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:32:56.025017+00:00"
+  },
+  "asa <-> asaal": {
+    "left_normalized": "asa",
+    "right_normalized": "asaal",
+    "left_example": "ASA",
+    "right_example": "ASA AL",
+    "count": 326,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:32:56.029509+00:00"
+  },
+  "clubguarani <-> 瓜拉尼": {
+    "left_normalized": "clubguarani",
+    "right_normalized": "瓜拉尼",
+    "left_example": "Club Guarani",
+    "right_example": "瓜拉尼",
+    "count": 305,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:53:58.718029+00:00"
+  },
+  "sportivotrinidense <-> 泰里尼登斯": {
+    "left_normalized": "sportivotrinidense",
+    "right_normalized": "泰里尼登斯",
+    "left_example": "Sportivo Trinidense",
+    "right_example": "泰里尼登斯",
+    "count": 305,
+    "promoted": true,
+    "last_seen_at": "2026-03-29T23:53:58.722504+00:00"
+  },
+  "penarol <-> 佩纳罗尔": {
+    "left_normalized": "penarol",
+    "right_normalized": "佩纳罗尔",
+    "left_example": "Penarol",
+    "right_example": "佩纳罗尔",
+    "count": 321,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T00:29:26.690552+00:00"
+  },
+  "njnygothamfcw <-> 哥谭女": {
+    "left_normalized": "njnygothamfcw",
+    "right_normalized": "哥谭女",
+    "left_example": "NJ/NY Gotham FC W",
+    "right_example": "哥谭(女)",
+    "count": 288,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T00:56:25.234907+00:00"
+  },
+  "orlandopridew <-> 奥兰多普德女": {
+    "left_normalized": "orlandopridew",
+    "right_normalized": "奥兰多普德女",
+    "left_example": "Orlando Pride W",
+    "right_example": "奥兰多普德(女)",
+    "count": 288,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T00:56:25.239320+00:00"
+  },
+  "newellsoldboys <-> 纽维尔旧生": {
+    "left_normalized": "newellsoldboys",
+    "right_normalized": "纽维尔旧生",
+    "left_example": "Newells Old Boys",
+    "right_example": "纽维尔旧生",
+    "count": 310,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T01:10:35.847564+00:00"
+  },
+  "acassusod <-> 阿卡苏索": {
+    "left_normalized": "acassusod",
+    "right_normalized": "阿卡苏索",
+    "left_example": "Acassuso D",
+    "right_example": "阿卡苏索",
+    "count": 179,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T01:10:35.852301+00:00"
+  },
+  "acassuso <-> 阿卡苏索": {
+    "left_normalized": "acassuso",
+    "right_normalized": "阿卡苏索",
+    "left_example": "Acassuso",
+    "right_example": "阿卡苏索",
+    "count": 131,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T00:27:44.195873+00:00"
+  },
+  "bonaire <-> 博奈尔": {
+    "left_normalized": "bonaire",
+    "right_normalized": "博奈尔",
+    "left_example": "Bonaire",
+    "right_example": "博奈尔",
+    "count": 301,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T02:21:33.327041+00:00"
+  },
+  "ironimodiin <-> 莫迪因": {
+    "left_normalized": "ironimodiin",
+    "right_normalized": "莫迪因",
+    "left_example": "Ironi Modi'in",
+    "right_example": "莫迪因",
+    "count": 186,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T15:28:31.270676+00:00"
+  },
+  "hapoelkfarsaba <-> 法萨巴夏普尔": {
+    "left_normalized": "hapoelkfarsaba",
+    "right_normalized": "法萨巴夏普尔",
+    "left_example": "Hapoel Kfar Saba",
+    "right_example": "法萨巴夏普尔",
+    "count": 186,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T15:28:31.275691+00:00"
+  },
+  "sierraleone <-> 塞拉利昂": {
+    "left_normalized": "sierraleone",
+    "right_normalized": "塞拉利昂",
+    "left_example": "Sierra Leone",
+    "right_example": "塞拉利昂",
+    "count": 270,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T16:58:40.210350+00:00"
+  },
+  "czechrepublicu20 <-> 捷克u20": {
+    "left_normalized": "czechrepublicu20",
+    "right_normalized": "捷克u20",
+    "left_example": "Czech Republic U20",
+    "right_example": "捷克U20",
+    "count": 251,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T16:51:16.882789+00:00"
+  },
+  "portugalu20 <-> 葡萄牙u20": {
+    "left_normalized": "portugalu20",
+    "right_normalized": "葡萄牙u20",
+    "left_example": "Portugal U20",
+    "right_example": "葡萄牙U20",
+    "count": 251,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T16:51:16.887524+00:00"
+  },
+  "hamburgersvw <-> 汉堡女": {
+    "left_normalized": "hamburgersvw",
+    "right_normalized": "汉堡女",
+    "left_example": "Hamburger SV W",
+    "right_example": "汉堡(女)",
+    "count": 263,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T17:54:00.706397+00:00"
+  },
+  "bayerleverkusenw <-> 勒沃库森女": {
+    "left_normalized": "bayerleverkusenw",
+    "right_normalized": "勒沃库森女",
+    "left_example": "Bayer Leverkusen W",
+    "right_example": "勒沃库森(女)",
+    "count": 263,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T17:54:00.710774+00:00"
+  },
+  "torpedomoskva <-> 莫斯科鱼雷": {
+    "left_normalized": "torpedomoskva",
+    "right_normalized": "莫斯科鱼雷",
+    "left_example": "Torpedo Moskva",
+    "right_example": "莫斯科鱼雷",
+    "count": 295,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T18:22:21.097387+00:00"
+  },
+  "skakhabarovsk <-> ska哈巴罗夫斯克": {
+    "left_normalized": "skakhabarovsk",
+    "right_normalized": "ska哈巴罗夫斯克",
+    "left_example": "Ska-khabarovsk",
+    "right_example": "SKA哈巴罗夫斯克",
+    "count": 295,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T18:22:21.102145+00:00"
+  },
+  "elmokawloon <-> 阿拉伯建筑": {
+    "left_normalized": "elmokawloon",
+    "right_normalized": "阿拉伯建筑",
+    "left_example": "El Mokawloon",
+    "right_example": "阿拉伯建筑",
+    "count": 339,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:01:34.868068+00:00"
+  },
+  "masr <-> 泽德": {
+    "left_normalized": "masr",
+    "right_normalized": "泽德",
+    "left_example": "Masr",
+    "right_example": "泽德",
+    "count": 339,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:01:34.872496+00:00"
+  },
+  "juventuddelaspiedras <-> 尤文都德彼德拉斯": {
+    "left_normalized": "juventuddelaspiedras",
+    "right_normalized": "尤文都德彼德拉斯",
+    "left_example": "Juventud de Las Piedras",
+    "right_example": "尤文都德彼德拉斯",
+    "count": 247,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T19:52:16.419292+00:00"
+  },
+  "bostonriver <-> 波士顿河": {
+    "left_normalized": "bostonriver",
+    "right_normalized": "波士顿河",
+    "left_example": "Boston River",
+    "right_example": "波士顿河",
+    "count": 247,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T19:52:16.423694+00:00"
+  },
+  "arezzo <-> 阿雷素": {
+    "left_normalized": "arezzo",
+    "right_normalized": "阿雷素",
+    "left_example": "Arezzo",
+    "right_example": "阿雷素",
+    "count": 317,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:23:28.156921+00:00"
+  },
+  "ascoli <-> 阿斯科利": {
+    "left_normalized": "ascoli",
+    "right_normalized": "阿斯科利",
+    "left_example": "Ascoli",
+    "right_example": "阿斯科利",
+    "count": 317,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:23:28.161432+00:00"
+  },
+  "casertana <-> 卡塞塔纳": {
+    "left_normalized": "casertana",
+    "right_normalized": "卡塞塔纳",
+    "left_example": "Casertana",
+    "right_example": "卡塞塔纳",
+    "count": 332,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:29:38.131766+00:00"
+  },
+  "sorrento <-> 索伦托": {
+    "left_normalized": "sorrento",
+    "right_normalized": "索伦托",
+    "left_example": "Sorrento",
+    "right_example": "索伦托",
+    "count": 332,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:29:38.136520+00:00"
+  },
+  "defensoresdebelgrano <-> 贝尔格拉诺防卫队": {
+    "left_normalized": "defensoresdebelgrano",
+    "right_normalized": "贝尔格拉诺防卫队",
+    "left_example": "Defensores De Belgrano",
+    "right_example": "贝尔格拉诺防卫队",
+    "count": 324,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T20:53:57.175939+00:00"
+  },
+  "independienteyumbo <-> indyumbo": {
+    "left_normalized": "indyumbo",
+    "right_normalized": "independienteyumbo",
+    "left_example": "Ind. Yumbo",
+    "right_example": "Independiente Yumbo",
+    "count": 326,
+    "promoted": true,
+    "last_seen_at": "2026-03-30T21:54:32.969535+00:00"
+  },
+  "centralespanol <-> 艾斯潘诺中心": {
+    "left_normalized": "centralespanol",
+    "right_normalized": "艾斯潘诺中心",
+    "left_example": "Central Espanol",
+    "right_example": "艾斯潘诺中心",
+    "count": 220,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T01:53:58.826982+00:00"
+  },
+  "deportivomaldonado <-> 马尔多纳多": {
+    "left_normalized": "deportivomaldonado",
+    "right_normalized": "马尔多纳多",
+    "left_example": "Deportivo Maldonado",
+    "right_example": "马尔多纳多",
+    "count": 220,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T01:53:58.832044+00:00"
   }
 }
