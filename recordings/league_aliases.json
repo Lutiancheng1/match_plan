@@ -22,6 +22,7 @@
     "友誼賽",
     "友谊赛",
     "国际友谊赛",
+    "国际友谊赛u23",
     "法国全国联赛",
     "热身赛",
     "熱身賽",
@@ -135,6 +136,9 @@
     "friendlies"
   ],
   "友谊赛": [
+    "friendlies"
+  ],
+  "国际友谊赛u23": [
     "friendlies"
   ],
   "法国全国联赛": [
@@ -268,6 +272,10 @@
   "阿甲春季联赛": [
     "primeradivisionapertura"
   ],
+  "juventuddelaspiedrasxbostonriver": [
+    "乌拉圭甲组联赛",
+    "青年拉斯彼德拉斯vs波士顿河"
+  ],
   "苏格兰甲组联赛": [
     "leagueone"
   ],
@@ -343,6 +351,9 @@
     "墨西哥甲组联赛",
     "墨超联",
     "墨超附加"
+  ],
+  "青年拉斯彼德拉斯vs波士顿河": [
+    "juventuddelaspiedrasxbostonriver"
   ],
   "englishpremierleague": [
     "premierleague"
@@ -705,6 +716,7 @@
     "u21欧锦赛预选赛",
     "u21欧预赛",
     "欧u21预选赛",
+    "欧洲u21锦标赛预选赛",
     "欧洲u21青年锦标赛2027外围赛",
     "欧洲u21预选赛",
     "欧青u21外",
@@ -714,7 +726,8 @@
     "欧青u21预选赛",
     "欧青赛u21外围赛",
     "欧青赛u21资格赛",
-    "欧青赛u21预选赛"
+    "欧青赛u21预选赛",
+    "欧青赛预选赛"
   ],
   "u21欧锦赛预选赛": [
     "uefau21championshipqualification"
@@ -723,6 +736,9 @@
     "uefau21championshipqualification"
   ],
   "欧u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧洲u21锦标赛预选赛": [
     "uefau21championshipqualification"
   ],
   "欧洲u21预选赛": [
@@ -752,6 +768,9 @@
   "欧青赛u21预选赛": [
     "uefau21championshipqualification"
   ],
+  "欧青赛预选赛": [
+    "uefau21championshipqualification"
+  ],
   "ekstraligawomen": [
     "polishwomensleague",
     "polskaekstraligawomen"
@@ -769,6 +788,7 @@
     "uefau19qualification",
     "欧洲u19锦标赛预选赛",
     "欧洲u19青年锦标赛外围赛",
+    "欧洲u19青年锦标赛外围赛联赛a",
     "欧足联u19预选赛",
     "欧青u19资格赛",
     "欧青u19预选赛",
@@ -790,6 +810,9 @@
     "uefau19championshipqualification"
   ],
   "欧洲u19青年锦标赛外围赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧洲u19青年锦标赛外围赛联赛a": [
     "uefau19championshipqualification"
   ],
   "欧足联u19预选赛": [
@@ -964,6 +987,9 @@
     "leaguecup"
   ],
   "ligapokal": [
+    "leaguecup"
+  ],
+  "埃及联赛杯": [
     "leaguecup"
   ],
   "联赛杯": [
@@ -1826,7 +1852,12 @@
     "eerstedivisie"
   ],
   "nationalsoccerleague": [
+    "南非甲级联赛",
+    "南非联赛",
     "国家足球联赛"
+  ],
+  "南非联赛": [
+    "nationalsoccerleague"
   ],
   "国家足球联赛": [
     "nationalsoccerleague"
@@ -2071,14 +2102,25 @@
   "塞拉利昂国家超级联赛": [
     "sierraleonenationalpremierleague"
   ],
-  "埃及联赛杯": [
-    "leaguecup"
+  "asiancupqualification": [
+    "亚洲杯2027外围赛",
+    "亚洲杯外围赛",
+    "亚洲杯资格赛",
+    "亚洲杯预选赛"
   ],
-  "juventuddelaspiedrasxbostonriver": [
-    "乌拉圭甲组联赛",
-    "青年拉斯彼德拉斯vs波士顿河"
+  "亚洲杯2027外围赛": [
+    "asiancupqualification"
   ],
-  "青年拉斯彼德拉斯vs波士顿河": [
-    "juventuddelaspiedrasxbostonriver"
+  "亚洲杯外围赛": [
+    "asiancupqualification"
+  ],
+  "亚洲杯资格赛": [
+    "asiancupqualification"
+  ],
+  "亚洲杯预选赛": [
+    "asiancupqualification"
+  ],
+  "南非甲级联赛": [
+    "nationalsoccerleague"
   ]
 }

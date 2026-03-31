@@ -58,7 +58,7 @@ OUTPUT_HEIGHT = 576
 DEFAULT_RECORDINGS_VOLUME = "/Volumes/990 PRO PCIe 4T"
 DEFAULT_RECORDINGS_ROOT = os.path.join(DEFAULT_RECORDINGS_VOLUME, "match_plan_recordings")
 BASE_OUTPUT_DIR = os.environ.get("MATCH_RECORDINGS_ROOT", DEFAULT_RECORDINGS_ROOT)
-DATA_POLL_INTERVAL = 1.0
+DATA_POLL_INTERVAL = 5.0  # Match data site native polling interval (was 1.0, caused account bans)
 MAX_STREAMS = 8
 SEGMENT_MINUTES = 10
 MAX_DURATION_MINUTES = 180
@@ -187,6 +187,26 @@ class SessionLogger:
         self._file.close()
 
 
+def _append_jsonl(path, rows):
+    """Append rows to a JSONL file. Returns number of rows written."""
+    if not rows:
+        return 0
+    with open(path, "a", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    return len(rows)
+
+
+def _write_jsonl_atomic(path, rows):
+    """Atomically overwrite a JSONL file with rows."""
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    os.replace(tmp, path)
+    return len(rows)
+
+
 # ═══════════════════════════════════════════════════════
 #  凭据
 # ═══════════════════════════════════════════════════════
@@ -281,6 +301,57 @@ def login_with_env_credentials(logger):
         return None
 
 
+def _fetch_proxy_credentials(logger, refresh=False):
+    """Try to get credentials from the data_site_proxy /credentials endpoint.
+    If refresh=True, asks proxy to re-login first.
+    Returns (cookie, template_dict, feed_url, source_name) or None."""
+    import urllib.request
+    endpoint = "/credentials/refresh" if refresh else "/credentials"
+    try:
+        req = urllib.request.Request(
+            f"http://127.0.0.1:18780{endpoint}",
+            method="GET",
+        )
+        with urllib.request.urlopen(req, timeout=8 if refresh else 2) as resp:
+            if resp.status != 200:
+                return None
+            data = json.loads(resp.read().decode("utf-8"))
+        cookie = data.get("cookie", "")
+        body_template = data.get("body_template", "")
+        if not cookie:
+            return None
+        template = parse_form_body(body_template) if body_template else {}
+        action = "刷新" if refresh else "复用"
+        logger.log(f"{action}数据站代理 session (proxy {endpoint})")
+        return cookie, template, DEFAULT_URL, "proxy_shared"
+    except Exception:
+        return None
+
+
+def _load_shared_credentials_file(logger):
+    """Try to load credentials from MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE.
+    Returns (cookie, template_dict, feed_url, source_name) or None."""
+    shared_path = os.environ.get("MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE", "").strip()
+    if not shared_path:
+        return None
+    try:
+        import pathlib
+        p = pathlib.Path(shared_path)
+        if not p.exists():
+            return None
+        data = json.loads(p.read_text(encoding="utf-8"))
+        cookie = data.get("cookie", "")
+        if not cookie:
+            return None
+        template = data.get("template") or {}
+        feed_url = data.get("feed_url", "") or DEFAULT_URL
+        source = data.get("data_source", "") or "shared_file"
+        logger.log(f"复用共享凭证文件: {shared_path}")
+        return cookie, template, feed_url, source
+    except Exception:
+        return None
+
+
 def bootstrap_credentials(logger, browser):
     """返回 (cookie, body_template_dict, use_dashboard_api, feed_url, source_name)"""
     load_env_file(LIVE_ENV)
@@ -301,8 +372,22 @@ def bootstrap_credentials(logger, browser):
                 "browser_session",
             )
     else:
-        logger.log("Safari 模式: 跳过 Chrome CDP 浏览器会话数据源")
+        logger.log("App 内嵌模式: 优先复用数据站代理 session")
 
+    # Priority 1: reuse cookie from the App's data_site_proxy (no new login)
+    proxy_creds = _fetch_proxy_credentials(logger)
+    if proxy_creds:
+        cookie, template, feed_url, source_name = proxy_creds
+        return cookie, template, False, feed_url, source_name
+
+    # Priority 2: reuse cookie from shared credentials file (written by
+    # the dispatcher after a previous successful login)
+    shared_creds = _load_shared_credentials_file(logger)
+    if shared_creds:
+        cookie, template, feed_url, source_name = shared_creds
+        return cookie, template, False, feed_url, source_name
+
+    # Priority 3: dashboard API
     if PREFER_DASHBOARD and dashboard_available(logger):
         fallback = login_with_env_credentials(logger)
         if fallback:
@@ -316,6 +401,8 @@ def bootstrap_credentials(logger, browser):
         logger.log("未配置凭据，使用本地看板 API", "WARN")
         return None, None, True, None, "dashboard"
 
+    # Priority 4: fresh login (last resort — creates a new session)
+    logger.log("无可复用 session，执行 auto_login (会使旧 session 失效)", "WARN")
     fallback = login_with_env_credentials(logger)
     if fallback:
         cookie, template, feed_url, source_name = fallback
@@ -3784,7 +3871,12 @@ def bind_selected_matches_to_feed(selected_matches, snapshot_rows, logger):
 
 
 def prioritize_selected_matches(selected_matches, max_streams, logger):
-    if len(selected_matches) <= max_streams:
+    if max_streams <= 0 or len(selected_matches) <= max_streams:
+        if any(match.get("gid") or match.get("ecid") for match in selected_matches):
+            bound_count = sum(1 for m in selected_matches if m.get("gid") or m.get("ecid"))
+            logger.log(
+                f"自动模式优先保留已绑定数据源的比赛: {bound_count}/{len(selected_matches)} 场可对齐"
+            )
         return selected_matches
 
     bound = [

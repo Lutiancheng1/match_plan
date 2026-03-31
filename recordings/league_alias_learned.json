@@ -38,11 +38,11 @@
   "uefau21championshipqualification <-> 欧洲u21青年锦标赛2027外围赛": {
     "left_normalized": "uefau21championshipqualification",
     "right_normalized": "欧洲u21青年锦标赛2027外围赛",
-    "left_example": "UEFA U21 Championship - Qualification\t14:00",
+    "left_example": "UEFA U21 Championship - Qualification\t09:00",
     "right_example": "欧洲U21青年锦标赛2027外围赛",
-    "count": 748,
+    "count": 857,
     "promoted": true,
-    "last_seen_at": "2026-03-30T18:52:12.881316+00:00"
+    "last_seen_at": "2026-03-31T13:23:00.605164+00:00"
   },
   "uefanationsleague <-> 欧洲国家联赛d附加赛": {
     "left_normalized": "uefanationsleague",
@@ -182,11 +182,11 @@
   "fifaseries <-> 国际友谊赛": {
     "left_normalized": "fifaseries",
     "right_normalized": "国际友谊赛",
-    "left_example": "FIFA Series\t12:00",
+    "left_example": "FIFA Series\t09:00",
     "right_example": "国际友谊赛",
-    "count": 595,
+    "count": 648,
     "promoted": true,
-    "last_seen_at": "2026-03-30T16:58:40.212170+00:00"
+    "last_seen_at": "2026-03-31T13:23:00.598358+00:00"
   },
   "fifaseries <-> 国际系列在印尼": {
     "left_normalized": "fifaseries",
@@ -200,11 +200,11 @@
   "ligaleumit <-> 以色列甲组联赛": {
     "left_normalized": "ligaleumit",
     "right_normalized": "以色列甲组联赛",
-    "left_example": "Liga Leumit\t10:30",
+    "left_example": "Liga Leumit\t10:00",
     "right_example": "以色列甲组联赛",
-    "count": 261,
+    "count": 278,
     "promoted": true,
-    "last_seen_at": "2026-03-30T15:28:31.277183+00:00"
+    "last_seen_at": "2026-03-31T13:23:04.819131+00:00"
   },
   "u19uefaeuro <-> 欧洲u19青年锦标赛外围赛联赛b": {
     "left_normalized": "u19uefaeuro",
@@ -452,11 +452,11 @@
   "uefau19championshipqualification <-> 欧洲u19青年锦标赛外围赛联赛a": {
     "left_normalized": "uefau19championshipqualification",
     "right_normalized": "欧洲u19青年锦标赛外围赛联赛a",
-    "left_example": "UEFA U19 Championship - Qualification\t11:30",
+    "left_example": "UEFA U19 Championship - Qualification\t10:00",
     "right_example": "欧洲U19青年锦标赛外围赛联赛A",
-    "count": 1,
-    "promoted": false,
-    "last_seen_at": "2026-03-28T16:26:44.805883+00:00"
+    "count": 16,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.549738+00:00"
   },
   "eerstedivisie <-> 荷兰乙组联赛": {
     "left_normalized": "eerstedivisie",
@@ -655,5 +655,23 @@
     "count": 247,
     "promoted": true,
     "last_seen_at": "2026-03-30T19:52:16.425059+00:00"
+  },
+  "asiancupqualification <-> 亚洲杯2027外围赛": {
+    "left_normalized": "asiancupqualification",
+    "right_normalized": "亚洲杯2027外围赛",
+    "left_example": "Asian Cup - Qualification\t09:00",
+    "right_example": "亚洲杯2027外围赛",
+    "count": 259,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.591609+00:00"
+  },
+  "friendlies <-> 国际友谊赛u23": {
+    "left_normalized": "friendlies",
+    "right_normalized": "国际友谊赛u23",
+    "left_example": "Friendlies\t08:35",
+    "right_example": "国际友谊赛U23",
+    "count": 74,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.611689+00:00"
   }
 }

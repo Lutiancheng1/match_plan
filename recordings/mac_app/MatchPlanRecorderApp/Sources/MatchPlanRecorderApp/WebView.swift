@@ -22,7 +22,13 @@ struct RecorderWebView: NSViewRepresentable {
     }
 
     func updateNSView(_ webView: WKWebView, context: Context) {
-        if webView.url?.absoluteString != url.absoluteString {
+        // Normalize both URLs (strip trailing slash) to avoid reload loops
+        // caused by WebKit adding a trailing slash after navigation
+        let currentHost = webView.url?.host
+        let targetHost = url.host
+        let currentPath = webView.url?.path ?? ""
+        let targetPath = url.path.isEmpty ? "/" : url.path
+        if currentHost != targetHost || currentPath != targetPath {
             webView.load(URLRequest(url: url))
         }
     }

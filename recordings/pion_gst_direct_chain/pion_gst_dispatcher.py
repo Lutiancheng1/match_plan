@@ -7,6 +7,7 @@ import os
 import signal
 import subprocess
 import sys
+import threading
 import time
 from datetime import datetime
 from pathlib import Path
@@ -30,8 +31,9 @@ DEFAULT_DISCOVER_INTERVAL_SECONDS = 60
 DEFAULT_LOOP_INTERVAL_SECONDS = 1
 COMPLETED_COOLDOWN_SECONDS = 300
 WORKER_RESTART_COOLDOWN_SECONDS = 15
-WORKER_SPAWN_STAGGER_SECONDS = 5.0
-PENDING_WORKER_START_STATES = {"", "initializing", "polling", "starting"}
+WORKER_SPAWN_STAGGER_SECONDS = 1.0
+MAX_CONCURRENT_SPAWN = 4
+PENDING_WORKER_START_STATES = {"", "initializing", "starting"}
 BOOTSTRAP_RETRY_LIMIT = 5
 DEFAULT_PATH_PREFIX = [
     "/opt/homebrew/bin",
@@ -138,12 +140,68 @@ class PionGstDispatcher:
         self.match_dir = self.runtime_dir / "match_payloads"
         self.match_dir.mkdir(parents=True, exist_ok=True)
         self.credentials_path = self.runtime_dir / "data_source_credentials.json"
+        self.shared_betting_data_path = self.runtime_dir / "shared_betting_data.jsonl"
         self.state_path = self.runtime_dir / "dispatcher_state.json"
         self.log_path = self.runtime_dir / "dispatcher.log"
         self.logger = SessionLogger(str(self.log_path))
         self._stop = False
         self._next_discovery_at = 0.0
         self._next_worker_spawn_at = 0.0
+        self._shared_poller = None
+        self._shared_poller_thread = None
+        self._shared_poller_rows_flushed = 0
+
+    def ensure_shared_poller(self) -> None:
+        """Start or restart the shared BettingDataPoller if credentials are available."""
+        # Ensure file exists so workers can start in shared mode immediately
+        if not self.shared_betting_data_path.exists():
+            self.shared_betting_data_path.touch(exist_ok=True)
+        if self._shared_poller is not None:
+            return
+        if not self.credentials_path.exists():
+            return
+        try:
+            creds_data = json.loads(self.credentials_path.read_text(encoding="utf-8"))
+        except Exception:
+            return
+        cookie = creds_data.get("cookie", "")
+        template = creds_data.get("template") or {}
+        feed_url = creds_data.get("feed_url", "")
+        if not cookie or not template:
+            return
+        from run_auto_capture import BettingDataPoller, ALL_GTYPES, DEFAULT_URL
+        gtypes_str = str(getattr(self.args, "gtypes", "FT") or "FT")
+        gtypes = [g.strip().upper() for g in gtypes_str.split(",") if g.strip()] or ALL_GTYPES
+        self._shared_poller = BettingDataPoller(
+            cookie, template,
+            gtypes=gtypes,
+            feed_url=feed_url or DEFAULT_URL,
+        )
+        self._shared_poller_thread = threading.Thread(
+            target=self._shared_poller.start, daemon=True
+        )
+        self._shared_poller_thread.start()
+        self.logger.log(f"共享数据采集器启动 (gtypes={gtypes}, interval=5s)")
+
+    def flush_shared_betting_data(self) -> None:
+        """Write new rows from shared poller to the shared JSONL file."""
+        if self._shared_poller is None:
+            return
+        rows = self._shared_poller.data[self._shared_poller_rows_flushed:]
+        if not rows:
+            return
+        try:
+            with open(self.shared_betting_data_path, "a", encoding="utf-8") as f:
+                for row in rows:
+                    f.write(json.dumps(row, ensure_ascii=False) + "\n")
+            self._shared_poller_rows_flushed += len(rows)
+        except Exception as exc:
+            self.logger.log(f"共享数据落盘失败: {exc}", "WARN")
+
+    def stop_shared_poller(self) -> None:
+        if self._shared_poller is not None:
+            self._shared_poller.stop()
+            self._shared_poller = None
 
     def reap_finished_children(self) -> None:
         while True:
@@ -382,6 +440,8 @@ class PionGstDispatcher:
             str(int(self.args.hls_bitrate_kbps)),
             "--session-id",
             session_id,
+            "--shared-betting-data",
+            str(self.shared_betting_data_path),
         ]
         if self.args.allow_unbound:
             cmd.append("--allow-unbound")
@@ -398,12 +458,14 @@ class PionGstDispatcher:
             "MATCH_RECORDING_PROXY_POLICY",
         ):
             env.pop(key, None)
+        worker_stderr_path = self.runtime_dir / f"worker_stderr_{slug}__{tag}.log"
+        worker_stderr_fh = open(worker_stderr_path, "a", encoding="utf-8")
         proc = subprocess.Popen(
             cmd,
             cwd=str(RECORDINGS_DIR.parent),
             env=env,
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            stderr=worker_stderr_fh,
             start_new_session=True,
         )
         self.logger.log(
@@ -489,15 +551,15 @@ class PionGstDispatcher:
         return state
 
     def dispatch_next_worker(self, state: dict) -> dict:
-        if self.pending_worker_start_exists(state):
-            return state
         if time.time() < self._next_worker_spawn_at:
             return state
         queue = state.get("pending_queue", [])
         if not queue:
             return state
         active_urls = {str(item.get("watch_url", "")).rstrip("/") for item in state.get("workers", [])}
-        while queue:
+        spawned = 0
+        deferred = []
+        while queue and spawned < MAX_CONCURRENT_SPAWN:
             match = queue.pop(0)
             watch_url = str(match.get("watch_url", "")).rstrip("/")
             if not watch_url or watch_url in active_urls:
@@ -516,26 +578,29 @@ class PionGstDispatcher:
                 retry_count = int(match.get("_bootstrap_retry_count") or 0) + 1
                 if retry_count <= BOOTSTRAP_RETRY_LIMIT:
                     match["_bootstrap_retry_count"] = retry_count
-                    state.setdefault("pending_queue", []).append(match)
+                    deferred.append(match)
                 continue
             if str(bootstrap.get("serverMs", "")).strip().lower() != "lk":
                 self.logger.log(f"Pion 跳过非 LiveKit 订阅地址: {watch_url}", "WARN")
                 retry_count = int(match.get("_bootstrap_retry_count") or 0) + 1
                 if retry_count <= BOOTSTRAP_RETRY_LIMIT:
                     match["_bootstrap_retry_count"] = retry_count
-                    state.setdefault("pending_queue", []).append(match)
+                    deferred.append(match)
                 continue
             if not bootstrap.get("serverHost") or not bootstrap.get("token"):
                 self.logger.log(f"Pion 订阅地址缺少凭据: {watch_url}", "WARN")
                 retry_count = int(match.get("_bootstrap_retry_count") or 0) + 1
                 if retry_count <= BOOTSTRAP_RETRY_LIMIT:
                     match["_bootstrap_retry_count"] = retry_count
-                    state.setdefault("pending_queue", []).append(match)
+                    deferred.append(match)
                 continue
             state.setdefault("workers", []).append(self.spawn_worker(match, bootstrap, watch_url))
             active_urls.add(watch_url)
+            spawned += 1
+        if deferred:
+            state.setdefault("pending_queue", []).extend(deferred)
+        if spawned > 0:
             self._next_worker_spawn_at = time.time() + WORKER_SPAWN_STAGGER_SECONDS
-            break
         self.save_state(state)
         return state
 
@@ -557,11 +622,14 @@ class PionGstDispatcher:
                 except Exception as exc:
                     self.logger.log(f"Pion dispatcher 本轮异常: {exc}", "ERROR")
                 self._next_discovery_at = now_ts + max(15, int(self.args.discover_interval_seconds))
+            self.ensure_shared_poller()
+            self.flush_shared_betting_data()
             state = self.dispatch_next_worker(state)
             self.save_state(state)
             if self.args.check_once:
                 break
             time.sleep(max(1, int(self.args.loop_interval_seconds)))
+        self.stop_shared_poller()
         self.logger.close()
         return 0
 

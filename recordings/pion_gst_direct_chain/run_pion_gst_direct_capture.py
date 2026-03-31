@@ -69,6 +69,57 @@ def load_match_payload(path: str) -> dict:
     return payload
 
 
+class SharedBettingDataReader:
+    """Reads betting data from a shared JSONL file written by the dispatcher.
+
+    Provides the same interface as BettingDataPoller (.data, .poll_interval,
+    .start(), .stop()) so workers can use it as a drop-in replacement.
+    """
+
+    def __init__(self, shared_path: str, read_interval: float = 2.0):
+        self.shared_path = Path(shared_path)
+        self.data: list[dict] = []
+        self.poll_interval = 5.0
+        self._stop = threading.Event()
+        self._read_interval = read_interval
+        self._last_offset = 0  # byte offset into the file
+
+    def start(self):
+        while not self._stop.is_set():
+            self._read_new_rows()
+            self._stop.wait(timeout=self._read_interval)
+
+    def stop(self):
+        self._stop.set()
+
+    @property
+    def poll_count(self):
+        return len(self.data)
+
+    @property
+    def error_count(self):
+        return 0
+
+    def _read_new_rows(self):
+        if not self.shared_path.exists():
+            return
+        try:
+            with open(self.shared_path, "r", encoding="utf-8") as f:
+                f.seek(self._last_offset)
+                new_lines = f.readlines()
+                if new_lines:
+                    for line in new_lines:
+                        line = line.strip()
+                        if line:
+                            try:
+                                self.data.append(json.loads(line))
+                            except json.JSONDecodeError:
+                                pass
+                    self._last_offset = f.tell()
+        except Exception:
+            pass
+
+
 def load_shared_data_credentials(path: str) -> tuple[str | None, dict | None, bool, str | None, str]:
     if not path:
         return None, None, False, None, ""
@@ -159,6 +210,7 @@ def main() -> int:
     parser.add_argument("--server-ms", default="")
     parser.add_argument("--status-path", default="")
     parser.add_argument("--data-credentials-file", default="")
+    parser.add_argument("--shared-betting-data", default="")
     parser.add_argument("--segment-minutes", type=int, default=2)
     parser.add_argument("--max-duration-minutes", type=int, default=2)
     parser.add_argument("--disable-hls-preview", action="store_true", default=False)
@@ -213,7 +265,7 @@ def main() -> int:
         "mergedVideo": "",
         "matchedRows": 0,
         "dataFile": "",
-        "pollIntervalSec": 1.0,
+        "pollIntervalSec": 5.0,
         "error": "",
     }
 
@@ -226,11 +278,18 @@ def main() -> int:
 
     recorder_bin = ensure_go_recorder(logger)
 
+    # Try shared dispatcher credentials first — avoid re-login which invalidates other sessions
+    shared_creds = load_shared_data_credentials(args.data_credentials_file)
+    has_shared_creds = shared_creds[0] or shared_creds[1] or shared_creds[2] or shared_creds[3]
+
     if args.match_file:
         selected_match = load_match_payload(args.match_file)
         if args.watch_url:
             selected_match["watch_url"] = args.watch_url
-        creds = bootstrap_credentials(logger, args.browser)
+        if not has_shared_creds:
+            creds = bootstrap_credentials(logger, args.browser)
+        else:
+            creds = (None, None, False, None, "none")
     elif args.watch_url:
         selected_match = {
             "watch_url": args.watch_url,
@@ -240,7 +299,10 @@ def main() -> int:
             "data_binding_status": "manual",
             "recording_note": "manual_watch_url",
         }
-        creds = bootstrap_credentials(logger, args.browser)
+        if not has_shared_creds:
+            creds = bootstrap_credentials(logger, args.browser)
+        else:
+            creds = (None, None, False, None, "none")
     else:
         ns = argparse.Namespace(
             max_streams=1,
@@ -261,8 +323,7 @@ def main() -> int:
             return 1
         selected_match = selected[0]
 
-    shared_creds = load_shared_data_credentials(args.data_credentials_file)
-    if shared_creds[0] or shared_creds[1] or shared_creds[2] or shared_creds[3]:
+    if has_shared_creds:
         cookie, template, use_dashboard, feed_url, data_source = shared_creds
         logger.log(f"复用 dispatcher 数据源凭证: {data_source or 'shared_cache'}")
     else:
@@ -329,19 +390,23 @@ def main() -> int:
         state="polling",
     )
 
-    poller = BettingDataPoller(
-        cookie,
-        template,
-        gtypes=list({selected_match.get("gtype")} - {None, ""}) or ALL_GTYPES,
-        use_dashboard=use_dashboard,
-        feed_url=feed_url,
-        logger=logger,
-        app_bridge_url="http://127.0.0.1:18765",
-    )
-    poller_thread = threading.Thread(target=poller.start, daemon=True)
-    poller_thread.start()
-    logger.log("数据采集线程启动 (Pion/GStreamer 单流)")
-    update_state(pollIntervalSec=poller.current_poll_interval)
+    if args.shared_betting_data:
+        poller = SharedBettingDataReader(args.shared_betting_data)
+        poller_thread = threading.Thread(target=poller.start, daemon=True)
+        poller_thread.start()
+        logger.log(f"数据采集: 读取 dispatcher 共享文件 (不独立请求数据站)")
+    else:
+        poller = BettingDataPoller(
+            cookie,
+            template,
+            gtypes=list({selected_match.get("gtype")} - {None, ""}) or ALL_GTYPES,
+            use_dashboard=use_dashboard,
+            feed_url=feed_url,
+        )
+        poller_thread = threading.Thread(target=poller.start, daemon=True)
+        poller_thread.start()
+        logger.log("数据采集线程启动 (独立轮询模式)")
+    update_state(pollIntervalSec=poller.poll_interval)
 
     raw_data_path = session_dir / "raw_betting_data.jsonl"
     stream_data_path = output_dir / f"{file_prefix}__betting_data.jsonl"
@@ -360,7 +425,7 @@ def main() -> int:
 
     def append_live_raw_data(reason="periodic_raw"):
         nonlocal raw_rows_flushed
-        rows = poller.snapshot_rows_since(raw_rows_flushed)
+        rows = list(poller.data[raw_rows_flushed:])
         if not rows:
             return 0
         written = _append_jsonl(str(raw_data_path), rows)
@@ -370,7 +435,7 @@ def main() -> int:
 
     def append_stream_data(reason="periodic_stream"):
         nonlocal stream_rows_flushed, stream_rows_written
-        rows = poller.snapshot_rows_since(stream_rows_flushed)
+        rows = list(poller.data[stream_rows_flushed:])
         if not rows:
             update_state(dataFile=str(stream_data_path), matchedRows=stream_rows_written)
             return 0
@@ -398,7 +463,10 @@ def main() -> int:
         while not stop_event.wait(timeout=DATA_FLUSH_TICK_INTERVAL):
             now_mono = time.monotonic()
             try:
-                update_state(pollIntervalSec=poller.current_poll_interval)
+                update_state(pollIntervalSec=poller.poll_interval)
+            except Exception:
+                pass
+            try:
                 if now_mono >= next_raw:
                     raw_round += 1
                     append_live_raw_data(reason=f"periodic_raw_{raw_round:03d}")
@@ -585,7 +653,7 @@ def main() -> int:
     poller_thread.join(timeout=2)
     flush_thread.join(timeout=2)
 
-    final_rows = poller.snapshot_rows()
+    final_rows = list(poller.data)
     _write_jsonl_atomic(str(raw_data_path), final_rows)
     matched = match_data_to_stream(
         final_rows,

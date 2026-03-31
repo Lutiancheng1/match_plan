@@ -595,13 +595,20 @@ def resolve_selected_matches(args, logger: SessionLogger) -> tuple[list[dict], t
                 and str(os.environ.get("MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE", "")).strip()
                 and not use_dashboard
             ):
-                logger.log("共享数据源凭证返回 0 条快照，回退一次实时登录刷新凭证", "WARN")
-                shared_path = os.environ.pop("MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE", None)
-                try:
-                    cookie, template, use_dashboard, feed_url, data_source = bootstrap_credentials(logger, args.browser)
-                finally:
-                    if shared_path:
-                        os.environ["MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE"] = shared_path
+                logger.log("共享数据源凭证返回 0 条快照，请求数据站代理刷新 session", "WARN")
+                from run_auto_capture import _fetch_proxy_credentials
+                proxy_refreshed = _fetch_proxy_credentials(logger, refresh=True)
+                if proxy_refreshed:
+                    cookie, template, feed_url, data_source = proxy_refreshed
+                    use_dashboard = False
+                else:
+                    logger.log("数据站代理刷新失败，回退实时登录", "WARN")
+                    shared_path = os.environ.pop("MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE", None)
+                    try:
+                        cookie, template, use_dashboard, feed_url, data_source = bootstrap_credentials(logger, args.browser)
+                    finally:
+                        if shared_path:
+                            os.environ["MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE"] = shared_path
                 logger.log(f"刷新后数据源模式: {data_source}")
                 snapshot_rows = fetch_live_data_snapshot(
                     cookie,

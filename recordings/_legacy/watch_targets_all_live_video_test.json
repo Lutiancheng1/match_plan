@@ -1,0 +1,64 @@
+{
+  "defaults": {
+    "browser": "safari",
+    "gtypes": [
+      "FT",
+      "BK",
+      "ES",
+      "TN",
+      "VB",
+      "BM",
+      "TT",
+      "BS",
+      "SK",
+      "OP"
+    ],
+    "duration_minutes": 30,
+    "segment_minutes": 30,
+    "max_duration_minutes": 0,
+    "max_streams": 0,
+    "check_interval_minutes": 15,
+    "progress_interval_minutes": 30,
+    "allow_test_recording": true,
+    "require_data_binding": false,
+    "notify_channel": "feishu",
+    "notify_account": "legacy",
+    "notify_target": "oc_d8caa357cf6943f7a0b2917a2488876a",
+    "proxy_policy": "safari_system_fallback",
+    "recovery_policy": "disabled",
+    "black_refresh_seconds": 120,
+    "black_abandon_seconds": 300,
+    "recorder_freeze_seconds": 60
+  },
+  "targets": [
+    {
+      "id": "all_live_video_test",
+      "name": "稳定性测试全量直播有视频就录",
+      "enabled": true,
+      "priority": 1000,
+      "gtypes": [
+        "FT",
+        "BK",
+        "ES",
+        "TN",
+        "VB",
+        "BM",
+        "TT",
+        "BS",
+        "SK",
+        "OP"
+      ],
+      "league_keywords": [],
+      "team_keywords": [],
+      "match_query": "",
+      "allow_test_recording": true,
+      "require_data_binding": false,
+      "duration_minutes": 30,
+      "segment_minutes": 30,
+      "max_duration_minutes": 0,
+      "max_streams": 0,
+      "progress_interval_minutes": 30,
+      "recovery_policy": "disabled"
+    }
+  ]
+}

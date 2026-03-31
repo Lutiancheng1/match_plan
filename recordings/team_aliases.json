@@ -40,7 +40,11 @@
     "cucuta"
   ],
   "kazakhstan": [
+    "哈萨克",
     "哈萨克斯坦"
+  ],
+  "哈萨克": [
+    "kazakhstan"
   ],
   "哈萨克斯坦": [
     "kazakhstan"
@@ -100,9 +104,13 @@
     "bangladesh"
   ],
   "chinapru23": [
-    "中国u23"
+    "中国u23",
+    "中国国奥"
   ],
   "中国u23": [
+    "chinapru23"
+  ],
+  "中国国奥": [
     "chinapru23"
   ],
   "thailandu23": [
@@ -384,9 +392,17 @@
     "elenarybakina"
   ],
   "alzawraa": [
-    "zawraa"
+    "zawraa",
+    "扎乌拉",
+    "扎瓦拉"
   ],
   "zawraa": [
+    "alzawraa"
+  ],
+  "扎乌拉": [
+    "alzawraa"
+  ],
+  "扎瓦拉": [
     "alzawraa"
   ],
   "alkahrabaa": [
@@ -1188,6 +1204,9 @@
   ],
   "埃及": [
     "egypt",
+    "masr"
+  ],
+  "泽德": [
     "masr"
   ],
   "马斯尔": [
@@ -2238,6 +2257,9 @@
     "印迪耶姆博",
     "尤姆博独立"
   ],
+  "independienteyumbo": [
+    "indyumbo"
+  ],
   "云博": [
     "indyumbo"
   ],
@@ -2586,12 +2608,14 @@
   "hapoelnazarethillit": [
     "上拿撒勒夏普尔",
     "上拿撒勒工人",
+    "哈普尔拿撒勒",
     "拿撒勒伊利特",
     "拿撒勒伊利特夏普尔",
     "拿撒勒伊利特工人",
     "拿撒勒伊力工人",
     "拿撒勒伊工人",
     "拿撒勒伊里特",
+    "拿撒勒伊里特夏普尔",
     "拿撒勒伊里特工人",
     "拿撒勒工人",
     "诺夫哈加里夏普尔"
@@ -2600,6 +2624,9 @@
     "hapoelnazarethillit"
   ],
   "上拿撒勒工人": [
+    "hapoelnazarethillit"
+  ],
+  "哈普尔拿撒勒": [
     "hapoelnazarethillit"
   ],
   "拿撒勒伊利特": [
@@ -2618,6 +2645,9 @@
     "hapoelnazarethillit"
   ],
   "拿撒勒伊里特": [
+    "hapoelnazarethillit"
+  ],
+  "拿撒勒伊里特夏普尔": [
     "hapoelnazarethillit"
   ],
   "拿撒勒伊里特工人": [
@@ -3464,7 +3494,11 @@
     "fckallon"
   ],
   "polandu21": [
+    "波兰21",
     "波兰u21"
+  ],
+  "波兰21": [
+    "polandu21"
   ],
   "波兰u21": [
     "polandu21"
@@ -7086,6 +7120,9 @@
     "fortalezaec",
     "fortalezafc"
   ],
+  "fortalezafc": [
+    "福塔雷萨"
+  ],
   "imperatriz": [
     "因佩拉特里斯"
   ],
@@ -7234,6 +7271,9 @@
   ],
   "蒙特维多河床队": [
     "cariverplate"
+  ],
+  "riverplate": [
+    "河床"
   ],
   "baltimoreorioles": [
     "金莺"
@@ -9611,6 +9651,9 @@
     "ska哈巴罗夫斯克",
     "哈巴罗夫斯克ska"
   ],
+  "ska哈巴罗夫斯克": [
+    "skakhabarovsk"
+  ],
   "哈巴罗夫斯克ska": [
     "skakhabarovsk"
   ],
@@ -9626,9 +9669,6 @@
   "港务局fc": [
     "portsauthorityfc"
   ],
-  "ska哈巴罗夫斯克": [
-    "skakhabarovsk"
-  ],
   "arezzo": [
     "阿雷佐",
     "阿雷素"
@@ -9636,14 +9676,14 @@
   "阿雷佐": [
     "arezzo"
   ],
+  "阿雷素": [
+    "arezzo"
+  ],
   "ascoli": [
     "阿斯科利"
   ],
   "阿斯科利": [
     "ascoli"
-  ],
-  "泽德": [
-    "masr"
   ],
   "casertana": [
     "卡塞塔纳"
@@ -9661,6 +9701,9 @@
     "尤文都德彼德拉斯",
     "青年皮耶德拉斯"
   ],
+  "尤文都德彼德拉斯": [
+    "juventuddelaspiedras"
+  ],
   "青年皮耶德拉斯": [
     "juventuddelaspiedras"
   ],
@@ -9669,12 +9712,6 @@
   ],
   "波士顿河": [
     "bostonriver"
-  ],
-  "尤文都德彼德拉斯": [
-    "juventuddelaspiedras"
-  ],
-  "阿雷素": [
-    "arezzo"
   ],
   "defensoresdebelgrano": [
     "贝尔格拉诺防卫者",
@@ -9685,9 +9722,6 @@
   ],
   "贝尔格拉诺防卫队": [
     "defensoresdebelgrano"
-  ],
-  "independienteyumbo": [
-    "indyumbo"
   ],
   "cerrolargo": [
     "塞罗拉尔戈"
@@ -9756,17 +9790,17 @@
   "中西班牙": [
     "centralespanol"
   ],
+  "艾斯潘诺中心": [
+    "centralespanol"
+  ],
   "deportivomaldonado": [
     "马尔多纳多",
     "马尔多纳多竞技"
   ],
-  "马尔多纳多竞技": [
+  "马尔多纳多": [
     "deportivomaldonado"
   ],
-  "艾斯潘诺中心": [
-    "centralespanol"
-  ],
-  "马尔多纳多": [
+  "马尔多纳多竞技": [
     "deportivomaldonado"
   ],
   "unionsantafe": [
@@ -9786,9 +9820,6 @@
   ],
   "明星队": [
     "unistars"
-  ],
-  "riverplate": [
-    "河床"
   ],
   "arnettgardens": [
     "阿内特花园"
@@ -9820,7 +9851,142 @@
   "百万富翁": [
     "millonarios"
   ],
-  "fortalezafc": [
-    "福塔雷萨"
+  "chinesetaipei": [
+    "中华台北",
+    "中国台北"
+  ],
+  "中华台北": [
+    "chinesetaipei"
+  ],
+  "中国台北": [
+    "chinesetaipei"
+  ],
+  "srilanka": [
+    "斯里兰卡"
+  ],
+  "斯里兰卡": [
+    "srilanka"
+  ],
+  "maldives": [
+    "马尔代夫"
+  ],
+  "马尔代夫": [
+    "maldives"
+  ],
+  "timorleste": [
+    "东帝汶"
+  ],
+  "东帝汶": [
+    "timorleste"
+  ],
+  "curacao": [
+    "库拉索"
+  ],
+  "库拉索": [
+    "curacao"
+  ],
+  "vietnamu23": [
+    "越南u23"
+  ],
+  "越南u23": [
+    "vietnamu23"
+  ],
+  "montenegrou21": [
+    "黑山21",
+    "黑山u21"
+  ],
+  "黑山21": [
+    "montenegrou21"
+  ],
+  "黑山u21": [
+    "montenegrou21"
+  ],
+  "singapore": [
+    "新加坡"
+  ],
+  "新加坡": [
+    "singapore"
+  ],
+  "newroz": [
+    "内罗兹",
+    "尼罗兹",
+    "纽罗兹",
+    "诺鲁兹"
+  ],
+  "内罗兹": [
+    "newroz"
+  ],
+  "尼罗兹": [
+    "newroz"
+  ],
+  "纽罗兹": [
+    "newroz"
+  ],
+  "诺鲁兹": [
+    "newroz"
+  ],
+  "malaysia": [
+    "马来西亚"
+  ],
+  "马来西亚": [
+    "malaysia"
+  ],
+  "bhutan": [
+    "不丹"
+  ],
+  "不丹": [
+    "bhutan"
+  ],
+  "brunei": [
+    "文莱"
+  ],
+  "文莱": [
+    "brunei"
+  ],
+  "thailand": [
+    "泰国"
+  ],
+  "泰国": [
+    "thailand"
+  ],
+  "turkmenistan": [
+    "土库曼",
+    "土库曼斯坦"
+  ],
+  "土库曼": [
+    "turkmenistan"
+  ],
+  "土库曼斯坦": [
+    "turkmenistan"
+  ],
+  "amagaju": [
+    "阿马加朱"
+  ],
+  "阿马加朱": [
+    "amagaju"
+  ],
+  "botswana": [
+    "博茨瓦纳"
+  ],
+  "博茨瓦纳": [
+    "botswana"
+  ],
+  "malawi": [
+    "马拉维"
+  ],
+  "马拉维": [
+    "malawi"
+  ],
+  "austriau19": [
+    "奥地利u19"
+  ],
+  "奥地利u19": [
+    "austriau19"
+  ],
+  "germanyu19": [
+    "德国u19"
+  ],
+  "德国u19": [
+    "germanyu19"
   ]
 }

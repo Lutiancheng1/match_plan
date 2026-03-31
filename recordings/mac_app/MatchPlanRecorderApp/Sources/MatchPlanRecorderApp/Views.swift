@@ -1,6 +1,33 @@
 import AppKit
 import SwiftUI
 
+enum SortField: String {
+    case time
+    case length
+}
+
+struct SortState {
+    var field: SortField = .time
+    var ascending: Bool = false // false = newest/longest first
+
+    mutating func toggle(_ tapped: SortField) {
+        if field == tapped {
+            ascending.toggle()
+        } else {
+            field = tapped
+            ascending = false
+        }
+    }
+
+    func timeLabel() -> String {
+        field == .time ? (ascending ? "时间 ↑" : "时间 ↓") : "时间"
+    }
+
+    func lengthLabel() -> String {
+        field == .length ? (ascending ? "时长 ↑" : "时长 ↓") : "时长"
+    }
+}
+
 struct ContentView: View {
     @Bindable var controller: AppController
 
@@ -531,6 +558,15 @@ struct DataSitePanelView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .task {
+            controller.ensureDataSiteProxy()
+            // Poll until ready (proxy may need a few seconds to start)
+            for _ in 0..<30 {
+                if controller.dataSiteProxyReady { break }
+                try? await Task.sleep(for: .seconds(1))
+                controller.ensureDataSiteProxy()
+            }
+        }
     }
 }
 
@@ -725,6 +761,23 @@ struct WorkersView: View {
 
 struct WorkerHistoryView: View {
     @Bindable var controller: AppController
+    @State private var sort = SortState()
+
+    private var sortedHistoricalWorkers: [WorkerStateSummary] {
+        let items = controller.historicalWorkers
+        switch sort.field {
+        case .time:
+            return items.sorted { sort.ascending ? $0.startedAt < $1.startedAt : $0.startedAt > $1.startedAt }
+        case .length:
+            return items.sorted { sort.ascending ? workerDurationSeconds($0) < workerDurationSeconds($1) : workerDurationSeconds($0) > workerDurationSeconds($1) }
+        }
+    }
+
+    private func workerDurationSeconds(_ w: WorkerStateSummary) -> TimeInterval {
+        guard let start = parseISODateStatic(w.startedAt) else { return 0 }
+        let end = parseISODateStatic(w.updatedAt) ?? Date()
+        return end.timeIntervalSince(start)
+    }
 
     var body: some View {
         HStack(spacing: 16) {
@@ -733,6 +786,8 @@ struct WorkerHistoryView: View {
                     Text("历史 Worker")
                         .font(.title3.bold())
                     Spacer()
+                    sortButton(sort.timeLabel(), field: .time)
+                    sortButton(sort.lengthLabel(), field: .length)
                     Button("删除所选历史") {
                         Task { await controller.deleteSelectedHistoryArtifacts() }
                     }
@@ -745,7 +800,7 @@ struct WorkerHistoryView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 List(selection: $controller.selectedHistoryWorkerID) {
-                    ForEach(controller.historicalWorkers) { item in
+                    ForEach(sortedHistoricalWorkers) { item in
                         HStack(alignment: .top, spacing: 10) {
                             Toggle("", isOn: Binding(
                                 get: { controller.selectedHistoryWorkerIDs.contains(item.id) },
@@ -794,10 +849,27 @@ struct WorkerHistoryView: View {
             }
         }
     }
+
+    private func sortButton(_ label: String, field: SortField) -> some View {
+        Button(label) { sort.toggle(field) }
+            .buttonStyle(.bordered)
+            .tint(sort.field == field ? .accentColor : .secondary)
+    }
 }
 
 struct ArtifactManagerView: View {
     @Bindable var controller: AppController
+    @State private var sort = SortState()
+
+    private var sortedArtifacts: [ArtifactSessionSummary] {
+        let items = controller.artifacts
+        switch sort.field {
+        case .time:
+            return items.sorted { sort.ascending ? ($0.date, $0.session_name) < ($1.date, $1.session_name) : ($0.date, $0.session_name) > ($1.date, $1.session_name) }
+        case .length:
+            return items.sorted { sort.ascending ? $0.segment_count < $1.segment_count : $0.segment_count > $1.segment_count }
+        }
+    }
 
     var body: some View {
         HStack(spacing: 16) {
@@ -806,6 +878,8 @@ struct ArtifactManagerView: View {
                     Text("产物管理")
                         .font(.title3.bold())
                     Spacer()
+                    sortButton(sort.timeLabel(), field: .time)
+                    sortButton(sort.lengthLabel(), field: .length)
                     Text("共 \(controller.artifacts.count) 项")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -835,7 +909,7 @@ struct ArtifactManagerView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 } else {
                     List {
-                        ForEach(controller.artifacts) { item in
+                        ForEach(sortedArtifacts) { item in
                             ArtifactRow(
                                 item: item,
                                 selected: controller.selectedArtifactIDs.contains(item.id),
@@ -909,6 +983,12 @@ struct ArtifactManagerView: View {
                 await controller.refreshArtifacts()
             }
         }
+    }
+
+    private func sortButton(_ label: String, field: SortField) -> some View {
+        Button(label) { sort.toggle(field) }
+            .buttonStyle(.bordered)
+            .tint(sort.field == field ? .accentColor : .secondary)
     }
 }
 
@@ -1059,70 +1139,83 @@ struct DataInspectorView: View {
     }
 }
 
+enum LogCategory: String, CaseIterable, Identifiable {
+    case all = "全部"
+    case dispatcher = "调度"
+    case worker = "Worker"
+    case supervisor = "Supervisor"
+    case dataSiteProxy = "数据站代理"
+    case singbox = "sing-box"
+    case app = "应用"
+
+    var id: String { rawValue }
+}
+
 struct LogsView: View {
     @Bindable var controller: AppController
+    @State private var filter: LogCategory = .all
+
+    private var filteredText: String {
+        var lines: [AppLogLine] = []
+        switch filter {
+        case .all:
+            lines = controller.dispatcherLogLines + controller.selectedWorkerLogLines
+                + controller.supervisorWrapperLogLines + controller.dataSiteProxyLogLines
+                + controller.singboxLogLines + controller.logLines
+        case .dispatcher: lines = controller.dispatcherLogLines
+        case .worker: lines = controller.selectedWorkerLogLines
+        case .supervisor: lines = controller.supervisorWrapperLogLines
+        case .dataSiteProxy: lines = controller.dataSiteProxyLogLines
+        case .singbox: lines = controller.singboxLogLines
+        case .app: lines = controller.logLines
+        }
+        return joinedLogText(lines, includeTimestamp: filter == .app || filter == .all)
+    }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
                 Text("日志")
                     .font(.title3.bold())
-                HStack(spacing: 16) {
-                    Text("dispatcher \(controller.dispatcherLogLines.count)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Text("worker \(controller.selectedWorkerLogLines.count)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Text("supervisor \(controller.supervisorWrapperLogLines.count)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Text("应用日志 \(controller.logLines.count)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                if !controller.dispatcherLogLines.isEmpty {
-                    selectableLogSection(
-                        title: "后台调度日志（发现 / 翻译 / 匹配 / 分发）",
-                        text: joinedLogText(controller.dispatcherLogLines, includeTimestamp: false)
-                    )
-                }
-                if !controller.selectedWorkerLogLines.isEmpty {
-                    selectableLogSection(
-                        title: "当前 Worker 日志",
-                        text: joinedLogText(controller.selectedWorkerLogLines, includeTimestamp: false)
-                    )
-                }
-                if !controller.supervisorWrapperLogLines.isEmpty {
-                    selectableLogSection(
-                        title: "Supervisor / 外层包装日志",
-                        text: joinedLogText(controller.supervisorWrapperLogLines, includeTimestamp: false)
-                    )
-                }
-                selectableLogSection(
-                    title: "应用操作日志",
-                    text: joinedLogText(controller.logLines, includeTimestamp: true)
-                )
+                Spacer()
             }
+            HStack(spacing: 8) {
+                ForEach(LogCategory.allCases) { cat in
+                    let count = logCount(for: cat)
+                    Button {
+                        filter = (filter == cat) ? .all : cat
+                    } label: {
+                        Text("\(cat.rawValue) \(count)")
+                            .font(.caption.weight(.semibold))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(filter == cat ? Color.accentColor.opacity(0.2) : Color.secondary.opacity(0.1))
+                            .foregroundStyle(filter == cat ? .primary : .secondary)
+                            .clipShape(Capsule())
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
+            TextEditor(text: .constant(filteredText.isEmpty ? "暂无日志" : filteredText))
+                .font(.system(.body, design: .monospaced))
+                .frame(maxHeight: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
         }
     }
 
-    @ViewBuilder
-    private func selectableLogSection(title: String, text: String) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .font(.headline)
-            ScrollView(.vertical) {
-                Text(text.isEmpty ? "暂无日志" : text)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .textSelection(.enabled)
-                    .font(.system(.body, design: .monospaced))
-                    .padding(10)
-            }
-            .frame(minHeight: 160)
-            .background(Color.secondary.opacity(0.08))
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+    private func logCount(for cat: LogCategory) -> Int {
+        switch cat {
+        case .all:
+            return controller.dispatcherLogLines.count + controller.selectedWorkerLogLines.count
+                + controller.supervisorWrapperLogLines.count + controller.dataSiteProxyLogLines.count
+                + controller.singboxLogLines.count + controller.logLines.count
+        case .dispatcher: return controller.dispatcherLogLines.count
+        case .worker: return controller.selectedWorkerLogLines.count
+        case .supervisor: return controller.supervisorWrapperLogLines.count
+        case .dataSiteProxy: return controller.dataSiteProxyLogLines.count
+        case .singbox: return controller.singboxLogLines.count
+        case .app: return controller.logLines.count
         }
     }
 
@@ -1135,4 +1228,24 @@ struct LogsView: View {
         }
         .joined(separator: "\n")
     }
+}
+
+private func parseISODateStatic(_ value: String) -> Date? {
+    let raw = value.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !raw.isEmpty else { return nil }
+    let plain = ISO8601DateFormatter()
+    if let date = plain.date(from: raw) { return date }
+    let fractional = ISO8601DateFormatter()
+    fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    if let date = fractional.date(from: raw) { return date }
+    let localFractional = DateFormatter()
+    localFractional.locale = Locale(identifier: "en_US_POSIX")
+    localFractional.timeZone = .current
+    localFractional.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+    if let date = localFractional.date(from: raw) { return date }
+    let localPlain = DateFormatter()
+    localPlain.locale = Locale(identifier: "en_US_POSIX")
+    localPlain.timeZone = .current
+    localPlain.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    return localPlain.date(from: raw)
 }

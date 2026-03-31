@@ -57,15 +57,18 @@ BettingDataPoller → 盘口数据轮询 → betting_data.jsonl
 | `team_alias_learned.json` | AI 翻译学习到的队名映射 |
 | `league_alias_learned.json` | AI 翻译学习到的联赛映射 |
 
-### 遗留 (不再是主线)
+### 遗留 (新管线仍 import 其中共享类)
 
-| 文件 | 说明 |
-|---|---|
-| `run_auto_capture.py` | 旧方案主脚本 (浏览器录屏) |
-| `recorder.py` | ffmpeg 多路录制核心 |
-| `openclaw_recording_watch.py` | 旧的自动巡检调度 |
-| `recording_watch_supervisor.py` | 旧的巡检守护层 |
-| `window_capture.swift` | ScreenCaptureKit 窗口捕获 |
+| 文件 | 说明 | 被谁引用 |
+|---|---|---|
+| `run_auto_capture.py` | BettingDataPoller, SessionLogger 等共享类 | pion_gst worker |
+| `recorder.py` | Manifest 类 | pion_gst worker |
+| `post_match.py` | merge_segments, get_video_duration | pion_gst worker |
+| `notify_recording_summary.py` | Feishu 通知 | pion_gst dispatcher |
+
+### 归档 (`_legacy/`)
+
+旧浏览器录屏方案的脚本已归档到 `_legacy/` 目录，不再是主线。
 
 ## 运行模式
 

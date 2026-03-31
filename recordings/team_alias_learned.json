@@ -868,9 +868,9 @@
     "right_normalized": "澳大利亚",
     "left_example": "Australia",
     "right_example": "澳大利亚",
-    "count": 14,
+    "count": 19,
     "promoted": true,
-    "last_seen_at": "2026-03-27T11:03:07.936974+00:00"
+    "last_seen_at": "2026-03-31T10:39:31.431196+00:00"
   },
   "cameroon <-> 喀麦隆": {
     "left_normalized": "cameroon",
@@ -949,18 +949,18 @@
     "right_normalized": "耶胡达",
     "left_example": "Bnei Yehuda",
     "right_example": "耶胡达",
-    "count": 43,
+    "count": 60,
     "promoted": true,
-    "last_seen_at": "2026-03-27T13:51:27.660434+00:00"
+    "last_seen_at": "2026-03-31T13:23:04.817968+00:00"
   },
   "hapoelnazarethillit <-> 诺夫哈加里夏普尔": {
     "left_normalized": "hapoelnazarethillit",
     "right_normalized": "诺夫哈加里夏普尔",
     "left_example": "Hapoel Nazareth Illit",
     "right_example": "诺夫哈加里夏普尔",
-    "count": 32,
+    "count": 49,
     "promoted": true,
-    "last_seen_at": "2026-03-27T13:51:27.663090+00:00"
+    "last_seen_at": "2026-03-31T13:23:04.815441+00:00"
   },
   "maccabikabiliojaffa <-> 卡比利奥马卡比": {
     "left_normalized": "maccabikabiliojaffa",
@@ -1129,9 +1129,9 @@
     "right_normalized": "拉脱维亚u21",
     "left_example": "Latvia U21",
     "right_example": "拉脱维亚U21",
-    "count": 36,
+    "count": 97,
     "promoted": true,
-    "last_seen_at": "2026-03-27T16:53:25.131174+00:00"
+    "last_seen_at": "2026-03-31T12:52:28.491266+00:00"
   },
   "kazakhstanu21 <-> 哈萨克斯坦u21": {
     "left_normalized": "kazakhstanu21",
@@ -1273,9 +1273,9 @@
     "right_normalized": "北爱尔兰u21",
     "left_example": "Northern Ireland U21",
     "right_example": "北爱尔兰U21",
-    "count": 36,
+    "count": 97,
     "promoted": true,
-    "last_seen_at": "2026-03-27T18:50:04.460667+00:00"
+    "last_seen_at": "2026-03-31T12:52:28.492953+00:00"
   },
   "norwayu21 <-> 挪威u21": {
     "left_normalized": "norwayu21",
@@ -1300,9 +1300,9 @@
     "right_normalized": "波兰u21",
     "left_example": "Poland U21",
     "right_example": "波兰U21",
-    "count": 36,
+    "count": 84,
     "promoted": true,
-    "last_seen_at": "2026-03-27T18:50:04.469986+00:00"
+    "last_seen_at": "2026-03-31T13:23:00.604360+00:00"
   },
   "armeniau21 <-> 阿美尼亚u21": {
     "left_normalized": "armeniau21",
@@ -1984,9 +1984,9 @@
     "right_normalized": "中国u23",
     "left_example": "China PR U23",
     "right_example": "中国U23",
-    "count": 8,
+    "count": 82,
     "promoted": true,
-    "last_seen_at": "2026-03-28T13:14:38.260530+00:00"
+    "last_seen_at": "2026-03-31T13:23:00.609383+00:00"
   },
   "koreadpru23 <-> 朝鲜u23": {
     "left_normalized": "koreadpru23",
@@ -2011,9 +2011,9 @@
     "right_normalized": "科摩罗",
     "left_example": "Comoros",
     "right_example": "科摩罗",
-    "count": 10,
+    "count": 58,
     "promoted": true,
-    "last_seen_at": "2026-03-28T13:49:19.748532+00:00"
+    "last_seen_at": "2026-03-31T13:23:00.597558+00:00"
   },
   "raw <-> 罗亚女": {
     "left_normalized": "raw",
@@ -4858,5 +4858,167 @@
     "count": 220,
     "promoted": true,
     "last_seen_at": "2026-03-31T01:53:58.832044+00:00"
+  },
+  "curacao <-> 库拉索": {
+    "left_normalized": "curacao",
+    "right_normalized": "库拉索",
+    "left_example": "Curaçao",
+    "right_example": "库拉索",
+    "count": 5,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T10:39:31.432634+00:00"
+  },
+  "chinesetaipei <-> 中华台北": {
+    "left_normalized": "chinesetaipei",
+    "right_normalized": "中华台北",
+    "left_example": "Chinese Taipei",
+    "right_example": "中华台北",
+    "count": 53,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T12:30:23.502842+00:00"
+  },
+  "srilanka <-> 斯里兰卡": {
+    "left_normalized": "srilanka",
+    "right_normalized": "斯里兰卡",
+    "left_example": "Sri Lanka",
+    "right_example": "斯里兰卡",
+    "count": 53,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T12:30:23.504627+00:00"
+  },
+  "maldives <-> 马尔代夫": {
+    "left_normalized": "maldives",
+    "right_normalized": "马尔代夫",
+    "left_example": "Maldives",
+    "right_example": "马尔代夫",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T12:25:49.334313+00:00"
+  },
+  "timorleste <-> 东帝汶": {
+    "left_normalized": "timorleste",
+    "right_normalized": "东帝汶",
+    "left_example": "Timor-Leste",
+    "right_example": "东帝汶",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T12:25:49.335812+00:00"
+  },
+  "vietnamu23 <-> 越南u23": {
+    "left_normalized": "vietnamu23",
+    "right_normalized": "越南u23",
+    "left_example": "Vietnam U23",
+    "right_example": "越南U23",
+    "count": 74,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.610943+00:00"
+  },
+  "singapore <-> 新加坡": {
+    "left_normalized": "singapore",
+    "right_normalized": "新加坡",
+    "left_example": "Singapore",
+    "right_example": "新加坡",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.582085+00:00"
+  },
+  "bangladesh <-> 孟加拉国": {
+    "left_normalized": "bangladesh",
+    "right_normalized": "孟加拉国",
+    "left_example": "Bangladesh",
+    "right_example": "孟加拉国",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.583676+00:00"
+  },
+  "vietnam <-> 越南": {
+    "left_normalized": "vietnam",
+    "right_normalized": "越南",
+    "left_example": "Vietnam",
+    "right_example": "越南",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.589245+00:00"
+  },
+  "malaysia <-> 马来西亚": {
+    "left_normalized": "malaysia",
+    "right_normalized": "马来西亚",
+    "left_example": "Malaysia",
+    "right_example": "马来西亚",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.590792+00:00"
+  },
+  "kazakhstan <-> 哈萨克斯坦": {
+    "left_normalized": "kazakhstan",
+    "right_normalized": "哈萨克斯坦",
+    "left_example": "Kazakhstan",
+    "right_example": "哈萨克斯坦",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.595987+00:00"
+  },
+  "montenegrou21 <-> 黑山u21": {
+    "left_normalized": "montenegrou21",
+    "right_normalized": "黑山u21",
+    "left_example": "Montenegro U21",
+    "right_example": "黑山U21",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.602859+00:00"
+  },
+  "bhutan <-> 不丹": {
+    "left_normalized": "bhutan",
+    "right_normalized": "不丹",
+    "left_example": "Bhutan",
+    "right_example": "不丹",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.561477+00:00"
+  },
+  "brunei <-> 文莱": {
+    "left_normalized": "brunei",
+    "right_normalized": "文莱",
+    "left_example": "Brunei",
+    "right_example": "文莱",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.563472+00:00"
+  },
+  "thailand <-> 泰国": {
+    "left_normalized": "thailand",
+    "right_normalized": "泰国",
+    "left_example": "Thailand",
+    "right_example": "泰国",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.570320+00:00"
+  },
+  "turkmenistan <-> 土库曼斯坦": {
+    "left_normalized": "turkmenistan",
+    "right_normalized": "土库曼斯坦",
+    "left_example": "Turkmenistan",
+    "right_example": "土库曼斯坦",
+    "count": 31,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.572118+00:00"
+  },
+  "austriau19 <-> 奥地利u19": {
+    "left_normalized": "austriau19",
+    "right_normalized": "奥地利u19",
+    "left_example": "Austria U19",
+    "right_example": "奥地利U19",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.546545+00:00"
+  },
+  "germanyu19 <-> 德国u19": {
+    "left_normalized": "germanyu19",
+    "right_normalized": "德国u19",
+    "left_example": "Germany U19",
+    "right_example": "德国U19",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T13:23:00.548691+00:00"
   }
 }

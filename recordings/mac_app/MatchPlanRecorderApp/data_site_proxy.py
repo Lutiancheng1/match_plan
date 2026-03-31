@@ -13,6 +13,7 @@ from __future__ import annotations
 import http.server
 import json
 import os
+import re
 import ssl
 import sys
 import threading
@@ -41,7 +42,7 @@ for p in (str(RECORDINGS_DIR), str(LIVE_DASHBOARD_DIR)):
 
 _login_creds: dict | None = None
 _login_lock = threading.Lock()
-_login_redirected = False  # Only auto-login redirect once to avoid loops
+_login_redirected = False  # Legacy flag, kept for compatibility
 
 ENV_PATHS = [
     RECORDINGS_DIR / "live_dashboard.env",
@@ -88,6 +89,27 @@ def get_login_creds() -> dict | None:
         return None
 
 
+def refresh_login_creds() -> dict | None:
+    """Force re-login, replacing cached credentials."""
+    global _login_creds
+    with _login_lock:
+        _login_creds = None
+    username, password = load_env_credentials()
+    if not username or not password:
+        return None
+    try:
+        from auto_login import auto_login
+        creds = auto_login(username, password)
+        with _login_lock:
+            _login_creds = creds
+            _login_creds["alias"] = username
+        print(f"[proxy] refresh_login OK: uid={creds.get('uid', '?')}", file=sys.stderr)
+        return _login_creds
+    except Exception as e:
+        print(f"[proxy] refresh_login failed: {e}", file=sys.stderr)
+        return None
+
+
 def build_login_redirect_path(creds: dict) -> str:
     params = urllib.parse.urlencode({
         "cu": "Y", "cuipv6": "N", "ipv6": "N",
@@ -111,7 +133,11 @@ def build_login_redirect_path(creds: dict) -> str:
 
 class ProxyHandler(http.server.BaseHTTPRequestHandler):
     def log_message(self, format, *args):
-        print(f"[req] {self.requestline}", file=sys.stderr)
+        from datetime import datetime
+        ts = datetime.now().strftime("%H:%M:%S.%f")[:-3]
+        cookie = self.headers.get("Cookie", "")
+        cookie_brief = f" cookie={'YES' if cookie else 'NO'}" if self.path == "/" else ""
+        print(f"[{ts}] {self.requestline}{cookie_brief}", file=sys.stderr)
 
     _js_errors: list = []
 
@@ -131,6 +157,49 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Length", "2")
             self.end_headers()
             self.wfile.write(b"ok")
+            return
+        if self.path == "/credentials":
+            creds = get_login_creds()
+            if creds:
+                payload = {
+                    "cookie": creds.get("cookie", ""),
+                    "mid": creds.get("mid", ""),
+                    "uid": creds.get("uid", ""),
+                    "body_template": creds.get("body_template", ""),
+                    "alias": creds.get("alias", ""),
+                }
+                body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+                self.send_response(200)
+            else:
+                body = json.dumps({"error": "no credentials"}).encode("utf-8")
+                self.send_response(503)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if self.path == "/credentials/refresh":
+            # Force re-login (used when shared cookie is stale)
+            creds = refresh_login_creds()
+            if creds:
+                payload = {
+                    "cookie": creds.get("cookie", ""),
+                    "mid": creds.get("mid", ""),
+                    "uid": creds.get("uid", ""),
+                    "body_template": creds.get("body_template", ""),
+                    "alias": creds.get("alias", ""),
+                }
+                body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+                self.send_response(200)
+            else:
+                body = json.dumps({"error": "refresh failed"}).encode("utf-8")
+                self.send_response(503)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
             return
         if self.path == "/_errors":
             body = json.dumps(ProxyHandler._js_errors[-50:]).encode()
@@ -156,15 +225,19 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
         self._proxy("POST")
 
     def _proxy(self, method: str):
-        global _login_redirected
         path = self.path
 
-        # Auto-login redirect on bare root — only once to avoid redirect loops
-        if (path == "/" or path == "") and not _login_redirected:
+        # Auto-login: any bare GET / → always rewrite path to include
+        # session params. The upstream needs these params to show the
+        # logged-in page (cookies alone are not enough).
+        _inject_login_cookies = False
+        if path == "/" or path == "":
             creds = get_login_creds()
             if creds:
-                _login_redirected = True
                 path = build_login_redirect_path(creds)
+                browser_cookie = self.headers.get("Cookie", "")
+                if "login_" not in browser_cookie:
+                    _inject_login_cookies = True
 
         target_url = f"{TARGET_BASE}{path}"
 
@@ -188,10 +261,13 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                 val = val.replace(f"http://localhost:{PROXY_PORT}", TARGET_BASE)
                 req.add_header(header, val)
 
-        # Add login cookie
-        creds = get_login_creds()
-        if creds:
-            req.add_header("Cookie", creds.get("cookie", ""))
+        # Forward browser cookies, merging with auto_login session cookies
+        browser_cookie = self.headers.get("Cookie")
+        if not browser_cookie and _login_creds:
+            # Browser has no cookies yet — inject auto_login ones
+            browser_cookie = _login_creds.get("cookie", "")
+        if browser_cookie:
+            req.add_header("Cookie", browser_cookie)
 
         try:
             with urllib.request.urlopen(req, timeout=30, context=SSL_CTX) as resp:
@@ -203,11 +279,42 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                     text = resp_body.decode("utf-8", errors="replace")
                     text = text.replace(f"https://{TARGET_HOST}", f"http://127.0.0.1:{PROXY_PORT}")
                     text = text.replace(f"//{TARGET_HOST}", f"//127.0.0.1:{PROXY_PORT}")
-                    # Fix: getWebDomain() uses dom.domain which omits port
+                    # Fix: getWebDomain() uses domain which omits port
+                    # Handle minified (dom.domain) and pretty-printed (document.domain) in getWebDomain only
                     text = text.replace(
                         "getWebDomain=function(){return dom.domain}",
                         "getWebDomain=function(){return dom.location.host}",
                     )
+                    text = text.replace(
+                        "function getWebDomain(){\n            return document.domain;\n        }",
+                        "function getWebDomain(){\n            return document.location.host;\n        }",
+                    )
+                    # Neutralize needsTrans redirect — data site sets
+                    # top.needsTrans = '<some IP>' which JS uses to redirect
+                    # the browser away. Replace any needsTrans IP with empty
+                    # string so the redirect logic is skipped.
+                    text = re.sub(
+                        r"top\.needsTrans\s*=\s*['\"][^'\"]*['\"]",
+                        "top.needsTrans=''",
+                        text,
+                    )
+                    # Rewrite all transfer/data IPs to local proxy
+                    for _ip in ("205.201.0.61", "199.26.100.165", "199.26.98.206"):
+                        text = text.replace(f"https://{_ip}", f"http://127.0.0.1:{PROXY_PORT}")
+                        text = text.replace(f"http://{_ip}", f"http://127.0.0.1:{PROXY_PORT}")
+                        text = text.replace(f"//{_ip}", f"//127.0.0.1:{PROXY_PORT}")
+                        # Also rewrite bare IP in JS strings like
+                        # _CHDomain.domain = '199.26.100.165'
+                        text = text.replace(f"'{_ip}'", f"'127.0.0.1:{PROXY_PORT}'")
+                        text = text.replace(f'"{_ip}"', f'"127.0.0.1:{PROXY_PORT}"')
+                    # Disable CU/CUIPV6/IPV6 domain checks (external domains
+                    # that cause iframe timeouts and block page loading)
+                    for _tag in ("cu_domain", "cuipv6_domain", "ipv6_domain"):
+                        text = re.sub(
+                            rf"top\.{_tag}\s*=\s*'[^']*'",
+                            f"top.{_tag}=''",
+                            text,
+                        )
                     resp_body = text.encode("utf-8")
 
                 self.send_response(resp.status)
@@ -223,13 +330,21 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                         val = val.replace("; Secure", "").replace("; secure", "")
                     if lower == "location":
                         val = val.replace(f"https://{TARGET_HOST}", f"http://127.0.0.1:{PROXY_PORT}")
+                        # Also catch transfer IPs in Location header
+                        for _ip in ("205.201.0.61", "199.26.100.165", "199.26.98.206"):
+                            val = val.replace(f"https://{_ip}", f"http://127.0.0.1:{PROXY_PORT}")
+                            val = val.replace(f"http://{_ip}", f"http://127.0.0.1:{PROXY_PORT}")
                     self.send_header(key, val)
-                # Also inject login cookies for localhost
-                creds_cookies = get_login_creds()
-                if creds_cookies and creds_cookies.get("cookie"):
-                    for part in creds_cookies["cookie"].split("; "):
-                        if "=" in part:
-                            self.send_header("Set-Cookie", f"{part}; Path=/; SameSite=Lax")
+                # Inject auto_login cookies on first load so browser
+                # carries them on subsequent requests
+                if _inject_login_cookies and _login_creds:
+                    cookie_str = _login_creds.get("cookie", "")
+                    for pair in cookie_str.split("; "):
+                        if "=" in pair:
+                            self.send_header(
+                                "Set-Cookie",
+                                f"{pair}; Path=/; Domain=127.0.0.1",
+                            )
                 self.send_header("Content-Length", str(len(resp_body)))
                 self.end_headers()
                 self.wfile.write(resp_body)
@@ -249,8 +364,27 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(error_msg)
 
 
+class ThreadedHTTPServer(http.server.HTTPServer):
+    """Handle each request in a new thread so slow upstream calls
+    don't block other requests (ping, JS, CSS, etc.)."""
+    from socketserver import ThreadingMixIn
+    pass
+
+# Apply mixin properly
+import socketserver
+class ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
+    daemon_threads = True
+
+
 def main():
-    server = http.server.HTTPServer(("127.0.0.1", PROXY_PORT), ProxyHandler)
+    # Pre-login at startup so credentials are ready before anyone asks
+    print(f"[proxy] pre-login at startup...", file=sys.stderr)
+    creds = get_login_creds()
+    if creds:
+        print(f"[proxy] pre-login OK: uid={creds.get('uid', '?')}", file=sys.stderr)
+    else:
+        print(f"[proxy] pre-login failed, will retry on first request", file=sys.stderr)
+    server = ThreadedHTTPServer(("127.0.0.1", PROXY_PORT), ProxyHandler)
     print(f"[proxy] listening on http://127.0.0.1:{PROXY_PORT}", file=sys.stderr)
     print(json.dumps({"ok": True, "port": PROXY_PORT, "url": f"http://127.0.0.1:{PROXY_PORT}"}))
     sys.stdout.flush()

@@ -34,6 +34,8 @@ final class AppController {
     var dispatcherLogLines: [AppLogLine] = []
     var selectedWorkerLogLines: [AppLogLine] = []
     var supervisorWrapperLogLines: [AppLogLine] = []
+    var dataSiteProxyLogLines: [AppLogLine] = []
+    var singboxLogLines: [AppLogLine] = []
     var isBusy = false
     var lastError = ""
     var lastInfo = ""
@@ -602,6 +604,12 @@ final class AppController {
             selectedWorkerLogLines = []
         }
 
+        let proxyLogURL = diagnosticsDirURL.appendingPathComponent("data_site_proxy.log")
+        dataSiteProxyLogLines = readTailLogLines(at: proxyLogURL, source: "data_site_proxy", limit: 60)
+
+        let singboxLogURL = diagnosticsDirURL.appendingPathComponent("singbox_ensure.log")
+        singboxLogLines = readTailLogLines(at: singboxLogURL, source: "singbox", limit: 60)
+
         backendLogLines = dispatcherLogLines + selectedWorkerLogLines + supervisorWrapperLogLines
     }
 
@@ -621,17 +629,33 @@ final class AppController {
     }
 
     let dataSiteProxyScript = "/Users/niannianshunjing/match_plan/recordings/mac_app/MatchPlanRecorderApp/data_site_proxy.py"
+    let singboxEnsureScript = "/Users/niannianshunjing/match_plan/recordings/recording_proxy_runtime.py"
     private var dataSiteProxyProcess: Process?
+    private var singboxChecked = false
 
     var dataEntryURL: URL {
-        URL(string: "http://127.0.0.1:18780")!
+        URL(string: "http://127.0.0.1:18780/")!
     }
 
     var dataSiteProxyReady = false
 
+    private var dataSiteProxyKilledOld = false
+
     func ensureDataSiteProxy() {
         // Already confirmed ready
         if dataSiteProxyReady { return }
+
+        // Ensure sing-box is running (check once per app launch)
+        if !singboxChecked {
+            singboxChecked = true
+            ensureSingbox()
+        }
+
+        // Kill any leftover proxy from previous App launch (once per app lifecycle)
+        if !dataSiteProxyKilledOld {
+            dataSiteProxyKilledOld = true
+            killExistingDataSiteProxy()
+        }
 
         // Try to start proxy process if not running
         if dataSiteProxyProcess == nil || !(dataSiteProxyProcess?.isRunning ?? false) {
@@ -647,6 +671,7 @@ final class AppController {
                 try proc.run()
                 dataSiteProxyProcess = proc
                 appendLog("数据站本地代理启动中...")
+                appendDiagnosticLog(name: "data_site_proxy.log", message: "App 启动数据站代理进程 (PID \(proc.processIdentifier))")
             } catch {
                 appendLog("数据站本地代理进程启动失败: \(error.localizedDescription)")
             }
@@ -654,6 +679,78 @@ final class AppController {
 
         // Check /ping inline (called every 5s from refreshAll)
         checkDataSiteProxyPing()
+    }
+
+    private func killExistingDataSiteProxy() {
+        let proc = Process()
+        proc.executableURL = URL(fileURLWithPath: "/usr/bin/pkill")
+        proc.arguments = ["-f", "data_site_proxy.py"]
+        proc.standardOutput = FileHandle.nullDevice
+        proc.standardError = FileHandle.nullDevice
+        do {
+            try proc.run()
+            proc.waitUntilExit()
+            if proc.terminationStatus == 0 {
+                appendLog("已清理旧的数据站代理进程")
+                appendDiagnosticLog(name: "data_site_proxy.log", message: "App 清理了旧的代理进程")
+                Thread.sleep(forTimeInterval: 0.5)
+            } else {
+                appendDiagnosticLog(name: "data_site_proxy.log", message: "无旧代理进程需要清理")
+            }
+        } catch {
+            // No old process — that's fine
+        }
+    }
+
+    private func ensureSingbox() {
+        // Quick check: is port 17897 already listening?
+        let checkURL = URL(string: "http://127.0.0.1:17897")!
+        var req = URLRequest(url: checkURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 1)
+        req.httpMethod = "HEAD"
+        URLSession.shared.dataTask(with: req) { [weak self] _, resp, error in
+            // If we get any response (even an error response), sing-box is up
+            if resp != nil || error == nil {
+                DispatchQueue.main.async {
+                    self?.appendLog("sing-box 已在运行 (port 17897)")
+                    self?.appendDiagnosticLog(name: "singbox_ensure.log", message: "sing-box 已在运行，跳过启动")
+                }
+                return
+            }
+            // Port not listening → start sing-box
+            DispatchQueue.main.async {
+                self?.startSingbox()
+            }
+        }.resume()
+    }
+
+    private func startSingbox() {
+        appendLog("sing-box 未检测到，正在启动...")
+        appendDiagnosticLog(name: "singbox_ensure.log", message: "sing-box 未检测到，正在启动...")
+        let proc = Process()
+        proc.executableURL = URL(fileURLWithPath: pythonExecutablePath)
+        proc.arguments = [singboxEnsureScript, "ensure", "--policy", "safari_system_fallback"]
+        proc.currentDirectoryURL = URL(fileURLWithPath: projectRoot)
+        let logURL = diagnosticsDirURL.appendingPathComponent("singbox_ensure.log")
+        FileManager.default.createFile(atPath: logURL.path, contents: nil)
+        let logHandle = try? FileHandle(forWritingTo: logURL)
+        proc.standardOutput = logHandle ?? FileHandle.nullDevice
+        proc.standardError = logHandle ?? FileHandle.nullDevice
+        proc.terminationHandler = { [weak self] process in
+            DispatchQueue.main.async {
+                if process.terminationStatus == 0 {
+                    self?.appendLog("sing-box 启动成功")
+                    self?.appendDiagnosticLog(name: "singbox_ensure.log", message: "sing-box 启动成功")
+                } else {
+                    self?.appendLog("sing-box 启动失败 (exit \(process.terminationStatus))")
+                    self?.appendDiagnosticLog(name: "singbox_ensure.log", message: "sing-box 启动失败 (exit \(process.terminationStatus))")
+                }
+            }
+        }
+        do {
+            try proc.run()
+        } catch {
+            appendLog("sing-box 启动进程失败: \(error.localizedDescription)")
+        }
     }
 
     private func checkDataSiteProxyPing() {
@@ -668,6 +765,7 @@ final class AppController {
                 guard let self, !self.dataSiteProxyReady else { return }
                 self.dataSiteProxyReady = true
                 self.appendLog("数据站本地代理就绪 (port 18780)")
+                self.appendDiagnosticLog(name: "data_site_proxy.log", message: "代理就绪，ping 检测通过")
             }
         }.resume()
     }
@@ -835,13 +933,13 @@ final class AppController {
         if supervisorStatus.dispatcher_alive && workers.isEmpty {
             lines.append("正在发现比赛")
         }
-        if !workers.isEmpty {
-            lines.append("已分发 \(workers.count) 条 worker")
+        if supervisorStatus.worker_count > 0 {
+            lines.append("已分发 \(supervisorStatus.worker_count) 条 worker")
         }
         if supervisorStatus.recording_worker_count > 0 {
-            lines.append("当前录制 \(supervisorStatus.recording_worker_count) 条")
+            lines.append("录制中 \(supervisorStatus.recording_worker_count) · 活跃 \(supervisorStatus.alive_worker_count)")
         } else if supervisorStatus.alive_worker_count > 0 {
-            lines.append("当前活跃 \(supervisorStatus.alive_worker_count) 条")
+            lines.append("活跃 \(supervisorStatus.alive_worker_count) 条")
         }
         if lines.isEmpty {
             if bridgeSessionReady {
@@ -1038,6 +1136,21 @@ final class AppController {
     func writeDiagnostic(name: String, contents: String) {
         let url = diagnosticsDirURL.appendingPathComponent(name)
         try? contents.write(to: url, atomically: true, encoding: .utf8)
+    }
+
+    func appendDiagnosticLog(name: String, message: String) {
+        let url = diagnosticsDirURL.appendingPathComponent(name)
+        let ts = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .medium)
+        let line = "[\(ts)] \(message)\n"
+        if let handle = try? FileHandle(forWritingTo: url) {
+            handle.seekToEndOfFile()
+            if let data = line.data(using: .utf8) {
+                handle.write(data)
+            }
+            handle.closeFile()
+        } else {
+            try? line.write(to: url, atomically: true, encoding: .utf8)
+        }
     }
 
     func formatDuration(_ total: Int) -> String {
