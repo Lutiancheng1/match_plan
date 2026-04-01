@@ -35,3 +35,6 @@ analysis_vlm/reports/*/
 
 # Video pipeline removed — ignore stale paths
 /video_pipeline/
+
+# 599 helper repo is maintained separately from this project
+/599_project/

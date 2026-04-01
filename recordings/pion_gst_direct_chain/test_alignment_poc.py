@@ -16,13 +16,12 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 RECORDINGS_DIR = SCRIPT_DIR.parent
-API_599_DIR = RECORDINGS_DIR.parent / "599_project"
-for p in (str(RECORDINGS_DIR), str(API_599_DIR), str(SCRIPT_DIR)):
+for p in (str(RECORDINGS_DIR), str(SCRIPT_DIR)):
     if p not in sys.path:
         sys.path.insert(0, p)
 
 from live_text_599 import AlignmentEngine, LiveTextPoller599, _event_time_ms, _event_text, _extract_score_from_text
-from api_599 import get_match_info, get_all_live_text
+from pion_gst_direct_chain.api_599_client import get_match_info, get_all_live_text
 
 
 def test_alignment_engine_basic():

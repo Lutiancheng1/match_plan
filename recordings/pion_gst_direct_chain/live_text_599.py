@@ -17,18 +17,16 @@ import sys
 import threading
 import time as time_mod
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
 from typing import Any
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-RECORDINGS_DIR = SCRIPT_DIR.parent
-API_599_DIR = RECORDINGS_DIR.parent / "599_project"
-
-for _p in (str(RECORDINGS_DIR), str(API_599_DIR)):
-    if _p not in sys.path:
-        sys.path.insert(0, _p)
-
-from api_599 import get_live_text, get_match_info, get_match_list  # type: ignore
+_API_599_IMPORT_ERROR = ""
+try:
+    from pion_gst_direct_chain.api_599_client import get_live_text, get_match_info, get_match_list  # type: ignore
+except Exception as exc:  # pragma: no cover - optional local dependency
+    get_live_text = None  # type: ignore
+    get_match_info = None  # type: ignore
+    get_match_list = None  # type: ignore
+    _API_599_IMPORT_ERROR = str(exc)
 from run_auto_capture import (  # type: ignore
     SCHEDULE_TIMEZONE_OFFSET_HOURS,
     extract_age_markers,
@@ -352,6 +350,7 @@ class LiveTextPoller599:
         self.poll_count: int = 0
         self.error_count: int = 0
         self.last_error: str = ""
+        self.resolve_fail_count: int = 0
 
         # 事件存储
         self.data: list[dict] = []
@@ -381,6 +380,7 @@ class LiveTextPoller599:
                 "eventCount": len(self.data),
                 "pollCount": self.poll_count,
                 "errorCount": self.error_count,
+                "resolveFailCount": self.resolve_fail_count,
                 "lastError": self.last_error,
             }
 
@@ -388,13 +388,29 @@ class LiveTextPoller599:
 
     def start(self) -> None:
         """阻塞式主循环，应在独立线程中运行。"""
+        if get_match_list is None or get_match_info is None or get_live_text is None:
+            self.state = "disabled"
+            self.last_error = f"599 API 不可用: {_API_599_IMPORT_ERROR or 'missing api_599'}"
+            _log(self.logger, self.last_error, "WARN")
+            return
         while not self._stop.is_set():
             try:
                 if not self.third_id:
                     self.state = "resolving"
                     if not self._resolve_match():
-                        self._stop.wait(timeout=max(15.0, self.poll_interval))
+                        self.resolve_fail_count += 1
+                        retry_wait = min(
+                            120.0,
+                            max(15.0, self.poll_interval) * (2 ** min(self.resolve_fail_count - 1, 3))
+                        )
+                        _log(
+                            self.logger,
+                            f"599 resolve 未命中，{retry_wait:.0f}s 后重试 (fail_count={self.resolve_fail_count})",
+                            "WARN",
+                        )
+                        self._stop.wait(timeout=retry_wait)
                         continue
+                    self.resolve_fail_count = 0
                     self._backfill_history()
                 self.state = "polling"
                 self._poll_once()

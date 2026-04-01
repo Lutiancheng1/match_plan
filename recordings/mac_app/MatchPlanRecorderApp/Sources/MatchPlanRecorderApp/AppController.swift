@@ -619,7 +619,18 @@ final class AppController {
                 stopReasonValue = "manual_stop"
             }
             let sessionDir = payload["sessionDir"] as? String ?? ""
-            let artifacts = cachedSessionArtifacts(for: sessionDir, forceRefresh: isActiveWorker)
+            let cachedArtifacts = sessionArtifactCache[sessionDir]
+            let terminalState = ["completed", "failed", "skipped", "stopped"].contains(stateValue)
+            let artifactsIncomplete = cachedArtifacts == nil
+                || cachedArtifacts?.recordingLogURL == nil
+                || cachedArtifacts?.pionStatusURL == nil
+                || (terminalState && (cachedArtifacts?.mergedVideoURL == nil
+                    || cachedArtifacts?.dataFileURL == nil
+                    || cachedArtifacts?.recordedDurationSeconds == nil))
+            let artifacts = cachedSessionArtifacts(
+                for: sessionDir,
+                forceRefresh: isActiveWorker || artifactsIncomplete
+            )
             let internalStatus = Self.loadInternalRecorderStatus(from: artifacts.pionStatusURL)
             let startedAt = internalStatus["startedAt"] as? String ?? (payload["startedAt"] as? String ?? "")
             let updatedAt = payload["updatedAt"] as? String ?? ""

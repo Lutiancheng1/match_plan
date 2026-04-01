@@ -813,7 +813,7 @@ def summarize_session_dir(session_dir: Path, active_map: dict[str, dict]) -> dic
     child_dirs = sorted([p for p in session_dir.iterdir() if p.is_dir()]) if session_dir.exists() else []
     match_dir = child_dirs[0] if child_dirs else None
     full_videos = sorted(session_dir.glob("**/*__full.mp4"))
-    segment_files = sorted(session_dir.glob("**/*__seg_*.mkv"))
+    segment_files = sorted(session_dir.glob("**/*__seg_*.ivf")) + sorted(session_dir.glob("**/*__seg_*.mkv"))
     hls_playlists = sorted(session_dir.glob("**/hls/playlist.m3u8"))
     active = active_map.get(str(session_dir), {})
     return {
