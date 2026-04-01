@@ -67,9 +67,9 @@
     "right_normalized": "普罗格雷索",
     "left_example": "Progreso",
     "right_example": "普罗格雷索",
-    "count": 29,
+    "count": 169,
     "promoted": true,
-    "last_seen_at": "2026-03-26T17:48:40.092035+00:00"
+    "last_seen_at": "2026-03-31T15:56:27.601376+00:00"
   },
   "icelandu21 <-> 冰岛u21": {
     "left_normalized": "icelandu21",
@@ -130,99 +130,99 @@
     "right_normalized": "直布罗陀",
     "left_example": "Gibraltar",
     "right_example": "直布罗陀",
-    "count": 26,
+    "count": 141,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:50:36.252969+00:00"
+    "last_seen_at": "2026-03-31T17:57:13.039684+00:00"
   },
   "latvia <-> 拉脱维亚": {
     "left_normalized": "latvia",
     "right_normalized": "拉脱维亚",
     "left_example": "Latvia",
     "right_example": "拉脱维亚",
-    "count": 26,
+    "count": 141,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:50:36.253272+00:00"
+    "last_seen_at": "2026-03-31T17:57:13.038095+00:00"
   },
   "malta <-> 马耳他": {
     "left_normalized": "malta",
     "right_normalized": "马耳他",
     "left_example": "Malta",
     "right_example": "马耳他",
-    "count": 29,
+    "count": 140,
     "promoted": true,
-    "last_seen_at": "2026-03-26T19:06:49.154529+00:00"
+    "last_seen_at": "2026-03-31T17:51:59.403199+00:00"
   },
   "luxembourg <-> 卢森堡": {
     "left_normalized": "luxembourg",
     "right_normalized": "卢森堡",
     "left_example": "Luxembourg",
     "right_example": "卢森堡",
-    "count": 29,
+    "count": 140,
     "promoted": true,
-    "last_seen_at": "2026-03-26T19:06:49.154808+00:00"
+    "last_seen_at": "2026-03-31T17:51:59.401521+00:00"
   },
   "sanmarinou21 <-> 圣马力诺u21": {
     "left_normalized": "sanmarinou21",
     "right_normalized": "圣马力诺u21",
     "left_example": "San Marino U21",
     "right_example": "圣马力诺U21",
-    "count": 25,
+    "count": 136,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:47:28.156850+00:00"
+    "last_seen_at": "2026-03-31T17:51:59.430469+00:00"
   },
   "finlandu21 <-> 芬兰u21": {
     "left_normalized": "finlandu21",
     "right_normalized": "芬兰u21",
     "left_example": "Finland U21",
     "right_example": "芬兰U21",
-    "count": 25,
+    "count": 158,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:47:28.157039+00:00"
+    "last_seen_at": "2026-03-31T16:51:54.162670+00:00"
   },
   "turkiye <-> 土耳其": {
     "left_normalized": "turkiye",
     "right_normalized": "土耳其",
     "left_example": "Türkiye",
     "right_example": "土耳其",
-    "count": 26,
+    "count": 163,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:50:36.262107+00:00"
+    "last_seen_at": "2026-03-31T20:44:21.667104+00:00"
   },
   "romania <-> 罗马尼亚": {
     "left_normalized": "romania",
     "right_normalized": "罗马尼亚",
     "left_example": "Romania",
     "right_example": "罗马尼亚",
-    "count": 26,
+    "count": 152,
     "promoted": true,
-    "last_seen_at": "2026-03-26T18:50:36.262351+00:00"
+    "last_seen_at": "2026-03-31T20:34:33.413079+00:00"
   },
   "italyu21 <-> 意大利u21": {
     "left_normalized": "italyu21",
     "right_normalized": "意大利u21",
     "left_example": "Italy U21",
     "right_example": "意大利U21",
-    "count": 25,
+    "count": 38,
     "promoted": true,
-    "last_seen_at": "2026-03-26T19:00:53.654355+00:00"
+    "last_seen_at": "2026-03-31T16:41:26.681787+00:00"
   },
   "northmacedoniau21 <-> 北马其顿u21": {
     "left_normalized": "northmacedoniau21",
     "right_normalized": "北马其顿u21",
     "left_example": "North Macedonia U21",
     "right_example": "北马其顿U21",
-    "count": 25,
+    "count": 162,
     "promoted": true,
-    "last_seen_at": "2026-03-26T19:00:53.655364+00:00"
+    "last_seen_at": "2026-03-31T15:54:01.278444+00:00"
   },
   "republicofirelandu21 <-> 爱尔兰u21": {
     "left_normalized": "republicofirelandu21",
     "right_normalized": "爱尔兰u21",
     "left_example": "Republic of Ireland U21",
     "right_example": "爱尔兰U21",
-    "count": 26,
+    "count": 160,
     "promoted": true,
-    "last_seen_at": "2026-03-26T19:06:49.143231+00:00"
+    "last_seen_at": "2026-03-31T16:52:54.937850+00:00"
   },
   "moldovau21 <-> 摩尔多瓦u21": {
     "left_normalized": "moldovau21",
@@ -247,18 +247,18 @@
     "right_normalized": "匈牙利u21",
     "left_example": "Hungary U21",
     "right_example": "匈牙利U21",
-    "count": 31,
+    "count": 147,
     "promoted": true,
-    "last_seen_at": "2026-03-26T20:25:20.319631+00:00"
+    "last_seen_at": "2026-03-31T16:08:07.270719+00:00"
   },
   "israelu21 <-> 以色列u21": {
     "left_normalized": "israelu21",
     "right_normalized": "以色列u21",
     "left_example": "Israel U21",
     "right_example": "以色列U21",
-    "count": 31,
+    "count": 167,
     "promoted": true,
-    "last_seen_at": "2026-03-26T20:25:20.320997+00:00"
+    "last_seen_at": "2026-03-31T16:54:35.354953+00:00"
   },
   "luxembourgu21 <-> 卢森堡u21": {
     "left_normalized": "luxembourgu21",
@@ -292,108 +292,108 @@
     "right_normalized": "捷克",
     "left_example": "Czech Republic",
     "right_example": "捷克",
-    "count": 29,
+    "count": 157,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:37:25.996592+00:00"
+    "last_seen_at": "2026-03-31T20:36:59.511390+00:00"
   },
   "repofireland <-> 爱尔兰": {
     "left_normalized": "repofireland",
     "right_normalized": "爱尔兰",
     "left_example": "Rep. Of Ireland",
     "right_example": "爱尔兰",
-    "count": 29,
+    "count": 160,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:37:25.996909+00:00"
+    "last_seen_at": "2026-03-31T20:39:43.970828+00:00"
   },
   "denmark <-> 丹麦": {
     "left_normalized": "denmark",
     "right_normalized": "丹麦",
     "left_example": "Denmark",
     "right_example": "丹麦",
-    "count": 28,
+    "count": 156,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:34:06.076953+00:00"
+    "last_seen_at": "2026-03-31T20:36:59.513710+00:00"
   },
   "fyrmacedonia <-> 北马其顿": {
     "left_normalized": "fyrmacedonia",
     "right_normalized": "北马其顿",
     "left_example": "FYR Macedonia",
     "right_example": "北马其顿",
-    "count": 28,
+    "count": 159,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:34:06.077351+00:00"
+    "last_seen_at": "2026-03-31T20:39:43.972700+00:00"
   },
   "italy <-> 意大利": {
     "left_normalized": "italy",
     "right_normalized": "意大利",
     "left_example": "Italy",
     "right_example": "意大利",
-    "count": 29,
+    "count": 68,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:37:26.001775+00:00"
+    "last_seen_at": "2026-03-31T19:20:39.981724+00:00"
   },
   "northernireland <-> 北爱尔兰": {
     "left_normalized": "northernireland",
     "right_normalized": "北爱尔兰",
     "left_example": "Northern Ireland",
     "right_example": "北爱尔兰",
-    "count": 29,
+    "count": 155,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:37:26.002073+00:00"
+    "last_seen_at": "2026-03-31T20:35:15.672915+00:00"
   },
   "poland <-> 波兰": {
     "left_normalized": "poland",
     "right_normalized": "波兰",
     "left_example": "Poland",
     "right_example": "波兰",
-    "count": 31,
+    "count": 160,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:44:09.238130+00:00"
+    "last_seen_at": "2026-03-31T20:39:43.991756+00:00"
   },
   "albania <-> 阿尔巴尼亚": {
     "left_normalized": "albania",
     "right_normalized": "阿尔巴尼亚",
     "left_example": "Albania",
     "right_example": "阿尔巴尼亚",
-    "count": 31,
+    "count": 155,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:44:09.238461+00:00"
+    "last_seen_at": "2026-03-31T20:32:57.614811+00:00"
   },
   "slovakia <-> 斯洛伐克": {
     "left_normalized": "slovakia",
     "right_normalized": "斯洛伐克",
     "left_example": "Slovakia",
     "right_example": "斯洛伐克",
-    "count": 30,
+    "count": 156,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:40:41.681570+00:00"
+    "last_seen_at": "2026-03-31T20:34:33.411248+00:00"
   },
   "kosovo <-> 科索沃": {
     "left_normalized": "kosovo",
     "right_normalized": "科索沃",
     "left_example": "Kosovo",
     "right_example": "科索沃",
-    "count": 30,
+    "count": 167,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:40:41.681865+00:00"
+    "last_seen_at": "2026-03-31T20:44:21.665189+00:00"
   },
   "ukraine <-> 乌克兰": {
     "left_normalized": "ukraine",
     "right_normalized": "乌克兰",
     "left_example": "Ukraine",
     "right_example": "乌克兰",
-    "count": 29,
+    "count": 153,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:37:26.008923+00:00"
+    "last_seen_at": "2026-03-31T20:32:57.612464+00:00"
   },
   "sweden <-> 瑞典": {
     "left_normalized": "sweden",
     "right_normalized": "瑞典",
     "left_example": "Sweden",
     "right_example": "瑞典",
-    "count": 29,
+    "count": 158,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:37:26.009205+00:00"
+    "last_seen_at": "2026-03-31T20:39:43.990025+00:00"
   },
   "maccabitelaviv <-> 特拉维夫马卡比": {
     "left_normalized": "maccabitelaviv",
@@ -508,18 +508,18 @@
     "right_normalized": "威尔斯",
     "left_example": "Wales",
     "right_example": "威尔斯",
-    "count": 22,
+    "count": 148,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:40:41.684989+00:00"
+    "last_seen_at": "2026-03-31T20:35:15.670652+00:00"
   },
   "bosniaherzegovina <-> 波斯尼亚和黑塞哥维那": {
     "left_normalized": "bosniaherzegovina",
     "right_normalized": "波斯尼亚和黑塞哥维那",
     "left_example": "Bosnia & Herzegovina",
     "right_example": "波斯尼亚和黑塞哥维那",
-    "count": 22,
+    "count": 61,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:40:41.685322+00:00"
+    "last_seen_at": "2026-03-31T19:20:39.979924+00:00"
   },
   "unionmagdalena <-> 马大雷拿": {
     "left_normalized": "unionmagdalena",
@@ -535,9 +535,9 @@
     "right_normalized": "皇家桑坦德",
     "left_example": "Real Santander",
     "right_example": "皇家桑坦德",
-    "count": 31,
+    "count": 217,
     "promoted": true,
-    "last_seen_at": "2026-03-26T22:47:54.495102+00:00"
+    "last_seen_at": "2026-03-31T21:50:19.030494+00:00"
   },
   "martinique <-> 马提尼克": {
     "left_normalized": "martinique",
@@ -589,9 +589,9 @@
     "right_normalized": "老虎",
     "left_example": "Tigres FC",
     "right_example": "老虎",
-    "count": 34,
+    "count": 220,
     "promoted": true,
-    "last_seen_at": "2026-03-26T23:50:25.744457+00:00"
+    "last_seen_at": "2026-03-31T21:50:19.035047+00:00"
   },
   "bolivia <-> 玻利维亚": {
     "left_normalized": "bolivia",
@@ -823,9 +823,9 @@
     "right_normalized": "牙买加",
     "left_example": "Jamaica",
     "right_example": "牙买加",
-    "count": 2,
+    "count": 195,
     "promoted": true,
-    "last_seen_at": "2026-03-27T03:58:44.567528+00:00"
+    "last_seen_at": "2026-03-31T22:35:05.006440+00:00"
   },
   "brisbaneroarfcw <-> 布里斯班狮吼女": {
     "left_normalized": "brisbaneroarfcw",
@@ -922,18 +922,18 @@
     "right_normalized": "阿塞拜疆u21",
     "left_example": "Azerbaijan U21",
     "right_example": "阿塞拜疆U21",
-    "count": 44,
+    "count": 158,
     "promoted": true,
-    "last_seen_at": "2026-03-27T12:51:52.139037+00:00"
+    "last_seen_at": "2026-03-31T17:55:55.403993+00:00"
   },
   "portugalu21 <-> 葡萄牙u21": {
     "left_normalized": "portugalu21",
     "right_normalized": "葡萄牙u21",
     "left_example": "Portugal U21",
     "right_example": "葡萄牙U21",
-    "count": 44,
+    "count": 168,
     "promoted": true,
-    "last_seen_at": "2026-03-27T12:51:52.139376+00:00"
+    "last_seen_at": "2026-03-31T20:22:44.175112+00:00"
   },
   "hapoelafula <-> 阿福拉哈普尔": {
     "left_normalized": "hapoelafula",
@@ -949,18 +949,18 @@
     "right_normalized": "耶胡达",
     "left_example": "Bnei Yehuda",
     "right_example": "耶胡达",
-    "count": 60,
+    "count": 154,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:04.817968+00:00"
+    "last_seen_at": "2026-03-31T14:52:54.772411+00:00"
   },
   "hapoelnazarethillit <-> 诺夫哈加里夏普尔": {
     "left_normalized": "hapoelnazarethillit",
     "right_normalized": "诺夫哈加里夏普尔",
     "left_example": "Hapoel Nazareth Illit",
     "right_example": "诺夫哈加里夏普尔",
-    "count": 49,
+    "count": 143,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:04.815441+00:00"
+    "last_seen_at": "2026-03-31T14:52:54.770919+00:00"
   },
   "maccabikabiliojaffa <-> 卡比利奥马卡比": {
     "left_normalized": "maccabikabiliojaffa",
@@ -1102,27 +1102,27 @@
     "right_normalized": "塞浦路斯u21",
     "left_example": "Cyprus U21",
     "right_example": "塞浦路斯U21",
-    "count": 36,
+    "count": 169,
     "promoted": true,
-    "last_seen_at": "2026-03-27T16:53:25.128141+00:00"
+    "last_seen_at": "2026-03-31T16:51:54.164318+00:00"
   },
   "spainu21 <-> 西班牙u21": {
     "left_normalized": "spainu21",
     "right_normalized": "西班牙u21",
     "left_example": "Spain U21",
     "right_example": "西班牙U21",
-    "count": 36,
+    "count": 120,
     "promoted": true,
-    "last_seen_at": "2026-03-27T16:53:25.128588+00:00"
+    "last_seen_at": "2026-03-31T18:32:44.996630+00:00"
   },
   "georgiau21 <-> 格鲁吉亚u21": {
     "left_normalized": "georgiau21",
     "right_normalized": "格鲁吉亚u21",
     "left_example": "Georgia U21",
     "right_example": "格鲁吉亚U21",
-    "count": 36,
+    "count": 122,
     "promoted": true,
-    "last_seen_at": "2026-03-27T16:53:25.130759+00:00"
+    "last_seen_at": "2026-03-31T16:51:54.168631+00:00"
   },
   "latviau21 <-> 拉脱维亚u21": {
     "left_normalized": "latviau21",
@@ -1138,9 +1138,9 @@
     "right_normalized": "哈萨克斯坦u21",
     "left_example": "Kazakhstan U21",
     "right_example": "哈萨克斯坦U21",
-    "count": 35,
+    "count": 169,
     "promoted": true,
-    "last_seen_at": "2026-03-27T16:50:08.498424+00:00"
+    "last_seen_at": "2026-03-31T16:52:54.936274+00:00"
   },
   "slovakiau21 <-> 斯洛伐克u21": {
     "left_normalized": "slovakiau21",
@@ -1183,36 +1183,36 @@
     "right_normalized": "波兰u20",
     "left_example": "Poland U20",
     "right_example": "波兰U20",
-    "count": 36,
+    "count": 175,
     "promoted": true,
-    "last_seen_at": "2026-03-27T17:22:05.285052+00:00"
+    "last_seen_at": "2026-03-31T16:38:51.728321+00:00"
   },
   "greeceu21 <-> 希腊u21": {
     "left_normalized": "greeceu21",
     "right_normalized": "希腊u21",
     "left_example": "Greece U21",
     "right_example": "希腊U21",
-    "count": 36,
+    "count": 149,
     "promoted": true,
-    "last_seen_at": "2026-03-27T17:53:10.049470+00:00"
+    "last_seen_at": "2026-03-31T17:54:35.320602+00:00"
   },
   "maltau21 <-> 马耳他u21": {
     "left_normalized": "maltau21",
     "right_normalized": "马耳他u21",
     "left_example": "Malta U21",
     "right_example": "马耳他U21",
-    "count": 36,
+    "count": 122,
     "promoted": true,
-    "last_seen_at": "2026-03-27T17:53:10.049995+00:00"
+    "last_seen_at": "2026-03-31T16:51:54.170529+00:00"
   },
   "russia <-> 俄罗斯": {
     "left_normalized": "russia",
     "right_normalized": "俄罗斯",
     "left_example": "Russia",
     "right_example": "俄罗斯",
-    "count": 38,
+    "count": 146,
     "promoted": true,
-    "last_seen_at": "2026-03-27T18:27:01.712761+00:00"
+    "last_seen_at": "2026-03-31T19:00:22.547878+00:00"
   },
   "nicaragua <-> 尼加拉瓜": {
     "left_normalized": "nicaragua",
@@ -1228,9 +1228,9 @@
     "right_normalized": "奥地利",
     "left_example": "Austria",
     "right_example": "奥地利",
-    "count": 38,
+    "count": 167,
     "promoted": true,
-    "last_seen_at": "2026-03-27T18:56:34.618584+00:00"
+    "last_seen_at": "2026-03-31T20:37:57.628115+00:00"
   },
   "ghana <-> 加纳": {
     "left_normalized": "ghana",
@@ -1246,27 +1246,27 @@
     "right_normalized": "黑山",
     "left_example": "Montenegro",
     "right_example": "黑山",
-    "count": 8,
+    "count": 119,
     "promoted": true,
-    "last_seen_at": "2026-03-27T17:27:32.610657+00:00"
+    "last_seen_at": "2026-03-31T17:51:59.376575+00:00"
   },
   "andorra <-> 安道尔": {
     "left_normalized": "andorra",
     "right_normalized": "安道尔",
     "left_example": "Andorra",
     "right_example": "安道尔",
-    "count": 8,
+    "count": 118,
     "promoted": true,
-    "last_seen_at": "2026-03-27T17:27:32.611114+00:00"
+    "last_seen_at": "2026-03-31T17:50:38.947807+00:00"
   },
   "germanyu21 <-> 德国u21": {
     "left_normalized": "germanyu21",
     "right_normalized": "德国u21",
     "left_example": "Germany U21",
     "right_example": "德国U21",
-    "count": 36,
+    "count": 149,
     "promoted": true,
-    "last_seen_at": "2026-03-27T18:50:04.460043+00:00"
+    "last_seen_at": "2026-03-31T17:54:35.322290+00:00"
   },
   "northernirelandu21 <-> 北爱尔兰u21": {
     "left_normalized": "northernirelandu21",
@@ -1282,9 +1282,9 @@
     "right_normalized": "挪威u21",
     "left_example": "Norway U21",
     "right_example": "挪威U21",
-    "count": 37,
+    "count": 174,
     "promoted": true,
-    "last_seen_at": "2026-03-27T18:53:20.787143+00:00"
+    "last_seen_at": "2026-03-31T15:51:56.950944+00:00"
   },
   "netherlandsu21 <-> 荷兰u21": {
     "left_normalized": "netherlandsu21",
@@ -1300,45 +1300,45 @@
     "right_normalized": "波兰u21",
     "left_example": "Poland U21",
     "right_example": "波兰U21",
-    "count": 84,
+    "count": 115,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.604360+00:00"
+    "last_seen_at": "2026-03-31T13:51:08.173640+00:00"
   },
   "armeniau21 <-> 阿美尼亚u21": {
     "left_normalized": "armeniau21",
     "right_normalized": "阿美尼亚u21",
     "left_example": "Armenia U21",
     "right_example": "阿美尼亚U21",
-    "count": 36,
+    "count": 173,
     "promoted": true,
-    "last_seen_at": "2026-03-27T18:50:04.470534+00:00"
+    "last_seen_at": "2026-03-31T15:54:01.276900+00:00"
   },
   "saudiarabia <-> 沙特阿拉伯": {
     "left_normalized": "saudiarabia",
     "right_normalized": "沙特阿拉伯",
     "left_example": "Saudi Arabia",
     "right_example": "沙特阿拉伯",
-    "count": 38,
+    "count": 152,
     "promoted": true,
-    "last_seen_at": "2026-03-27T19:24:56.824821+00:00"
+    "last_seen_at": "2026-03-31T17:55:55.390245+00:00"
   },
   "egypt <-> 埃及": {
     "left_normalized": "egypt",
     "right_normalized": "埃及",
     "left_example": "Egypt",
     "right_example": "埃及",
-    "count": 38,
+    "count": 184,
     "promoted": true,
-    "last_seen_at": "2026-03-27T19:24:56.825389+00:00"
+    "last_seen_at": "2026-03-31T20:59:46.300467+00:00"
   },
   "jordan <-> 约旦": {
     "left_normalized": "jordan",
     "right_normalized": "约旦",
     "left_example": "Jordan",
     "right_example": "约旦",
-    "count": 38,
+    "count": 126,
     "promoted": true,
-    "last_seen_at": "2026-03-27T19:24:56.829642+00:00"
+    "last_seen_at": "2026-03-31T19:22:17.534654+00:00"
   },
   "costarica <-> 哥斯达黎加": {
     "left_normalized": "costarica",
@@ -1354,18 +1354,18 @@
     "right_normalized": "科尔多瓦",
     "left_example": "Cordoba",
     "right_example": "科尔多瓦",
-    "count": 36,
+    "count": 152,
     "promoted": true,
-    "last_seen_at": "2026-03-27T19:50:01.504820+00:00"
+    "last_seen_at": "2026-03-31T19:53:53.730331+00:00"
   },
   "mirandes <-> 米兰迪斯": {
     "left_normalized": "mirandes",
     "right_normalized": "米兰迪斯",
     "left_example": "Mirandes",
     "right_example": "米兰迪斯",
-    "count": 36,
+    "count": 136,
     "promoted": true,
-    "last_seen_at": "2026-03-27T19:50:01.505387+00:00"
+    "last_seen_at": "2026-03-31T18:51:44.479271+00:00"
   },
   "andorrau21 <-> 安道尔u21": {
     "left_normalized": "andorrau21",
@@ -1390,18 +1390,18 @@
     "right_normalized": "希腊",
     "left_example": "Greece",
     "right_example": "希腊",
-    "count": 40,
+    "count": 140,
     "promoted": true,
-    "last_seen_at": "2026-03-27T20:57:43.548706+00:00"
+    "last_seen_at": "2026-03-31T18:51:44.488060+00:00"
   },
   "paraguay <-> 巴拉圭": {
     "left_normalized": "paraguay",
     "right_normalized": "巴拉圭",
     "left_example": "Paraguay",
     "right_example": "巴拉圭",
-    "count": 40,
+    "count": 155,
     "promoted": true,
-    "last_seen_at": "2026-03-27T20:57:43.549342+00:00"
+    "last_seen_at": "2026-03-31T20:01:32.681106+00:00"
   },
   "belgiumu21 <-> 比利时u21": {
     "left_normalized": "belgiumu21",
@@ -1417,9 +1417,9 @@
     "right_normalized": "奥地利u21",
     "left_example": "Austria U21",
     "right_example": "奥地利U21",
-    "count": 38,
+    "count": 151,
     "promoted": true,
-    "last_seen_at": "2026-03-27T20:52:03.337055+00:00"
+    "last_seen_at": "2026-03-31T17:54:35.309356+00:00"
   },
   "rwanda <-> 卢旺达": {
     "left_normalized": "rwanda",
@@ -1462,9 +1462,9 @@
     "right_normalized": "阿尔及利亚",
     "left_example": "Algeria",
     "right_example": "阿尔及利亚",
-    "count": 39,
+    "count": 172,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:23:51.788186+00:00"
+    "last_seen_at": "2026-03-31T20:29:28.600414+00:00"
   },
   "guatemala <-> 危地马拉": {
     "left_normalized": "guatemala",
@@ -1534,45 +1534,45 @@
     "right_normalized": "英格兰",
     "left_example": "England",
     "right_example": "英格兰",
-    "count": 40,
+    "count": 168,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:48:30.806550+00:00"
+    "last_seen_at": "2026-03-31T20:36:59.484654+00:00"
   },
   "uruguay <-> 乌拉圭": {
     "left_normalized": "uruguay",
     "right_normalized": "乌拉圭",
     "left_example": "Uruguay",
     "right_example": "乌拉圭",
-    "count": 40,
+    "count": 173,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:48:30.807179+00:00"
+    "last_seen_at": "2026-03-31T20:29:28.602381+00:00"
   },
   "netherlands <-> 荷兰": {
     "left_normalized": "netherlands",
     "right_normalized": "荷兰",
     "left_example": "Netherlands",
     "right_example": "荷兰",
-    "count": 38,
+    "count": 171,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:35:31.116499+00:00"
+    "last_seen_at": "2026-03-31T20:42:47.689884+00:00"
   },
   "norway <-> 挪威": {
     "left_normalized": "norway",
     "right_normalized": "挪威",
     "left_example": "Norway",
     "right_example": "挪威",
-    "count": 38,
+    "count": 147,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:35:31.117060+00:00"
+    "last_seen_at": "2026-03-31T17:49:19.847419+00:00"
   },
   "switzerland <-> 瑞士": {
     "left_normalized": "switzerland",
     "right_normalized": "瑞士",
     "left_example": "Switzerland",
     "right_example": "瑞士",
-    "count": 38,
+    "count": 147,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:35:31.118497+00:00"
+    "last_seen_at": "2026-03-31T17:49:19.849009+00:00"
   },
   "germany <-> 德国": {
     "left_normalized": "germany",
@@ -1606,18 +1606,18 @@
     "right_normalized": "西班牙",
     "left_example": "Spain",
     "right_example": "西班牙",
-    "count": 40,
+    "count": 186,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:49:53.226014+00:00"
+    "last_seen_at": "2026-03-31T20:59:46.298659+00:00"
   },
   "serbia <-> 塞尔维亚": {
     "left_normalized": "serbia",
     "right_normalized": "塞尔维亚",
     "left_example": "Serbia",
     "right_example": "塞尔维亚",
-    "count": 40,
+    "count": 154,
     "promoted": true,
-    "last_seen_at": "2026-03-27T21:49:53.226566+00:00"
+    "last_seen_at": "2026-03-31T17:55:55.388608+00:00"
   },
   "invernessct <-> 因弗内斯": {
     "left_normalized": "invernessct",
@@ -1642,18 +1642,18 @@
     "right_normalized": "摩洛哥",
     "left_example": "Morocco",
     "right_example": "摩洛哥",
-    "count": 40,
+    "count": 155,
     "promoted": true,
-    "last_seen_at": "2026-03-27T22:13:21.530673+00:00"
+    "last_seen_at": "2026-03-31T20:01:32.678620+00:00"
   },
   "ecuador <-> 厄瓜多尔": {
     "left_normalized": "ecuador",
     "right_normalized": "厄瓜多尔",
     "left_example": "Ecuador",
     "right_example": "厄瓜多尔",
-    "count": 40,
+    "count": 173,
     "promoted": true,
-    "last_seen_at": "2026-03-27T22:13:21.531460+00:00"
+    "last_seen_at": "2026-03-31T20:42:47.691625+00:00"
   },
   "atenasd <-> 阿特纳斯体育": {
     "left_normalized": "atenasd",
@@ -1984,9 +1984,9 @@
     "right_normalized": "中国u23",
     "left_example": "China PR U23",
     "right_example": "中国U23",
-    "count": 82,
+    "count": 85,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.609383+00:00"
+    "last_seen_at": "2026-03-31T13:25:36.240565+00:00"
   },
   "koreadpru23 <-> 朝鲜u23": {
     "left_normalized": "koreadpru23",
@@ -2011,9 +2011,9 @@
     "right_normalized": "科摩罗",
     "left_example": "Comoros",
     "right_example": "科摩罗",
-    "count": 58,
+    "count": 90,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.597558+00:00"
+    "last_seen_at": "2026-03-31T13:52:07.593781+00:00"
   },
   "raw <-> 罗亚女": {
     "left_normalized": "raw",
@@ -2092,9 +2092,9 @@
     "right_normalized": "加的斯",
     "left_example": "Cadiz",
     "right_example": "加的斯",
-    "count": 6,
+    "count": 168,
     "promoted": true,
-    "last_seen_at": "2026-03-28T14:41:29.844036+00:00"
+    "last_seen_at": "2026-03-31T21:25:09.101504+00:00"
   },
   "manchesterunitedw <-> 曼联女": {
     "left_normalized": "manchesterunitedw",
@@ -2227,9 +2227,9 @@
     "right_normalized": "圣马力诺",
     "left_example": "San Marino",
     "right_example": "圣马力诺",
-    "count": 7,
+    "count": 117,
     "promoted": true,
-    "last_seen_at": "2026-03-28T15:52:26.940996+00:00"
+    "last_seen_at": "2026-03-31T17:50:38.946116+00:00"
   },
   "faroeislands <-> 法罗群岛": {
     "left_normalized": "faroeislands",
@@ -2245,27 +2245,27 @@
     "right_normalized": "韩国",
     "left_example": "South Korea",
     "right_example": "韩国",
-    "count": 7,
+    "count": 136,
     "promoted": true,
-    "last_seen_at": "2026-03-28T15:52:26.949506+00:00"
+    "last_seen_at": "2026-03-31T20:37:57.629913+00:00"
   },
   "ivorycoast <-> 象牙海岸": {
     "left_normalized": "ivorycoast",
     "right_normalized": "象牙海岸",
     "left_example": "Ivory Coast",
     "right_example": "象牙海岸",
-    "count": 7,
+    "count": 135,
     "promoted": true,
-    "last_seen_at": "2026-03-28T15:52:26.950338+00:00"
+    "last_seen_at": "2026-03-31T20:25:16.800297+00:00"
   },
   "romaniau19 <-> 罗马尼亚u19": {
     "left_normalized": "romaniau19",
     "right_normalized": "罗马尼亚u19",
     "left_example": "Romania U19",
     "right_example": "罗马尼亚U19",
-    "count": 6,
+    "count": 142,
     "promoted": true,
-    "last_seen_at": "2026-03-28T16:09:21.010374+00:00"
+    "last_seen_at": "2026-03-31T15:51:01.759824+00:00"
   },
   "northernirelandu19 <-> 北爱尔兰u19": {
     "left_normalized": "northernirelandu19",
@@ -2479,9 +2479,9 @@
     "right_normalized": "巴拉多利德",
     "left_example": "Valladolid",
     "right_example": "巴拉多利德",
-    "count": 10,
+    "count": 172,
     "promoted": true,
-    "last_seen_at": "2026-03-28T17:10:15.080155+00:00"
+    "last_seen_at": "2026-03-31T21:25:09.099760+00:00"
   },
   "burgos <-> 布尔戈斯": {
     "left_normalized": "burgos",
@@ -2524,9 +2524,9 @@
     "right_normalized": "秘鲁",
     "left_example": "Peru",
     "right_example": "秘鲁",
-    "count": 10,
+    "count": 123,
     "promoted": true,
-    "last_seen_at": "2026-03-28T17:41:17.632122+00:00"
+    "last_seen_at": "2026-03-31T19:51:16.040072+00:00"
   },
   "mightyblackpool <-> 布莱克浦": {
     "left_normalized": "mightyblackpool",
@@ -2641,36 +2641,36 @@
     "right_normalized": "匈牙利",
     "left_example": "Hungary",
     "right_example": "匈牙利",
-    "count": 14,
+    "count": 114,
     "promoted": true,
-    "last_seen_at": "2026-03-28T18:46:09.971521+00:00"
+    "last_seen_at": "2026-03-31T18:51:44.486327+00:00"
   },
   "slovenia <-> 斯洛文尼亚": {
     "left_normalized": "slovenia",
     "right_normalized": "斯洛文尼亚",
     "left_example": "Slovenia",
     "right_example": "斯洛文尼亚",
-    "count": 14,
+    "count": 125,
     "promoted": true,
-    "last_seen_at": "2026-03-28T18:46:09.974258+00:00"
+    "last_seen_at": "2026-03-31T17:51:59.378220+00:00"
   },
   "scotland <-> 苏格兰": {
     "left_normalized": "scotland",
     "right_normalized": "苏格兰",
     "left_example": "Scotland",
     "right_example": "苏格兰",
-    "count": 14,
+    "count": 142,
     "promoted": true,
-    "last_seen_at": "2026-03-28T18:46:09.981593+00:00"
+    "last_seen_at": "2026-03-31T20:25:16.798522+00:00"
   },
   "japan <-> 日本": {
     "left_normalized": "japan",
     "right_normalized": "日本",
     "left_example": "Japan",
     "right_example": "日本",
-    "count": 14,
+    "count": 142,
     "promoted": true,
-    "last_seen_at": "2026-03-28T18:46:09.984316+00:00"
+    "last_seen_at": "2026-03-31T20:36:59.486520+00:00"
   },
   "fckolnw <-> 科隆女": {
     "left_normalized": "fckolnw",
@@ -2704,9 +2704,9 @@
     "right_normalized": "冰岛",
     "left_example": "Iceland",
     "right_example": "冰岛",
-    "count": 17,
+    "count": 112,
     "promoted": true,
-    "last_seen_at": "2026-03-28T19:05:27.346614+00:00"
+    "last_seen_at": "2026-03-31T19:21:30.919604+00:00"
   },
   "malaga <-> 马拉加": {
     "left_normalized": "malaga",
@@ -2947,9 +2947,9 @@
     "right_normalized": "拉科鲁尼亚",
     "left_example": "Deportivo La Coruna",
     "right_example": "拉科鲁尼亚",
-    "count": 15,
+    "count": 131,
     "promoted": true,
-    "last_seen_at": "2026-03-28T20:12:48.264277+00:00"
+    "last_seen_at": "2026-03-31T19:53:53.728581+00:00"
   },
   "americadecaliw <-> 卡利阿美利加女": {
     "left_normalized": "americadecaliw",
@@ -3172,9 +3172,9 @@
     "right_normalized": "海地",
     "left_example": "Haiti",
     "right_example": "海地",
-    "count": 84,
+    "count": 179,
     "promoted": true,
-    "last_seen_at": "2026-03-29T01:59:30.076593+00:00"
+    "last_seen_at": "2026-03-31T19:21:30.917781+00:00"
   },
   "tunisia <-> 突尼斯": {
     "left_normalized": "tunisia",
@@ -4909,116 +4909,647 @@
     "right_normalized": "越南u23",
     "left_example": "Vietnam U23",
     "right_example": "越南U23",
-    "count": 74,
+    "count": 77,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.610943+00:00"
+    "last_seen_at": "2026-03-31T13:25:36.242077+00:00"
   },
   "singapore <-> 新加坡": {
     "left_normalized": "singapore",
     "right_normalized": "新加坡",
     "left_example": "Singapore",
     "right_example": "新加坡",
-    "count": 48,
+    "count": 81,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.582085+00:00"
+    "last_seen_at": "2026-03-31T13:53:20.906790+00:00"
   },
   "bangladesh <-> 孟加拉国": {
     "left_normalized": "bangladesh",
     "right_normalized": "孟加拉国",
     "left_example": "Bangladesh",
     "right_example": "孟加拉国",
-    "count": 48,
+    "count": 81,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.583676+00:00"
+    "last_seen_at": "2026-03-31T13:53:20.908292+00:00"
   },
   "vietnam <-> 越南": {
     "left_normalized": "vietnam",
     "right_normalized": "越南",
     "left_example": "Vietnam",
     "right_example": "越南",
-    "count": 48,
+    "count": 81,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.589245+00:00"
+    "last_seen_at": "2026-03-31T13:53:20.912709+00:00"
   },
   "malaysia <-> 马来西亚": {
     "left_normalized": "malaysia",
     "right_normalized": "马来西亚",
     "left_example": "Malaysia",
     "right_example": "马来西亚",
-    "count": 48,
+    "count": 81,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.590792+00:00"
+    "last_seen_at": "2026-03-31T13:53:20.914185+00:00"
   },
   "kazakhstan <-> 哈萨克斯坦": {
     "left_normalized": "kazakhstan",
     "right_normalized": "哈萨克斯坦",
     "left_example": "Kazakhstan",
     "right_example": "哈萨克斯坦",
-    "count": 48,
+    "count": 80,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.595987+00:00"
+    "last_seen_at": "2026-03-31T13:52:07.592285+00:00"
   },
   "montenegrou21 <-> 黑山u21": {
     "left_normalized": "montenegrou21",
     "right_normalized": "黑山u21",
     "left_example": "Montenegro U21",
     "right_example": "黑山U21",
-    "count": 48,
+    "count": 79,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.602859+00:00"
+    "last_seen_at": "2026-03-31T13:51:08.172219+00:00"
   },
   "bhutan <-> 不丹": {
     "left_normalized": "bhutan",
     "right_normalized": "不丹",
     "left_example": "Bhutan",
     "right_example": "不丹",
-    "count": 31,
+    "count": 100,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.561477+00:00"
+    "last_seen_at": "2026-03-31T14:25:23.103938+00:00"
   },
   "brunei <-> 文莱": {
     "left_normalized": "brunei",
     "right_normalized": "文莱",
     "left_example": "Brunei",
     "right_example": "文莱",
-    "count": 31,
+    "count": 100,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.563472+00:00"
+    "last_seen_at": "2026-03-31T14:25:23.105450+00:00"
   },
   "thailand <-> 泰国": {
     "left_normalized": "thailand",
     "right_normalized": "泰国",
     "left_example": "Thailand",
     "right_example": "泰国",
-    "count": 31,
+    "count": 104,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.570320+00:00"
+    "last_seen_at": "2026-03-31T14:30:03.054582+00:00"
   },
   "turkmenistan <-> 土库曼斯坦": {
     "left_normalized": "turkmenistan",
     "right_normalized": "土库曼斯坦",
     "left_example": "Turkmenistan",
     "right_example": "土库曼斯坦",
-    "count": 31,
+    "count": 104,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.572118+00:00"
+    "last_seen_at": "2026-03-31T14:30:03.056182+00:00"
   },
   "austriau19 <-> 奥地利u19": {
     "left_normalized": "austriau19",
     "right_normalized": "奥地利u19",
     "left_example": "Austria U19",
     "right_example": "奥地利U19",
-    "count": 15,
+    "count": 108,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.546545+00:00"
+    "last_seen_at": "2026-03-31T14:51:17.708933+00:00"
   },
   "germanyu19 <-> 德国u19": {
     "left_normalized": "germanyu19",
     "right_normalized": "德国u19",
     "left_example": "Germany U19",
     "right_example": "德国U19",
+    "count": 108,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T14:51:17.710513+00:00"
+  },
+  "liverpoolmontevideo <-> 利物浦蒙特维多": {
+    "left_normalized": "liverpoolmontevideo",
+    "right_normalized": "利物浦蒙特维多",
+    "left_example": "Liverpool Montevideo",
+    "right_example": "利物浦蒙特维多",
+    "count": 140,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T15:56:27.602977+00:00"
+  },
+  "tajikistan <-> 塔吉克斯坦": {
+    "left_normalized": "tajikistan",
+    "right_normalized": "塔吉克斯坦",
+    "left_example": "Tajikistan",
+    "right_example": "塔吉克斯坦",
+    "count": 139,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T15:55:04.210808+00:00"
+  },
+  "philippines <-> 菲律宾": {
+    "left_normalized": "philippines",
+    "right_normalized": "菲律宾",
+    "left_example": "Philippines",
+    "right_example": "菲律宾",
+    "count": 139,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T15:55:04.212309+00:00"
+  },
+  "ukraineu19 <-> 乌克兰u19": {
+    "left_normalized": "ukraineu19",
+    "right_normalized": "乌克兰u19",
+    "left_example": "Ukraine U19",
+    "right_example": "乌克兰U19",
+    "count": 136,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T15:51:01.761339+00:00"
+  },
+  "sloveniau21 <-> 斯洛文尼亚u21": {
+    "left_normalized": "sloveniau21",
+    "right_normalized": "斯洛文尼亚u21",
+    "left_example": "Slovenia U21",
+    "right_example": "斯洛文尼亚U21",
+    "count": 137,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T15:51:56.949393+00:00"
+  },
+  "ukraineu21 <-> 乌克兰u21": {
+    "left_normalized": "ukraineu21",
+    "right_normalized": "乌克兰u21",
+    "left_example": "Ukraine U21",
+    "right_example": "乌克兰U21",
+    "count": 116,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:08:07.272468+00:00"
+  },
+  "germanyu20 <-> 德国u20": {
+    "left_normalized": "germanyu20",
+    "right_normalized": "德国u20",
+    "left_example": "Germany U20",
+    "right_example": "德国 U20",
+    "count": 139,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:38:51.730055+00:00"
+  },
+  "czechrepublicu21 <-> 捷克u21": {
+    "left_normalized": "czechrepublicu21",
+    "right_normalized": "捷克u21",
+    "left_example": "Czech Republic U21",
+    "right_example": "捷克U21",
+    "count": 89,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:56:40.882095+00:00"
+  },
+  "gibraltaru21 <-> 直布罗陀u21": {
+    "left_normalized": "gibraltaru21",
+    "right_normalized": "直布罗陀u21",
+    "left_example": "Gibraltar U21",
+    "right_example": "直布罗陀U21",
+    "count": 89,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:56:40.883848+00:00"
+  },
+  "bosniaherzegovinau21 <-> 波斯尼亚和黑塞哥维那u21": {
+    "left_normalized": "bosniaherzegovinau21",
+    "right_normalized": "波斯尼亚和黑塞哥维那u21",
+    "left_example": "Bosnia-Herzegovina U21",
+    "right_example": "波斯尼亚和黑塞哥维那U21",
+    "count": 136,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:54:35.356552+00:00"
+  },
+  "latvia <-> 捷克u21": {
+    "left_normalized": "latvia",
+    "right_normalized": "捷克u21",
+    "left_example": "Latvia",
+    "right_example": "捷克U21",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.745764+00:00"
+  },
+  "gibraltar <-> 直布罗陀u21": {
+    "left_normalized": "gibraltar",
+    "right_normalized": "直布罗陀u21",
+    "left_example": "Gibraltar",
+    "right_example": "直布罗陀U21",
+    "count": 49,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.747416+00:00"
+  },
+  "luxembourg <-> 格鲁吉亚u21": {
+    "left_normalized": "luxembourg",
+    "right_normalized": "格鲁吉亚u21",
+    "left_example": "Luxembourg",
+    "right_example": "格鲁吉亚U21",
+    "count": 47,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.751210+00:00"
+  },
+  "malta <-> 马耳他u21": {
+    "left_normalized": "malta",
+    "right_normalized": "马耳他u21",
+    "left_example": "Malta",
+    "right_example": "马耳他U21",
+    "count": 47,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.752812+00:00"
+  },
+  "croatiau21 <-> 克罗地亚u21": {
+    "left_normalized": "croatiau21",
+    "right_normalized": "克罗地亚u21",
+    "left_example": "Croatia U21",
+    "right_example": "克罗地亚U21",
+    "count": 78,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:34:50.346505+00:00"
+  },
+  "turkeyu21 <-> 土耳其u21": {
+    "left_normalized": "turkeyu21",
+    "right_normalized": "土耳其u21",
+    "left_example": "Turkey U21",
+    "right_example": "土耳其U21",
+    "count": 78,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:34:50.348332+00:00"
+  },
+  "serbia <-> 塞尔维亚u19": {
+    "left_normalized": "serbia",
+    "right_normalized": "塞尔维亚u19",
+    "left_example": "Serbia",
+    "right_example": "塞尔维亚U19",
+    "count": 25,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.737714+00:00"
+  },
+  "saudiarabia <-> 波兰u19": {
+    "left_normalized": "saudiarabia",
+    "right_normalized": "波兰u19",
+    "left_example": "Saudi Arabia",
+    "right_example": "波兰U19",
+    "count": 25,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.739851+00:00"
+  },
+  "belarusu21 <-> 白俄罗斯u21": {
+    "left_normalized": "belarusu21",
+    "right_normalized": "白俄罗斯u21",
+    "left_example": "Belarus U21",
+    "right_example": "白俄罗斯U21",
+    "count": 113,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T17:54:35.310996+00:00"
+  },
+  "bulgariau21 <-> 保加利亚u21": {
+    "left_normalized": "bulgariau21",
+    "right_normalized": "保加利亚u21",
+    "left_example": "Bulgaria U21",
+    "right_example": "保加利亚U21",
+    "count": 114,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T17:55:55.402231+00:00"
+  },
+  "denmarku21 <-> 丹麦u21": {
+    "left_normalized": "denmarku21",
+    "right_normalized": "丹麦u21",
+    "left_example": "Denmark U21",
+    "right_example": "丹麦U21",
+    "count": 111,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T17:51:59.418178+00:00"
+  },
+  "walesu21 <-> 威尔斯u21": {
+    "left_normalized": "walesu21",
+    "right_normalized": "威尔斯u21",
+    "left_example": "Wales U21",
+    "right_example": "威尔斯U21",
+    "count": 111,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T17:51:59.419871+00:00"
+  },
+  "romaniau21 <-> 罗马尼亚u21": {
+    "left_normalized": "romaniau21",
+    "right_normalized": "罗马尼亚u21",
+    "left_example": "Romania U21",
+    "right_example": "罗马尼亚U21",
+    "count": 111,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T17:51:59.428743+00:00"
+  },
+  "hungary <-> 匈牙利u21": {
+    "left_normalized": "hungary",
+    "right_normalized": "匈牙利u21",
+    "left_example": "Hungary",
+    "right_example": "匈牙利U21",
+    "count": 19,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:24:33.336146+00:00"
+  },
+  "greece <-> 乌克兰u21": {
+    "left_normalized": "greece",
+    "right_normalized": "乌克兰u21",
+    "left_example": "Greece",
+    "right_example": "乌克兰U21",
+    "count": 19,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:24:33.338021+00:00"
+  },
+  "swedenu21 <-> 瑞典u21": {
+    "left_normalized": "swedenu21",
+    "right_normalized": "瑞典u21",
+    "left_example": "Sweden U21",
+    "right_example": "瑞典U21",
+    "count": 13,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:41:26.679808+00:00"
+  },
+  "albacete <-> 阿尔巴塞特": {
+    "left_normalized": "albacete",
+    "right_normalized": "阿尔巴塞特",
+    "left_example": "Albacete",
+    "right_example": "阿尔巴塞特",
+    "count": 100,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:51:44.481065+00:00"
+  },
+  "mali <-> 马里": {
+    "left_normalized": "mali",
+    "right_normalized": "马里",
+    "left_example": "Mali",
+    "right_example": "马里",
+    "count": 108,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:00:22.549658+00:00"
+  },
+  "kosovou21 <-> 科索沃u21": {
+    "left_normalized": "kosovou21",
+    "right_normalized": "科索沃u21",
+    "left_example": "Kosovo U21",
+    "right_example": "科索沃U21",
+    "count": 84,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:32:44.998315+00:00"
+  },
+  "nigeria <-> 尼日利亚": {
+    "left_normalized": "nigeria",
+    "right_normalized": "尼日利亚",
+    "left_example": "Nigeria",
+    "right_example": "尼日利亚",
+    "count": 88,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:22:17.536583+00:00"
+  },
+  "scotland <-> 苏格兰u19": {
+    "left_normalized": "scotland",
+    "right_normalized": "苏格兰u19",
+    "left_example": "Scotland",
+    "right_example": "苏格兰U19",
     "count": 15,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.548691+00:00"
+    "last_seen_at": "2026-03-31T18:18:37.501814+00:00"
+  },
+  "ivorycoast <-> 波兰u19": {
+    "left_normalized": "ivorycoast",
+    "right_normalized": "波兰u19",
+    "left_example": "Ivory Coast",
+    "right_example": "波兰U19",
+    "count": 15,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:18:37.503590+00:00"
+  },
+  "honduras <-> 洪都拉斯": {
+    "left_normalized": "honduras",
+    "right_normalized": "洪都拉斯",
+    "left_example": "Honduras",
+    "right_example": "洪都拉斯",
+    "count": 113,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:51:16.041770+00:00"
+  },
+  "bosniaherzegovina <-> 瑞典u21": {
+    "left_normalized": "bosniaherzegovina",
+    "right_normalized": "瑞典u21",
+    "left_example": "Bosnia & Herzegovina",
+    "right_example": "瑞典U21",
+    "count": 11,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:23:57.170900+00:00"
+  },
+  "italy <-> 意大利u21": {
+    "left_normalized": "italy",
+    "right_normalized": "意大利u21",
+    "left_example": "Italy",
+    "right_example": "意大利U21",
+    "count": 11,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:23:57.172643+00:00"
+  },
+  "repofireland <-> 爱尔兰u19": {
+    "left_normalized": "repofireland",
+    "right_normalized": "爱尔兰u19",
+    "left_example": "Rep. Of Ireland",
+    "right_example": "爱尔兰U19",
+    "count": 28,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.621879+00:00"
+  },
+  "fyrmacedonia <-> 意大利u19": {
+    "left_normalized": "fyrmacedonia",
+    "right_normalized": "意大利u19",
+    "left_example": "FYR Macedonia",
+    "right_example": "意大利U19",
+    "count": 28,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.623606+00:00"
+  },
+  "england <-> 英格兰u21": {
+    "left_normalized": "england",
+    "right_normalized": "英格兰u21",
+    "left_example": "England",
+    "right_example": "英格兰U21",
+    "count": 25,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.609858+00:00"
+  },
+  "japan <-> 摩尔多瓦u21": {
+    "left_normalized": "japan",
+    "right_normalized": "摩尔多瓦u21",
+    "left_example": "Japan",
+    "right_example": "摩尔多瓦U21",
+    "count": 25,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.611884+00:00"
+  },
+  "sweden <-> 苏格兰u19": {
+    "left_normalized": "sweden",
+    "right_normalized": "苏格兰u19",
+    "left_example": "Sweden",
+    "right_example": "苏格兰U19",
+    "count": 26,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:20:40.014688+00:00"
+  },
+  "poland <-> 波兰u19": {
+    "left_normalized": "poland",
+    "right_normalized": "波兰u19",
+    "left_example": "Poland",
+    "right_example": "波兰U19",
+    "count": 26,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:20:40.016422+00:00"
+  },
+  "scotlandu21 <-> 苏格兰u21": {
+    "left_normalized": "scotlandu21",
+    "right_normalized": "苏格兰u21",
+    "left_example": "Scotland U21",
+    "right_example": "苏格兰U21",
+    "count": 124,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T20:22:44.176970+00:00"
+  },
+  "spain <-> 西班牙u21": {
+    "left_normalized": "spain",
+    "right_normalized": "西班牙u21",
+    "left_example": "Spain",
+    "right_example": "西班牙U21",
+    "count": 16,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:50:38.584634+00:00"
+  },
+  "egypt <-> 科索沃u21": {
+    "left_normalized": "egypt",
+    "right_normalized": "科索沃u21",
+    "left_example": "Egypt",
+    "right_example": "科索沃U21",
+    "count": 16,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:50:38.586772+00:00"
+  },
+  "kosovo <-> 克罗地亚u21": {
+    "left_normalized": "kosovo",
+    "right_normalized": "克罗地亚u21",
+    "left_example": "Kosovo",
+    "right_example": "克罗地亚U21",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.647819+00:00"
+  },
+  "turkiye <-> 土耳其u21": {
+    "left_normalized": "turkiye",
+    "right_normalized": "土耳其u21",
+    "left_example": "Türkiye",
+    "right_example": "土耳其U21",
+    "count": 8,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.649687+00:00"
+  },
+  "morocco <-> 巴西u20": {
+    "left_normalized": "morocco",
+    "right_normalized": "巴西u20",
+    "left_example": "Morocco",
+    "right_example": "巴西 U20",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T20:33:44.414469+00:00"
+  },
+  "paraguay <-> 巴拉圭u20": {
+    "left_normalized": "paraguay",
+    "right_normalized": "巴拉圭u20",
+    "left_example": "Paraguay",
+    "right_example": "巴拉圭U20",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T20:33:44.416506+00:00"
+  },
+  "bosniaherzegovina <-> 瑞典": {
+    "left_normalized": "bosniaherzegovina",
+    "right_normalized": "瑞典",
+    "left_example": "Bosnia & Herzegovina",
+    "right_example": "瑞典",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:20:39.987936+00:00"
+  },
+  "italy <-> 波兰": {
+    "left_normalized": "italy",
+    "right_normalized": "波兰",
+    "left_example": "Italy",
+    "right_example": "波兰",
+    "count": 2,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:20:39.991042+00:00"
+  },
+  "envigado <-> 依维加杜": {
+    "left_normalized": "envigado",
+    "right_normalized": "依维加杜",
+    "left_example": "Envigado",
+    "right_example": "依维加杜",
+    "count": 186,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T21:50:19.032142+00:00"
+  },
+  "barranquilla <-> 巴瑞库拉": {
+    "left_normalized": "barranquilla",
+    "right_normalized": "巴瑞库拉",
+    "left_example": "Barranquilla",
+    "right_example": "巴瑞库拉",
+    "count": 186,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T21:50:19.036815+00:00"
+  },
+  "repofireland <-> 波斯尼亚和黑塞哥维那": {
+    "left_normalized": "repofireland",
+    "right_normalized": "波斯尼亚和黑塞哥维那",
+    "left_example": "Rep. Of Ireland",
+    "right_example": "波斯尼亚和黑塞哥维那",
+    "count": 5,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T20:43:33.797642+00:00"
+  },
+  "fyrmacedonia <-> 意大利": {
+    "left_normalized": "fyrmacedonia",
+    "right_normalized": "意大利",
+    "left_example": "FYR Macedonia",
+    "right_example": "意大利",
+    "count": 5,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T20:43:33.799479+00:00"
+  },
+  "congodr <-> 刚果民主共和国": {
+    "left_normalized": "congodr",
+    "right_normalized": "刚果民主共和国",
+    "left_example": "Congo DR",
+    "right_example": "刚果民主共和国",
+    "count": 193,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T22:35:05.004258+00:00"
+  },
+  "juventude <-> 尤文都德rs": {
+    "left_normalized": "juventude",
+    "right_normalized": "尤文都德rs",
+    "left_example": "Juventude",
+    "right_example": "尤文都德RS",
+    "count": 78,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T22:35:04.997220+00:00"
+  },
+  "novorizontino <-> 甘美奥诺瓦里桑蒂诺sp": {
+    "left_normalized": "novorizontino",
+    "right_normalized": "甘美奥诺瓦里桑蒂诺sp",
+    "left_example": "Novorizontino",
+    "right_example": "甘美奥诺瓦里桑蒂诺SP",
+    "count": 78,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T22:35:04.999462+00:00"
+  },
+  "fortalezaec <-> 福塔雷萨ce": {
+    "left_normalized": "fortalezaec",
+    "right_normalized": "福塔雷萨ce",
+    "left_example": "Fortaleza EC",
+    "right_example": "福塔雷萨CE",
+    "count": 65,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T22:35:04.989773+00:00"
+  },
+  "cuiaba <-> 古亚伯mt": {
+    "left_normalized": "cuiaba",
+    "right_normalized": "古亚伯mt",
+    "left_example": "Cuiaba",
+    "right_example": "古亚伯MT",
+    "count": 65,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T22:35:04.992274+00:00"
   }
 }

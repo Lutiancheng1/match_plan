@@ -20,47 +20,47 @@
   "friendlies <-> 国际友谊赛": {
     "left_normalized": "friendlies",
     "right_normalized": "国际友谊赛",
-    "left_example": "Friendlies\t15:45",
+    "left_example": "Friendlies\t16:00",
     "right_example": "国际友谊赛",
-    "count": 1949,
+    "count": 4316,
     "promoted": true,
-    "last_seen_at": "2026-03-30T20:42:19.413741+00:00"
+    "last_seen_at": "2026-03-31T20:59:46.301387+00:00"
   },
   "primeradivisionapertura <-> 乌拉圭甲组联赛": {
     "left_normalized": "primeradivisionapertura",
     "right_normalized": "乌拉圭甲组联赛",
-    "left_example": "Primera División - Apertura\t21:00",
+    "left_example": "Primera División - Apertura\t11:00",
     "right_example": "乌拉圭甲组联赛",
-    "count": 569,
+    "count": 709,
     "promoted": true,
-    "last_seen_at": "2026-03-31T01:53:58.833674+00:00"
+    "last_seen_at": "2026-03-31T15:56:27.603764+00:00"
   },
   "uefau21championshipqualification <-> 欧洲u21青年锦标赛2027外围赛": {
     "left_normalized": "uefau21championshipqualification",
     "right_normalized": "欧洲u21青年锦标赛2027外围赛",
-    "left_example": "UEFA U21 Championship - Qualification\t09:00",
+    "left_example": "UEFA U21 Championship - Qualification\t15:30",
     "right_example": "欧洲U21青年锦标赛2027外围赛",
-    "count": 857,
+    "count": 2717,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.605164+00:00"
+    "last_seen_at": "2026-03-31T20:22:44.177899+00:00"
   },
   "uefanationsleague <-> 欧洲国家联赛d附加赛": {
     "left_normalized": "uefanationsleague",
     "right_normalized": "欧洲国家联赛d附加赛",
-    "left_example": "UEFA Nations League\t14:00",
+    "left_example": "UEFA Nations League\t13:00",
     "right_example": "欧洲国家联赛D-附加赛",
-    "count": 53,
+    "count": 279,
     "promoted": true,
-    "last_seen_at": "2026-03-26T19:06:49.155002+00:00"
+    "last_seen_at": "2026-03-31T17:57:13.040528+00:00"
   },
   "worldcupqualificationeurope <-> 世界杯2026欧洲外围赛附加赛": {
     "left_normalized": "worldcupqualificationeurope",
     "right_normalized": "世界杯2026欧洲外围赛附加赛",
-    "left_example": "World Cup - Qualification Europe\t16:45",
+    "left_example": "World Cup - Qualification Europe\t15:45",
     "right_example": "世界杯2026欧洲外围赛-附加赛",
-    "count": 223,
+    "count": 658,
     "promoted": true,
-    "last_seen_at": "2026-03-26T21:44:09.238654+00:00"
+    "last_seen_at": "2026-03-31T20:44:21.667955+00:00"
   },
   "atp迈阿密公开赛 <-> tennis": {
     "left_normalized": "tennis",
@@ -110,20 +110,20 @@
   "primerab <-> 哥伦比亚乙组联赛": {
     "left_normalized": "primerab",
     "right_normalized": "哥伦比亚乙组联赛",
-    "left_example": "Primera B\t21:00",
+    "left_example": "Primera B\t17:00",
     "right_example": "哥伦比亚乙组联赛",
-    "count": 624,
+    "count": 996,
     "promoted": true,
-    "last_seen_at": "2026-03-31T01:53:58.821496+00:00"
+    "last_seen_at": "2026-03-31T21:50:19.037739+00:00"
   },
   "worldcupqualificationintercontinentalplayoffs <-> 世界杯2026洲际在墨西哥附加赛": {
     "left_normalized": "worldcupqualificationintercontinentalplayoffs",
     "right_normalized": "世界杯2026洲际在墨西哥附加赛",
-    "left_example": "World Cup - Qualification Intercontinental Play-offs\t00:00",
+    "left_example": "World Cup - Qualification Intercontinental Play-offs\t18:00",
     "right_example": "世界杯2026洲际(在墨西哥)-附加赛",
-    "count": 39,
+    "count": 232,
     "promoted": true,
-    "last_seen_at": "2026-03-27T03:58:44.569858+00:00"
+    "last_seen_at": "2026-03-31T22:35:05.007491+00:00"
   },
   "copadonordeste <-> 巴西东北杯": {
     "left_normalized": "copadonordeste",
@@ -184,9 +184,9 @@
     "right_normalized": "国际友谊赛",
     "left_example": "FIFA Series\t09:00",
     "right_example": "国际友谊赛",
-    "count": 648,
+    "count": 680,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.598358+00:00"
+    "last_seen_at": "2026-03-31T13:52:07.594610+00:00"
   },
   "fifaseries <-> 国际系列在印尼": {
     "left_normalized": "fifaseries",
@@ -202,9 +202,9 @@
     "right_normalized": "以色列甲组联赛",
     "left_example": "Liga Leumit\t10:00",
     "right_example": "以色列甲组联赛",
-    "count": 278,
+    "count": 372,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:04.819131+00:00"
+    "last_seen_at": "2026-03-31T14:52:54.773186+00:00"
   },
   "u19uefaeuro <-> 欧洲u19青年锦标赛外围赛联赛b": {
     "left_normalized": "u19uefaeuro",
@@ -245,20 +245,20 @@
   "u20eliteleague <-> 国际友谊赛u20": {
     "left_normalized": "u20eliteleague",
     "right_normalized": "国际友谊赛u20",
-    "left_example": "U20 Elite League\t12:00",
+    "left_example": "U20 Elite League\t11:45",
     "right_example": "国际友谊赛U20",
-    "count": 287,
+    "count": 426,
     "promoted": true,
-    "last_seen_at": "2026-03-30T16:51:16.889147+00:00"
+    "last_seen_at": "2026-03-31T16:38:51.730947+00:00"
   },
   "segundadivision <-> 西班牙乙组联赛": {
     "left_normalized": "segundadivision",
     "right_normalized": "西班牙乙组联赛",
-    "left_example": "Segunda División\t16:00",
+    "left_example": "Segunda División\t16:30",
     "right_example": "西班牙乙组联赛",
-    "count": 784,
+    "count": 1162,
     "promoted": true,
-    "last_seen_at": "2026-03-29T20:55:39.424879+00:00"
+    "last_seen_at": "2026-03-31T21:25:09.102356+00:00"
   },
   "fifaseries <-> 国际系列在卢旺达": {
     "left_normalized": "fifaseries",
@@ -416,11 +416,11 @@
   "uefau19championshipqualification <-> 欧洲u19青年锦标赛外围赛": {
     "left_normalized": "uefau19championshipqualification",
     "right_normalized": "欧洲u19青年锦标赛外围赛",
-    "left_example": "UEFA U19 Championship - Qualification\t11:30",
+    "left_example": "UEFA U19 Championship - Qualification\t11:00",
     "right_example": "欧洲U19青年锦标赛外围赛",
-    "count": 6,
+    "count": 142,
     "promoted": true,
-    "last_seen_at": "2026-03-28T16:09:21.011587+00:00"
+    "last_seen_at": "2026-03-31T15:51:01.762110+00:00"
   },
   "leagueone <-> 英格兰甲组联赛": {
     "left_normalized": "leagueone",
@@ -454,9 +454,9 @@
     "right_normalized": "欧洲u19青年锦标赛外围赛联赛a",
     "left_example": "UEFA U19 Championship - Qualification\t10:00",
     "right_example": "欧洲U19青年锦标赛外围赛联赛A",
-    "count": 16,
+    "count": 109,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.549738+00:00"
+    "last_seen_at": "2026-03-31T14:51:17.711366+00:00"
   },
   "eerstedivisie <-> 荷兰乙组联赛": {
     "left_normalized": "eerstedivisie",
@@ -659,19 +659,100 @@
   "asiancupqualification <-> 亚洲杯2027外围赛": {
     "left_normalized": "asiancupqualification",
     "right_normalized": "亚洲杯2027外围赛",
-    "left_example": "Asian Cup - Qualification\t09:00",
+    "left_example": "Asian Cup - Qualification\t11:00",
     "right_example": "亚洲杯2027外围赛",
-    "count": 259,
+    "count": 606,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.591609+00:00"
+    "last_seen_at": "2026-03-31T15:55:04.213086+00:00"
   },
   "friendlies <-> 国际友谊赛u23": {
     "left_normalized": "friendlies",
     "right_normalized": "国际友谊赛u23",
     "left_example": "Friendlies\t08:35",
     "right_example": "国际友谊赛U23",
-    "count": 74,
+    "count": 77,
     "promoted": true,
-    "last_seen_at": "2026-03-31T13:23:00.611689+00:00"
+    "last_seen_at": "2026-03-31T13:25:36.243040+00:00"
+  },
+  "uefanationsleague <-> 欧洲u21青年锦标赛2027外围赛": {
+    "left_normalized": "uefanationsleague",
+    "right_normalized": "欧洲u21青年锦标赛2027外围赛",
+    "left_example": "UEFA Nations League\t13:00",
+    "right_example": "欧洲U21青年锦标赛2027外围赛",
+    "count": 96,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.753694+00:00"
+  },
+  "friendlies <-> 欧洲u19青年锦标赛外围赛": {
+    "left_normalized": "friendlies",
+    "right_normalized": "欧洲u19青年锦标赛外围赛",
+    "left_example": "Friendlies\t13:00",
+    "right_example": "欧洲U19青年锦标赛外围赛",
+    "count": 25,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T16:00:03.740773+00:00"
+  },
+  "friendlies <-> 欧洲u21青年锦标赛2027外围赛": {
+    "left_normalized": "friendlies",
+    "right_normalized": "欧洲u21青年锦标赛2027外围赛",
+    "left_example": "Friendlies\t16:00",
+    "right_example": "欧洲U21青年锦标赛2027外围赛",
+    "count": 60,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:50:38.587679+00:00"
+  },
+  "friendlies <-> 欧洲u19青年锦标赛外围赛联赛a": {
+    "left_normalized": "friendlies",
+    "right_normalized": "欧洲u19青年锦标赛外围赛联赛a",
+    "left_example": "Friendlies\t15:45",
+    "right_example": "欧洲U19青年锦标赛外围赛联赛A",
+    "count": 43,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.624411+00:00"
+  },
+  "worldcupqualificationeurope <-> 欧洲u21青年锦标赛2027外围赛": {
+    "left_normalized": "worldcupqualificationeurope",
+    "right_normalized": "欧洲u21青年锦标赛2027外围赛",
+    "left_example": "World Cup - Qualification Europe\t15:45",
+    "right_example": "欧洲U21青年锦标赛2027外围赛",
+    "count": 19,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T18:46:05.650574+00:00"
+  },
+  "worldcupqualificationeurope <-> 欧洲u19青年锦标赛外围赛联赛a": {
+    "left_normalized": "worldcupqualificationeurope",
+    "right_normalized": "欧洲u19青年锦标赛外围赛联赛a",
+    "left_example": "World Cup - Qualification Europe\t15:45",
+    "right_example": "欧洲U19青年锦标赛外围赛联赛A",
+    "count": 26,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T19:20:40.017324+00:00"
+  },
+  "friendlies <-> 国际友谊赛u20": {
+    "left_normalized": "friendlies",
+    "right_normalized": "国际友谊赛u20",
+    "left_example": "Friendlies\t15:00",
+    "right_example": "国际友谊赛U20",
+    "count": 48,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T20:33:44.417859+00:00"
+  },
+  "friendlies <-> 世界杯2026欧洲外围赛附加赛": {
+    "left_normalized": "friendlies",
+    "right_normalized": "世界杯2026欧洲外围赛附加赛",
+    "left_example": "Friendlies\t15:45",
+    "right_example": "世界杯2026欧洲外围赛-附加赛",
+    "count": 5,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T20:43:33.800338+00:00"
+  },
+  "serieb <-> 巴西乙组联赛": {
+    "left_normalized": "serieb",
+    "right_normalized": "巴西乙组联赛",
+    "left_example": "Serie B\t18:30",
+    "right_example": "巴西乙组联赛",
+    "count": 143,
+    "promoted": true,
+    "last_seen_at": "2026-03-31T22:35:05.000756+00:00"
   }
 }

@@ -21,6 +21,16 @@ RECORDINGS_DIR = SCRIPT_DIR.parent
 if str(RECORDINGS_DIR) not in sys.path:
     sys.path.insert(0, str(RECORDINGS_DIR))
 
+# Ensure data site requests go through sing-box proxy (17897),
+# not system proxy (小火箭 1082) which may not route data site correctly.
+_SINGBOX_PROXY = "http://127.0.0.1:17897"
+for _pk in ("http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"):
+    if not os.environ.get(_pk):
+        os.environ[_pk] = _SINGBOX_PROXY
+# Exclude localhost from proxy (for /credentials endpoint etc.)
+os.environ.setdefault("no_proxy", "127.0.0.1,localhost")
+os.environ.setdefault("NO_PROXY", "127.0.0.1,localhost")
+
 from run_auto_capture import (
     ALL_GTYPES,
     DEFAULT_URL,

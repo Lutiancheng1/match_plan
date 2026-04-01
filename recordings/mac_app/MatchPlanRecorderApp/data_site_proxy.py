@@ -69,6 +69,27 @@ def load_env_credentials() -> tuple[str, str]:
     return username, password
 
 
+def _do_auto_login(username: str, password: str) -> dict:
+    """Try auto_login with multiple entry URLs for resilience."""
+    from auto_login import auto_login
+    # Try direct IP first (avoids hga035.com geo-block), then domain fallbacks
+    entry_urls = [
+        f"https://{TARGET_HOST}",   # 112.121.42.168 — always works if proxy can reach IP
+        "https://hga035.com",
+        "https://hga038.com",
+    ]
+    last_exc = None
+    for entry_url in entry_urls:
+        try:
+            creds = auto_login(username, password, entry_url=entry_url)
+            print(f"[proxy] auto_login OK via {entry_url}", file=sys.stderr)
+            return creds
+        except Exception as e:
+            last_exc = e
+            print(f"[proxy] auto_login failed via {entry_url}: {e}", file=sys.stderr)
+    raise last_exc
+
+
 def get_login_creds() -> dict | None:
     global _login_creds
     with _login_lock:
@@ -78,14 +99,13 @@ def get_login_creds() -> dict | None:
     if not username or not password:
         return None
     try:
-        from auto_login import auto_login
-        creds = auto_login(username, password)
+        creds = _do_auto_login(username, password)
         with _login_lock:
             _login_creds = creds
             _login_creds["alias"] = username
         return _login_creds
     except Exception as e:
-        print(f"[proxy] auto_login failed: {e}", file=sys.stderr)
+        print(f"[proxy] auto_login all entries failed: {e}", file=sys.stderr)
         return None
 
 
@@ -98,15 +118,14 @@ def refresh_login_creds() -> dict | None:
     if not username or not password:
         return None
     try:
-        from auto_login import auto_login
-        creds = auto_login(username, password)
+        creds = _do_auto_login(username, password)
         with _login_lock:
             _login_creds = creds
             _login_creds["alias"] = username
         print(f"[proxy] refresh_login OK: uid={creds.get('uid', '?')}", file=sys.stderr)
         return _login_creds
     except Exception as e:
-        print(f"[proxy] refresh_login failed: {e}", file=sys.stderr)
+        print(f"[proxy] refresh_login all entries failed: {e}", file=sys.stderr)
         return None
 
 
