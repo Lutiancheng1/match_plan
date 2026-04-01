@@ -631,6 +631,31 @@ def resolve_selected_matches(args, logger: SessionLogger) -> tuple[list[dict], t
             bind_selected_matches_to_feed(selected, snapshot_rows, logger)
         except Exception as exc:
             logger.log(f"比赛数据绑定失败: {exc}", "WARN")
+            retry_exc = exc
+            try:
+                logger.log("比赛数据绑定异常，尝试刷新数据站代理 session 后重试", "WARN")
+                from run_auto_capture import _fetch_proxy_credentials
+                proxy_refreshed = _fetch_proxy_credentials(logger, refresh=True)
+                if proxy_refreshed:
+                    cookie, template, feed_url, data_source = proxy_refreshed
+                    use_dashboard = False
+                    snapshot_rows = fetch_live_data_snapshot(
+                        cookie,
+                        template,
+                        gtypes=list({m.get("gtype") for m in selected if m.get("gtype")}) or ALL_GTYPES,
+                        use_dashboard=use_dashboard,
+                        feed_url=feed_url or DEFAULT_URL,
+                    )
+                    logger.log(f"重试后当前数据快照: {len(snapshot_rows)} 条候选比赛")
+                    bind_selected_matches_to_feed(selected, snapshot_rows, logger)
+                    retry_exc = None
+                else:
+                    logger.log("比赛数据绑定重试失败：数据站代理刷新未返回有效 session", "WARN")
+            except Exception as retry_error:
+                retry_exc = retry_error
+                logger.log(f"比赛数据绑定重试仍失败: {retry_error}", "WARN")
+            if retry_exc is not None:
+                logger.log("本轮继续按未绑定比赛处理", "WARN")
 
         if explicit_selected:
             selected = annotate_selected_matches_for_recording(selected)

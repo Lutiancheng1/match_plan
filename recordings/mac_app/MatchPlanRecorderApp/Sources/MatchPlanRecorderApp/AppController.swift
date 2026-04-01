@@ -5,6 +5,15 @@ import WebKit
 @MainActor
 @Observable
 final class AppController {
+    struct SessionArtifactInfo {
+        let previewURL: URL?
+        let mergedVideoURL: URL?
+        let dataFileURL: URL?
+        let recordingLogURL: URL?
+        let pionStatusURL: URL?
+        let recordedDurationSeconds: Int?
+    }
+
     let projectRoot = "/Users/niannianshunjing/match_plan"
     let recordingsRoot = "/Users/niannianshunjing/match_plan/recordings"
     let supervisorScript = "/Users/niannianshunjing/match_plan/recordings/pion_gst_direct_chain/pion_gst_supervisor.py"
@@ -47,9 +56,14 @@ final class AppController {
     var cleanupPreviewDates: [String] = []
     var cleanupPreviewSamples: [String] = []
     var cleanupPreviewReady = false
+    var noDataCleanupPreview: CleanupNoDataPreview?
     var artifacts: [ArtifactSessionSummary] = []
     var selectedArtifactIDs: Set<String> = []
     var currentDispatcherWorkerIDs: Set<String> = []
+    private var sessionArtifactCache: [String: SessionArtifactInfo] = [:]
+    private var activeWorkerCache: [WorkerStateSummary] = []
+    private var historicalWorkerCache: [WorkerStateSummary] = []
+    private var workerIndexByID: [String: WorkerStateSummary] = [:]
 
     let settingsURL: URL
     let diagnosticsDirURL: URL
@@ -63,6 +77,7 @@ final class AppController {
         self.diagnosticsDirURL = support.appendingPathComponent("diagnostics", isDirectory: true)
         try? FileManager.default.createDirectory(at: diagnosticsDirURL, withIntermediateDirectories: true)
         loadSettings()
+        appendAppLaunchSeparators()
         appLoginIntegrationReady = AppWebBridge.shared.isReady
         Task {
             await refreshAll()
@@ -121,6 +136,7 @@ final class AppController {
             "--loop-interval-seconds", String(settings.loopIntervalSeconds),
             "--segment-minutes", String(settings.segmentMinutes),
             "--max-duration-minutes", String(settings.maxDurationMinutes),
+            "--black-screen-timeout-seconds", String(settings.blackScreenTimeoutSeconds),
             "--archive-width", String(settings.archiveWidth),
             "--archive-height", String(settings.archiveHeight),
             "--archive-bitrate-kbps", String(settings.archiveBitrateKbps),
@@ -282,6 +298,67 @@ final class AppController {
         cleanupPreviewReady = false
     }
 
+    func previewCleanupNoDataSessions() async {
+        isBusy = true
+        defer { isBusy = false }
+        do {
+            let output = try await runPython(buildMaintenanceArgs(command: "preview-cleanup-no-data-sessions"))
+            let data = extractJSONObjectData(from: output) ?? Data(output.utf8)
+            guard let payload = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                lastError = "无法解析无数据清理预览结果"
+                appendLog("[preview-cleanup-no-data-sessions] ERROR: 无法解析预览结果")
+                return
+            }
+            let deleteCount = payload["delete_count"] as? Int ?? 0
+            let archiveCount = payload["archive_count"] as? Int ?? 0
+            let activeSkippedCount = payload["active_skipped_count"] as? Int ?? 0
+            let deleteCandidates = (payload["delete_candidates"] as? [[String: Any]] ?? []).compactMap { $0["session_name"] as? String }
+            let archiveCandidates = (payload["archive_candidates"] as? [[String: Any]] ?? []).compactMap { $0["session_name"] as? String }
+            noDataCleanupPreview = CleanupNoDataPreview(
+                archiveRoot: payload["archive_root"] as? String ?? "",
+                archivedDir: payload["archived_dir"] as? String ?? "",
+                deleteCount: deleteCount,
+                archiveCount: archiveCount,
+                activeSkippedCount: activeSkippedCount,
+                deleteCandidates: Array(deleteCandidates.prefix(12)),
+                archiveCandidates: Array(archiveCandidates.prefix(12))
+            )
+            lastError = ""
+            lastInfo = "本次将删除无数据垃圾 \(deleteCount) 个，并归档长视频无数据 \(archiveCount) 个。"
+            appendLog("[preview-cleanup-no-data-sessions] \(lastInfo)")
+        } catch {
+            lastError = error.localizedDescription
+            appendLog("[preview-cleanup-no-data-sessions] ERROR: \(error.localizedDescription)")
+        }
+    }
+
+    func executeCleanupNoDataSessions() async {
+        guard let preview = noDataCleanupPreview else {
+            lastInfo = "请先预览无数据清理结果"
+            return
+        }
+        isBusy = true
+        defer { isBusy = false }
+        do {
+            pendingActionCommand = "cleanup-no-data-sessions"
+            pendingActionSummary = "正在删除无数据垃圾视频，并归档长视频无数据录制..."
+            lastInfo = pendingActionSummary
+            appendLog("[cleanup-no-data-sessions] \(pendingActionSummary)")
+            let output = try await runPython(buildMaintenanceArgs(command: "cleanup-no-data-sessions", extra: ["--archive-root", preview.archiveRoot]))
+            appendLog("[cleanup-no-data-sessions] \(output.trimmingCharacters(in: .whitespacesAndNewlines))")
+            clearPendingAction()
+            lastError = ""
+            lastInfo = "无数据清理已完成，归档目录：\(preview.archiveRoot)"
+            noDataCleanupPreview = nil
+            await refreshArtifacts()
+            await refreshAll()
+        } catch {
+            clearPendingAction()
+            lastError = error.localizedDescription
+            appendLog("[cleanup-no-data-sessions] ERROR: \(error.localizedDescription)")
+        }
+    }
+
     func refreshArtifacts() async {
         do {
             let output = try await runPython(buildMaintenanceArgs(command: "list-artifacts"))
@@ -429,7 +506,7 @@ final class AppController {
     }
 
     var hasActiveRuntime: Bool {
-        supervisorStatus.dispatcher_alive || supervisorStatus.alive_worker_count > 0 || !workers.isEmpty
+        supervisorStatus.dispatcher_alive || supervisorStatus.alive_worker_count > 0 || !activeWorkers.isEmpty
     }
 
     var controlsLocked: Bool {
@@ -528,6 +605,8 @@ final class AppController {
             guard let data = try? Data(contentsOf: url),
                   let payload = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
             else { return nil }
+            let workerID = url.lastPathComponent
+            let isActiveWorker = currentDispatcherWorkerIDs.contains(workerID)
             let title = (payload["teams"] as? String).flatMap { $0.isEmpty ? nil : $0 }
                 ?? (payload["matchId"] as? String)
                 ?? url.deletingPathExtension().lastPathComponent
@@ -540,12 +619,21 @@ final class AppController {
                 stopReasonValue = "manual_stop"
             }
             let sessionDir = payload["sessionDir"] as? String ?? ""
-            let previewURL = Self.findPreviewURL(sessionDir: sessionDir)
-            let mergedVideoURL = Self.findMergedVideoURL(sessionDir: sessionDir)
-            let dataFileURL = Self.findDataFileURL(sessionDir: sessionDir)
-            let internalStatus = Self.loadInternalRecorderStatus(sessionDir: sessionDir)
+            let artifacts = cachedSessionArtifacts(for: sessionDir, forceRefresh: isActiveWorker)
+            let internalStatus = Self.loadInternalRecorderStatus(from: artifacts.pionStatusURL)
+            let startedAt = internalStatus["startedAt"] as? String ?? (payload["startedAt"] as? String ?? "")
+            let updatedAt = payload["updatedAt"] as? String ?? ""
+            let startedAtEpoch = Self.parseISODateStatic(startedAt)?.timeIntervalSince1970 ?? 0
+            let updatedAtEpoch = Self.parseISODateStatic(updatedAt)?.timeIntervalSince1970 ?? startedAtEpoch
+            let recordedDurationSeconds = artifacts.recordedDurationSeconds
+            let sortDurationSeconds: Int
+            if let recordedDurationSeconds, recordedDurationSeconds > 0 {
+                sortDurationSeconds = recordedDurationSeconds
+            } else {
+                sortDurationSeconds = max(0, Int(updatedAtEpoch - startedAtEpoch))
+            }
             return WorkerStateSummary(
-                id: url.lastPathComponent,
+                id: workerID,
                 title: title,
                 state: stateValue,
                 stopReason: stopReasonValue,
@@ -556,10 +644,10 @@ final class AppController {
                 gid: payload["gid"] as? String ?? "",
                 ecid: payload["ecid"] as? String ?? "",
                 hgid: payload["hgid"] as? String ?? "",
-                updatedAt: payload["updatedAt"] as? String ?? "",
-                previewURL: previewURL,
-                mergedVideoURL: mergedVideoURL,
-                dataFileURL: dataFileURL,
+                updatedAt: updatedAt,
+                previewURL: artifacts.previewURL,
+                mergedVideoURL: artifacts.mergedVideoURL,
+                dataFileURL: artifacts.dataFileURL,
                 matchedRows: payload["matchedRows"] as? Int ?? 0,
                 note: payload["recordingNote"] as? String ?? "",
                 serverHost: payload["serverHost"] as? String ?? "",
@@ -572,10 +660,29 @@ final class AppController {
                 lowFrameRate: internalStatus["lowFrameRate"] as? Bool ?? false,
                 lastError: (payload["error"] as? String ?? "").isEmpty ? (internalStatus["lastError"] as? String ?? "") : (payload["error"] as? String ?? ""),
                 lastPacketAt: internalStatus["lastPacketAt"] as? String ?? "",
-                startedAt: internalStatus["startedAt"] as? String ?? (payload["startedAt"] as? String ?? "")
+                startedAt: startedAt,
+                recordedDurationSeconds: recordedDurationSeconds,
+                startedAtEpoch: startedAtEpoch,
+                updatedAtEpoch: updatedAtEpoch,
+                sortDurationSeconds: sortDurationSeconds
             )
         }
         workers = summaries.sorted { $0.title.localizedStandardCompare($1.title) == .orderedAscending }
+        workerIndexByID = Dictionary(uniqueKeysWithValues: workers.map { ($0.id, $0) })
+        if !currentDispatcherWorkerIDs.isEmpty {
+            activeWorkerCache = workers.filter { currentDispatcherWorkerIDs.contains($0.id) }
+        } else {
+            activeWorkerCache = workers.filter {
+                switch $0.state {
+                case "completed", "failed", "skipped", "stopped":
+                    return false
+                default:
+                    return true
+                }
+            }
+        }
+        let activeIDs = Set(activeWorkerCache.map(\.id))
+        historicalWorkerCache = workers.filter { !activeIDs.contains($0.id) }
         if selectedWorkerID == nil || !activeWorkers.contains(where: { $0.id == selectedWorkerID }) {
             selectedWorkerID = activeWorkers.first?.id
         }
@@ -598,7 +705,7 @@ final class AppController {
         }
 
         if let worker = selectedWorker ?? activeWorkers.first,
-           let recordingLogURL = Self.findRecordingLogURL(sessionDir: worker.sessionDir) {
+           let recordingLogURL = cachedSessionArtifacts(for: worker.sessionDir).recordingLogURL {
             selectedWorkerLogLines = readTailLogLines(at: recordingLogURL, source: "worker", limit: 160)
         } else {
             selectedWorkerLogLines = []
@@ -802,12 +909,12 @@ final class AppController {
 
     var selectedWorker: WorkerStateSummary? {
         guard let selectedWorkerID else { return activeWorkers.first }
-        return activeWorkers.first(where: { $0.id == selectedWorkerID }) ?? activeWorkers.first
+        return workerIndexByID[selectedWorkerID] ?? activeWorkers.first
     }
 
     var selectedHistoryWorker: WorkerStateSummary? {
         guard let selectedHistoryWorkerID else { return historicalWorkers.first }
-        return historicalWorkers.first(where: { $0.id == selectedHistoryWorkerID }) ?? historicalWorkers.first
+        return workerIndexByID[selectedHistoryWorkerID] ?? historicalWorkers.first
     }
 
     var selectedHistoricalWorkers: [WorkerStateSummary] {
@@ -868,22 +975,11 @@ final class AppController {
     }
 
     var activeWorkers: [WorkerStateSummary] {
-        if !currentDispatcherWorkerIDs.isEmpty {
-            return workers.filter { currentDispatcherWorkerIDs.contains($0.id) }
-        }
-        return workers.filter {
-            switch $0.state {
-            case "completed", "failed", "skipped", "stopped":
-                return false
-            default:
-                return true
-            }
-        }
+        activeWorkerCache
     }
 
     var historicalWorkers: [WorkerStateSummary] {
-        let activeIDs = Set(activeWorkers.map(\.id))
-        return workers.filter { !activeIDs.contains($0.id) }
+        historicalWorkerCache
     }
 
     var runtimePhaseTitle: String {
@@ -1089,29 +1185,7 @@ final class AppController {
     }
 
     func parseISODate(_ value: String) -> Date? {
-        let raw = value.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !raw.isEmpty else { return nil }
-        let plain = ISO8601DateFormatter()
-        if let date = plain.date(from: raw) {
-            return date
-        }
-        let fractional = ISO8601DateFormatter()
-        fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        if let date = fractional.date(from: raw) {
-            return date
-        }
-        let localFractional = DateFormatter()
-        localFractional.locale = Locale(identifier: "en_US_POSIX")
-        localFractional.timeZone = .current
-        localFractional.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
-        if let date = localFractional.date(from: raw) {
-            return date
-        }
-        let localPlain = DateFormatter()
-        localPlain.locale = Locale(identifier: "en_US_POSIX")
-        localPlain.timeZone = .current
-        localPlain.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return localPlain.date(from: raw)
+        Self.parseISODateStatic(value)
     }
 
     func extractJSONObjectData(from raw: String) -> Data? {
@@ -1153,6 +1227,35 @@ final class AppController {
         }
     }
 
+    private func appendAppLaunchSeparators() {
+        let stamp = Self.launchSeparatorTimestamp.string(from: Date())
+        let line = "\n========== App Reopened \(stamp) ==========\n"
+        appendRawLine(line, to: diagnosticsDirURL.appendingPathComponent("data_site_proxy.log"))
+        appendRawLine(line, to: diagnosticsDirURL.appendingPathComponent("singbox_ensure.log"))
+        let dispatcherURL = URL(fileURLWithPath: "\(dispatcherRuntimeRoot)/\(settings.chainTag)_dispatcher/dispatcher.log")
+        appendRawLine(line, to: dispatcherURL)
+        appendLog("========== App Reopened \(stamp) ==========", source: "app")
+    }
+
+    private func appendRawLine(_ line: String, to url: URL) {
+        if let handle = try? FileHandle(forWritingTo: url) {
+            handle.seekToEndOfFile()
+            if let data = line.data(using: .utf8) {
+                handle.write(data)
+            }
+            handle.closeFile()
+        } else {
+            try? line.write(to: url, atomically: true, encoding: .utf8)
+        }
+    }
+
+    private static let launchSeparatorTimestamp: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.locale = Locale(identifier: "en_US_POSIX")
+        fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return fmt
+    }()
+
     func formatDuration(_ total: Int) -> String {
         let seconds = max(0, total)
         let h = seconds / 3600
@@ -1182,8 +1285,23 @@ final class AppController {
     }
 
     func workerDurationText(_ item: WorkerStateSummary) -> String {
-        let endValue = workerHasTerminalState(item) ? item.updatedAt : nil
-        return formatDuration(elapsedSeconds(from: item.startedAt, to: endValue))
+        if let recordedDurationSeconds = item.recordedDurationSeconds, recordedDurationSeconds > 0 {
+            return formatDuration(recordedDurationSeconds)
+        }
+        if workerHasTerminalState(item) {
+            return formatDuration(item.sortDurationSeconds)
+        }
+        guard item.startedAtEpoch > 0 else { return formatDuration(0) }
+        return formatDuration(max(0, Int(Date().timeIntervalSince1970 - item.startedAtEpoch)))
+    }
+
+    func cachedSessionArtifacts(for sessionDir: String, forceRefresh: Bool = false) -> SessionArtifactInfo {
+        if !forceRefresh, let cached = sessionArtifactCache[sessionDir] {
+            return cached
+        }
+        let scanned = Self.scanSessionArtifacts(sessionDir: sessionDir)
+        sessionArtifactCache[sessionDir] = scanned
+        return scanned
     }
 
     static func findPreviewURL(sessionDir: String) -> URL? {
@@ -1242,6 +1360,35 @@ final class AppController {
         return nil
     }
 
+    static func findManifestURL(sessionDir: String) -> URL? {
+        guard !sessionDir.isEmpty else { return nil }
+        let base = URL(fileURLWithPath: sessionDir, isDirectory: true)
+        guard let enumerator = FileManager.default.enumerator(at: base, includingPropertiesForKeys: nil) else {
+            return nil
+        }
+        for case let url as URL in enumerator {
+            if url.lastPathComponent == "manifest.json" {
+                return url
+            }
+        }
+        return nil
+    }
+
+    static func loadRecordedDurationSeconds(sessionDir: String) -> Int? {
+        guard let manifestURL = findManifestURL(sessionDir: sessionDir),
+              let data = try? Data(contentsOf: manifestURL),
+              let payload = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return nil
+        }
+        if let totalDuration = payload["total_duration_sec"] as? Double {
+            return max(0, Int(totalDuration.rounded()))
+        }
+        if let totalDuration = payload["total_duration_sec"] as? NSNumber {
+            return max(0, Int(totalDuration.doubleValue.rounded()))
+        }
+        return nil
+    }
+
     static func loadInternalRecorderStatus(sessionDir: String) -> [String: Any] {
         guard !sessionDir.isEmpty else { return [:] }
         let base = URL(fileURLWithPath: sessionDir, isDirectory: true)
@@ -1257,4 +1404,106 @@ final class AppController {
         }
         return [:]
     }
+
+    static func loadInternalRecorderStatus(from url: URL?) -> [String: Any] {
+        guard let url,
+              let data = try? Data(contentsOf: url),
+              let payload = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return [:]
+        }
+        return payload
+    }
+
+    static func scanSessionArtifacts(sessionDir: String) -> SessionArtifactInfo {
+        guard !sessionDir.isEmpty else {
+            return SessionArtifactInfo(previewURL: nil, mergedVideoURL: nil, dataFileURL: nil, recordingLogURL: nil, pionStatusURL: nil, recordedDurationSeconds: nil)
+        }
+        let base = URL(fileURLWithPath: sessionDir, isDirectory: true)
+        guard let enumerator = FileManager.default.enumerator(at: base, includingPropertiesForKeys: nil) else {
+            return SessionArtifactInfo(previewURL: nil, mergedVideoURL: nil, dataFileURL: nil, recordingLogURL: nil, pionStatusURL: nil, recordedDurationSeconds: nil)
+        }
+        var previewURL: URL?
+        var mergedVideoURL: URL?
+        var dataFileURL: URL?
+        var recordingLogURL: URL?
+        var pionStatusURL: URL?
+        var manifestURL: URL?
+        for case let url as URL in enumerator {
+            let name = url.lastPathComponent
+            if previewURL == nil, name == "playlist.m3u8", url.path.contains("/hls/") {
+                previewURL = url
+            } else if mergedVideoURL == nil, url.pathExtension.lowercased() == "mp4", name.contains("__full") {
+                mergedVideoURL = url
+            } else if dataFileURL == nil, name.hasSuffix("__betting_data.jsonl") {
+                dataFileURL = url
+            } else if recordingLogURL == nil, name == "recording.log" {
+                recordingLogURL = url
+            } else if pionStatusURL == nil, name == "pion_gst_status.json" {
+                pionStatusURL = url
+            } else if manifestURL == nil, name == "manifest.json" {
+                manifestURL = url
+            }
+            if previewURL != nil, mergedVideoURL != nil, dataFileURL != nil, recordingLogURL != nil, pionStatusURL != nil, manifestURL != nil {
+                break
+            }
+        }
+        let recordedDurationSeconds: Int?
+        if let manifestURL,
+           let data = try? Data(contentsOf: manifestURL),
+           let payload = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            if let totalDuration = payload["total_duration_sec"] as? Double {
+                recordedDurationSeconds = max(0, Int(totalDuration.rounded()))
+            } else if let totalDuration = payload["total_duration_sec"] as? NSNumber {
+                recordedDurationSeconds = max(0, Int(totalDuration.doubleValue.rounded()))
+            } else {
+                recordedDurationSeconds = nil
+            }
+        } else {
+            recordedDurationSeconds = nil
+        }
+        return SessionArtifactInfo(
+            previewURL: previewURL,
+            mergedVideoURL: mergedVideoURL,
+            dataFileURL: dataFileURL,
+            recordingLogURL: recordingLogURL,
+            pionStatusURL: pionStatusURL,
+            recordedDurationSeconds: recordedDurationSeconds
+        )
+    }
+
+    static func parseISODateStatic(_ value: String) -> Date? {
+        let raw = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !raw.isEmpty else { return nil }
+        if let date = Self.iso8601Plain.date(from: raw) {
+            return date
+        }
+        if let date = Self.iso8601Fractional.date(from: raw) {
+            return date
+        }
+        if let date = Self.localFractionalDateFormatter.date(from: raw) {
+            return date
+        }
+        return Self.localPlainDateFormatter.date(from: raw)
+    }
+
+    private static let iso8601Plain = ISO8601DateFormatter()
+    private static let iso8601Fractional: ISO8601DateFormatter = {
+        let fmt = ISO8601DateFormatter()
+        fmt.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return fmt
+    }()
+    private static let localFractionalDateFormatter: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.locale = Locale(identifier: "en_US_POSIX")
+        fmt.timeZone = .current
+        fmt.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+        return fmt
+    }()
+    private static let localPlainDateFormatter: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.locale = Locale(identifier: "en_US_POSIX")
+        fmt.timeZone = .current
+        fmt.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return fmt
+    }()
 }

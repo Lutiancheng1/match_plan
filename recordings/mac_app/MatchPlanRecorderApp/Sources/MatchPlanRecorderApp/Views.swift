@@ -35,23 +35,9 @@ struct ContentView: View {
         NavigationSplitView {
             List {
                 Section("控制") {
-                    Button("刷新状态") { Task { await controller.refreshAll() } }
-                    Button("启动") { Task { await controller.startSupervisor() } }
-                        .disabled(!controller.canLaunchRecorder || controller.controlsLocked)
-                    Button("确保运行") { Task { await controller.ensureRunning() } }
-                        .disabled(!controller.canLaunchRecorder || controller.controlsLocked)
-                    Button("重启") { Task { await controller.restartSupervisor() } }
-                        .disabled(!controller.canLaunchRecorder || controller.controlsLocked)
-                    Button("停止") { Task { await controller.stopSupervisor() } }
-                        .disabled(controller.controlsLocked && controller.pendingActionCommand == "stop")
-                    VStack(alignment: .leading, spacing: 6) {
-                        ForEach(Array(controller.startupProgressLines.enumerated()), id: \.offset) { _, line in
-                            Text(line)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    .padding(.top, 4)
+                    SidebarControlsCard(controller: controller)
+                        .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 6, trailing: 0))
+                        .listRowBackground(Color.clear)
                 }
             }
             .navigationTitle("MatchPlan")
@@ -82,150 +68,453 @@ struct ContentView: View {
     }
 }
 
+private struct SidebarControlsCard: View {
+    @Bindable var controller: AppController
+
+    private var isRunning: Bool {
+        controller.supervisorStatus.dispatcher_alive || controller.supervisorStatus.alive_worker_count > 0 || !controller.activeWorkers.isEmpty
+    }
+
+    private var primaryTitle: String {
+        isRunning ? "停止录制链" : "启动录制链"
+    }
+
+    private var primarySubtitle: String {
+        isRunning ? "当前链路正在运行，点这里优雅停止" : "从这里直接启动正式录制链"
+    }
+
+    private var primarySymbol: String {
+        isRunning ? "stop.circle.fill" : "play.circle.fill"
+    }
+
+    private var primaryTint: Color {
+        isRunning ? .red : .accentColor
+    }
+
+    private var primaryDisabled: Bool {
+        isRunning ? (controller.controlsLocked && controller.pendingActionCommand == "stop") : (!controller.canLaunchRecorder || controller.controlsLocked)
+    }
+
+    private var secondaryGrid: [GridItem] {
+        [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 8) {
+                Label(controller.runtimePhaseTitle, systemImage: isRunning ? "dot.radiowaves.left.and.right" : "moon.zzz.fill")
+                    .font(.caption.weight(.semibold))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(isRunning ? Color.green.opacity(0.14) : Color.secondary.opacity(0.12))
+                    .clipShape(Capsule())
+                if controller.controlsLocked {
+                    Label("执行中", systemImage: "clock.arrow.circlepath")
+                        .font(.caption.weight(.semibold))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(Color.orange.opacity(0.15))
+                        .clipShape(Capsule())
+                }
+            }
+
+            Button {
+                Task {
+                    if isRunning {
+                        await controller.stopSupervisor()
+                    } else {
+                        await controller.startSupervisor()
+                    }
+                }
+            } label: {
+                HStack(spacing: 12) {
+                    Image(systemName: primarySymbol)
+                        .font(.system(size: 28, weight: .semibold))
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(primaryTitle)
+                            .font(.headline.weight(.semibold))
+                        Text(primarySubtitle)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                }
+                .padding(14)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(primaryTint.gradient)
+                .foregroundStyle(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            }
+            .buttonStyle(.plain)
+            .disabled(primaryDisabled)
+            .opacity(primaryDisabled ? 0.6 : 1.0)
+
+            LazyVGrid(columns: secondaryGrid, spacing: 10) {
+                SidebarToolButton(
+                    title: "刷新",
+                    subtitle: "同步状态",
+                    symbol: "arrow.clockwise.circle.fill",
+                    tint: .blue
+                ) {
+                    Task { await controller.refreshAll() }
+                }
+
+                SidebarToolButton(
+                    title: "确保运行",
+                    subtitle: "自动拉起",
+                    symbol: "bolt.badge.clock.fill",
+                    tint: .green
+                ) {
+                    Task { await controller.ensureRunning() }
+                }
+                .disabled(!controller.canLaunchRecorder || controller.controlsLocked)
+
+                SidebarToolButton(
+                    title: "重启",
+                    subtitle: "重建链路",
+                    symbol: "arrow.triangle.2.circlepath.circle.fill",
+                    tint: .orange
+                ) {
+                    Task { await controller.restartSupervisor() }
+                }
+                .disabled(!controller.canLaunchRecorder || controller.controlsLocked)
+
+                SidebarToolButton(
+                    title: "状态",
+                    subtitle: controller.bridgeSessionReady ? "登录已就绪" : "等待登录",
+                    symbol: controller.bridgeSessionReady ? "checkmark.shield.fill" : "exclamationmark.shield.fill",
+                    tint: controller.bridgeSessionReady ? .mint : .gray
+                ) {}
+                .disabled(true)
+            }
+
+            if !controller.startupProgressLines.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    ForEach(Array(controller.startupProgressLines.prefix(4).enumerated()), id: \.offset) { _, line in
+                        Text(line)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(2)
+                    }
+                }
+            }
+        }
+        .padding(14)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(.thinMaterial)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(Color.white.opacity(0.12), lineWidth: 1)
+        )
+        .padding(.vertical, 4)
+    }
+}
+
+private struct SidebarToolButton: View {
+    let title: String
+    let subtitle: String
+    let symbol: String
+    let tint: Color
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: 8) {
+                Image(systemName: symbol)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(tint)
+                Text(title)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                Text(subtitle)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
+            .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
+            .padding(12)
+            .background(Color.white.opacity(0.58))
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .opacity(actionIsMeaningful ? 1.0 : 0.72)
+    }
+
+    private var actionIsMeaningful: Bool {
+        true
+    }
+}
+
 struct DashboardView: View {
     @Bindable var controller: AppController
+    private let metricColumns = [
+        GridItem(.flexible(minimum: 160), spacing: 14),
+        GridItem(.flexible(minimum: 160), spacing: 14),
+    ]
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("录制总览")
-                    .font(.largeTitle.bold())
-                VStack(spacing: 16) {
-                    HStack(spacing: 16) {
-                        statusCard("运行阶段", controller.runtimePhaseTitle)
-                        statusCard("活跃录制", "\(controller.supervisorStatus.recording_worker_count)")
-                        statusCard("活跃 Worker", "\(controller.supervisorStatus.alive_worker_count)")
-                        statusCard("最近完成", "\(controller.supervisorStatus.recent_finished_count)")
+            VStack(alignment: .leading, spacing: 18) {
+                dashboardHero
+
+                LazyVGrid(columns: metricColumns, spacing: 14) {
+                    dashboardMetricCard("运行阶段", controller.runtimePhaseTitle, symbol: "waveform.path.ecg.rectangle.fill", tint: .blue)
+                    dashboardMetricCard("活跃录制", "\(controller.supervisorStatus.recording_worker_count)", symbol: "record.circle.fill", tint: .red)
+                    dashboardMetricCard("活跃 Worker", "\(controller.supervisorStatus.alive_worker_count)", symbol: "dot.radiowaves.left.and.right", tint: .green)
+                    dashboardMetricCard("最近完成", "\(controller.supervisorStatus.recent_finished_count)", symbol: "checkmark.circle.fill", tint: .mint)
+                    TimelineView(.periodic(from: .now, by: 1)) { _ in
+                        dashboardMetricCard("总录制时长", controller.totalActiveDurationText, symbol: "clock.fill", tint: .orange)
                     }
-                    HStack(spacing: 16) {
-                        TimelineView(.periodic(from: .now, by: 1)) { _ in
-                            statusCard("总录制时长", controller.totalActiveDurationText)
-                        }
-                        TimelineView(.periodic(from: .now, by: 1)) { _ in
-                            statusCard("最长单条时长", controller.maxActiveDurationText)
-                        }
+                    TimelineView(.periodic(from: .now, by: 1)) { _ in
+                        dashboardMetricCard("最长单条时长", controller.maxActiveDurationText, symbol: "timer", tint: .purple)
                     }
                 }
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("当前运行说明")
-                        .font(.title3.bold())
-                    Text(controller.runtimePhaseDetail)
-                    VStack(alignment: .leading, spacing: 6) {
-                        ForEach(Array(controller.startupProgressLines.enumerated()), id: \.offset) { _, line in
-                            Text(line)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    if !controller.failedWorkers.isEmpty {
-                        Text("最近异常 \(controller.failedWorkers.count) 条")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(.orange)
-                    }
-                }
-                .padding(16)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(.thinMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                if !controller.stageCounts.isEmpty {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("运行阶段")
-                            .font(.title3.bold())
-                        HStack(spacing: 10) {
-                            ForEach(controller.stageCounts, id: \.0) { item in
-                                Text("\(item.0) \(item.1)")
-                                    .font(.caption.weight(.semibold))
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 6)
-                                    .background(Color.secondary.opacity(0.12))
-                                    .clipShape(Capsule())
+
+                HStack(alignment: .top, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 16) {
+                        dashboardSectionCard(title: "登录与页面状态", symbol: "lock.shield.fill", tint: .teal) {
+                            Text("UI 已经内嵌独立网页登录页。")
+                            Text(controller.bridgeStatusSummary)
+                                .foregroundStyle(controller.bridgePageState.hasLivePane && !controller.bridgePageState.loginRequired ? .green : .orange)
+                            dashboardKeyValue("当前页面", controller.bridgePageState.currentURL.isEmpty ? "未知" : controller.bridgePageState.currentURL)
+                            dashboardKeyValue("live 候选", "\(controller.bridgePageState.liveCandidateCount)")
+                            dashboardKeyValue("需要登录", controller.bridgePageState.loginRequired ? "是" : "否")
+                            Text(controller.canLaunchRecorder ? "录制启动条件：已满足" : "录制启动条件：未满足")
+                                .foregroundStyle(controller.canLaunchRecorder ? .green : .orange)
+                            if !controller.canLaunchRecorder, !controller.launchGuardMessage.isEmpty {
+                                Text(controller.launchGuardMessage)
+                                    .font(.caption)
+                                    .foregroundStyle(.orange)
                             }
                         }
-                    }
-                }
-                if !controller.failedWorkers.isEmpty {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("最近异常")
-                            .font(.title3.bold())
-                        ForEach(Array(controller.failedWorkers.prefix(5))) { item in
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(item.title)
-                                    .font(.subheadline.weight(.semibold))
-                                Text(item.failureSummary.isEmpty ? (item.stopReason.isEmpty ? item.state : item.stopReason) : item.failureSummary)
+
+                        dashboardSectionCard(title: "通知状态", symbol: "bell.badge.fill", tint: .pink) {
+                            Text(controller.supervisorStatus.notificationsEnabled ? "飞书通知已接入运行链" : "飞书通知当前未启用")
+                                .foregroundStyle(controller.supervisorStatus.notificationsEnabled ? .green : .secondary)
+                            if controller.supervisorStatus.notificationsEnabled {
+                                Text("channel=\(controller.supervisorStatus.notify_channel) | account=\(controller.supervisorStatus.notify_account) | target=\(controller.supervisorStatus.notify_target)")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                Text("新直播 \(controller.supervisorStatus.notify_on_new_live ? "开" : "关") · 开始 \(controller.supervisorStatus.notify_on_recording_started ? "开" : "关") · 完成 \(controller.supervisorStatus.notify_on_recording_completed ? "开" : "关") · 失败 \(controller.supervisorStatus.notify_on_recording_failed ? "开" : "关")")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
-                            .padding(.vertical, 4)
                         }
                     }
-                    .padding(16)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(.thinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
-                if !controller.lastError.isEmpty {
-                    Text(controller.lastError)
-                        .foregroundStyle(.red)
-                } else if !controller.lastInfo.isEmpty {
-                    Text(controller.lastInfo)
-                        .foregroundStyle(.secondary)
-                }
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("当前策略").font(.title3.bold())
-                    Text("模式：\(controller.settings.mode.title)")
-                    Text("球种：\(controller.settings.gtypes)")
-                    Text("发现间隔：\(controller.settings.discoverIntervalSeconds)s")
-                    Text("监控循环：\(controller.settings.loopIntervalSeconds)s")
-                    Text("分段时长：\(controller.settings.segmentMinutes) 分钟")
-                    Text("整场时长：\(controller.settings.maxDurationMinutes == 0 ? "不限" : "\(controller.settings.maxDurationMinutes) 分钟")")
-                }
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("通知状态").font(.title3.bold())
-                    Text(controller.supervisorStatus.notificationsEnabled ? "飞书通知已接入运行链" : "飞书通知当前未启用")
-                        .foregroundStyle(controller.supervisorStatus.notificationsEnabled ? .green : .secondary)
-                    if controller.supervisorStatus.notificationsEnabled {
-                        Text("channel=\(controller.supervisorStatus.notify_channel) | account=\(controller.supervisorStatus.notify_account) | target=\(controller.supervisorStatus.notify_target)")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                        Text("新直播 \(controller.supervisorStatus.notify_on_new_live ? "开" : "关") · 开始 \(controller.supervisorStatus.notify_on_recording_started ? "开" : "关") · 完成 \(controller.supervisorStatus.notify_on_recording_completed ? "开" : "关") · 失败 \(controller.supervisorStatus.notify_on_recording_failed ? "开" : "关")")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                    .frame(maxWidth: 360, alignment: .topLeading)
+
+                    VStack(alignment: .leading, spacing: 16) {
+                        if !controller.failedWorkers.isEmpty {
+                            dashboardSectionCard(title: "最近异常", symbol: "exclamationmark.triangle.fill", tint: .orange) {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    ForEach(Array(controller.failedWorkers.prefix(5))) { item in
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text(item.title)
+                                                .font(.subheadline.weight(.semibold))
+                                            Text(item.failureSummary.isEmpty ? (item.stopReason.isEmpty ? item.state : item.stopReason) : item.failureSummary)
+                                                .font(.caption)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                        .padding(.vertical, 2)
+                                    }
+                                }
+                            }
+                        }
+
+                        dashboardSectionCard(title: "当前策略", symbol: "slider.horizontal.3", tint: .blue) {
+                            dashboardKeyValue("模式", controller.settings.mode.title)
+                            dashboardKeyValue("球种", controller.settings.gtypes)
+                            dashboardKeyValue("发现间隔", "\(controller.settings.discoverIntervalSeconds)s")
+                            dashboardKeyValue("监控循环", "\(controller.settings.loopIntervalSeconds)s")
+                            dashboardKeyValue("分段时长", "\(controller.settings.segmentMinutes) 分钟")
+                            dashboardKeyValue("整场时长", controller.settings.maxDurationMinutes == 0 ? "不限" : "\(controller.settings.maxDurationMinutes) 分钟")
+                            dashboardKeyValue("黑屏停录", "\(controller.settings.blackScreenTimeoutSeconds) 秒")
+                        }
                     }
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
                 }
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("当前登录态来源").font(.title3.bold())
-                    Text("UI 已经内嵌独立网页登录页。")
-                    Text(controller.bridgeStatusSummary)
-                        .foregroundStyle(controller.bridgePageState.hasLivePane && !controller.bridgePageState.loginRequired ? .green : .orange)
-                    Text("当前页面：\(controller.bridgePageState.currentURL.isEmpty ? "未知" : controller.bridgePageState.currentURL)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Text("live 候选：\(controller.bridgePageState.liveCandidateCount) | loginRequired：\(controller.bridgePageState.loginRequired ? "是" : "否")")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                    Text(controller.canLaunchRecorder ? "录制启动条件：已满足" : "录制启动条件：未满足")
-                        .foregroundStyle(controller.canLaunchRecorder ? .green : .orange)
-                    if !controller.canLaunchRecorder, !controller.launchGuardMessage.isEmpty {
-                        Text(controller.launchGuardMessage)
-                            .font(.caption)
-                            .foregroundStyle(.orange)
+
+                if controller.failedWorkers.isEmpty {
+                    dashboardSectionCard(title: "当前策略", symbol: "slider.horizontal.3", tint: .blue) {
+                        dashboardKeyValue("模式", controller.settings.mode.title)
+                        dashboardKeyValue("球种", controller.settings.gtypes)
+                        dashboardKeyValue("发现间隔", "\(controller.settings.discoverIntervalSeconds)s")
+                        dashboardKeyValue("监控循环", "\(controller.settings.loopIntervalSeconds)s")
+                        dashboardKeyValue("分段时长", "\(controller.settings.segmentMinutes) 分钟")
+                        dashboardKeyValue("整场时长", controller.settings.maxDurationMinutes == 0 ? "不限" : "\(controller.settings.maxDurationMinutes) 分钟")
+                        dashboardKeyValue("黑屏停录", "\(controller.settings.blackScreenTimeoutSeconds) 秒")
                     }
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 24)
+            .padding(.horizontal, 2)
+        }
+        .background(
+            LinearGradient(
+                colors: [
+                    Color(nsColor: .windowBackgroundColor),
+                    Color.accentColor.opacity(0.05),
+                    Color(nsColor: .controlBackgroundColor)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+    }
+
+    private var dashboardHero: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("录制总览")
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                    Text(controller.runtimePhaseDetail)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                VStack(alignment: .trailing, spacing: 8) {
+                    dashboardStateBadge(
+                        title: controller.runtimePhaseTitle,
+                        tint: controller.supervisorStatus.recording_worker_count > 0 ? .green : (controller.supervisorStatus.dispatcher_alive ? .blue : .secondary)
+                    )
+                    if !controller.failedWorkers.isEmpty {
+                        dashboardStateBadge(title: "异常 \(controller.failedWorkers.count)", tint: .orange)
+                    }
+                }
+            }
+
+            if !controller.stageCounts.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(controller.stageCounts, id: \.0) { item in
+                            Text("\(item.0) \(item.1)")
+                                .font(.caption.weight(.semibold))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                                .background(Color.white.opacity(0.5))
+                                .clipShape(Capsule())
+                        }
+                    }
+                }
+            }
+
+            if !controller.lastError.isEmpty {
+                dashboardInlineNotice(text: controller.lastError, tint: .red, subdued: false)
+            } else if !controller.lastInfo.isEmpty {
+                dashboardInlineNotice(text: controller.lastInfo, tint: .secondary, subdued: true)
+            }
+
+            if !controller.startupProgressLines.isEmpty {
+                VStack(alignment: .leading, spacing: 6) {
+                    ForEach(Array(controller.startupProgressLines.prefix(5).enumerated()), id: \.offset) { _, line in
+                        Label(line, systemImage: "point.topleft.down.curvedto.point.bottomright.up.fill")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+        }
+        .padding(22)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            LinearGradient(
+                colors: [
+                    Color.accentColor.opacity(0.16),
+                    Color.white.opacity(0.6),
+                    Color(nsColor: .controlBackgroundColor).opacity(0.9)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(Color.white.opacity(0.4), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .shadow(color: .black.opacity(0.05), radius: 18, y: 8)
+    }
+
+    func dashboardMetricCard(_ title: String, _ value: String, symbol: String, tint: Color) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: symbol)
+                    .foregroundStyle(tint)
+                Text(title)
+                    .font(.headline)
+                Spacer()
+            }
+            Text(value)
+                .font(.system(size: 28, weight: .bold, design: .rounded))
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.white.opacity(0.62))
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color.white.opacity(0.35), lineWidth: 1)
+        )
+    }
+
+    func dashboardSectionCard<Content: View>(title: String, symbol: String, tint: Color, @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Label {
+                Text(title)
+                    .font(.title3.weight(.semibold))
+            } icon: {
+                Image(systemName: symbol)
+                    .foregroundStyle(tint)
+            }
+            content()
+        }
+        .padding(18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.thinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color.white.opacity(0.2), lineWidth: 1)
+        )
+    }
+
+    func dashboardKeyValue(_ title: String, _ value: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Text(value)
+                .font(.body)
         }
     }
 
-    func statusCard(_ title: String, _ value: String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title).font(.headline)
-            Text(value).font(.system(size: 28, weight: .bold))
+    func dashboardStateBadge(title: String, tint: Color) -> some View {
+        Text(title)
+            .font(.caption.weight(.semibold))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(tint.opacity(0.14))
+            .foregroundStyle(tint)
+            .clipShape(Capsule())
+    }
+
+    func dashboardInlineNotice(text: String, tint: Color, subdued: Bool) -> some View {
+        HStack(spacing: 8) {
+            Circle()
+                .fill(tint)
+                .frame(width: 8, height: 8)
+            Text(text)
+                .font(.subheadline)
         }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.thinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .foregroundStyle(subdued ? .secondary : tint)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .background(tint.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 }
 
@@ -332,6 +621,10 @@ struct CaptureSettingsView: View {
                     }
 
                     NumericFieldRow(title: "整场时长", suffix: "分钟，0=不限", value: $draft.maxDurationMinutes)
+                    NumericFieldRow(title: "黑屏停录", suffix: "秒", value: $draft.blackScreenTimeoutSeconds)
+                    FlowButtonRow(items: [("180秒", "180"), ("240秒", "240"), ("300秒", "300")]) { _, value in
+                        draft.blackScreenTimeoutSeconds = Int(value) ?? draft.blackScreenTimeoutSeconds
+                    }
                     NumericFieldRow(title: "预开赛窗口", suffix: "分钟", value: $draft.prestartMinutes)
                     NumericFieldRow(title: "最大并发", suffix: "路，0=不限", value: $draft.maxStreams)
                 }
@@ -767,16 +1060,10 @@ struct WorkerHistoryView: View {
         let items = controller.historicalWorkers
         switch sort.field {
         case .time:
-            return items.sorted { sort.ascending ? $0.startedAt < $1.startedAt : $0.startedAt > $1.startedAt }
+            return items.sorted { sort.ascending ? $0.startedAtEpoch < $1.startedAtEpoch : $0.startedAtEpoch > $1.startedAtEpoch }
         case .length:
-            return items.sorted { sort.ascending ? workerDurationSeconds($0) < workerDurationSeconds($1) : workerDurationSeconds($0) > workerDurationSeconds($1) }
+            return items.sorted { sort.ascending ? $0.sortDurationSeconds < $1.sortDurationSeconds : $0.sortDurationSeconds > $1.sortDurationSeconds }
         }
-    }
-
-    private func workerDurationSeconds(_ w: WorkerStateSummary) -> TimeInterval {
-        guard let start = parseISODateStatic(w.startedAt) else { return 0 }
-        let end = parseISODateStatic(w.updatedAt) ?? Date()
-        return end.timeIntervalSince(start)
     }
 
     var body: some View {
@@ -860,6 +1147,8 @@ struct WorkerHistoryView: View {
 struct ArtifactManagerView: View {
     @Bindable var controller: AppController
     @State private var sort = SortState()
+    @State private var showCleanupConfirmStepOne = false
+    @State private var showCleanupConfirmStepTwo = false
 
     private var sortedArtifacts: [ArtifactSessionSummary] {
         let items = controller.artifacts
@@ -945,6 +1234,50 @@ struct ArtifactManagerView: View {
                     .disabled(!controller.canStopAndDeleteSelected)
                     .buttonStyle(.bordered)
                 }
+                Divider()
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("无数据清理与归档")
+                        .font(.headline)
+                    Text("短的无数据垃圾 session 会直接删除；长视频但没有本地数据的 session 会归档到单独目录，并写 README 和 inventory。")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    HStack(spacing: 12) {
+                        Button("预览清理归档") {
+                            Task { await controller.previewCleanupNoDataSessions() }
+                        }
+                        .buttonStyle(.bordered)
+
+                        Button("执行清理归档") {
+                            showCleanupConfirmStepOne = true
+                        }
+                        .disabled(controller.noDataCleanupPreview == nil)
+                        .buttonStyle(.borderedProminent)
+                    }
+                    if let preview = controller.noDataCleanupPreview {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("本次将删除 \(preview.deleteCount) 个垃圾 session，归档 \(preview.archiveCount) 个长视频无数据 session，跳过活跃录制 \(preview.activeSkippedCount) 个。")
+                                .font(.caption)
+                            Text("归档目录：\(preview.archiveRoot)")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                                .textSelection(.enabled)
+                            if !preview.deleteCandidates.isEmpty {
+                                Text("将删除：\(preview.deleteCandidates.joined(separator: "、"))")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            if !preview.archiveCandidates.isEmpty {
+                                Text("将归档：\(preview.archiveCandidates.joined(separator: "、"))")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .padding(10)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(.thinMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                }
                 if !controller.selectedActiveArtifacts.isEmpty {
                     Text("包含正在录制条目：直接删除已禁用。使用“停止后删除所选”会先停止对应任务，再删除这些目录和状态文件。")
                         .font(.caption)
@@ -981,6 +1314,37 @@ struct ArtifactManagerView: View {
         .task {
             if controller.artifacts.isEmpty {
                 await controller.refreshArtifacts()
+            }
+        }
+        .confirmationDialog(
+            "确认第一步",
+            isPresented: $showCleanupConfirmStepOne,
+            titleVisibility: .visible
+        ) {
+            Button("继续下一步", role: .destructive) {
+                showCleanupConfirmStepTwo = true
+            }
+            Button("取消", role: .cancel) {}
+        } message: {
+            if let preview = controller.noDataCleanupPreview {
+                Text("本次将删除 \(preview.deleteCount) 个无数据垃圾 session，并归档 \(preview.archiveCount) 个长视频无数据 session。")
+            } else {
+                Text("请先预览清理归档结果。")
+            }
+        }
+        .alert(
+            "最后确认执行清理归档",
+            isPresented: $showCleanupConfirmStepTwo
+        ) {
+            Button("执行", role: .destructive) {
+                Task { await controller.executeCleanupNoDataSessions() }
+            }
+            Button("取消", role: .cancel) {}
+        } message: {
+            if let preview = controller.noDataCleanupPreview {
+                Text("将删除 \(preview.deleteCount) 个垃圾 session，并把 \(preview.archiveCount) 个长视频无数据 session 归档到：\n\(preview.archiveRoot)")
+            } else {
+                Text("请先预览清理归档结果。")
             }
         }
     }

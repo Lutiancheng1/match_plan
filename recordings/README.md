@@ -37,8 +37,10 @@
 ┌─── run_pion_gst_direct_capture (worker) ──────────────┐
 │  - SharedBettingDataReader 读取共享数据 (不独立请求)     │
 │  - match_data_to_stream() 筛选本场数据                  │
+│  - LiveTextPoller599 拉 599 文字直播做对齐辅助          │
 │  - pion_gst_direct_chain (Go) 直连 LiveKit 接流        │
 │  - 输出: 视频归档 + HLS 预览 + betting_data.jsonl       │
+│          + live_events.jsonl (599)                     │
 └───────────────────────────────────────────────────────┘
 ```
 
@@ -146,10 +148,40 @@ data_site_proxy.py (port 18780)
 - **Dispatcher** 运行唯一的 `BettingDataPoller`，每 5s 请求一次
 - 全量数据写入 `shared_betting_data.jsonl`（dispatcher runtime 目录下）
 - **Worker** 使用 `SharedBettingDataReader` 从共享文件读取
+- Worker 可选启动 `LiveTextPoller599`，实时拉 599 文字直播并做视频对齐辅助
 - Worker 结束时调用 `match_data_to_stream()` 筛选出只属于自己比赛的数据
 - 最终输出两个文件：
   - `raw_betting_data.jsonl` — 全部原始数据（备份）
   - `__betting_data.jsonl` — 筛选后的本场数据（正式使用）
+
+## 599 对齐辅助链
+
+### 当前目的
+
+这条链不是替代盘口数据，而是解决“视频和数据到底有没有对齐”的问题。
+
+当前做法：
+- 录制时同步拉取 599 文字直播
+- 用队名 / 联赛 / 开赛时间先匹配到 599 的 `thirdId`
+- 用文字事件里的 `match_time` 反推比赛 kickoff
+- 把 599 事件映射到本地视频时间轴
+- 用本地 `betting_data` 的比分变化做补充交叉校验
+
+### 当前实时产物
+
+每场比赛目录内除了原来的 `__betting_data.jsonl` 外，新增：
+- `__live_events.jsonl` — 599 文字直播事件流，实时写入
+
+每个 session 根目录里会同步更新：
+- `recording.log` — 包含 599 实时日志
+- `worker_status.json` — `liveText599` 实时状态
+- `session_result.json` — `live_text_599` 最终摘要
+
+### 当前不会做的事
+
+- 不会把 599 事件写进全局 `history.db`
+- 不会改写原来的 `__betting_data.jsonl`
+- 不会让 `__timeline.csv` 直接消费 599 事件
 
 ### 数据格式 (betting_data.jsonl)
 
@@ -183,6 +215,7 @@ data_site_proxy.py (port 18780)
     raw_betting_data.jsonl     # 全量原始数据 (备份)
     FT_TeamA_vs_TeamB_.../
       __betting_data.jsonl     # 筛选后的本场盘口数据
+      __live_events.jsonl      # 599 文字直播事件 + 对齐注释
       __full.mp4               # 最终合并视频
       __timeline.csv           # 时间线
       __sync_viewer.html       # 同步回放页

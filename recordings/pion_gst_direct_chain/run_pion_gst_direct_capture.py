@@ -4,13 +4,14 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import shutil
 import signal
 import subprocess
 import sys
 import threading
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -40,6 +41,7 @@ from pion_gst_direct_chain.shared_livekit_runtime import (
     now_iso,
     resolve_selected_matches,
 )
+from pion_gst_direct_chain.live_text_599 import AlignmentEngine, LiveTextPoller599
 
 GO_BIN = "/opt/homebrew/bin/go"
 RECORDER_BIN = SCRIPT_DIR / ".build" / "pion_livekit_gst_recorder"
@@ -51,6 +53,15 @@ DATA_FLUSH_TICK_INTERVAL = 0.5
 MAX_START_ATTEMPTS = 3
 OUTPUT_WATCHDOG_SECONDS = 45
 OUTPUT_WATCHDOG_MIN_PACKETS = 400
+BLACK_SCREEN_TIMEOUT_SECONDS = 5 * 60
+BLACK_DETECT_MIN_DURATION_SECONDS = 0.8
+BLACK_DETECT_PIC_TH = 0.98
+BLACK_DETECT_PIX_TH = 0.10
+BLACK_DETECT_READY_FILE_AGE_SECONDS = 2.0
+BLACK_DETECT_GAP_TOLERANCE_SECONDS = 0.35
+BLACK_DETECT_LOG_RE = re.compile(
+    r"black_start:(?P<start>[0-9.]+)\s+black_end:(?P<end>[0-9.]+)\s+black_duration:(?P<duration>[0-9.]+)"
+)
 
 
 def write_json_atomic(path: Path, payload: dict) -> None:
@@ -179,6 +190,161 @@ def wait_for_probeable_segment(path: Path, timeout_seconds: float = 15.0) -> flo
     return 0.0
 
 
+def detect_black_intervals(video_path: str, timeout_seconds: float = 30.0) -> list[tuple[float, float]]:
+    cmd = [
+        "ffmpeg",
+        "-hide_banner",
+        "-nostats",
+        "-i",
+        video_path,
+        "-vf",
+        (
+            "blackdetect="
+            f"d={BLACK_DETECT_MIN_DURATION_SECONDS}:"
+            f"pic_th={BLACK_DETECT_PIC_TH}:"
+            f"pix_th={BLACK_DETECT_PIX_TH}"
+        ),
+        "-an",
+        "-f",
+        "null",
+        "-",
+    ]
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=timeout_seconds,
+        )
+    except Exception:
+        return []
+
+    intervals: list[tuple[float, float]] = []
+    for line in (result.stderr or "").splitlines():
+        match = BLACK_DETECT_LOG_RE.search(line)
+        if not match:
+            continue
+        start = float(match.group("start") or 0.0)
+        end = float(match.group("end") or start)
+        if end - start >= BLACK_DETECT_MIN_DURATION_SECONDS:
+            intervals.append((start, end))
+    return intervals
+
+
+class RollingBlackDetector:
+    def __init__(self, logger: SessionLogger, timeout_seconds: float):
+        self.logger = logger
+        self.timeout_seconds = float(timeout_seconds)
+        self.processed_files: set[str] = set()
+        self.timeline_cursor = 0.0
+        self.current_black_start: float | None = None
+        self.current_black_end: float | None = None
+
+    def scan(self, candidates: list[Path]) -> dict | None:
+        now_ts = time.time()
+        pending: list[Path] = []
+        for path in sorted(candidates):
+            if path.name in self.processed_files:
+                continue
+            try:
+                stat = path.stat()
+            except FileNotFoundError:
+                continue
+            if now_ts - stat.st_mtime < BLACK_DETECT_READY_FILE_AGE_SECONDS:
+                continue
+            pending.append(path)
+
+        for path in pending:
+            result = self._consume_file(path)
+            if result:
+                return result
+        return None
+
+    def _consume_file(self, path: Path) -> dict | None:
+        duration = get_video_duration(str(path))
+        self.processed_files.add(path.name)
+        if duration <= 0.05:
+            return None
+
+        seg_start = self.timeline_cursor
+        seg_end = seg_start + duration
+        intervals = detect_black_intervals(str(path), timeout_seconds=max(15.0, duration * 2.0))
+        abs_intervals: list[tuple[float, float]] = []
+        for start, end in intervals:
+            start = max(0.0, min(duration, start))
+            end = max(start, min(duration, end))
+            if end - start >= BLACK_DETECT_MIN_DURATION_SECONDS:
+                abs_intervals.append((seg_start + start, seg_start + end))
+
+        cursor = seg_start
+        triggered_trim_start: float | None = None
+        for abs_start, abs_end in abs_intervals:
+            if abs_start > cursor + BLACK_DETECT_GAP_TOLERANCE_SECONDS:
+                self.current_black_start = None
+                self.current_black_end = None
+            if self.current_black_start is None:
+                self.current_black_start = abs_start
+                self.current_black_end = abs_end
+            elif abs_start <= (self.current_black_end or abs_start) + BLACK_DETECT_GAP_TOLERANCE_SECONDS:
+                self.current_black_end = max(self.current_black_end or abs_end, abs_end)
+            else:
+                self.current_black_start = abs_start
+                self.current_black_end = abs_end
+            if (
+                self.current_black_start is not None
+                and self.current_black_end is not None
+                and self.current_black_end - self.current_black_start >= self.timeout_seconds
+                and triggered_trim_start is None
+            ):
+                triggered_trim_start = self.current_black_start
+            cursor = max(cursor, abs_end)
+
+        if seg_end > cursor + BLACK_DETECT_GAP_TOLERANCE_SECONDS:
+            self.current_black_start = None
+            self.current_black_end = None
+
+        self.timeline_cursor = seg_end
+
+        if triggered_trim_start is not None:
+            streak_seconds = max(0.0, (self.current_black_end or seg_end) - triggered_trim_start)
+            self.logger.log(
+                "检测到持续黑屏，准备提前结束录制: "
+                f"start={triggered_trim_start:.1f}s streak={streak_seconds:.1f}s file={path.name}",
+                "WARN",
+            )
+            return {
+                "trim_start_sec": round(triggered_trim_start, 3),
+                "streak_seconds": round(streak_seconds, 3),
+                "source_file": path.name,
+            }
+        return None
+
+
+def apply_tail_trim_to_manifest(
+    manifest_path: Path,
+    manifest_payload: dict | None,
+    trim_end_sec: float | None,
+    reason: str,
+    logger: SessionLogger,
+) -> dict | None:
+    if not manifest_payload or trim_end_sec is None:
+        return manifest_payload
+    current_total = float(manifest_payload.get("total_duration_sec", 0) or 0)
+    trim_end = max(0.0, min(current_total, float(trim_end_sec)))
+    if trim_end >= current_total - 0.05:
+        return manifest_payload
+    manifest_payload["total_duration_sec"] = round(trim_end, 3)
+    manifest_payload["trimmed_tail_reason"] = reason
+    manifest_payload["trimmed_tail_start_sec"] = round(trim_end, 3)
+    manifest_payload["status"] = "completed"
+    write_json_atomic(manifest_path, manifest_payload)
+    logger.log(
+        f"manifest 尾段裁剪: total {current_total:.1f}s -> {trim_end:.1f}s ({reason})",
+        "WARN",
+    )
+    return manifest_payload
+
+
 def rebuild_manifest_from_segments(match_dir: Path, file_prefix: str, manifest: Manifest, logger: SessionLogger) -> dict:
     segments = probe_segment_files(match_dir, file_prefix)
     wall_cursor = 0.0
@@ -216,12 +382,15 @@ def main() -> int:
     parser.add_argument("--disable-hls-preview", action="store_true", default=False)
     parser.add_argument("--hls-segment-seconds", type=int, default=6)
     parser.add_argument("--hls-playlist-length", type=int, default=6)
+    parser.add_argument("--black-screen-timeout-seconds", type=int, default=int(BLACK_SCREEN_TIMEOUT_SECONDS))
     parser.add_argument("--archive-width", type=int, default=960)
     parser.add_argument("--archive-height", type=int, default=540)
     parser.add_argument("--archive-bitrate-kbps", type=int, default=5000)
     parser.add_argument("--hls-width", type=int, default=960)
     parser.add_argument("--hls-height", type=int, default=540)
     parser.add_argument("--hls-bitrate-kbps", type=int, default=3500)
+    parser.add_argument("--enable-live-text-599", action="store_true", default=True)
+    parser.add_argument("--live-text-599-poll-seconds", type=float, default=12.0)
     parser.add_argument("--require-data-binding", action="store_true", default=True)
     parser.add_argument("--allow-unbound", action="store_true", default=False)
     parser.add_argument("--session-id", default="")
@@ -237,6 +406,7 @@ def main() -> int:
     logger.log(f"浏览器: {args.browser}")
     logger.log(f"分段: {args.segment_minutes}分钟")
     logger.log(f"最大时长: {args.max_duration_minutes}分钟")
+    logger.log(f"黑屏停录阈值: {int(args.black_screen_timeout_seconds)}秒")
     logger.log(f"输出: {session_dir}")
     logger.log("=" * 60)
 
@@ -266,6 +436,9 @@ def main() -> int:
         "matchedRows": 0,
         "dataFile": "",
         "pollIntervalSec": 5.0,
+        "blackScreenTrimStartSec": 0.0,
+        "blackScreenStreakSec": 0.0,
+        "liveText599": {},
         "error": "",
     }
 
@@ -408,6 +581,36 @@ def main() -> int:
         logger.log("数据采集线程启动 (独立轮询模式)")
     update_state(pollIntervalSec=poller.poll_interval)
 
+    # --- 599 文字直播对齐 ---
+    alignment_engine = AlignmentEngine()
+    live_text_path = output_dir / f"{file_prefix}__live_events.jsonl"
+    live_text_rows_written = 0
+    live_text_poller = None
+    live_text_thread = None
+    _live_text_enabled = (
+        args.enable_live_text_599
+        and str(selected_match.get("gtype") or "FT") == "FT"
+        and str(selected_match.get("team_h", "")).strip()
+        and str(selected_match.get("team_c", "")).strip()
+    )
+    if _live_text_enabled:
+        live_text_path.touch(exist_ok=True)
+        live_text_poller = LiveTextPoller599(
+            str(selected_match.get("team_h", "")),
+            str(selected_match.get("team_c", "")),
+            selected_match=selected_match,
+            league=str(selected_match.get("league", "")),
+            alignment=alignment_engine,
+            poll_interval=float(args.live_text_599_poll_seconds),
+            logger=logger,
+        )
+        live_text_thread = threading.Thread(target=live_text_poller.start, daemon=True)
+        live_text_thread.start()
+        logger.log(f"599 文字直播线程启动: poll={args.live_text_599_poll_seconds}s")
+        update_state(liveText599=live_text_poller.snapshot())
+    elif args.enable_live_text_599:
+        logger.log("599 文字直播未启用: 需要 FT 且 team_h/team_c 完整", "WARN")
+
     raw_data_path = session_dir / "raw_betting_data.jsonl"
     stream_data_path = output_dir / f"{file_prefix}__betting_data.jsonl"
     raw_data_path.touch(exist_ok=True)
@@ -448,11 +651,32 @@ def main() -> int:
             selected_match=selected_match,
         )
         written = _append_jsonl(str(stream_data_path), matched)
+        if live_text_poller and matched:
+            try:
+                alignment_engine.observe_betting_score(matched)
+            except Exception:
+                pass
         stream_rows_flushed += len(rows)
         stream_rows_written += written
         update_state(dataFile=str(stream_data_path), matchedRows=stream_rows_written)
         if written:
             logger.log(f"实时比赛数据追加({reason}): +{written}条")
+        return written
+
+    def flush_live_text_599(reason="periodic"):
+        nonlocal live_text_rows_written
+        if not live_text_poller:
+            return 0
+        rows = live_text_poller.drain_pending()
+        if not rows:
+            update_state(liveText599=live_text_poller.snapshot())
+            return 0
+        annotated = [alignment_engine.annotate_event(e) for e in sorted(rows, key=lambda x: int(x.get("time", 0) or 0))]
+        written = _append_jsonl(str(live_text_path), annotated)
+        live_text_rows_written += written
+        update_state(liveText599=live_text_poller.snapshot())
+        if written:
+            logger.log(f"599 文字直播落盘({reason}): +{written}条, total={live_text_rows_written}")
         return written
 
     def data_flush_loop():
@@ -477,6 +701,8 @@ def main() -> int:
                     append_stream_data(reason=f"periodic_stream_{stream_round:03d}")
                     while next_stream <= now_mono:
                         next_stream += stream_flush_interval
+                if live_text_poller:
+                    flush_live_text_599(reason="periodic")
             except Exception as exc:
                 logger.log(f"Pion/GStreamer 实时数据落盘失败: {exc}", "WARN")
 
@@ -501,12 +727,17 @@ def main() -> int:
     process = None
     stop_requested = False
     final_status = {}
+    requested_stop_reason = ""
+    black_trim_start_sec: float | None = None
+    black_streak_seconds = 0.0
+    black_detector = RollingBlackDetector(logger, timeout_seconds=max(30.0, float(args.black_screen_timeout_seconds)))
 
-    def handle_signal(signum, _frame):
-        nonlocal stop_requested, process
-        stop_requested = True
-        logger.log(f"收到信号 {signum}，准备停止 Pion/GStreamer 原型", "WARN")
-        update_state(state="stopping", stopReason=f"signal_{signum}")
+    def request_process_stop(reason: str, *, mark_manual: bool = False):
+        nonlocal stop_requested, process, requested_stop_reason
+        if mark_manual:
+            stop_requested = True
+        requested_stop_reason = reason
+        update_state(state="stopping", stopReason=reason)
         if process is None:
             return
         try:
@@ -514,12 +745,17 @@ def main() -> int:
         except Exception:
             pass
 
+    def handle_signal(signum, _frame):
+        logger.log(f"收到信号 {signum}，准备停止 Pion/GStreamer 原型", "WARN")
+        request_process_stop(f"signal_{signum}", mark_manual=True)
+
     signal.signal(signal.SIGINT, handle_signal)
     signal.signal(signal.SIGTERM, handle_signal)
 
     for attempt in range(1, MAX_START_ATTEMPTS + 1):
         forced_retry_reason = ""
         no_output_since = None
+        black_detector = RollingBlackDetector(logger, timeout_seconds=max(30.0, float(args.black_screen_timeout_seconds)))
         if attempt > 1:
             logger.log(f"Pion/GStreamer 启动重试前刷新 bootstrap: attempt={attempt}", "WARN")
             bootstrap = extract_best_livekit_bootstrap_for_watch_url(args.browser, watch_url, ready_tab=None, logger=logger)
@@ -602,10 +838,12 @@ def main() -> int:
                         logger.log(
                             f"状态更新: {state} | video={payload.get('videoCodec', '')} | audio={payload.get('audioCodec', '')} | segments={payload.get('segmentCount', 0)}"
                         )
+                        if state == "recording" and last_status_state != "recording":
+                            alignment_engine.set_video_start_utc(datetime.now(timezone.utc))
                         last_status_state = state
                     update_state(
                         state="recording" if state == "recording" else state,
-                        stopReason=str(payload.get("stopReason", "")),
+                        stopReason=requested_stop_reason or str(payload.get("stopReason", "")),
                         error=str(payload.get("lastError", "")),
                         activeSegments=int(payload.get("segmentCount", 0) or 0),
                         videoCodec=str(payload.get("videoCodec", "")),
@@ -631,6 +869,25 @@ def main() -> int:
                                 pass
                     else:
                         no_output_since = None
+                    if state == "recording" and requested_stop_reason != "black_screen_timeout":
+                        if not args.disable_hls_preview and hls_dir.exists():
+                            candidates = sorted(hls_dir.glob("segment_*.ts"))
+                        else:
+                            candidates = probe_segment_files(output_dir, file_prefix)
+                        black_hit = black_detector.scan(candidates)
+                        if black_hit:
+                            black_trim_start_sec = float(black_hit.get("trim_start_sec", 0.0) or 0.0)
+                            black_streak_seconds = float(black_hit.get("streak_seconds", 0.0) or 0.0)
+                            logger.log(
+                                "持续黑屏达到阈值，准备结束录制并裁掉黑屏尾段: "
+                                f"trim_start={black_trim_start_sec:.1f}s streak={black_streak_seconds:.1f}s",
+                                "WARN",
+                            )
+                            update_state(
+                                blackScreenTrimStartSec=black_trim_start_sec,
+                                blackScreenStreakSec=black_streak_seconds,
+                            )
+                            request_process_stop("black_screen_timeout", mark_manual=False)
                 except Exception:
                     pass
             time.sleep(2)
@@ -650,7 +907,11 @@ def main() -> int:
 
     stop_event.set()
     poller.stop()
+    if live_text_poller:
+        live_text_poller.stop()
     poller_thread.join(timeout=2)
+    if live_text_thread:
+        live_text_thread.join(timeout=2)
     flush_thread.join(timeout=2)
 
     final_rows = list(poller.data)
@@ -664,7 +925,41 @@ def main() -> int:
     _write_jsonl_atomic(str(stream_data_path), matched)
     stream_rows_written = len(matched)
 
+    # 599 文字直播最终写入
+    if live_text_poller:
+        alignment_engine.observe_betting_score(matched)
+        remaining = live_text_poller.drain_pending()
+        all_events = list(live_text_poller.data) + remaining
+        final_annotated = [alignment_engine.annotate_event(e) for e in sorted(all_events, key=lambda x: int(x.get("time", 0) or 0))]
+        # 去重（by msgId）
+        seen = set()
+        deduped = []
+        for e in final_annotated:
+            mid = str(e.get("msgId", ""))
+            if mid and mid in seen:
+                continue
+            if mid:
+                seen.add(mid)
+            deduped.append(e)
+        _write_jsonl_atomic(str(live_text_path), deduped)
+        live_text_rows_written = len(deduped)
+        snap = live_text_poller.snapshot()
+        asnap = alignment_engine.snapshot()
+        logger.log(
+            f"599 文字直播最终写入: {live_text_rows_written}条 | "
+            f"thirdId={snap.get('thirdId','')} | "
+            f"kickoff_offset={asnap.get('kickoffVideoOffsetSec','')}s"
+        )
+        update_state(liveText599={**snap, **asnap, "rows": live_text_rows_written, "file": str(live_text_path)})
+
     manifest_payload = rebuild_manifest_from_segments(output_dir, file_prefix, manifest, logger)
+    manifest_payload = apply_tail_trim_to_manifest(
+        output_dir / "manifest.json",
+        manifest_payload,
+        black_trim_start_sec,
+        "black_screen_timeout",
+        logger,
+    )
     full_path = output_dir / f"{file_prefix}__full.mp4"
     merged_video = merge_segments(str(output_dir), manifest_payload, str(full_path)) if manifest_payload else None
     if merged_video:
@@ -691,6 +986,16 @@ def main() -> int:
         "matched_rows": len(matched),
         "status": final_status,
         "stop_requested": stop_requested,
+        "requested_stop_reason": requested_stop_reason,
+        "black_screen_trim_start_sec": black_trim_start_sec,
+        "black_screen_streak_seconds": black_streak_seconds,
+        "live_text_599": {
+            "enabled": bool(live_text_poller),
+            "file": str(live_text_path) if live_text_poller else "",
+            "rows": live_text_rows_written,
+            "thirdId": live_text_poller.snapshot().get("thirdId", "") if live_text_poller else "",
+            "alignment": alignment_engine.snapshot() if live_text_poller else {},
+        },
         "process_returncode": process.returncode,
     }
     (session_dir / "session_result.json").write_text(
@@ -719,12 +1024,15 @@ def main() -> int:
         logger.log(f"timeline 自动生成失败: {e}", "WARN")
 
     final_state = "completed"
-    stop_reason_final = str(final_status.get("stopReason", ""))
+    stop_reason_final = requested_stop_reason or str(final_status.get("stopReason", ""))
     last_error_final = str(final_status.get("lastError", ""))
     if stop_requested or stop_reason_final == "manual_stop" or stop_reason_final.startswith("signal_"):
         final_state = "stopped"
         if stop_reason_final.startswith("signal_"):
             stop_reason_final = "manual_stop"
+        last_error_final = ""
+    elif stop_reason_final == "black_screen_timeout":
+        final_state = "completed"
         last_error_final = ""
     elif stop_reason_final == "no_video_track":
         final_state = "skipped"
@@ -739,12 +1047,14 @@ def main() -> int:
         matchedRows=stream_rows_written,
         dataFile=str(stream_data_path),
         error=last_error_final,
+        blackScreenTrimStartSec=black_trim_start_sec or 0.0,
+        blackScreenStreakSec=black_streak_seconds,
         activeSegments=int((manifest_payload or {}).get("segments", []) and len((manifest_payload or {}).get("segments", [])) or 0),
         hlsPlaylist=str(final_status.get("hlsPlaylistPath", "")) or (str(hls_playlist) if hls_playlist.exists() else ""),
         hlsSegmentCount=int(final_status.get("hlsSegmentCount", 0) or 0),
     )
     logger.close()
-    if merged_video or stop_requested:
+    if merged_video or stop_requested or stop_reason_final == "black_screen_timeout":
         return 0
     return 0 if process.returncode == 0 else 1
 

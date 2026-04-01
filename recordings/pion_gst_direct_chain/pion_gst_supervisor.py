@@ -52,6 +52,9 @@ ACTIVE_WORKER_STATES = {
     "retrying",
     "stopping",
 }
+NO_DATA_ARCHIVE_PREFIX = "_video_without_local_data_"
+NO_DATA_ARCHIVE_SUBDIR = "archived_video_without_local_data"
+NO_DATA_TRASH_MAX_DURATION_SEC = 30 * 60
 
 DISPATCHER_PATH = SCRIPT_DIR / "pion_gst_dispatcher.py"
 DEFAULT_PATH_PREFIX = [
@@ -105,6 +108,7 @@ def default_state(args: argparse.Namespace) -> dict:
         "loop_interval_seconds": int(args.loop_interval_seconds),
         "segment_minutes": int(args.segment_minutes),
         "max_duration_minutes": int(args.max_duration_minutes),
+        "black_screen_timeout_seconds": int(getattr(args, "black_screen_timeout_seconds", 300)),
         "archive_width": int(getattr(args, "archive_width", 960)),
         "archive_height": int(getattr(args, "archive_height", 540)),
         "archive_bitrate_kbps": int(getattr(args, "archive_bitrate_kbps", 5000)),
@@ -172,6 +176,11 @@ def normalize_state(args: argparse.Namespace) -> dict:
                 if args.max_duration_minutes is not None
                 else payload["max_duration_minutes"]
             ),
+            "black_screen_timeout_seconds": int(
+                args.black_screen_timeout_seconds
+                if getattr(args, "black_screen_timeout_seconds", None) is not None
+                else payload.get("black_screen_timeout_seconds", 300)
+            ),
             "archive_width": int(
                 args.archive_width if getattr(args, "archive_width", None) is not None else payload.get("archive_width", 960)
             ),
@@ -224,6 +233,8 @@ def build_dispatcher_command(state: dict) -> list[str]:
         str(int(state["segment_minutes"])),
         "--max-duration-minutes",
         str(int(state["max_duration_minutes"])),
+        "--black-screen-timeout-seconds",
+        str(int(state.get("black_screen_timeout_seconds", 300))),
         "--archive-width",
         str(int(state.get("archive_width", 960))),
         "--archive-height",
@@ -408,6 +419,263 @@ def formal_runtime_files() -> list[dict]:
     for name in FORMAL_RUNTIME_NAMES:
         results.append(remove_path(WATCH_RUNTIME_DIR / name))
     return results
+
+
+def safe_int(value: object, default: int = 0) -> int:
+    try:
+        return int(value or default)
+    except Exception:
+        return default
+
+
+def safe_float(value: object, default: float = 0.0) -> float:
+    try:
+        return float(value or default)
+    except Exception:
+        return default
+
+
+def first_existing(paths: list[Path]) -> Path | None:
+    for path in paths:
+        if path.exists():
+            return path
+    return None
+
+
+def session_result_payload(session_dir: Path) -> dict:
+    return load_json(session_dir / "session_result.json") or {}
+
+
+def session_manifest_payload(session_dir: Path) -> dict:
+    manifest_path = first_existing(sorted(session_dir.glob("**/manifest.json")))
+    if manifest_path is None:
+        return {}
+    return load_json(manifest_path) or {}
+
+
+def session_local_data_rows(session_dir: Path, session_result: dict) -> int:
+    betting = session_result.get("betting_data") if isinstance(session_result.get("betting_data"), dict) else {}
+    live_text = session_result.get("live_text_599") if isinstance(session_result.get("live_text_599"), dict) else {}
+    rows = max(
+        safe_int(betting.get("rows")),
+        safe_int(betting.get("matched_rows")),
+        safe_int(live_text.get("rows")),
+    )
+    if rows > 0:
+        return rows
+    for path in sorted(session_dir.glob("**/*__betting_data.jsonl")) + sorted(session_dir.glob("**/*__live_events.jsonl")):
+        try:
+            if path.stat().st_size > 0:
+                return 1
+        except Exception:
+            continue
+    return 0
+
+
+def session_duration_seconds(session_result: dict, manifest: dict) -> float:
+    merged = session_result.get("merged_file") if isinstance(session_result.get("merged_file"), dict) else {}
+    direct = safe_float(merged.get("duration_sec"))
+    if direct > 0:
+        return direct
+    direct = safe_float(session_result.get("total_duration_sec"))
+    if direct > 0:
+        return direct
+    direct = safe_float(manifest.get("total_duration_sec"))
+    if direct > 0:
+        return direct
+    total = 0.0
+    segments = manifest.get("segments") if isinstance(manifest.get("segments"), list) else []
+    for item in segments:
+        if isinstance(item, dict):
+            total += safe_float(item.get("duration_sec"))
+    return total
+
+
+def session_video_artifact_counts(session_dir: Path) -> dict:
+    full_videos = sorted(session_dir.glob("**/*__full.mp4"))
+    segment_files = sorted(session_dir.glob("**/*__seg_*.ivf")) + sorted(session_dir.glob("**/*__seg_*.mkv"))
+    hls_playlists = sorted(session_dir.glob("**/hls/playlist.m3u8"))
+    return {
+        "full_video_count": len(full_videos),
+        "segment_count": len(segment_files),
+        "has_hls": bool(hls_playlists),
+        "has_video": bool(full_videos or segment_files or hls_playlists),
+    }
+
+
+def collect_no_data_session_candidates() -> dict:
+    root = recordings_root()
+    active_map = collect_active_session_map()
+    payload = {
+        "recordings_root": str(root),
+        "active_skipped": [],
+        "delete_candidates": [],
+        "archive_candidates": [],
+        "kept_candidates": [],
+    }
+    if not root.exists():
+        return payload
+    prefixes = tuple(TEST_SESSION_PREFIXES + FORMAL_SESSION_PREFIXES)
+    for date_dir in sorted(root.iterdir()):
+        if not date_dir.is_dir():
+            continue
+        for session_dir in sorted(date_dir.iterdir()):
+            if not session_dir.is_dir() or not session_dir.name.startswith(prefixes):
+                continue
+            resolved = str(session_dir.resolve())
+            if resolved in active_map:
+                payload["active_skipped"].append(
+                    {
+                        "session_dir": resolved,
+                        "date": date_dir.name,
+                        "reason": "active",
+                        "worker_state": str(active_map[resolved].get("worker_state", "")),
+                    }
+                )
+                continue
+            session_result = session_result_payload(session_dir)
+            manifest = session_manifest_payload(session_dir)
+            video = session_video_artifact_counts(session_dir)
+            local_rows = session_local_data_rows(session_dir, session_result)
+            duration_sec = session_duration_seconds(session_result, manifest)
+            item = {
+                "session_dir": resolved,
+                "session_name": session_dir.name,
+                "date": date_dir.name,
+                "duration_sec": round(duration_sec, 3),
+                "local_data_rows": local_rows,
+                "full_video_count": video["full_video_count"],
+                "segment_count": video["segment_count"],
+                "has_hls": video["has_hls"],
+                "has_video": video["has_video"],
+            }
+            if local_rows > 0:
+                payload["kept_candidates"].append({**item, "reason": "has_local_data"})
+                continue
+            if not video["has_video"]:
+                payload["delete_candidates"].append({**item, "reason": "no_video_no_data"})
+                continue
+            if duration_sec > 0 and duration_sec < NO_DATA_TRASH_MAX_DURATION_SEC:
+                payload["delete_candidates"].append({**item, "reason": "short_video_no_data"})
+                continue
+            payload["archive_candidates"].append(
+                {
+                    **item,
+                    "reason": "long_video_no_data" if duration_sec >= NO_DATA_TRASH_MAX_DURATION_SEC else "video_no_data_unknown_duration",
+                }
+            )
+    return payload
+
+
+def build_no_data_archive_root(explicit_root: str | None = None) -> Path:
+    if explicit_root:
+        return Path(explicit_root).resolve()
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return (recordings_root() / f"{NO_DATA_ARCHIVE_PREFIX}{stamp}").resolve()
+
+
+def write_no_data_archive_report(base_dir: Path, deleted: list[dict], archived: list[dict], skipped: list[dict]) -> None:
+    report = {
+        "created_at": now_iso(),
+        "base_dir": str(base_dir),
+        "archived_dir": str(base_dir / NO_DATA_ARCHIVE_SUBDIR),
+        "deleted_count": len(deleted),
+        "archived_count": len(archived),
+        "skipped_count": len(skipped),
+        "deleted": deleted,
+        "archived": archived,
+        "skipped": skipped,
+    }
+    base_dir.mkdir(parents=True, exist_ok=True)
+    (base_dir / "inventory.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    lines = [
+        f"created_at: {report['created_at']}",
+        f"base_dir: {report['base_dir']}",
+        f"archived_dir: {report['archived_dir']}",
+        f"deleted_count: {report['deleted_count']}",
+        f"archived_count: {report['archived_count']}",
+        f"skipped_count: {report['skipped_count']}",
+        "",
+        "[deleted]",
+    ]
+    lines.extend(f"- {item['session_name']} | {item['reason']}" for item in deleted)
+    if not deleted:
+        lines.append("- none")
+    lines.extend(["", "[archived]"])
+    lines.extend(f"- {item['session_name']} -> {item['target_dir']}" for item in archived)
+    if not archived:
+        lines.append("- none")
+    lines.extend(["", "[skipped]"])
+    lines.extend(f"- {item['session_name']} | {item.get('reason', '')}" for item in skipped)
+    if not skipped:
+        lines.append("- none")
+    (base_dir / "README.txt").write_text("\n".join(lines), encoding="utf-8")
+
+
+def command_preview_cleanup_no_data_sessions(args: argparse.Namespace) -> int:
+    scan = collect_no_data_session_candidates()
+    archive_root = build_no_data_archive_root(args.archive_root)
+    payload = {
+        "action": "preview-cleanup-no-data-sessions",
+        "recordings_root": scan["recordings_root"],
+        "archive_root": str(archive_root),
+        "archived_dir": str(archive_root / NO_DATA_ARCHIVE_SUBDIR),
+        "delete_count": len(scan["delete_candidates"]),
+        "archive_count": len(scan["archive_candidates"]),
+        "active_skipped_count": len(scan["active_skipped"]),
+        "delete_candidates": scan["delete_candidates"][:200],
+        "archive_candidates": scan["archive_candidates"][:200],
+        "active_skipped": scan["active_skipped"][:100],
+    }
+    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    return 0
+
+
+def command_cleanup_no_data_sessions(args: argparse.Namespace) -> int:
+    scan = collect_no_data_session_candidates()
+    archive_root = build_no_data_archive_root(args.archive_root)
+    archived_dir = archive_root / NO_DATA_ARCHIVE_SUBDIR
+    archived_dir.mkdir(parents=True, exist_ok=True)
+    deleted: list[dict] = []
+    archived: list[dict] = []
+    errors: list[dict] = []
+    for item in scan["delete_candidates"]:
+        result = remove_path(Path(item["session_dir"]))
+        if result.get("removed"):
+            deleted.append(item)
+        elif result.get("error"):
+            errors.append({**item, "error": result["error"]})
+    for item in scan["archive_candidates"]:
+        src = Path(item["session_dir"])
+        target = archived_dir / src.name
+        if not src.exists():
+            errors.append({**item, "error": "missing_before_archive"})
+            continue
+        if target.exists():
+            errors.append({**item, "error": f"archive_target_exists:{target}"})
+            continue
+        try:
+            shutil.move(str(src), str(target))
+            archived.append({**item, "target_dir": str(target)})
+        except Exception as exc:
+            errors.append({**item, "error": str(exc)})
+    write_no_data_archive_report(archive_root, deleted, archived, scan["active_skipped"])
+    payload = {
+        "action": "cleanup-no-data-sessions",
+        "archive_root": str(archive_root),
+        "archived_dir": str(archived_dir),
+        "deleted_count": len(deleted),
+        "archive_count": len(archived),
+        "active_skipped_count": len(scan["active_skipped"]),
+        "deleted": deleted[:300],
+        "archived": archived[:300],
+        "active_skipped": scan["active_skipped"][:100],
+        "errors": errors[:100],
+        "report": str(archive_root / "README.txt"),
+        "inventory": str(archive_root / "inventory.json"),
+    }
+    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    return 0
 
 
 def cleanup_test_jobs() -> list[dict]:
@@ -720,6 +988,7 @@ def command_status(args: argparse.Namespace) -> int:
         "loop_interval_seconds": state.get("loop_interval_seconds", 0),
         "segment_minutes": state.get("segment_minutes", 0),
         "max_duration_minutes": state.get("max_duration_minutes", 0),
+        "black_screen_timeout_seconds": state.get("black_screen_timeout_seconds", 300),
         "archive_width": state.get("archive_width", 960),
         "archive_height": state.get("archive_height", 540),
         "archive_bitrate_kbps": state.get("archive_bitrate_kbps", 5000),
@@ -870,7 +1139,7 @@ def command_delete_artifacts(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Pion + GStreamer dispatcher supervisor")
-    parser.add_argument("command", choices=["start", "stop", "status", "restart", "ensure-running", "cleanup-test-artifacts", "preview-test-artifacts", "list-artifacts", "delete-artifacts"])
+    parser.add_argument("command", choices=["start", "stop", "status", "restart", "ensure-running", "cleanup-test-artifacts", "preview-test-artifacts", "list-artifacts", "delete-artifacts", "preview-cleanup-no-data-sessions", "cleanup-no-data-sessions"])
     parser.add_argument("--job-id", default=DEFAULT_JOB_ID)
     parser.add_argument("--browser", default="safari")
     parser.add_argument("--gtypes", default="FT")
@@ -879,6 +1148,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--loop-interval-seconds", type=int, default=1)
     parser.add_argument("--segment-minutes", type=int, default=5)
     parser.add_argument("--max-duration-minutes", type=int, default=0)
+    parser.add_argument("--black-screen-timeout-seconds", type=int, default=300)
     parser.add_argument("--archive-width", type=int, default=960)
     parser.add_argument("--archive-height", type=int, default=540)
     parser.add_argument("--archive-bitrate-kbps", type=int, default=5000)
@@ -898,6 +1168,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--notify-on-recording-failed", action="store_true")
     parser.add_argument("--session", action="append", default=[])
     parser.add_argument("--stop-active", action="store_true")
+    parser.add_argument("--archive-root", default="")
     return parser
 
 
@@ -921,6 +1192,10 @@ def main() -> int:
         return command_list_artifacts(args)
     if args.command == "delete-artifacts":
         return command_delete_artifacts(args)
+    if args.command == "preview-cleanup-no-data-sessions":
+        return command_preview_cleanup_no_data_sessions(args)
+    if args.command == "cleanup-no-data-sessions":
+        return command_cleanup_no_data_sessions(args)
     return command_status(args)
 
 

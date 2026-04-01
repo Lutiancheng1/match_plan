@@ -151,17 +151,44 @@ ALIAS_AUTO_PROMOTE_HITS = 2
 _TEAM_ALIAS_CACHE = None
 _LEAGUE_ALIAS_CACHE = None
 _TRANSLATION_PROVIDER_CACHE = None
+_NLLB_RUNNER_CACHE = None
+_NLLB_RUNNER_FAILED = False
+NLLB_MODEL_DIR = os.environ.get(
+    "MATCH_PLAN_NLLB_MODEL_DIR",
+    str(Path.home() / ".cache" / "huggingface" / "nllb-200-distilled-1.3B"),
+)
+NLLB_ENABLED = str(os.environ.get("MATCH_PLAN_ENABLE_NLLB_FALLBACK", "1")).strip().lower() not in {
+    "0",
+    "false",
+    "no",
+    "off",
+}
 KNOWN_LEAGUE_ALIAS_PAIRS = [
     ("FIFA Series", "国际友谊赛"),
     ("Friendlies", "国际友谊赛"),
     ("International Friendly", "国际友谊赛"),
     ("International Friendlies", "国际友谊赛"),
     ("UEFA Champions League Women", "欧洲女子冠军联赛"),
+    ("UEFA Champions League Women", "欧女冠"),
+    ("欧洲女子冠军联赛", "UEFA WCL"),
+    ("Women's Championship", "英女冠"),
     ("Primera A", "哥伦比亚甲组联赛"),
     ("Primera Division Apertura", "乌拉圭甲组联赛"),
     ("Primera Division - Apertura", "乌拉圭甲组联赛"),
     ("League One", "英格兰甲组联赛"),
+    ("League One", "英甲"),
+    ("J1 League", "日职联"),
+    ("Toppserien", "挪威女超"),
+    ("Liga Revelação U23", "葡萄牙U23联赛"),
+    ("World Cup - Qualification Intercontinental Play-offs", "世预赛洲际附加赛"),
 ]
+AI_ALIAS_PLACEHOLDERS = {"", "unknown", "n/a", "null", "none", "...", "-", "_"}
+GENERIC_CLUB_ALIASES_ZH = {"国际", "竞技"}
+CLUB_NAME_HINTS = (
+    "fc", "cf", "sc", "ac", "club", "city", "united", "town", "sporting",
+    "athletic", "atletico", "olympique", "internacional", "deportivo",
+)
+COUNTRY_TEAM_HINTS_ZH = ("国家队", "男足")
 
 
 # ═══════════════════════════════════════════════════════
@@ -1434,6 +1461,161 @@ def normalize_league_text(text):
     return normalize_match_text(text)
 
 
+def contains_cjk(text):
+    return any("\u4e00" <= ch <= "\u9fff" for ch in str(text or ""))
+
+
+def contains_latin(text):
+    return any(("a" <= ch.lower() <= "z") for ch in str(text or ""))
+
+
+def extract_age_markers(text):
+    return {
+        marker.upper()
+        for marker in re.findall(r"(?<![A-Za-z0-9])U(?:17|19|20|21|23)(?![A-Za-z0-9])", str(text or ""), flags=re.I)
+    }
+
+
+def has_women_marker(text):
+    raw = str(text or "").strip()
+    lowered = raw.lower()
+    normalized = normalize_match_text(raw)
+    return (
+        bool(re.search(r"\bW\b", raw))
+        or "women" in lowered
+        or "women's" in lowered
+        or "女子" in raw
+        or "女足" in raw
+        or normalized.endswith("w")
+    )
+
+
+def has_known_team_aliases(text):
+    normalized = normalize_match_text(text)
+    if not normalized:
+        return False
+    return bool(load_team_aliases().get(normalized, set()))
+
+
+def has_known_league_aliases(text):
+    normalized = normalize_league_text(text)
+    if not normalized:
+        return False
+    return bool(get_league_aliases(text) - {normalized})
+
+
+def looks_like_club_name(text):
+    raw = str(text or "").strip()
+    lowered = raw.lower()
+    tokens = [token for token in re.split(r"[^a-z]+", lowered) if token]
+    if any(token in CLUB_NAME_HINTS for token in tokens):
+        return True
+    normalized = normalize_match_text(raw)
+    if not normalized:
+        return False
+    if any(hint in normalized for hint in ("athletic", "atletico", "sporting", "olimpia", "olympique")):
+        return True
+    return bool(load_team_aliases().get(normalized, set()))
+
+
+def looks_like_country_team_alias(text):
+    raw = str(text or "").strip()
+    normalized = normalize_match_text(raw)
+    if not normalized:
+        return False
+    if any(hint in raw for hint in COUNTRY_TEAM_HINTS_ZH):
+        return True
+    if "女足" in raw:
+        country_roots = (
+            "中国", "日本", "韩国", "朝鲜", "泰国", "越南", "孟加拉", "伊拉克", "玻利维亚",
+            "巴西", "德国", "法国", "英格兰", "西班牙", "意大利", "墨西哥", "加拿大", "美国",
+            "阿根廷", "哥伦比亚", "乌拉圭", "巴拉圭", "葡萄牙", "荷兰", "比利时", "挪威",
+        )
+        if any(raw.startswith(root) for root in country_roots):
+            return True
+    return False
+
+
+def validate_ai_alias_candidate(term, alias, *, alias_type):
+    term_raw = str(term or "").strip()
+    alias_raw = str(alias or "").strip()
+    if not alias_raw:
+        return "empty"
+    if alias_raw.lower() in AI_ALIAS_PLACEHOLDERS:
+        return "placeholder"
+
+    normalizer = normalize_league_text if alias_type == "league" else normalize_match_text
+    term_norm = normalizer(term_raw)
+    alias_norm = normalizer(alias_raw)
+    if not term_norm or not alias_norm:
+        return "blank-normalized"
+    if term_norm == alias_norm:
+        return "same-normalized-text"
+
+    term_has_cjk = contains_cjk(term_raw)
+    term_has_latin = contains_latin(term_raw)
+    alias_has_cjk = contains_cjk(alias_raw)
+    alias_has_latin = contains_latin(alias_raw)
+    if term_has_latin and not term_has_cjk and alias_has_latin and not alias_has_cjk:
+        return "latin-input-kept-latin-output"
+    if term_has_cjk and not term_has_latin and alias_has_cjk and not alias_has_latin:
+        return "cjk-input-kept-cjk-output"
+    if (
+        alias_type == "team"
+        and term_has_latin
+        and not term_has_cjk
+        and alias_has_cjk
+        and not alias_has_latin
+        and len(alias_raw) <= 1
+    ):
+        return "too-short-cjk-team-alias"
+
+    term_ages = extract_age_markers(term_raw)
+    alias_ages = extract_age_markers(alias_raw)
+    if term_ages != alias_ages:
+        return f"age-marker-mismatch term={sorted(term_ages)} alias={sorted(alias_ages)}"
+
+    if has_women_marker(term_raw) != has_women_marker(alias_raw):
+        return "women-marker-mismatch"
+
+    if alias_type == "team" and looks_like_club_name(term_raw) and looks_like_country_team_alias(alias_raw):
+        return "club-misread-as-national-team"
+    if alias_type == "team" and looks_like_club_name(term_raw) and alias_raw in GENERIC_CLUB_ALIASES_ZH:
+        return "generic-club-alias"
+
+    return ""
+
+
+def filter_ai_alias_items(items, *, alias_type, logger):
+    filtered_items = []
+    normalizer = normalize_league_text if alias_type == "league" else normalize_match_text
+    for item in items or []:
+        term = str((item or {}).get("term", "")).strip()
+        if not term:
+            continue
+        cleaned_aliases = []
+        seen = set()
+        for alias in (item.get("aliases") or []):
+            alias_raw = str(alias or "").strip()
+            reason = validate_ai_alias_candidate(term, alias_raw, alias_type=alias_type)
+            if reason:
+                logger.log(
+                    f"AI别名过滤({alias_type}): {term} -> {alias_raw or '<empty>'} ({reason})",
+                    "WARN",
+                )
+                continue
+            alias_norm = normalizer(alias_raw)
+            if alias_norm in seen:
+                continue
+            seen.add(alias_norm)
+            cleaned_aliases.append(alias_raw)
+            if len(cleaned_aliases) >= 2:
+                break
+        if cleaned_aliases:
+            filtered_items.append({"term": term, "aliases": cleaned_aliases})
+    return filtered_items
+
+
 def split_match_teams(text):
     text = (text or "").strip()
     if not text:
@@ -1442,6 +1624,118 @@ def split_match_teams(text):
     if len(parts) >= 2:
         return parts[0].strip(), parts[1].strip()
     return text, ""
+
+
+def infer_translation_direction(term):
+    raw = str(term or "").strip()
+    has_cjk = contains_cjk(raw)
+    has_latin = contains_latin(raw)
+    if has_cjk and not has_latin:
+        return "zho_Hans", "eng_Latn"
+    if has_latin:
+        return "eng_Latn", "zho_Hans"
+    return "", ""
+
+
+def heuristic_nllb_team_input(term):
+    text = str(term or "").strip()
+    if not text:
+        return text
+    if contains_cjk(text):
+        if "女足" in text and "女子" not in text:
+            return text.replace("女足", "女子足球队")
+        return text
+    if re.search(r"\bW\b", text):
+        return re.sub(r"\bW\b", "Women FC", text).strip()
+    if extract_age_markers(text):
+        return text
+    if " " in text and not re.search(r"\bFC\b", text, flags=re.I):
+        return f"{text} FC"
+    return text
+
+
+def get_local_nllb_runner(logger):
+    global _NLLB_RUNNER_CACHE, _NLLB_RUNNER_FAILED
+    if _NLLB_RUNNER_CACHE is not None or _NLLB_RUNNER_FAILED:
+        return _NLLB_RUNNER_CACHE
+    if not NLLB_ENABLED:
+        _NLLB_RUNNER_FAILED = True
+        return None
+    model_dir = Path(os.path.expanduser(NLLB_MODEL_DIR))
+    if not model_dir.exists():
+        _NLLB_RUNNER_FAILED = True
+        logger.log(f"NLLB本地模型不存在，跳过队名fallback: {model_dir}", "WARN")
+        return None
+    try:
+        import torch
+        from transformers import AutoModelForSeq2SeqLM, NllbTokenizer
+
+        class _NllbRunner:
+            def __init__(self, model_path):
+                self.device = "mps" if torch.backends.mps.is_available() else "cpu"
+                self.tokenizer = NllbTokenizer.from_pretrained(model_path, local_files_only=True)
+                self.model = AutoModelForSeq2SeqLM.from_pretrained(
+                    model_path,
+                    local_files_only=True,
+                    dtype=torch.float16 if self.device == "mps" else torch.float32,
+                    low_cpu_mem_usage=True,
+                ).to(self.device)
+                self.model.eval()
+
+            def translate(self, text, src_lang, tgt_lang):
+                self.tokenizer.src_lang = src_lang
+                self.tokenizer.tgt_lang = tgt_lang
+                inputs = self.tokenizer(text, return_tensors="pt")
+                inputs = {key: value.to(self.device) for key, value in inputs.items()}
+                with torch.inference_mode():
+                    output = self.model.generate(
+                        **inputs,
+                        forced_bos_token_id=self.tokenizer.convert_tokens_to_ids(tgt_lang),
+                        max_new_tokens=32,
+                        num_beams=4,
+                    )
+                return self.tokenizer.batch_decode(output, skip_special_tokens=True)[0].strip()
+
+        _NLLB_RUNNER_CACHE = _NllbRunner(model_dir)
+        logger.log(f"NLLB fallback 已启用: dir={model_dir} device={_NLLB_RUNNER_CACHE.device}")
+        return _NLLB_RUNNER_CACHE
+    except Exception as exc:
+        _NLLB_RUNNER_FAILED = True
+        logger.log(f"加载NLLB fallback失败，后续跳过: {exc}", "WARN")
+        return None
+
+
+def build_nllb_team_seed_aliases(terms, logger):
+    runner = get_local_nllb_runner(logger)
+    if runner is None:
+        return {}
+    seed_aliases = {}
+    for term in terms or []:
+        raw = str(term or "").strip()
+        if not raw:
+            continue
+        src_lang, tgt_lang = infer_translation_direction(raw)
+        if not src_lang or not tgt_lang:
+            continue
+        nllb_input = heuristic_nllb_team_input(raw)
+        try:
+            alias = runner.translate(nllb_input, src_lang, tgt_lang).strip()
+        except Exception as exc:
+            logger.log(f"NLLB队名fallback失败: {raw} ({exc})", "WARN")
+            continue
+        if not alias:
+            continue
+        reason = validate_ai_alias_candidate(raw, alias, alias_type="team")
+        if reason:
+            logger.log(
+                f"NLLB队名fallback过滤: {raw} -> {alias} ({reason})",
+                "WARN",
+            )
+            continue
+        seed_aliases[raw] = [alias]
+        extra = "" if nllb_input == raw else f" input={nllb_input}"
+        logger.log(f"NLLB队名fallback: {raw} -> {alias}{extra}")
+    return seed_aliases
 
 
 def _add_team_alias(alias_map, left, right):
@@ -1564,6 +1858,37 @@ def _load_learned_alias_store(path):
         return {}
 
 
+def _iter_learned_alias_pairs(path):
+    payload = _load_learned_alias_store(path)
+    for entry in payload.values():
+        if not isinstance(entry, dict):
+            continue
+        left_raw = str(entry.get("left_example", "")).strip()
+        right_raw = str(entry.get("right_example", "")).strip()
+        left_n = str(entry.get("left_normalized", "")).strip()
+        right_n = str(entry.get("right_normalized", "")).strip()
+        if left_raw and right_raw:
+            yield left_raw, right_raw
+        elif left_n and right_n:
+            yield left_n, right_n
+
+
+def _merge_learned_aliases(aliases, text, *, path, normalizer):
+    normalized = normalizer(text)
+    if not normalized:
+        return aliases
+    for left_raw, right_raw in _iter_learned_alias_pairs(path):
+        left_n = normalizer(left_raw)
+        right_n = normalizer(right_raw)
+        if normalized == left_n:
+            aliases.add(right_n)
+            aliases.add(normalizer(right_raw))
+        if normalized == right_n:
+            aliases.add(left_n)
+            aliases.add(normalizer(left_raw))
+    return aliases
+
+
 def _write_learned_alias_store(path, payload):
     try:
         Path(path).write_text(
@@ -1651,6 +1976,12 @@ def get_team_aliases(text):
         return set()
     aliases = {normalized}
     aliases.update(load_team_aliases().get(normalized, set()))
+    _merge_learned_aliases(
+        aliases,
+        text,
+        path=TEAM_ALIAS_LEARNED_STORE,
+        normalizer=normalize_match_text,
+    )
     return aliases
 
 
@@ -1670,6 +2001,12 @@ def get_league_aliases(text):
         if normalized == right_n:
             aliases.add(left_n)
     aliases.update(load_league_aliases().get(normalized, set()))
+    _merge_learned_aliases(
+        aliases,
+        text,
+        path=LEAGUE_ALIAS_LEARNED_STORE,
+        normalizer=normalize_league_text,
+    )
     return aliases
 
 
@@ -1716,14 +2053,36 @@ def get_openclaw_translation_provider():
 
     try:
         config = json.loads(config_path.read_text(encoding="utf-8"))
-        provider = (((config.get("models") or {}).get("providers") or {}).get("custom") or {}).copy()
+        providers = ((config.get("models") or {}).get("providers") or {})
     except Exception:
         _TRANSLATION_PROVIDER_CACHE = {}
         return _TRANSLATION_PROVIDER_CACHE
 
+    configured_preference = str(
+        os.environ.get("MATCH_PLAN_TRANSLATION_PROVIDER", "")
+        or load_openclaw_env_var("MATCH_PLAN_TRANSLATION_PROVIDER")
+    ).strip().lower()
+    provider_keys = []
+    if configured_preference:
+        provider_keys.append(configured_preference)
+    for fallback_key in ("omlx", "custom"):
+        if fallback_key not in provider_keys:
+            provider_keys.append(fallback_key)
+
+    provider_key = ""
+    provider = {}
+    for candidate_key in provider_keys:
+        candidate = (providers.get(candidate_key) or {}).copy()
+        base_url = str(candidate.get("baseUrl", "")).strip().rstrip("/")
+        api_key = str(candidate.get("apiKey", "")).strip()
+        if base_url and api_key:
+            provider_key = candidate_key
+            provider = candidate
+            break
+
     base_url = str(provider.get("baseUrl", "")).strip().rstrip("/")
     api_key = str(provider.get("apiKey", "")).strip()
-    if not base_url or not api_key:
+    if not provider_key or not base_url or not api_key:
         _TRANSLATION_PROVIDER_CACHE = {}
         return _TRANSLATION_PROVIDER_CACHE
 
@@ -1748,17 +2107,29 @@ def get_openclaw_translation_provider():
             if str(item.get("id", "")).strip()
         ]
 
-    preferred_models = [
-        "glm-5",
-        "claude-sonnet-5",
-        "claude-sonnet-4.7",
-        "gpt-5.4",
-        "qwen3-max",
-        "qwen3-max-2026-01-23",
-        "qwen3.5-plus",
-        "qwen3-coder-plus",
-        "qwen3-coder-next",
-    ]
+    preferred_models = []
+    if provider_key == "omlx":
+        preferred_models = [
+            "Qwen3-4B-Instruct-2507-8bit",
+            "Qwen3-8B-4bit",
+            "Qwen3.5-VL-35B-A3B-4bit-MLX-CRACK",
+            "Qwen3.5-VL-122B-A10B-4bit-MLX-CRACK",
+            "Qwen3.5-VL-9B-8bit-MLX-CRACK",
+            "Qwen3.5-27B-4bit",
+            "Qwen2.5-VL-7B-Instruct-4bit",
+        ]
+    else:
+        preferred_models = [
+            "glm-5",
+            "claude-sonnet-5",
+            "claude-sonnet-4.7",
+            "gpt-5.4",
+            "qwen3-max",
+            "qwen3-max-2026-01-23",
+            "qwen3.5-plus",
+            "qwen3-coder-plus",
+            "qwen3-coder-next",
+        ]
     available = set(probed_model_ids)
     selected_models = [model for model in preferred_models if model in available]
     if not selected_models:
@@ -1767,6 +2138,7 @@ def get_openclaw_translation_provider():
         selected_models = probed_model_ids[:]
 
     _TRANSLATION_PROVIDER_CACHE = {
+        "provider_key": provider_key,
         "base_url": base_url,
         "api_key": api_key,
         "probed_models": probed_model_ids,
@@ -1812,19 +2184,58 @@ def chunk_terms_for_alias_translation(terms, chunk_size=12):
         yield clean_terms[idx : idx + max(1, int(chunk_size))]
 
 
-def request_alias_translation_chunk(chunk, models, base_url, api_key, logger):
+def request_alias_translation_chunk(chunk, models, base_url, api_key, logger, *, alias_type, seed_aliases=None):
     last_error = None
+    seed_aliases = seed_aliases or {}
+    term_payload = []
+    for term in chunk:
+        item = {"term": term}
+        draft_aliases = list(seed_aliases.get(term) or [])
+        if draft_aliases:
+            item["draft_aliases"] = draft_aliases[:2]
+        term_payload.append(item)
+
     for model_name in models:
+        seed_rule = ""
+        if alias_type == "team":
+            seed_rule = (
+                "- Some team terms include draft_aliases generated by a translation model. "
+                "Use them as hints, but normalize them into the best bookmaker-style alias if needed.\n"
+            )
         prompt = (
-            "Translate sports team or league names into likely aliases in the other language.\n"
-            "Output JSON only: {\"items\":[{\"term\":\"...\",\"aliases\":[\"...\",\"...\"]}]}\n"
-            "At most 2 aliases per term. No explanation. No markdown. No extra text.\n"
-            "Keep aliases short. Preserve U19/U23/W markers.\n"
-            "If the source term is English or other Latin-script text, prefer one concise Chinese alias.\n"
-            "If the source term is Chinese, Arabic, or other non-Latin text, prefer one concise English alias.\n"
-            "For national teams, return the common country/team name used in betting feeds.\n"
-            "If unsure, use an empty aliases array.\n"
-            f"Terms: {json.dumps(chunk, ensure_ascii=False)}"
+            f"You normalize football {alias_type} names for cross-language betting-feed matching.\n"
+            "Return strict JSON only with schema: {\"items\":[{\"term\":\"...\",\"aliases\":[\"...\"]}]}\n"
+            "Rules:\n"
+            "- Return the single best opposite-language alias for each term. Add a second alias only if both are very common in bookmaker feeds.\n"
+            "- Never explain. Never add markdown. Never echo instructions.\n"
+            "- Preserve exact entity identity. Do not change country, club, league, age group, or gender.\n"
+            "- Preserve markers exactly: U17 U19 U20 U21 U23 W Women.\n"
+            "- If input is English or other Latin script, output a Chinese alias in Chinese characters.\n"
+            "- If input is Chinese, output an English alias in Latin letters.\n"
+            "- The alias should usually be in the opposite script from the input. Avoid returning the same script unless there is no real translation.\n"
+            "- Prefer short bookmaker-style names, not literal explanations.\n"
+            f"{seed_rule}"
+            "- For 国际友谊赛 / Friendlies / FIFA Series, prefer International Friendlies in English and 国际友谊赛 in Chinese.\n"
+            "- For 欧洲女子冠军联赛 / UEFA Champions League Women, prefer 欧女冠 in Chinese and UEFA WCL in English.\n"
+            "- For 哥伦比亚甲组联赛, prefer Primera A in English.\n"
+            "- For 乌拉圭甲组联赛, prefer Uruguayan Primera Division in English.\n"
+            "- For 英格兰甲组联赛 / League One, prefer League One in English and 英甲 in Chinese.\n"
+            "- If unsure, use an empty aliases array.\n"
+            "Examples:\n"
+            "- Mexico -> [\"墨西哥\"]\n"
+            "- 比利时 -> [\"Belgium\"]\n"
+            "- Japan W -> [\"日本女足\"]\n"
+            "- 日本女足 -> [\"Japan W\"]\n"
+            "- 意大利U21 -> [\"Italy U21\"]\n"
+            "- 国际友谊赛 -> [\"International Friendlies\"]\n"
+            "- Friendlies -> [\"国际友谊赛\"]\n"
+            "- FIFA Series -> [\"国际友谊赛\"]\n"
+            "- 欧洲女子冠军联赛 -> [\"UEFA WCL\"]\n"
+            "- UEFA Champions League Women -> [\"欧女冠\"]\n"
+            "- 哥伦比亚甲组联赛 -> [\"Primera A\"]\n"
+            "- 乌拉圭甲组联赛 -> [\"Uruguayan Primera Division\"]\n"
+            "- League One -> [\"英甲\"]\n"
+            f"Terms: {json.dumps(term_payload, ensure_ascii=False)}"
         )
         body = {
             "model": model_name,
@@ -1861,7 +2272,7 @@ def request_alias_translation_chunk(chunk, models, base_url, api_key, logger):
             parsed = extract_json_object_from_text(content)
             items = parsed.get("items", [])
             if isinstance(items, list):
-                logger.log(f"AI别名翻译使用 {model_name} 成功: {len(chunk)} 项")
+                logger.log(f"AI别名翻译使用 {model_name} 成功: {alias_type} {len(chunk)} 项")
                 return items
             raise ValueError("missing items list")
         except urllib.error.HTTPError as exc:
@@ -1875,7 +2286,18 @@ def request_alias_translation_chunk(chunk, models, base_url, api_key, logger):
     raise RuntimeError("translation request failed without model response")
 
 
-def translate_terms_with_retry(terms, models, base_url, api_key, logger, chunk_size=12, min_chunk_size=2):
+def translate_terms_with_retry(
+    terms,
+    models,
+    base_url,
+    api_key,
+    logger,
+    *,
+    alias_type,
+    seed_aliases=None,
+    chunk_size=12,
+    min_chunk_size=2,
+):
     clean_terms = []
     seen = set()
     for term in terms:
@@ -1888,13 +2310,22 @@ def translate_terms_with_retry(terms, models, base_url, api_key, logger, chunk_s
         return []
 
     logger.log(
-        f"AI别名翻译开始: total={len(clean_terms)} chunk_size={chunk_size} min_chunk_size={min_chunk_size}"
+        f"AI别名翻译开始: type={alias_type} total={len(clean_terms)} "
+        f"chunk_size={chunk_size} min_chunk_size={min_chunk_size}"
     )
     learned_items = []
     for chunk in chunk_terms_for_alias_translation(clean_terms, chunk_size=chunk_size):
         try:
             learned_items.extend(
-                request_alias_translation_chunk(chunk, models, base_url, api_key, logger)
+                request_alias_translation_chunk(
+                    chunk,
+                    models,
+                    base_url,
+                    api_key,
+                    logger,
+                    alias_type=alias_type,
+                    seed_aliases=seed_aliases,
+                )
             )
             continue
         except Exception as exc:
@@ -1908,48 +2339,109 @@ def translate_terms_with_retry(terms, models, base_url, api_key, logger, chunk_s
         for sub_chunk in chunk_terms_for_alias_translation(chunk, chunk_size=fallback_size):
             try:
                 learned_items.extend(
-                    request_alias_translation_chunk(sub_chunk, models, base_url, api_key, logger)
+                    request_alias_translation_chunk(
+                        sub_chunk,
+                        models,
+                        base_url,
+                        api_key,
+                        logger,
+                        alias_type=alias_type,
+                        seed_aliases=seed_aliases,
+                    )
                 )
             except Exception as exc:
                 logger.log(
                     f"AI别名小批量翻译仍失败，跳过该批: chunk={len(sub_chunk)} err={exc}",
                     "WARN",
                 )
-    logger.log(f"AI别名翻译完成: total={len(clean_terms)} learned={len(learned_items)}")
+    logger.log(
+        f"AI别名翻译完成: type={alias_type} total={len(clean_terms)} learned={len(learned_items)}"
+    )
     return learned_items
 
 
-def custom_batch_translate_aliases(terms, logger):
+def custom_batch_translate_aliases(terms, logger, *, alias_type):
     provider = get_openclaw_translation_provider()
+    provider_key = str(provider.get("provider_key", "")).strip() or "unknown"
     base_url = str(provider.get("base_url", "")).strip()
     api_key = str(provider.get("api_key", "")).strip()
     models = list(provider.get("selected_models") or [])
+    nllb_seed_aliases = build_nllb_team_seed_aliases(terms, logger) if alias_type == "team" else {}
     if not base_url or not api_key or not models:
-        return []
-    return translate_terms_with_retry(
+        return [{"term": term, "aliases": aliases} for term, aliases in nllb_seed_aliases.items()]
+    logger.log(
+        f"AI别名翻译 provider={provider_key} base={base_url} model={models[0]} type={alias_type}"
+    )
+    ai_items = translate_terms_with_retry(
         terms,
         models=models,
         base_url=base_url,
         api_key=api_key,
         logger=logger,
+        alias_type=alias_type,
+        seed_aliases=nllb_seed_aliases,
         chunk_size=12,
         min_chunk_size=2,
     )
+    if alias_type != "team" or not nllb_seed_aliases:
+        return ai_items
+
+    merged = {}
+    for item in ai_items or []:
+        term = str((item or {}).get("term", "")).strip()
+        aliases = []
+        for alias in (item.get("aliases") or []):
+            alias_raw = str(alias or "").strip()
+            if not alias_raw:
+                continue
+            if validate_ai_alias_candidate(term, alias_raw, alias_type="team"):
+                continue
+            aliases.append(alias_raw)
+            if len(aliases) >= 2:
+                break
+        if term and aliases:
+            merged[term] = aliases[:2]
+            continue
+        if term and term in nllb_seed_aliases:
+            merged[term] = list(nllb_seed_aliases[term][:2])
+    fallback_count = 0
+    for term, aliases in nllb_seed_aliases.items():
+        if term in merged:
+            continue
+        merged[term] = list(aliases[:2])
+        fallback_count += 1
+    if fallback_count:
+        logger.log(f"NLLB队名fallback补位: {fallback_count} 项")
+    return [{"term": term, "aliases": aliases} for term, aliases in merged.items()]
 
 
 def apply_ai_alias_batch(selected_matches, logger):
     team_terms = []
     league_terms = []
     for match in selected_matches or []:
-        if match.get("team_h"):
+        if match.get("team_h") and not has_known_team_aliases(match["team_h"]):
             team_terms.append(match["team_h"])
-        if match.get("team_c"):
+        if match.get("team_c") and not has_known_team_aliases(match["team_c"]):
             team_terms.append(match["team_c"])
-        if match.get("league"):
+        if match.get("league") and not has_known_league_aliases(match["league"]):
             league_terms.append(match["league"])
 
-    translated_team_items = custom_batch_translate_aliases(team_terms, logger)
-    translated_league_items = custom_batch_translate_aliases(league_terms, logger)
+    if team_terms or league_terms:
+        logger.log(
+            f"AI别名候选: team={len(team_terms)} league={len(league_terms)} "
+            f"(已跳过本地已有别名的高频项)"
+        )
+
+    translated_team_items = filter_ai_alias_items(
+        custom_batch_translate_aliases(team_terms, logger, alias_type="team"),
+        alias_type="team",
+        logger=logger,
+    )
+    translated_league_items = filter_ai_alias_items(
+        custom_batch_translate_aliases(league_terms, logger, alias_type="league"),
+        alias_type="league",
+        logger=logger,
+    )
     learned = {"team": 0, "league": 0}
 
     for item in translated_team_items:

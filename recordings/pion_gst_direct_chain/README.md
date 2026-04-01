@@ -27,8 +27,10 @@ pion_gst_supervisor.py          # 保活与控制入口 (start/stop/status)
 ### run_pion_gst_direct_capture.py — 单流 worker
 - 负责一场比赛的接流、数据关联、收尾
 - 使用 `SharedBettingDataReader` 从 dispatcher 共享文件读取数据（不独立请求数据站）
+- 可选启动 `LiveTextPoller599`，把 599 文字直播作为视频对齐辅助源
 - 结束时用 `match_data_to_stream()` 筛选出本场比赛的数据
 - 输出 `raw_betting_data.jsonl`（全量备份）和 `__betting_data.jsonl`（筛选后）
+- 输出 `__live_events.jsonl`（599 文字直播事件 + 对齐注释）
 - 自动生成 `__timeline.csv`
 
 ### pion_gst_dispatcher.py — 多流调度
@@ -56,7 +58,76 @@ pion_gst_supervisor.py          # 保活与控制入口 (start/stop/status)
 7. worker 用 `serverHost/token` 直连房间
 8. worker 通过 SharedBettingDataReader 读取共享数据
 9. 持续写：HLS 预览 + 归档段
-10. 结束后生成 `__full.mp4` + 筛选 `__betting_data.jsonl` + `__timeline.csv`
+10. 如启用 599，对比赛做 `resolve -> backfill -> poll -> annotate`
+11. 结束后生成 `__full.mp4` + 筛选 `__betting_data.jsonl` + `__live_events.jsonl` + `__timeline.csv`
+
+## 599 文字直播对齐
+
+### 当前定位
+
+599 不是主数据源，而是单场 worker 内的“对齐辅助源”：
+- 用 599 的比赛列表、比赛详情、文字直播去找到对应 `thirdId`
+- 用文字直播的 `match_time` 反推 `kickoff_utc`
+- 把 599 事件映射到本地录制视频时间轴
+- 用本地 `betting_data` 的比分变化做补充交叉校验
+
+### 当前主流程
+
+```
+selected_match
+  └── LiveTextPoller599
+        1. _resolve_match()
+           - 队名 / alias
+           - 联赛
+           - 年龄段 / 女足标记
+           - 开赛时间距离
+        2. _backfill_history()
+           - 从 matchInfo.matchLive 拿最近窗口
+           - 用 findLiveText 翻页回溯直到 kickoff
+        3. _poll_once()
+           - 持续轮询最新 30 条文字直播窗口
+        4. AlignmentEngine
+           - kickoff 推算 / refine
+           - match_time -> video_pos
+           - 进球比分与 betting_data 漂移校验
+        5. flush_live_text_599()
+           - 实时追加到 __live_events.jsonl
+```
+
+### 单场目录新增产物
+
+- `...__live_events.jsonl` — 599 事件流，实时写入，结束时全量去重重写
+- `worker_status.json.liveText599` — 当前 599 线程状态摘要
+- `session_result.json.live_text_599` — 最终统计摘要
+
+### `__live_events.jsonl` 内容
+
+每条记录包含：
+- 599 原始事件字段
+- `_599_observed_at` — 本地观察时间
+- `_599_source` — `backfill` / `poll`
+- `_match_time_ms` — 比赛内时间
+- `_video_pos_sec` — 推算到视频内的位置
+- `_score_drift` — 若能和 `betting_data` 对上比分变化，则附加漂移秒数
+
+### 实时日志节点
+
+这些日志都会实时写到 `recording.log`：
+- `599 匹配成功 / 599 匹配失败`
+- `599 kickoff推算`
+- `599 kickoff校验`
+- `599 历史回溯`
+- `599 轮询#N`
+- `599 比分校验`
+- `599 文字直播落盘(periodic)`
+- `599 文字直播最终写入`
+
+### 当前存储边界
+
+- 599 事件**会**单独存到对应比赛目录下的 `__live_events.jsonl`
+- 599 状态**会**写到 `worker_status.json` / `session_result.json`
+- 599 事件**不会**写进全局 `history.db`
+- 当前 `__timeline.csv` 仍然只由 `__betting_data.jsonl` 生成，不消费 599 事件
 
 ## 数据采集架构 (2026-03-31 改版)
 
@@ -144,6 +215,7 @@ python3 pion_gst_supervisor.py list-artifacts
 
 单场目录内:
 - `...__betting_data.jsonl` — 筛选后的本场数据
+- `...__live_events.jsonl` — 599 文字直播事件流（含对齐注释）
 - `...__timeline.csv` — 时间线
 - `...__full.mp4` — 最终合并视频
 - `hls/playlist.m3u8` — HLS 预览

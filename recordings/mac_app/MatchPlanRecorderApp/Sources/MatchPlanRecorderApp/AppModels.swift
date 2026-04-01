@@ -69,6 +69,7 @@ struct RecorderAppSettings: Codable, Equatable {
     var loopIntervalSeconds: Int = 1
     var segmentMinutes: Int = 5
     var maxDurationMinutes: Int = 0
+    var blackScreenTimeoutSeconds: Int = 300
     var archiveWidth: Int = 960
     var archiveHeight: Int = 540
     var archiveBitrateKbps: Int = 5000
@@ -89,6 +90,7 @@ struct RecorderAppSettings: Codable, Equatable {
         case loopIntervalSeconds
         case segmentMinutes
         case maxDurationMinutes
+        case blackScreenTimeoutSeconds
         case archiveWidth
         case archiveHeight
         case archiveBitrateKbps
@@ -116,6 +118,7 @@ struct RecorderAppSettings: Codable, Equatable {
         loopIntervalSeconds = try container.decodeIfPresent(Int.self, forKey: .loopIntervalSeconds) ?? 1
         segmentMinutes = try container.decodeIfPresent(Int.self, forKey: .segmentMinutes) ?? 5
         maxDurationMinutes = try container.decodeIfPresent(Int.self, forKey: .maxDurationMinutes) ?? 0
+        blackScreenTimeoutSeconds = try container.decodeIfPresent(Int.self, forKey: .blackScreenTimeoutSeconds) ?? 300
         archiveWidth = try container.decodeIfPresent(Int.self, forKey: .archiveWidth) ?? 960
         archiveHeight = try container.decodeIfPresent(Int.self, forKey: .archiveHeight) ?? 540
         archiveBitrateKbps = try container.decodeIfPresent(Int.self, forKey: .archiveBitrateKbps) ?? 5000
@@ -199,6 +202,16 @@ struct SupervisorStatus: Codable, Equatable {
     }
 }
 
+struct CleanupNoDataPreview: Equatable {
+    let archiveRoot: String
+    let archivedDir: String
+    let deleteCount: Int
+    let archiveCount: Int
+    let activeSkippedCount: Int
+    let deleteCandidates: [String]
+    let archiveCandidates: [String]
+}
+
 struct WorkerStateSummary: Identifiable, Hashable {
     let id: String
     let title: String
@@ -228,6 +241,10 @@ struct WorkerStateSummary: Identifiable, Hashable {
     let lastError: String
     let lastPacketAt: String
     let startedAt: String
+    let recordedDurationSeconds: Int?
+    let startedAtEpoch: TimeInterval
+    let updatedAtEpoch: TimeInterval
+    let sortDurationSeconds: Int
 
     var stageTitle: String {
         switch state {

@@ -276,11 +276,16 @@ def merge_segments(match_dir, manifest, output_path=None):
         log("[错误] 没有可用的视频分段")
         return None
 
+    direct_copy_only = False
     if len(valid_segments) == 1 and valid_segments[0]["trim_start"] <= 0.01:
-        # 只有一个分段，直接复制
-        log(f"  只有1个分段，直接复制...")
-        shutil.copy2(valid_segments[0]["path"], output_path)
-    else:
+        seg_duration = get_video_duration(valid_segments[0]["path"])
+        if abs(seg_duration - valid_segments[0]["trim_duration"]) <= 0.5:
+            # 只有一个完整分段且不需要裁剪，直接复制
+            log(f"  只有1个分段，直接复制...")
+            shutil.copy2(valid_segments[0]["path"], output_path)
+            direct_copy_only = True
+
+    if not direct_copy_only:
         target_w, target_h = get_video_shape(valid_segments[0]["path"])
         if target_w <= 0 or target_h <= 0:
             target_w, target_h = 1088, 680

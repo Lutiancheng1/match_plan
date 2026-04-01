@@ -426,6 +426,8 @@ class PionGstDispatcher:
             str(int(self.args.segment_minutes)),
             "--max-duration-minutes",
             str(int(self.args.max_duration_minutes)),
+            "--black-screen-timeout-seconds",
+            str(int(self.args.black_screen_timeout_seconds)),
             "--archive-width",
             str(int(self.args.archive_width)),
             "--archive-height",
@@ -650,6 +652,7 @@ def main() -> int:
     parser.add_argument("--hls-width", type=int, default=960)
     parser.add_argument("--hls-height", type=int, default=540)
     parser.add_argument("--hls-bitrate-kbps", type=int, default=3500)
+    parser.add_argument("--black-screen-timeout-seconds", type=int, default=300)
     parser.add_argument("--skip-data-binding", action="store_true")
     parser.add_argument("--allow-unbound", action="store_true")
     parser.add_argument("--chain-tag", default="pgst")
