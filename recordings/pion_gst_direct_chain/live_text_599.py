@@ -181,6 +181,31 @@ def _parse_clock_to_seconds(clock_str: str) -> float | None:
     return None
 
 
+def parse_retimeset(value: str) -> dict:
+    """解析数据站 RETIMESET 字段 → 统一比赛时间。
+
+    格式: "1H^37:11" / "2H^52:25" / "HT" / "" 等
+    返回: {"half": 1|2|0, "match_clock": "37:11", "match_time_sec": 2231.0, "match_time_ms": 2231000}
+           解析失败时所有值为 None/0
+    """
+    text = str(value or "").strip()
+    if not text:
+        return {"half": 0, "match_clock": "", "match_time_sec": None, "match_time_ms": None}
+    m = re.match(r"(\d)H\^(\d+):(\d{1,2})", text)
+    if not m:
+        return {"half": 0, "match_clock": text, "match_time_sec": None, "match_time_ms": None}
+    half = int(m.group(1))
+    minutes = int(m.group(2))
+    seconds = int(m.group(3))
+    total_sec = float(minutes * 60 + seconds)
+    return {
+        "half": half,
+        "match_clock": f"{minutes}:{seconds:02d}",
+        "match_time_sec": total_sec,
+        "match_time_ms": int(total_sec * 1000),
+    }
+
+
 # 上/下半场分界：OCR 时钟 <= 46 分钟视为上半场
 _HALF_BOUNDARY_SEC = 46 * 60
 

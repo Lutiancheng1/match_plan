@@ -21,18 +21,20 @@ from pathlib import Path
 DEFAULT_RECORDINGS_ROOT = Path("/Volumes/990 PRO PCIe 4T/match_plan_recordings")
 
 TIMELINE_CSV_COLUMNS = [
-    "elapsed_sec",
-    "elapsed_hms",
-    "timestamp_utc",
+    "video_pos_sec",       # 视频基准时间轴（秒），所有数据源对齐到此
+    "match_time_sec",      # 比赛时钟（秒），从 RETIMESET 解析
+    "match_half",          # 半场 (1=上半场, 2=下半场)
+    "match_clock",         # 原始比赛时钟字符串 (1H^37:11)
+    "score_h",
+    "score_c",
+    "game_phase",          # NOW_MODEL (HT/FT)
+    "timestamp_utc",       # 数据采集 wall-clock
+    "elapsed_sec",         # 采集偏移（从首次采集起）
     "gid",
     "ecid",
     "league",
     "team_h",
     "team_c",
-    "score_h",
-    "score_c",
-    "match_clock",
-    "game_phase",
     "redcard_h",
     "redcard_c",
     "ratio_re",
@@ -70,7 +72,21 @@ def read_betting_jsonl(path: Path) -> list[dict]:
     return rows
 
 
+def _parse_retimeset(value: str) -> dict:
+    """解析 RETIMESET (如 '1H^37:11') → {half, match_time_sec, match_time_ms}。"""
+    text = str(value or "").strip()
+    if not text:
+        return {"half": 0, "match_time_sec": None, "match_time_ms": None}
+    m = re.match(r"(\d)H\^(\d+):(\d{1,2})", text)
+    if not m:
+        return {"half": 0, "match_time_sec": None, "match_time_ms": None}
+    half = int(m.group(1))
+    total_sec = float(int(m.group(2)) * 60 + int(m.group(3)))
+    return {"half": half, "match_time_sec": total_sec, "match_time_ms": int(total_sec * 1000)}
+
+
 def build_timeline_rows(data_rows: list[dict]) -> list[dict]:
+    """构建 timeline 行，以 video_pos_sec 为主时间轴。"""
     if not data_rows:
         return []
     start_ts = parse_iso(data_rows[0]["timestamp"])
@@ -79,19 +95,25 @@ def build_timeline_rows(data_rows: list[dict]) -> list[dict]:
         dt = parse_iso(row["timestamp"])
         fields = row.get("fields") or {}
         elapsed_sec = max(0.0, (dt - start_ts).total_seconds())
+        retimeset = fields.get("RETIMESET", "")
+        parsed = _parse_retimeset(retimeset)
+        # 优先使用录制时已标注的 _video_pos_sec
+        video_pos = row.get("_video_pos_sec")
         rows.append({
-            "elapsed_sec": round(elapsed_sec, 3),
-            "elapsed_hms": hms_from_seconds(elapsed_sec),
+            "video_pos_sec": round(video_pos, 3) if video_pos is not None else "",
+            "match_time_sec": parsed["match_time_sec"] if parsed["match_time_sec"] is not None else "",
+            "match_half": parsed["half"] or "",
+            "match_clock": retimeset,
+            "score_h": row.get("score_h", ""),
+            "score_c": row.get("score_c", ""),
+            "game_phase": fields.get("NOW_MODEL", ""),
             "timestamp_utc": row.get("timestamp", ""),
+            "elapsed_sec": round(elapsed_sec, 3),
             "gid": row.get("gid", ""),
             "ecid": row.get("ecid", ""),
             "league": fields.get("LEAGUE", ""),
             "team_h": row.get("team_h", ""),
             "team_c": row.get("team_c", ""),
-            "score_h": row.get("score_h", ""),
-            "score_c": row.get("score_c", ""),
-            "match_clock": fields.get("RETIMESET", ""),
-            "game_phase": fields.get("NOW_MODEL", ""),
             "redcard_h": fields.get("REDCARD_H", ""),
             "redcard_c": fields.get("REDCARD_C", ""),
             "ratio_re": fields.get("RATIO_RE", ""),

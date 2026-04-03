@@ -94,6 +94,15 @@ def read_jsonl(path: Path):
     return rows
 
 
+def _parse_retimeset_sec(value):
+    """解析 RETIMESET → 比赛时间秒数 (None if unparseable)。"""
+    import re as _re
+    m = _re.match(r"(\d)H\^(\d+):(\d{1,2})", str(value or "").strip())
+    if not m:
+        return None, 0
+    return float(int(m.group(2)) * 60 + int(m.group(3))), int(m.group(1))
+
+
 def build_timeline_rows(data_rows):
     if not data_rows:
         return []
@@ -104,7 +113,13 @@ def build_timeline_rows(data_rows):
         dt = parse_iso(row["timestamp"])
         fields = row.get("fields", {}) or {}
         elapsed_sec = max(0.0, (dt - start_ts).total_seconds())
+        match_time_sec, match_half = _parse_retimeset_sec(fields.get("RETIMESET", ""))
+        # 优先使用录制时标注的 _video_pos_sec
+        video_pos = row.get("_video_pos_sec")
         rows.append({
+            "video_pos_sec": round(video_pos, 3) if video_pos is not None else "",
+            "match_time_sec": match_time_sec if match_time_sec is not None else "",
+            "match_half": match_half or "",
             "elapsed_sec": round(elapsed_sec, 3),
             "elapsed_hms": hms_from_seconds(elapsed_sec),
             "timestamp_utc": row.get("timestamp", ""),
@@ -140,6 +155,13 @@ def write_timeline_csv(timeline_rows, output_path: Path):
     with output_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow([
+            "video_pos_sec",
+            "match_time_sec",
+            "match_half",
+            "match_clock",
+            "score_h",
+            "score_c",
+            "game_phase",
             "elapsed_sec",
             "elapsed_hms",
             "timestamp_utc",
@@ -148,10 +170,6 @@ def write_timeline_csv(timeline_rows, output_path: Path):
             "league",
             "team_h",
             "team_c",
-            "score_h",
-            "score_c",
-            "match_clock",
-            "game_phase",
             "redcard_h",
             "redcard_c",
             "ratio_re",
@@ -166,6 +184,13 @@ def write_timeline_csv(timeline_rows, output_path: Path):
         ])
         for row in timeline_rows:
             writer.writerow([
+                row.get("video_pos_sec", ""),
+                row.get("match_time_sec", ""),
+                row.get("match_half", ""),
+                row["match_clock"],
+                row["score_h"],
+                row["score_c"],
+                row["game_phase"],
                 row["elapsed_sec"],
                 row["elapsed_hms"],
                 row["timestamp_utc"],
@@ -174,10 +199,6 @@ def write_timeline_csv(timeline_rows, output_path: Path):
                 row["league"],
                 row["team_h"],
                 row["team_c"],
-                row["score_h"],
-                row["score_c"],
-                row["match_clock"],
-                row["game_phase"],
                 row["redcard_h"],
                 row["redcard_c"],
                 row["ratio_re"],

@@ -41,7 +41,7 @@ from pion_gst_direct_chain.shared_livekit_runtime import (
     now_iso,
     resolve_selected_matches,
 )
-from pion_gst_direct_chain.live_text_599 import AlignmentEngine, LiveTextPoller599, Shared599Reader
+from pion_gst_direct_chain.live_text_599 import AlignmentEngine, LiveTextPoller599, Shared599Reader, parse_retimeset
 
 GO_BIN = "/opt/homebrew/bin/go"
 RECORDER_BIN = SCRIPT_DIR / ".build" / "pion_livekit_gst_recorder"
@@ -665,6 +665,19 @@ def main() -> int:
             str(selected_match.get("gtype", "")),
             selected_match=selected_match,
         )
+        # 标注统一时间轴: RETIMESET → match_time_ms → video_pos_sec
+        for row in matched:
+            retimeset = (row.get("fields") or {}).get("RETIMESET", "")
+            parsed = parse_retimeset(retimeset)
+            row["_match_time_ms"] = parsed["match_time_ms"]
+            row["_match_time_sec"] = parsed["match_time_sec"]
+            row["_match_half"] = parsed["half"]
+            row["_match_clock"] = parsed["match_clock"]
+            if parsed["match_time_ms"] is not None:
+                vpos = alignment_engine.match_time_to_video(parsed["match_time_ms"])
+                row["_video_pos_sec"] = round(vpos, 3) if vpos is not None else None
+            else:
+                row["_video_pos_sec"] = None
         written = _append_jsonl(str(stream_data_path), matched)
         if live_text_poller and matched:
             try:
@@ -1047,6 +1060,19 @@ def main() -> int:
         str(selected_match.get("gtype", "")),
         selected_match=selected_match,
     )
+    # 最终写入: 统一标注时间轴
+    for row in matched:
+        retimeset = (row.get("fields") or {}).get("RETIMESET", "")
+        parsed = parse_retimeset(retimeset)
+        row["_match_time_ms"] = parsed["match_time_ms"]
+        row["_match_time_sec"] = parsed["match_time_sec"]
+        row["_match_half"] = parsed["half"]
+        row["_match_clock"] = parsed["match_clock"]
+        if parsed["match_time_ms"] is not None:
+            vpos = alignment_engine.match_time_to_video(parsed["match_time_ms"])
+            row["_video_pos_sec"] = round(vpos, 3) if vpos is not None else None
+        else:
+            row["_video_pos_sec"] = None
     _write_jsonl_atomic(str(stream_data_path), matched)
     stream_rows_written = len(matched)
 
