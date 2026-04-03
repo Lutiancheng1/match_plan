@@ -164,11 +164,36 @@ def _log(logger: Any, msg: str, tag: str = "") -> None:
 # AlignmentEngine: 视频-比赛时间对齐引擎
 # ---------------------------------------------------------------------------
 
+def _parse_clock_to_seconds(clock_str: str) -> float | None:
+    """将 '67:14' 或 '45+2:30' 格式的比赛时钟转换为总秒数。"""
+    clock_str = clock_str.strip()
+    if not clock_str:
+        return None
+    # 处理加时格式: "45+2:30" → 45*60 + 2*60 + 30
+    m = re.match(r"(\d+)\+(\d+):(\d{1,2})", clock_str)
+    if m:
+        base_min, extra_min, secs = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        return float(base_min * 60 + extra_min * 60 + secs)
+    # 标准格式: "67:14"
+    m = re.match(r"(\d+):(\d{1,2})", clock_str)
+    if m:
+        return float(int(m.group(1)) * 60 + int(m.group(2)))
+    return None
+
+
+# 上/下半场分界：OCR 时钟 <= 46 分钟视为上半场
+_HALF_BOUNDARY_SEC = 46 * 60
+
+
 class AlignmentEngine:
     """管理 video_offset ↔ match_time 的映射关系。
 
-    核心公式: video_pos = kickoff_video_offset + (match_time_ms / 1000)
-    其中 kickoff_video_offset = kickoff_utc - video_start_utc
+    对齐优先级:
+      1. OCR 校准 — 从视频帧 OCR 比赛时钟，分上/下半场各自计算 offset
+      2. 599 推算 — kickoff_utc = observed_at - match_time_ms（旧方案，作为降级）
+
+    OCR 校准公式: video_pos = ocr_offset[half] + match_time_sec
+    599 降级公式: video_pos = kickoff_video_offset + (match_time_ms / 1000)
     """
 
     def __init__(self, video_start_utc: datetime | str | None = None, logger: Any = None):
@@ -182,6 +207,10 @@ class AlignmentEngine:
         # betting_data 比分变化记录，用于交叉校验
         self._betting_score_log: list[dict] = []
         self._last_betting_score: str = ""
+        # OCR 校准点和每半场偏移量
+        self._ocr_points: list[dict] = []     # {video_pos_sec, match_time_sec, half, clock_str}
+        self._ocr_offset_h1: float | None = None
+        self._ocr_offset_h2: float | None = None
 
     def set_video_start_utc(self, value: datetime | str | None) -> None:
         dt = _coerce_utc(value)
@@ -246,17 +275,77 @@ class AlignmentEngine:
                     self._betting_score_log.append({"score": score, "utc": ts})
                     self._last_betting_score = score
 
+    # ------ OCR 校准 ------
+
+    def ingest_ocr_calibration(self, video_pos_sec: float, match_clock_str: str) -> dict:
+        """接收一个 OCR 校准点: 视频位置 + OCR 读出的比赛时钟。
+
+        返回 {"accepted": bool, "half": int, "offset": float|None, "reason": str}
+        """
+        match_time_sec = _parse_clock_to_seconds(match_clock_str)
+        if match_time_sec is None:
+            _log(self.logger, f"OCR校准: 无法解析时钟 '{match_clock_str}'", "WARN")
+            return {"accepted": False, "half": 0, "offset": None, "reason": "invalid_clock"}
+
+        half = 1 if match_time_sec < _HALF_BOUNDARY_SEC else 2
+        offset_this = video_pos_sec - match_time_sec
+
+        with self._lock:
+            self._ocr_points.append({
+                "video_pos_sec": round(video_pos_sec, 2),
+                "match_time_sec": round(match_time_sec, 2),
+                "half": half,
+                "clock_str": match_clock_str,
+                "offset": round(offset_this, 2),
+            })
+            # 每半场独立算中位数 offset
+            h1 = [p["offset"] for p in self._ocr_points if p["half"] == 1]
+            h2 = [p["offset"] for p in self._ocr_points if p["half"] == 2]
+            if h1:
+                h1_sorted = sorted(h1)
+                self._ocr_offset_h1 = h1_sorted[len(h1_sorted) // 2]
+            if h2:
+                h2_sorted = sorted(h2)
+                self._ocr_offset_h2 = h2_sorted[len(h2_sorted) // 2]
+
+            result_offset = self._ocr_offset_h1 if half == 1 else self._ocr_offset_h2
+
+        _log(
+            self.logger,
+            f"OCR校准: clock={match_clock_str} video={video_pos_sec:.0f}s "
+            f"half={half} offset={offset_this:.1f}s "
+            f"median_h1={self._ocr_offset_h1 and f'{self._ocr_offset_h1:.1f}s'} "
+            f"median_h2={self._ocr_offset_h2 and f'{self._ocr_offset_h2:.1f}s'} "
+            f"points={len(self._ocr_points)}",
+        )
+        return {"accepted": True, "half": half, "offset": result_offset, "reason": "ok"}
+
+    # ------ 核心时间转换 ------
+
     def kickoff_video_offset(self) -> float | None:
-        """返回开球在视频中的偏移量（秒）。"""
+        """返回开球在视频中的偏移量（秒）。仅用于 599 降级路径。"""
         with self._lock:
             if self.kickoff_utc is None or self.video_start_utc is None:
                 return None
             return (self.kickoff_utc - self.video_start_utc).total_seconds()
 
     def match_time_to_video(self, time_ms: int) -> float | None:
-        """将比赛内时间(ms)转换为视频偏移(秒)。"""
+        """将比赛内时间(ms)转换为视频偏移(秒)。
+
+        优先使用 OCR 分半场 offset，降级使用 599 kickoff 推算。
+        """
+        match_time_sec = time_ms / 1000.0
+        half = 1 if match_time_sec < _HALF_BOUNDARY_SEC else 2
+
+        with self._lock:
+            # 优先: OCR 校准 offset
+            ocr_off = self._ocr_offset_h1 if half == 1 else self._ocr_offset_h2
+            if ocr_off is not None:
+                return ocr_off + match_time_sec
+
+        # 降级: 599 kickoff 推算
         offset = self.kickoff_video_offset()
-        return (offset + time_ms / 1000.0) if offset is not None else None
+        return (offset + match_time_sec) if offset is not None else None
 
     def validate_score_drift(self, score: str, match_time_ms: int) -> dict | None:
         """比分变化交叉校验：计算 599 事件时间与 betting_data 同一比分的时间差。"""
@@ -301,6 +390,13 @@ class AlignmentEngine:
                 "kickoffVideoOffsetSec": round(ko, 3) if ko is not None else None,
                 "videoStartUtc": self.video_start_utc.isoformat() if self.video_start_utc else "",
                 "lastMatchTimeMs": self.last_match_time_ms,
+                "ocrCalibrationPoints": len(self._ocr_points),
+                "ocrOffsetH1": round(self._ocr_offset_h1, 2) if self._ocr_offset_h1 is not None else None,
+                "ocrOffsetH2": round(self._ocr_offset_h2, 2) if self._ocr_offset_h2 is not None else None,
+                "alignmentSource": (
+                    "ocr_calibration" if (self._ocr_offset_h1 is not None or self._ocr_offset_h2 is not None)
+                    else ("599_kickoff" if self.kickoff_utc else "none")
+                ),
             }
 
 
@@ -650,3 +746,423 @@ class LiveTextPoller599:
                 self.data.extend(new_rows)
                 self._pending.extend(new_rows)
         return len(new_rows)
+
+
+# ---------------------------------------------------------------------------
+# Shared599Writer: dispatcher 端集中轮询，写入共享 JSONL
+# ---------------------------------------------------------------------------
+
+class Shared599Writer:
+    """在 dispatcher 中集中轮询所有活跃比赛的 599 事件。
+
+    - 维护 {match_key → thirdId} 注册表
+    - 每个轮询周期内，将所有比赛的请求均匀分散（stagger）
+    - 事件写入共享 JSONL，每行带 _match_key / _third_id 标识
+    - Worker 端用 Shared599Reader 读取并按 match_key 过滤
+    """
+
+    def __init__(
+        self,
+        shared_path: str,
+        *,
+        poll_interval: float = 5.0,
+        logger: Any = None,
+    ):
+        import json as _json  # noqa: used in flush
+        self.shared_path = shared_path
+        self.poll_interval = max(5.0, float(poll_interval))
+        self.logger = logger
+
+        # {match_key → registration_info}
+        # match_key = f"{team_h}||{team_c}" (normalized)
+        self._registry: dict[str, dict] = {}
+        self._registry_lock = threading.Lock()
+        self._stop = threading.Event()
+
+        # 缓冲区: list of dicts ready to flush to disk
+        self._buffer: list[dict] = []
+        self._buffer_lock = threading.Lock()
+        self._total_events_flushed = 0
+
+    @staticmethod
+    def _match_key(team_h: str, team_c: str) -> str:
+        return f"{(team_h or '').strip()}||{(team_c or '').strip()}"
+
+    def register_match(
+        self,
+        team_h: str,
+        team_c: str,
+        *,
+        selected_match: dict | None = None,
+        league: str = "",
+    ) -> str:
+        """注册一场比赛，返回 match_key。"""
+        key = self._match_key(team_h, team_c)
+        with self._registry_lock:
+            if key not in self._registry:
+                self._registry[key] = {
+                    "team_h": (team_h or "").strip(),
+                    "team_c": (team_c or "").strip(),
+                    "league": (league or "").strip(),
+                    "selected_match": dict(selected_match or {}),
+                    "third_id": "",
+                    "resolved_home": "",
+                    "resolved_away": "",
+                    "resolve_fail_count": 0,
+                    "poll_count": 0,
+                    "event_count": 0,
+                    "last_error": "",
+                }
+        _log(self.logger, f"599集中: 注册比赛 {key}")
+        return key
+
+    def unregister_match(self, team_h: str, team_c: str) -> None:
+        key = self._match_key(team_h, team_c)
+        with self._registry_lock:
+            removed = self._registry.pop(key, None)
+        if removed:
+            _log(self.logger, f"599集中: 注销比赛 {key}")
+
+    def stop(self) -> None:
+        self._stop.set()
+
+    def snapshot(self) -> dict:
+        with self._registry_lock:
+            matches = {}
+            for key, info in self._registry.items():
+                matches[key] = {
+                    "thirdId": info["third_id"],
+                    "resolvedHome": info["resolved_home"],
+                    "resolvedAway": info["resolved_away"],
+                    "pollCount": info["poll_count"],
+                    "eventCount": info["event_count"],
+                    "lastError": info["last_error"],
+                }
+        return {
+            "registeredMatches": len(matches),
+            "matches": matches,
+            "totalEventsFlushed": self._total_events_flushed,
+        }
+
+    # ---- 主循环 ----
+
+    def start(self) -> None:
+        """阻塞式主循环，应在独立线程中运行。"""
+        if get_match_list is None or get_match_info is None:
+            _log(self.logger, f"599集中: API 不可用 — {_API_599_IMPORT_ERROR}", "WARN")
+            return
+        _log(self.logger, f"599集中轮询线程启动: interval={self.poll_interval}s")
+        while not self._stop.is_set():
+            try:
+                self._poll_cycle()
+            except Exception as exc:
+                _log(self.logger, f"599集中轮询异常: {exc}", "WARN")
+            self._stop.wait(timeout=self.poll_interval)
+        _log(self.logger, "599集中轮询线程结束")
+
+    def _poll_cycle(self) -> None:
+        """单次轮询周期：对每个已注册比赛依次拉取事件（stagger）。"""
+        with self._registry_lock:
+            entries = list(self._registry.items())
+        if not entries:
+            return
+
+        # 未解析的比赛先尝试 resolve
+        unresolved = [(k, v) for k, v in entries if not v["third_id"]]
+        if unresolved:
+            self._resolve_batch(unresolved)
+
+        # 只轮询已解析的比赛
+        with self._registry_lock:
+            resolved = [(k, dict(v)) for k, v in self._registry.items() if v["third_id"]]
+        if not resolved:
+            return
+
+        # 均匀 stagger: N 场比赛分散在 poll_interval 内
+        stagger = self.poll_interval / max(1, len(resolved))
+        for i, (key, info) in enumerate(resolved):
+            if self._stop.is_set():
+                break
+            try:
+                self._poll_match(key, info)
+            except Exception as exc:
+                with self._registry_lock:
+                    if key in self._registry:
+                        self._registry[key]["last_error"] = str(exc)
+                _log(self.logger, f"599集中: 轮询失败 {key} — {exc}", "WARN")
+            # stagger 间隔（最后一个不需要等）
+            if i < len(resolved) - 1 and not self._stop.is_set():
+                self._stop.wait(timeout=stagger)
+
+    def _resolve_batch(self, unresolved: list[tuple[str, dict]]) -> None:
+        """批量解析未绑定 thirdId 的比赛。一次 get_match_list，多个 get_match_info。"""
+        try:
+            result = get_match_list()
+        except Exception as exc:
+            _log(self.logger, f"599集中: get_match_list 失败 — {exc}", "WARN")
+            return
+        groups = result.get("all", [])
+        if not isinstance(groups, list):
+            return
+
+        for key, info in unresolved:
+            if self._stop.is_set():
+                break
+            # 构建临时 poller 来复用打分逻辑
+            tmp_poller = LiveTextPoller599(
+                info["team_h"],
+                info["team_c"],
+                selected_match=info.get("selected_match"),
+                league=info.get("league", ""),
+                logger=self.logger,
+            )
+            # 手动驱动 resolve 逻辑（使用已拉取的 groups）
+            league_hints: list[str] = []
+            for candidate in (
+                tmp_poller.league,
+                tmp_poller.selected_match.get("data_league", ""),
+                (tmp_poller.selected_match.get("_feed_binding") or {}).get("league", ""),
+            ):
+                text = str(candidate or "").strip()
+                if text and text not in league_hints:
+                    league_hints.append(text)
+            preferred, fallback = [], []
+            for g in groups:
+                if not isinstance(g, dict):
+                    continue
+                race = str(g.get("racename", "")).strip()
+                ids = [str(i).strip() for i in (g.get("thirdId") or []) if str(i).strip()]
+                bucket = preferred if any(same_league_text(hint, race) for hint in league_hints) else fallback
+                bucket.extend((tid, race) for tid in ids)
+
+            candidates = preferred + fallback
+            best_score, best_tid, best_home, best_away = -1, "", "", ""
+            for tid, race in candidates:
+                if self._stop.is_set():
+                    break
+                try:
+                    mi = get_match_info(tid)
+                    detail = mi.get("data", {})
+                    if not isinstance(detail, dict):
+                        continue
+                    score, _reason = tmp_poller._score_candidate(detail, race)
+                    if score > best_score:
+                        best_score = score
+                        best_tid = tid
+                        best_home = str((detail.get("homeTeamInfo") or {}).get("name", "")).strip()
+                        best_away = str((detail.get("guestTeamInfo") or {}).get("name", "")).strip()
+                    time_mod.sleep(0.05)
+                except Exception:
+                    continue
+
+            with self._registry_lock:
+                if key not in self._registry:
+                    continue
+                if best_score >= MATCH_CONFIDENCE_THRESHOLD:
+                    self._registry[key]["third_id"] = best_tid
+                    self._registry[key]["resolved_home"] = best_home
+                    self._registry[key]["resolved_away"] = best_away
+                    self._registry[key]["resolve_fail_count"] = 0
+                    _log(self.logger, f"599集中: 解析成功 {key} → {best_tid} ({best_home} vs {best_away}) score={best_score}")
+                else:
+                    self._registry[key]["resolve_fail_count"] += 1
+                    _log(self.logger, f"599集中: 解析失败 {key} best_score={best_score}", "WARN")
+
+    def _poll_match(self, key: str, info: dict) -> None:
+        """单场比赛轮询：拉取 matchLive 窗口，写入缓冲区。"""
+        third_id = info["third_id"]
+        resp = get_match_info(third_id)
+        window = LiveTextPoller599._extract_live_window(resp)
+        observed_at = _now_utc()
+
+        with self._registry_lock:
+            if key in self._registry:
+                self._registry[key]["poll_count"] += 1
+
+        if not window:
+            return
+
+        events = []
+        for row in window:
+            item = dict(row)
+            item["_599_observed_at"] = observed_at.isoformat()
+            item["_599_source"] = "shared_poll"
+            item["_match_key"] = key
+            item["_third_id"] = third_id
+            item["_team_h"] = info["team_h"]
+            item["_team_c"] = info["team_c"]
+            events.append(item)
+
+        with self._buffer_lock:
+            self._buffer.extend(events)
+
+        with self._registry_lock:
+            if key in self._registry:
+                self._registry[key]["event_count"] += len(events)
+
+    def flush(self) -> int:
+        """将缓冲区事件落盘到共享 JSONL 文件。由 dispatcher 主循环调用。"""
+        import json as _json
+        with self._buffer_lock:
+            if not self._buffer:
+                return 0
+            rows = list(self._buffer)
+            self._buffer.clear()
+        try:
+            with open(self.shared_path, "a", encoding="utf-8") as f:
+                for row in rows:
+                    f.write(_json.dumps(row, ensure_ascii=False) + "\n")
+            self._total_events_flushed += len(rows)
+            return len(rows)
+        except Exception as exc:
+            _log(self.logger, f"599集中: 落盘失败 — {exc}", "WARN")
+            # 放回缓冲区
+            with self._buffer_lock:
+                self._buffer = rows + self._buffer
+            return 0
+
+
+# ---------------------------------------------------------------------------
+# Shared599Reader: worker 端读取共享 599 JSONL
+# ---------------------------------------------------------------------------
+
+class Shared599Reader:
+    """Worker 端读取 dispatcher 写入的共享 599 事件文件。
+
+    提供与 LiveTextPoller599 相同的接口:
+    - data, drain_pending(), snapshot(), start(), stop()
+    - 自动按 match_key 过滤只属于本比赛的事件
+    - 将事件喂给 AlignmentEngine
+    """
+
+    def __init__(
+        self,
+        shared_path: str,
+        team_h: str,
+        team_c: str,
+        *,
+        alignment: AlignmentEngine | None = None,
+        read_interval: float = 2.0,
+        logger: Any = None,
+    ):
+        self.shared_path = shared_path
+        self.team_h = (team_h or "").strip()
+        self.team_c = (team_c or "").strip()
+        self.match_key = f"{self.team_h}||{self.team_c}"
+        self.alignment = alignment or AlignmentEngine()
+        self.logger = logger
+
+        self.data: list[dict] = []
+        self._pending: list[dict] = []
+        self._seen_ids: set[str] = set()
+        self._lock = threading.Lock()
+        self._stop = threading.Event()
+        self._read_interval = read_interval
+        self._last_offset = 0
+
+        # 兼容 LiveTextPoller599 接口
+        self.state: str = "idle"
+        self.third_id: str = ""
+        self.resolved_home: str = ""
+        self.resolved_away: str = ""
+        self.matched_by: str = "shared_599"
+        self.poll_count: int = 0
+        self.error_count: int = 0
+        self.last_error: str = ""
+        self.resolve_fail_count: int = 0
+
+    def stop(self) -> None:
+        self._stop.set()
+
+    def drain_pending(self) -> list[dict]:
+        with self._lock:
+            rows = list(self._pending)
+            self._pending.clear()
+            return rows
+
+    def snapshot(self) -> dict:
+        with self._lock:
+            return {
+                "state": self.state,
+                "thirdId": self.third_id,
+                "matchedBy": self.matched_by,
+                "resolvedHome": self.resolved_home,
+                "resolvedAway": self.resolved_away,
+                "eventCount": len(self.data),
+                "pollCount": self.poll_count,
+                "errorCount": self.error_count,
+                "resolveFailCount": self.resolve_fail_count,
+                "lastError": self.last_error,
+                "mode": "shared_599_reader",
+            }
+
+    def start(self) -> None:
+        """阻塞式主循环，在独立线程中运行。"""
+        import json as _json
+        self.state = "polling"
+        _log(self.logger, f"599共享读取线程启动: match_key={self.match_key} interval={self._read_interval}s")
+        while not self._stop.is_set():
+            try:
+                self._read_new_events(_json)
+            except Exception as exc:
+                self.error_count += 1
+                self.last_error = str(exc)
+            self._stop.wait(timeout=self._read_interval)
+        self.state = "stopped"
+        _log(self.logger, f"599共享读取线程结束: events={len(self.data)}")
+
+    def _read_new_events(self, _json) -> None:
+        from pathlib import Path
+        p = Path(self.shared_path)
+        if not p.exists():
+            return
+        try:
+            with open(p, "r", encoding="utf-8") as f:
+                f.seek(self._last_offset)
+                new_lines = f.readlines()
+                if not new_lines:
+                    return
+                self._last_offset = f.tell()
+        except Exception:
+            return
+
+        matched_events = []
+        for line in new_lines:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = _json.loads(line)
+            except Exception:
+                continue
+            # 按 match_key 过滤
+            if str(row.get("_match_key", "")) != self.match_key:
+                continue
+            # 去重
+            mid = _event_msg_id(row)
+            if mid in self._seen_ids:
+                continue
+            self._seen_ids.add(mid)
+            # 提取 thirdId
+            if not self.third_id and row.get("_third_id"):
+                self.third_id = str(row["_third_id"])
+                self.resolved_home = str(row.get("_team_h", ""))
+                self.resolved_away = str(row.get("_team_c", ""))
+            matched_events.append(row)
+
+        if not matched_events:
+            return
+
+        # 喂给 AlignmentEngine
+        observed_at_str = matched_events[-1].get("_599_observed_at", "")
+        observed_at = _coerce_utc(observed_at_str) or _now_utc()
+        self.alignment.update_from_live_events(matched_events, observed_at)
+
+        with self._lock:
+            self.data.extend(matched_events)
+            self._pending.extend(matched_events)
+        self.poll_count += 1
+        _log(
+            self.logger,
+            f"599共享读取: +{len(matched_events)}条 total={len(self.data)} match_key={self.match_key}",
+        )

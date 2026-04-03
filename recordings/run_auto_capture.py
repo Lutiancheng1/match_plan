@@ -348,9 +348,13 @@ def _fetch_proxy_credentials(logger, refresh=False):
         if not cookie:
             return None
         template = parse_form_body(body_template) if body_template else {}
+        feed_url = str(data.get("feed_url", "")).strip() or DEFAULT_URL
+        template_ver = str(template.get("ver", "")).strip()
+        if template_ver and f"ver={template_ver}" not in feed_url:
+            feed_url = f"https://112.121.42.168/transform.php?ver={template_ver}"
         action = "刷新" if refresh else "复用"
-        logger.log(f"{action}数据站代理 session (proxy {endpoint})")
-        return cookie, template, DEFAULT_URL, "proxy_shared"
+        logger.log(f"{action}数据站代理 session (proxy {endpoint}) | ver={template_ver or 'unknown'}")
+        return cookie, template, feed_url, "proxy_shared"
     except Exception:
         return None
 
@@ -372,6 +376,10 @@ def _load_shared_credentials_file(logger):
             return None
         template = data.get("template") or {}
         feed_url = data.get("feed_url", "") or DEFAULT_URL
+        template_ver = str(template.get("ver", "")).strip()
+        if template_ver and f"ver={template_ver}" not in str(feed_url):
+            feed_url = f"https://112.121.42.168/transform.php?ver={template_ver}"
+            logger.log(f"共享凭证文件 feed_url 已按 template.ver 修正: {template_ver}")
         source = data.get("data_source", "") or "shared_file"
         logger.log(f"复用共享凭证文件: {shared_path}")
         return cookie, template, feed_url, source

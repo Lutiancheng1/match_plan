@@ -115,6 +115,7 @@ def default_state(args: argparse.Namespace) -> dict:
         "hls_width": int(getattr(args, "hls_width", 960)),
         "hls_height": int(getattr(args, "hls_height", 540)),
         "hls_bitrate_kbps": int(getattr(args, "hls_bitrate_kbps", 3500)),
+        "live_text_599_poll_seconds": float(getattr(args, "live_text_599_poll_seconds", 5.0)),
         "skip_data_binding": bool(args.skip_data_binding),
         "allow_unbound": bool(args.allow_unbound),
         "chain_tag": str(args.chain_tag),
@@ -199,6 +200,10 @@ def normalize_state(args: argparse.Namespace) -> dict:
             "hls_bitrate_kbps": int(
                 args.hls_bitrate_kbps if getattr(args, "hls_bitrate_kbps", None) is not None else payload.get("hls_bitrate_kbps", 3500)
             ),
+            "live_text_599_poll_seconds": float(
+                getattr(args, "live_text_599_poll_seconds", None)
+                or payload.get("live_text_599_poll_seconds", 5.0)
+            ),
             "skip_data_binding": bool(args.skip_data_binding),
             "allow_unbound": bool(args.allow_unbound),
             "chain_tag": str(args.chain_tag or payload.get("chain_tag", "pgst")),
@@ -251,6 +256,8 @@ def build_dispatcher_command(state: dict) -> list[str]:
         str(state.get("chain_tag", "pgst")),
         "--runtime-dir",
         str(state["runtime_dir"]),
+        "--live-text-599-poll-seconds",
+        str(state.get("live_text_599_poll_seconds", 5.0)),
     ]
     if state.get("skip_data_binding"):
         cmd.append("--skip-data-binding")
@@ -1155,6 +1162,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--hls-width", type=int, default=960)
     parser.add_argument("--hls-height", type=int, default=540)
     parser.add_argument("--hls-bitrate-kbps", type=int, default=3500)
+    parser.add_argument("--live-text-599-poll-seconds", type=float, default=5.0)
     parser.add_argument("--skip-data-binding", action="store_true")
     parser.add_argument("--allow-unbound", action="store_true")
     parser.add_argument("--chain-tag", default="pgst")

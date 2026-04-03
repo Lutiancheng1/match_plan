@@ -71,24 +71,44 @@ struct ContentView: View {
 private struct SidebarControlsCard: View {
     @Bindable var controller: AppController
 
+    private var dispatcherRunning: Bool {
+        controller.supervisorStatus.dispatcher_alive || controller.supervisorStatus.alive_worker_count > 0
+    }
+
+    private var hasOrphanWorkers: Bool {
+        !dispatcherRunning && !controller.activeWorkers.isEmpty
+    }
+
     private var isRunning: Bool {
-        controller.supervisorStatus.dispatcher_alive || controller.supervisorStatus.alive_worker_count > 0 || !controller.activeWorkers.isEmpty
+        dispatcherRunning || hasOrphanWorkers
     }
 
     private var primaryTitle: String {
-        isRunning ? "停止录制链" : "启动录制链"
+        if hasOrphanWorkers {
+            return "停止现有录制"
+        }
+        return isRunning ? "停止录制链" : "启动录制链"
     }
 
     private var primarySubtitle: String {
-        isRunning ? "当前链路正在运行，点这里优雅停止" : "从这里直接启动正式录制链"
+        if hasOrphanWorkers {
+            return "检测到已有 worker 在录制，点这里停止当前录制任务"
+        }
+        return isRunning ? "当前链路正在运行，点这里优雅停止" : "从这里直接启动正式录制链"
     }
 
     private var primarySymbol: String {
-        isRunning ? "stop.circle.fill" : "play.circle.fill"
+        if hasOrphanWorkers {
+            return "stop.square.fill"
+        }
+        return isRunning ? "stop.circle.fill" : "play.circle.fill"
     }
 
     private var primaryTint: Color {
-        isRunning ? .red : .accentColor
+        if hasOrphanWorkers {
+            return .orange
+        }
+        return isRunning ? .red : .accentColor
     }
 
     private var primaryDisabled: Bool {
@@ -106,7 +126,11 @@ private struct SidebarControlsCard: View {
                     .font(.caption.weight(.semibold))
                     .padding(.horizontal, 10)
                     .padding(.vertical, 6)
-                    .background(isRunning ? Color.green.opacity(0.14) : Color.secondary.opacity(0.12))
+                    .background(
+                        hasOrphanWorkers
+                            ? Color.orange.opacity(0.14)
+                            : (isRunning ? Color.green.opacity(0.14) : Color.secondary.opacity(0.12))
+                    )
                     .clipShape(Capsule())
                 if controller.controlsLocked {
                     Label("执行中", systemImage: "clock.arrow.circlepath")

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -637,6 +638,27 @@ def parse_game_more_xml(xml_text: str) -> dict[str, Any]:
 
 
 def fetch_xml(url: str, body: str, cookie: str | None, timeout: float) -> str:
+    def _cookie_fingerprint(raw_cookie: str | None) -> str:
+        text = str(raw_cookie or "").strip()
+        if not text:
+            return "none"
+        return hashlib.md5(text.encode("utf-8")).hexdigest()[:10]
+
+    def _request_context() -> str:
+        parsed_url = urllib.parse.urlparse(url)
+        values = parse_form_body(body)
+        return (
+            f"host={parsed_url.netloc or '?'} "
+            f"path={parsed_url.path or '/'} "
+            f"ver={urllib.parse.parse_qs(parsed_url.query).get('ver', [''])[0] or values.get('ver', '') or '?'} "
+            f"p={values.get('p', '?')} "
+            f"gtype={values.get('gtype', '?')} "
+            f"showtype={values.get('showtype', '?')} "
+            f"rtype={values.get('rtype', '?')} "
+            f"cookie_md5={_cookie_fingerprint(cookie)} "
+            f"cookie_len={len(cookie or '')}"
+        )
+
     data = body.encode("utf-8")
     request = urllib.request.Request(url, data=data, method="POST")
     request.add_header("Content-Type", "application/x-www-form-urlencoded")
@@ -654,6 +676,28 @@ def fetch_xml(url: str, body: str, cookie: str | None, timeout: float) -> str:
                 return resp.read().decode("utf-8", errors="replace")
         except IncompleteRead as exc:
             return exc.partial.decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as exc:
+            body_preview = ""
+            try:
+                preview = exc.read(180)
+                body_preview = preview.decode("utf-8", errors="replace").strip().replace("\n", " ")[:180]
+            except Exception:
+                body_preview = ""
+            last_error = RuntimeError(
+                f"HTTP {exc.code}: {exc.reason} | {_request_context()}"
+                + (f" | body={body_preview!r}" if body_preview else "")
+            )
+            if exc.code == 404:
+                # 404 likely means the sing-box node is geo-blocked —
+                # trigger node re-probe on last retry
+                if _attempt >= 1:
+                    try:
+                        from data_site_node_prober import handle_data_site_failure
+                        handle_data_site_failure()
+                    except Exception:
+                        pass
+                time.sleep(0.35)
+                continue
         except (socket.timeout, TimeoutError, urllib.error.URLError, OSError) as exc:
             last_error = exc
             time.sleep(0.35)

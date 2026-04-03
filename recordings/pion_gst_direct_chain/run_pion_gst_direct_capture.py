@@ -41,7 +41,7 @@ from pion_gst_direct_chain.shared_livekit_runtime import (
     now_iso,
     resolve_selected_matches,
 )
-from pion_gst_direct_chain.live_text_599 import AlignmentEngine, LiveTextPoller599
+from pion_gst_direct_chain.live_text_599 import AlignmentEngine, LiveTextPoller599, Shared599Reader
 
 GO_BIN = "/opt/homebrew/bin/go"
 RECORDER_BIN = SCRIPT_DIR / ".build" / "pion_livekit_gst_recorder"
@@ -377,6 +377,7 @@ def main() -> int:
     parser.add_argument("--status-path", default="")
     parser.add_argument("--data-credentials-file", default="")
     parser.add_argument("--shared-betting-data", default="")
+    parser.add_argument("--shared-599-data", default="")
     parser.add_argument("--segment-minutes", type=int, default=2)
     parser.add_argument("--max-duration-minutes", type=int, default=2)
     parser.add_argument("--disable-hls-preview", action="store_true", default=False)
@@ -390,7 +391,9 @@ def main() -> int:
     parser.add_argument("--hls-height", type=int, default=540)
     parser.add_argument("--hls-bitrate-kbps", type=int, default=3500)
     parser.add_argument("--enable-live-text-599", action="store_true", default=True)
-    parser.add_argument("--live-text-599-poll-seconds", type=float, default=12.0)
+    parser.add_argument("--live-text-599-poll-seconds", type=float, default=5.0)
+    parser.add_argument("--enable-ocr-calibration", action="store_true", default=True)
+    parser.add_argument("--ocr-calibration-interval-seconds", type=int, default=120)
     parser.add_argument("--require-data-binding", action="store_true", default=True)
     parser.add_argument("--allow-unbound", action="store_true", default=False)
     parser.add_argument("--session-id", default="")
@@ -595,19 +598,31 @@ def main() -> int:
     )
     if _live_text_enabled:
         live_text_path.touch(exist_ok=True)
-        live_text_poller = LiveTextPoller599(
-            str(selected_match.get("team_h", "")),
-            str(selected_match.get("team_c", "")),
-            selected_match=selected_match,
-            league=str(selected_match.get("league", "")),
-            alignment=alignment_engine,
-            poll_interval=float(args.live_text_599_poll_seconds),
-            logger=logger,
-        )
-        live_text_thread = threading.Thread(target=live_text_poller.start, daemon=True)
-        live_text_thread.start()
-        logger.log(f"599 文字直播线程启动: poll={args.live_text_599_poll_seconds}s")
-        update_state(liveText599=live_text_poller.snapshot())
+        if args.shared_599_data:
+            live_text_poller = Shared599Reader(
+                args.shared_599_data,
+                str(selected_match.get("team_h", "")),
+                str(selected_match.get("team_c", "")),
+                alignment=alignment_engine,
+                logger=logger,
+            )
+            live_text_thread = threading.Thread(target=live_text_poller.start, daemon=True)
+            live_text_thread.start()
+            logger.log(f"599 文字直播: 读取 dispatcher 共享文件 (不独立请求599)")
+        else:
+            live_text_poller = LiveTextPoller599(
+                str(selected_match.get("team_h", "")),
+                str(selected_match.get("team_c", "")),
+                selected_match=selected_match,
+                league=str(selected_match.get("league", "")),
+                alignment=alignment_engine,
+                poll_interval=float(args.live_text_599_poll_seconds),
+                logger=logger,
+            )
+            live_text_thread = threading.Thread(target=live_text_poller.start, daemon=True)
+            live_text_thread.start()
+            logger.log(f"599 文字直播线程启动: poll={args.live_text_599_poll_seconds}s (独立轮询)")
+        update_state(liveText599={**live_text_poller.snapshot(), **alignment_engine.snapshot()})
     elif args.enable_live_text_599:
         logger.log("599 文字直播未启用: 需要 FT 且 team_h/team_c 完整", "WARN")
 
@@ -669,12 +684,12 @@ def main() -> int:
             return 0
         rows = live_text_poller.drain_pending()
         if not rows:
-            update_state(liveText599=live_text_poller.snapshot())
+            update_state(liveText599={**live_text_poller.snapshot(), **alignment_engine.snapshot()})
             return 0
         annotated = [alignment_engine.annotate_event(e) for e in sorted(rows, key=lambda x: int(x.get("time", 0) or 0))]
         written = _append_jsonl(str(live_text_path), annotated)
         live_text_rows_written += written
-        update_state(liveText599=live_text_poller.snapshot())
+        update_state(liveText599={**live_text_poller.snapshot(), **alignment_engine.snapshot()})
         if written:
             logger.log(f"599 文字直播落盘({reason}): +{written}条, total={live_text_rows_written}")
         return written
@@ -708,6 +723,114 @@ def main() -> int:
 
     flush_thread = threading.Thread(target=data_flush_loop, daemon=True)
     flush_thread.start()
+
+    # --- OCR 校准线程: 每 N 秒从最新 HLS 段抽一帧 → 9B 模型 OCR 比赛时钟 → 校准对齐 ---
+    ocr_calibration_thread = None
+    if args.enable_ocr_calibration and not args.disable_hls_preview:
+        _ocr_frame_path = output_dir / "_ocr_calibration_frame.jpg"
+
+        def _extract_frame_from_ts(ts_path: Path, out_path: Path) -> bool:
+            """从 .ts 段中提取第一帧 JPEG。"""
+            try:
+                subprocess.run(
+                    ["ffmpeg", "-y", "-loglevel", "error", "-i", str(ts_path),
+                     "-frames:v", "1", "-q:v", "2", "-f", "image2", str(out_path)],
+                    capture_output=True, timeout=15,
+                )
+                return out_path.exists() and out_path.stat().st_size > 1000
+            except Exception:
+                return False
+
+        def ocr_calibration_loop():
+            """定期从 HLS 段截帧 → OCR 比赛时钟 → 喂给 AlignmentEngine。"""
+            try:
+                project_root = str(Path(__file__).resolve().parent.parent.parent)
+                if project_root not in sys.path:
+                    sys.path.insert(0, project_root)
+                from analysis_vlm.lib.live_observer import LiveObserver
+                observer = LiveObserver(timeout=20)
+            except Exception as exc:
+                logger.log(f"OCR校准: 无法加载 LiveObserver: {exc}，跳过校准", "WARN")
+                return
+
+            # 等录制真正开始
+            for _ in range(60):
+                if stop_event.wait(timeout=5):
+                    return
+                if alignment_engine.video_start_utc is not None:
+                    break
+            else:
+                logger.log("OCR校准: 60次等待后视频仍未开始，退出校准线程", "WARN")
+                return
+
+            # 首次校准在录制开始 30 秒后
+            if stop_event.wait(timeout=30):
+                return
+
+            interval = max(60, int(args.ocr_calibration_interval_seconds))
+            logger.log(f"OCR校准线程启动: interval={interval}s")
+
+            while not stop_event.is_set():
+                try:
+                    if not hls_dir.exists():
+                        if stop_event.wait(timeout=interval):
+                            break
+                        continue
+                    candidates = sorted(hls_dir.glob("segment_*.ts"))
+                    if not candidates:
+                        if stop_event.wait(timeout=interval):
+                            break
+                        continue
+
+                    latest_ts = candidates[-1]
+                    if not _extract_frame_from_ts(latest_ts, _ocr_frame_path):
+                        logger.log("OCR校准: ffmpeg 截帧失败", "WARN")
+                        if stop_event.wait(timeout=interval):
+                            break
+                        continue
+
+                    # 视频位置 ≈ 当前时刻 - 录制开始时刻
+                    video_pos_sec = (datetime.now(timezone.utc) - alignment_engine.video_start_utc).total_seconds()
+
+                    result = observer.observe_frame(str(_ocr_frame_path))
+                    _ocr_frame_path.unlink(missing_ok=True)
+
+                    if not result.get("success"):
+                        logger.log(f"OCR校准: 模型调用失败 — {result.get('error', '?')}", "WARN")
+                        if stop_event.wait(timeout=interval):
+                            break
+                        continue
+
+                    obs = result["observation"] or {}
+                    clock = str(obs.get("match_clock_detected") or "").strip()
+                    vis = str(obs.get("scoreboard_visibility") or "").strip()
+
+                    if clock and vis in ("clear", "partial"):
+                        cal = alignment_engine.ingest_ocr_calibration(video_pos_sec, clock)
+                        cal_off = cal.get("offset")
+                        cal_off_str = f"{cal_off:.1f}s" if cal_off is not None else "N/A"
+                        logger.log(
+                            f"OCR校准成功: clock={clock} vis={vis} video={video_pos_sec:.0f}s "
+                            f"half={cal.get('half')} offset={cal_off_str} "
+                            f"latency={result.get('latency_ms', 0):.0f}ms"
+                        )
+                    else:
+                        logger.log(
+                            f"OCR校准: 时钟不可读 clock='{clock}' vis='{vis}' "
+                            f"scene={obs.get('scene_type', '?')} latency={result.get('latency_ms', 0):.0f}ms"
+                        )
+                except Exception as exc:
+                    logger.log(f"OCR校准异常: {exc}", "WARN")
+
+                if stop_event.wait(timeout=interval):
+                    break
+
+            _ocr_frame_path.unlink(missing_ok=True)
+            logger.log(f"OCR校准线程结束: 共 {len(alignment_engine._ocr_points)} 个校准点")
+
+        ocr_calibration_thread = threading.Thread(target=ocr_calibration_loop, daemon=True, name="ocr_calibration")
+        ocr_calibration_thread.start()
+        logger.log(f"OCR校准线程已创建: interval={args.ocr_calibration_interval_seconds}s (等待录制开始)")
 
     recorder_status_path = output_dir / "pion_gst_status.json"
     output_pattern = output_dir / f"{file_prefix}__seg_%05d.mkv"
@@ -913,6 +1036,8 @@ def main() -> int:
     if live_text_thread:
         live_text_thread.join(timeout=2)
     flush_thread.join(timeout=2)
+    if ocr_calibration_thread:
+        ocr_calibration_thread.join(timeout=5)
 
     final_rows = list(poller.data)
     _write_jsonl_atomic(str(raw_data_path), final_rows)
@@ -948,9 +1073,26 @@ def main() -> int:
         logger.log(
             f"599 文字直播最终写入: {live_text_rows_written}条 | "
             f"thirdId={snap.get('thirdId','')} | "
-            f"kickoff_offset={asnap.get('kickoffVideoOffsetSec','')}s"
+            f"kickoff_offset={asnap.get('kickoffVideoOffsetSec','')}s | "
+            f"ocr_points={asnap.get('ocrCalibrationPoints', 0)} "
+            f"ocr_h1={asnap.get('ocrOffsetH1', 'N/A')} ocr_h2={asnap.get('ocrOffsetH2', 'N/A')} "
+            f"source={asnap.get('alignmentSource', 'none')}"
         )
         update_state(liveText599={**snap, **asnap, "rows": live_text_rows_written, "file": str(live_text_path)})
+
+    # OCR 校准点落盘（调试用）
+    if alignment_engine._ocr_points:
+        ocr_cal_path = output_dir / f"{file_prefix}__ocr_calibration.json"
+        try:
+            ocr_cal_path.write_text(json.dumps({
+                "points": alignment_engine._ocr_points,
+                "offset_h1": alignment_engine._ocr_offset_h1,
+                "offset_h2": alignment_engine._ocr_offset_h2,
+                "total_points": len(alignment_engine._ocr_points),
+            }, ensure_ascii=False, indent=2), encoding="utf-8")
+            logger.log(f"OCR校准数据已保存: {ocr_cal_path} ({len(alignment_engine._ocr_points)}点)")
+        except Exception as exc:
+            logger.log(f"OCR校准数据保存失败: {exc}", "WARN")
 
     manifest_payload = rebuild_manifest_from_segments(output_dir, file_prefix, manifest, logger)
     manifest_payload = apply_tail_trim_to_manifest(

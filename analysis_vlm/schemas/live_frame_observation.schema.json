@@ -64,6 +64,8 @@
               "replay_sequence",
               "substitution",
               "heavy_contact_foul",
+              "foul",
+              "offside",
               "injury_or_stoppage",
               "none"
             ]

@@ -20,11 +20,11 @@
   "friendlies <-> 国际友谊赛": {
     "left_normalized": "friendlies",
     "right_normalized": "国际友谊赛",
-    "left_example": "Friendlies\t16:00",
+    "left_example": "Friendlies\t22:00",
     "right_example": "国际友谊赛",
-    "count": 4316,
+    "count": 4339,
     "promoted": true,
-    "last_seen_at": "2026-03-31T20:59:46.301387+00:00"
+    "last_seen_at": "2026-04-01T02:58:28.235611+00:00"
   },
   "primeradivisionapertura <-> 乌拉圭甲组联赛": {
     "left_normalized": "primeradivisionapertura",
@@ -119,11 +119,11 @@
   "worldcupqualificationintercontinentalplayoffs <-> 世界杯2026洲际在墨西哥附加赛": {
     "left_normalized": "worldcupqualificationintercontinentalplayoffs",
     "right_normalized": "世界杯2026洲际在墨西哥附加赛",
-    "left_example": "World Cup - Qualification Intercontinental Play-offs\t18:00",
+    "left_example": "World Cup - Qualification Intercontinental Play-offs\t00:00",
     "right_example": "世界杯2026洲际(在墨西哥)-附加赛",
-    "count": 232,
+    "count": 374,
     "promoted": true,
-    "last_seen_at": "2026-03-31T22:35:05.007491+00:00"
+    "last_seen_at": "2026-04-01T04:03:27.819723+00:00"
   },
   "copadonordeste <-> 巴西东北杯": {
     "left_normalized": "copadonordeste",
@@ -139,18 +139,18 @@
     "right_normalized": "厄瓜多尔乙组联赛",
     "left_example": "Liga Pro Serie B\t21:00",
     "right_example": "厄瓜多尔乙组联赛",
-    "count": 22,
+    "count": 346,
     "promoted": true,
-    "last_seen_at": "2026-03-27T01:56:56.799431+00:00"
+    "last_seen_at": "2026-04-03T01:52:10.033146+00:00"
   },
   "divisionprofesionalapertura <-> 巴拉圭甲组联赛": {
     "left_normalized": "divisionprofesionalapertura",
     "right_normalized": "巴拉圭甲组联赛",
     "left_example": "Division Profesional - Apertura\t20:30",
     "right_example": "巴拉圭甲组联赛",
-    "count": 683,
+    "count": 1091,
     "promoted": true,
-    "last_seen_at": "2026-03-31T01:24:49.704038+00:00"
+    "last_seen_at": "2026-04-02T01:23:23.301405+00:00"
   },
   "nba <-> nba美国职业篮球联赛": {
     "left_normalized": "nba",
@@ -218,20 +218,20 @@
   "division1 <-> 沙特甲组联赛": {
     "left_normalized": "division1",
     "right_normalized": "沙特甲组联赛",
-    "left_example": "Division 1\t10:15",
+    "left_example": "Division 1\t14:35",
     "right_example": "沙特甲组联赛",
-    "count": 37,
+    "count": 1069,
     "promoted": true,
-    "last_seen_at": "2026-03-27T15:07:17.964640+00:00"
+    "last_seen_at": "2026-04-02T19:31:36.277339+00:00"
   },
   "ligue2 <-> 阿尔及利亚乙组联赛": {
     "left_normalized": "ligue2",
     "right_normalized": "阿尔及利亚乙组联赛",
     "left_example": "Ligue 2\t11:00",
     "right_example": "阿尔及利亚乙组联赛",
-    "count": 73,
+    "count": 81,
     "promoted": true,
-    "last_seen_at": "2026-03-27T16:04:40.784096+00:00"
+    "last_seen_at": "2026-04-01T15:57:04.197977+00:00"
   },
   "fifaseries <-> 国际系列在阿塞拜疆": {
     "left_normalized": "fifaseries",
@@ -256,9 +256,9 @@
     "right_normalized": "西班牙乙组联赛",
     "left_example": "Segunda División\t16:30",
     "right_example": "西班牙乙组联赛",
-    "count": 1162,
+    "count": 3221,
     "promoted": true,
-    "last_seen_at": "2026-03-31T21:25:09.102356+00:00"
+    "last_seen_at": "2026-04-02T21:22:00.822335+00:00"
   },
   "fifaseries <-> 国际系列在卢旺达": {
     "left_normalized": "fifaseries",
@@ -299,11 +299,11 @@
   "copaargentina <-> 阿根廷杯": {
     "left_normalized": "copaargentina",
     "right_normalized": "阿根廷杯",
-    "left_example": "Copa Argentina\t20:15",
+    "left_example": "Copa Argentina\t19:00",
     "right_example": "阿根廷杯",
-    "count": 352,
+    "count": 565,
     "promoted": true,
-    "last_seen_at": "2026-03-30T01:10:35.853833+00:00"
+    "last_seen_at": "2026-04-01T23:56:11.354025+00:00"
   },
   "leagueone <-> 苏格兰甲组联赛": {
     "left_normalized": "leagueone",
@@ -353,11 +353,11 @@
   "primeraa <-> 哥伦比亚甲组联赛": {
     "left_normalized": "primeraa",
     "right_normalized": "哥伦比亚甲组联赛",
-    "left_example": "Primera A\t18:10",
+    "left_example": "Primera A\t20:20",
     "right_example": "哥伦比亚甲组联赛",
-    "count": 621,
+    "count": 2028,
     "promoted": true,
-    "last_seen_at": "2026-03-29T23:05:52.831687+00:00"
+    "last_seen_at": "2026-04-03T01:19:40.574138+00:00"
   },
   "baseballmlb <-> 美国职业棒球": {
     "left_normalized": "baseballmlb",
@@ -407,11 +407,11 @@
   "2liga <-> 斯洛伐克乙组联赛": {
     "left_normalized": "2liga",
     "right_normalized": "斯洛伐克乙组联赛",
-    "left_example": "2. liga\t11:00",
+    "left_example": "2. liga\t13:00",
     "right_example": "斯洛伐克乙组联赛",
-    "count": 14,
+    "count": 336,
     "promoted": true,
-    "last_seen_at": "2026-03-28T15:52:26.927551+00:00"
+    "last_seen_at": "2026-04-02T17:50:30.368058+00:00"
   },
   "uefau19championshipqualification <-> 欧洲u19青年锦标赛外围赛": {
     "left_normalized": "uefau19championshipqualification",
@@ -434,11 +434,11 @@
   "leaguetwo <-> 英格兰乙组联赛": {
     "left_normalized": "leaguetwo",
     "right_normalized": "英格兰乙组联赛",
-    "left_example": "League Two\t12:00",
+    "left_example": "League Two\t16:00",
     "right_example": "英格兰乙组联赛",
-    "count": 41,
+    "count": 378,
     "promoted": true,
-    "last_seen_at": "2026-03-28T16:57:11.161690+00:00"
+    "last_seen_at": "2026-04-02T20:57:24.593687+00:00"
   },
   "premierleague <-> 英格兰甲组联赛": {
     "left_normalized": "premierleague",
@@ -749,10 +749,118 @@
   "serieb <-> 巴西乙组联赛": {
     "left_normalized": "serieb",
     "right_normalized": "巴西乙组联赛",
-    "left_example": "Serie B\t18:30",
+    "left_example": "Serie B\t21:30",
     "right_example": "巴西乙组联赛",
-    "count": 143,
+    "count": 554,
     "promoted": true,
-    "last_seen_at": "2026-03-31T22:35:05.000756+00:00"
+    "last_seen_at": "2026-04-02T02:32:54.388101+00:00"
+  },
+  "toppserien <-> 挪威女子超级联赛": {
+    "left_normalized": "toppserien",
+    "right_normalized": "挪威女子超级联赛",
+    "left_example": "Toppserien\t11:00",
+    "right_example": "挪威女子超级联赛",
+    "count": 5,
+    "promoted": true,
+    "last_seen_at": "2026-04-01T15:26:41.740077+00:00"
+  },
+  "uefachampionsleaguewomen <-> 欧洲女子冠军联赛": {
+    "left_normalized": "uefachampionsleaguewomen",
+    "right_normalized": "欧洲女子冠军联赛",
+    "left_example": "UEFA Champions League Women\t16:00",
+    "right_example": "欧洲女子冠军联赛",
+    "count": 949,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T20:51:37.645085+00:00"
+  },
+  "coppaitaliaseriec <-> 意大利丙组联赛杯": {
+    "left_normalized": "coppaitaliaseriec",
+    "right_normalized": "意大利丙组联赛杯",
+    "left_example": "Coppa Italia Serie C\t15:30",
+    "right_example": "意大利丙组联赛杯",
+    "count": 194,
+    "promoted": true,
+    "last_seen_at": "2026-04-01T20:26:30.359732+00:00"
+  },
+  "swpl1women <-> 苏格兰女子超级联赛": {
+    "left_normalized": "swpl1women",
+    "right_normalized": "苏格兰女子超级联赛",
+    "left_example": "SWPL 1 Women\t15:45",
+    "right_example": "苏格兰女子超级联赛",
+    "count": 196,
+    "promoted": true,
+    "last_seen_at": "2026-04-01T20:41:19.506760+00:00"
+  },
+  "seriea <-> 巴西甲组联赛": {
+    "left_normalized": "seriea",
+    "right_normalized": "巴西甲组联赛",
+    "left_example": "Serie A\t20:00",
+    "right_example": "巴西甲组联赛",
+    "count": 428,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T00:59:58.987892+00:00"
+  },
+  "u20afcasiancup <-> 亚足联u20女子亚洲杯2026在泰国": {
+    "left_normalized": "u20afcasiancup",
+    "right_normalized": "亚足联u20女子亚洲杯2026在泰国",
+    "left_example": "U20 AFC Asian Cup\t06:00",
+    "right_example": "亚足联U20女子亚洲杯2026(在泰国)",
+    "count": 244,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T10:40:41.275394+00:00"
+  },
+  "aleague <-> 澳大利亚甲组联赛": {
+    "left_normalized": "aleague",
+    "right_normalized": "澳大利亚甲组联赛",
+    "left_example": "A-League\t07:00",
+    "right_example": "澳大利亚甲组联赛",
+    "count": 562,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T11:49:05.551915+00:00"
+  },
+  "darts <-> 丹麦丙组联赛": {
+    "left_normalized": "darts",
+    "right_normalized": "丹麦丙组联赛",
+    "left_example": "Darts\t09:00",
+    "right_example": "丹麦丙组联赛",
+    "count": 80,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T13:48:46.049507+00:00"
+  },
+  "darts <-> 克罗地亚甲组联赛": {
+    "left_normalized": "darts",
+    "right_normalized": "克罗地亚甲组联赛",
+    "left_example": "Darts\t09:00",
+    "right_example": "克罗地亚甲组联赛",
+    "count": 465,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T17:04:11.475725+00:00"
+  },
+  "darts <-> 乌兹别克超级联赛": {
+    "left_normalized": "darts",
+    "right_normalized": "乌兹别克超级联赛",
+    "left_example": "Darts\t09:00",
+    "right_example": "乌兹别克超级联赛",
+    "count": 21,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T15:58:26.935756+00:00"
+  },
+  "uefachampionsleaguewomen <-> 欧洲女子欧霸杯": {
+    "left_normalized": "uefachampionsleaguewomen",
+    "right_normalized": "欧洲女子欧霸杯",
+    "left_example": "UEFA Champions League Women\t13:45",
+    "right_example": "欧洲女子欧霸杯",
+    "count": 44,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T16:45:06.143271+00:00"
+  },
+  "uefachampionsleaguewomen <-> 英格兰甲组联赛": {
+    "left_normalized": "uefachampionsleaguewomen",
+    "right_normalized": "英格兰甲组联赛",
+    "left_example": "UEFA Champions League Women\t13:45",
+    "right_example": "英格兰甲组联赛",
+    "count": 3,
+    "promoted": true,
+    "last_seen_at": "2026-04-02T18:45:59.780309+00:00"
   }
 }

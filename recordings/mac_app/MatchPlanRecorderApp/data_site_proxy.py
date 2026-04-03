@@ -28,10 +28,12 @@ TARGET_BASE = f"https://{TARGET_HOST}"
 SSL_CTX = ssl._create_unverified_context()
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
 
-# Use sing-box proxy (mixed HTTP/SOCKS on 17897) via env vars
-# to reach the upstream data site which is blocked in mainland China.
-os.environ["http_proxy"] = "http://127.0.0.1:17897"
-os.environ["https_proxy"] = "http://127.0.0.1:17897"
+# Always route data site traffic through sing-box.
+# Node selection is managed by data_site_node_prober at startup.
+_SINGBOX_PROXY = "http://127.0.0.1:17897"
+os.environ["http_proxy"] = _SINGBOX_PROXY
+os.environ["https_proxy"] = _SINGBOX_PROXY
+print("[proxy] 数据站代理: sing-box (17897)", file=sys.stderr)
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 RECORDINGS_DIR = SCRIPT_DIR.parents[1]
@@ -113,9 +115,12 @@ def refresh_login_creds() -> dict | None:
     """Force re-login, replacing cached credentials."""
     global _login_creds
     with _login_lock:
+        previous_creds = dict(_login_creds) if _login_creds else None
         _login_creds = None
     username, password = load_env_credentials()
     if not username or not password:
+        with _login_lock:
+            _login_creds = previous_creds
         return None
     try:
         creds = _do_auto_login(username, password)
@@ -125,6 +130,8 @@ def refresh_login_creds() -> dict | None:
         print(f"[proxy] refresh_login OK: uid={creds.get('uid', '?')}", file=sys.stderr)
         return _login_creds
     except Exception as e:
+        with _login_lock:
+            _login_creds = previous_creds
         print(f"[proxy] refresh_login all entries failed: {e}", file=sys.stderr)
         return None
 
@@ -185,6 +192,8 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                     "mid": creds.get("mid", ""),
                     "uid": creds.get("uid", ""),
                     "body_template": creds.get("body_template", ""),
+                    "entry_url": creds.get("entry_url", ""),
+                    "feed_url": creds.get("feed_url", ""),
                     "alias": creds.get("alias", ""),
                 }
                 body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -207,6 +216,8 @@ class ProxyHandler(http.server.BaseHTTPRequestHandler):
                     "mid": creds.get("mid", ""),
                     "uid": creds.get("uid", ""),
                     "body_template": creds.get("body_template", ""),
+                    "entry_url": creds.get("entry_url", ""),
+                    "feed_url": creds.get("feed_url", ""),
                     "alias": creds.get("alias", ""),
                 }
                 body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -396,6 +407,17 @@ class ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
 
 
 def main():
+    # Probe sing-box nodes and rebuild config with only working nodes
+    try:
+        from data_site_node_prober import ensure_data_site_nodes
+        working = ensure_data_site_nodes()
+        if working:
+            print(f"[proxy] sing-box 节点探测完成: {working}", file=sys.stderr)
+        else:
+            print("[proxy] WARNING: 无可用节点，sing-box 配置未更新", file=sys.stderr)
+    except Exception as e:
+        print(f"[proxy] 节点探测失败: {e}", file=sys.stderr)
+
     # Pre-login at startup so credentials are ready before anyone asks
     print(f"[proxy] pre-login at startup...", file=sys.stderr)
     creds = get_login_creds()

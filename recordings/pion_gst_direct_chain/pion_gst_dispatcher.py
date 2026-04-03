@@ -141,6 +141,7 @@ class PionGstDispatcher:
         self.match_dir.mkdir(parents=True, exist_ok=True)
         self.credentials_path = self.runtime_dir / "data_source_credentials.json"
         self.shared_betting_data_path = self.runtime_dir / "shared_betting_data.jsonl"
+        self.shared_599_path = self.runtime_dir / "shared_599_events.jsonl"
         self.state_path = self.runtime_dir / "dispatcher_state.json"
         self.log_path = self.runtime_dir / "dispatcher.log"
         self.logger = SessionLogger(str(self.log_path))
@@ -150,6 +151,8 @@ class PionGstDispatcher:
         self._shared_poller = None
         self._shared_poller_thread = None
         self._shared_poller_rows_flushed = 0
+        self._shared_599_writer = None
+        self._shared_599_thread = None
 
     def ensure_shared_poller(self) -> None:
         """Start or restart the shared BettingDataPoller if credentials are available."""
@@ -202,6 +205,51 @@ class PionGstDispatcher:
         if self._shared_poller is not None:
             self._shared_poller.stop()
             self._shared_poller = None
+
+    def ensure_shared_599_writer(self) -> None:
+        """启动或确认 599 集中轮询 writer。"""
+        if not self.shared_599_path.exists():
+            self.shared_599_path.touch(exist_ok=True)
+        if self._shared_599_writer is not None:
+            return
+        from pion_gst_direct_chain.live_text_599 import Shared599Writer
+        poll_sec = float(getattr(self.args, "live_text_599_poll_seconds", 5))
+        self._shared_599_writer = Shared599Writer(
+            str(self.shared_599_path),
+            poll_interval=poll_sec,
+            logger=self.logger,
+        )
+        self._shared_599_thread = threading.Thread(
+            target=self._shared_599_writer.start, daemon=True
+        )
+        self._shared_599_thread.start()
+        self.logger.log(f"599 集中轮询 writer 启动 (interval={poll_sec}s)")
+
+    def register_match_599(self, match: dict) -> None:
+        """向 599 集中 writer 注册一场比赛。"""
+        if self._shared_599_writer is None:
+            return
+        team_h = str(match.get("team_h", "")).strip()
+        team_c = str(match.get("team_c", "")).strip()
+        gtype = str(match.get("gtype", "FT")).strip()
+        if not team_h or not team_c or gtype != "FT":
+            return
+        self._shared_599_writer.register_match(
+            team_h,
+            team_c,
+            selected_match=match,
+            league=str(match.get("league", "")),
+        )
+
+    def flush_shared_599(self) -> None:
+        """将 599 集中 writer 缓冲区落盘。"""
+        if self._shared_599_writer is not None:
+            self._shared_599_writer.flush()
+
+    def stop_shared_599_writer(self) -> None:
+        if self._shared_599_writer is not None:
+            self._shared_599_writer.stop()
+            self._shared_599_writer = None
 
     def reap_finished_children(self) -> None:
         while True:
@@ -444,6 +492,10 @@ class PionGstDispatcher:
             session_id,
             "--shared-betting-data",
             str(self.shared_betting_data_path),
+            "--live-text-599-poll-seconds",
+            str(getattr(self.args, "live_text_599_poll_seconds", 5)),
+            "--shared-599-data",
+            str(self.shared_599_path),
         ]
         if self.args.allow_unbound:
             cmd.append("--allow-unbound")
@@ -473,6 +525,7 @@ class PionGstDispatcher:
         self.logger.log(
             f"分发 Pion worker pid={proc.pid} | {label} | {bootstrap.get('serverHost', '')}"
         )
+        self.register_match_599(match)
         return {
             "pid": proc.pid,
             "watch_url": watch_url,
@@ -626,12 +679,15 @@ class PionGstDispatcher:
                 self._next_discovery_at = now_ts + max(15, int(self.args.discover_interval_seconds))
             self.ensure_shared_poller()
             self.flush_shared_betting_data()
+            self.ensure_shared_599_writer()
+            self.flush_shared_599()
             state = self.dispatch_next_worker(state)
             self.save_state(state)
             if self.args.check_once:
                 break
             time.sleep(max(1, int(self.args.loop_interval_seconds)))
         self.stop_shared_poller()
+        self.stop_shared_599_writer()
         self.logger.close()
         return 0
 
@@ -653,6 +709,7 @@ def main() -> int:
     parser.add_argument("--hls-height", type=int, default=540)
     parser.add_argument("--hls-bitrate-kbps", type=int, default=3500)
     parser.add_argument("--black-screen-timeout-seconds", type=int, default=300)
+    parser.add_argument("--live-text-599-poll-seconds", type=float, default=5.0)
     parser.add_argument("--skip-data-binding", action="store_true")
     parser.add_argument("--allow-unbound", action="store_true")
     parser.add_argument("--chain-tag", default="pgst")

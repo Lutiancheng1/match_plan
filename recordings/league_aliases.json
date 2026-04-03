@@ -48,10 +48,30 @@
     "womenschampionsleague",
     "女子欧冠",
     "女足欧冠",
-    "欧洲女子冠军联赛"
+    "欧女冠",
+    "欧洲女子冠军联赛",
+    "欧洲女子欧霸杯",
+    "英格兰甲组联赛"
   ],
   "欧洲女子冠军联赛": [
+    "uefachampionsleaguewomen",
+    "uefawcl"
+  ],
+  "欧女冠": [
     "uefachampionsleaguewomen"
+  ],
+  "uefawcl": [
+    "欧洲女子冠军联赛"
+  ],
+  "womenschampionship": [
+    "女足冠军联赛",
+    "英女冠",
+    "英格兰女子冠军联赛",
+    "英格兰女子超级联赛2",
+    "英格兰女足冠军联赛"
+  ],
+  "英女冠": [
+    "womenschampionship"
   ],
   "primeraa": [
     "哥伦比亚甲",
@@ -105,6 +125,7 @@
   ],
   "乌拉圭甲组联赛": [
     "juventuddelaspiedrasxbostonriver",
+    "primeradivision",
     "primeradivisionapertura"
   ],
   "leagueone": [
@@ -115,7 +136,51 @@
   ],
   "英格兰甲组联赛": [
     "leagueone",
-    "premierleague"
+    "premierleague",
+    "uefachampionsleaguewomen"
+  ],
+  "英甲": [
+    "leagueone"
+  ],
+  "j1league": [
+    "j1联赛",
+    "j联赛",
+    "日本j1百年构想联赛",
+    "日职",
+    "日职联"
+  ],
+  "日职联": [
+    "j1league"
+  ],
+  "toppserien": [
+    "挪威女子超级联赛",
+    "挪威女超"
+  ],
+  "挪威女超": [
+    "toppserien"
+  ],
+  "ligarevelacaou23": [
+    "portugueserevelationleagueu23",
+    "portugueseu23league",
+    "u23新秀联赛",
+    "葡u23联赛",
+    "葡萄牙u23联赛",
+    "葡萄牙联赛u23附加赛",
+    "葡青联u23"
+  ],
+  "葡萄牙u23联赛": [
+    "ligarevelacaou23"
+  ],
+  "worldcupqualificationintercontinentalplayoffs": [
+    "世界杯2026洲际在墨西哥附加赛",
+    "世界杯洲际附加赛",
+    "世界杯附加赛",
+    "世界杯预选赛洲际附加赛",
+    "世预赛洲际附加赛",
+    "世预赛附加赛"
+  ],
+  "世预赛洲际附加赛": [
+    "worldcupqualificationintercontinentalplayoffs"
   ],
   "fifa系列赛": [
     "fifaseries"
@@ -145,14 +210,40 @@
   "friendlymatches": [
     "friendlies"
   ],
+  "世界杯2026欧洲外围赛附加赛": [
+    "friendlies",
+    "worldcupqualificationeurope"
+  ],
   "友誼賽": [
     "friendlies"
   ],
   "友谊赛": [
     "friendlies"
   ],
+  "国际友谊赛u20": [
+    "friendlies",
+    "u20eliteleague"
+  ],
   "国际友谊赛u23": [
     "friendlies"
+  ],
+  "国际赛": [
+    "friendlies"
+  ],
+  "欧洲u19青年锦标赛外围赛": [
+    "friendlies",
+    "uefau19championshipqualification"
+  ],
+  "欧洲u19青年锦标赛外围赛联赛a": [
+    "friendlies",
+    "uefau19championshipqualification",
+    "worldcupqualificationeurope"
+  ],
+  "欧洲u21青年锦标赛2027外围赛": [
+    "friendlies",
+    "uefanationsleague",
+    "uefau21championshipqualification",
+    "worldcupqualificationeurope"
   ],
   "法国全国联赛": [
     "championnat",
@@ -182,6 +273,21 @@
   ],
   "女足欧冠": [
     "uefachampionsleaguewomen"
+  ],
+  "欧洲女子欧霸杯": [
+    "uefachampionsleaguewomen"
+  ],
+  "女足冠军联赛": [
+    "womenschampionship"
+  ],
+  "英格兰女子冠军联赛": [
+    "womenschampionship"
+  ],
+  "英格兰女子超级联赛2": [
+    "womenschampionship"
+  ],
+  "英格兰女足冠军联赛": [
+    "womenschampionship"
   ],
   "哥伦比亚甲": [
     "primeraa"
@@ -228,6 +334,9 @@
   "ligaapertura": [
     "primeradivisionapertura"
   ],
+  "ligamx": [
+    "primeradivisionapertura"
+  ],
   "ligaprimeraapertura": [
     "primeradivisionapertura"
   ],
@@ -245,6 +354,9 @@
     "primeradivisionapertura"
   ],
   "墨超": [
+    "primeradivisionapertura"
+  ],
+  "墨超开幕赛": [
     "primeradivisionapertura"
   ],
   "墨超联": [
@@ -266,10 +378,16 @@
   "甲级联赛开幕赛": [
     "primeradivisionapertura"
   ],
+  "西甲开幕": [
+    "primeradivisionapertura"
+  ],
   "西甲开幕季": [
     "primeradivisionapertura"
   ],
   "西甲开幕赛": [
+    "primeradivisionapertura"
+  ],
+  "西甲秋季": [
     "primeradivisionapertura"
   ],
   "阿佩图拉": [
@@ -287,17 +405,23 @@
   "阿甲春季联赛": [
     "primeradivisionapertura"
   ],
+  "阿甲秋季联赛": [
+    "primeradivisionapertura"
+  ],
+  "阿甲阿佩图拉": [
+    "primeradivisionapertura"
+  ],
   "juventuddelaspiedrasxbostonriver": [
     "乌拉圭甲组联赛",
     "青年拉斯彼德拉斯vs波士顿河"
+  ],
+  "primeradivision": [
+    "乌拉圭甲组联赛"
   ],
   "苏格兰甲组联赛": [
     "leagueone"
   ],
   "英格兰甲级": [
-    "leagueone"
-  ],
-  "英甲": [
     "leagueone"
   ],
   "premierleague": [
@@ -314,6 +438,54 @@
     "英超",
     "英超联赛"
   ],
+  "j1联赛": [
+    "j1league"
+  ],
+  "j联赛": [
+    "j1league"
+  ],
+  "日本j1百年构想联赛": [
+    "j1league"
+  ],
+  "日职": [
+    "j1league"
+  ],
+  "挪威女子超级联赛": [
+    "toppserien"
+  ],
+  "portugueserevelationleagueu23": [
+    "ligarevelacaou23"
+  ],
+  "portugueseu23league": [
+    "ligarevelacaou23"
+  ],
+  "u23新秀联赛": [
+    "ligarevelacaou23"
+  ],
+  "葡u23联赛": [
+    "ligarevelacaou23"
+  ],
+  "葡萄牙联赛u23附加赛": [
+    "ligarevelacaou23"
+  ],
+  "葡青联u23": [
+    "ligarevelacaou23"
+  ],
+  "世界杯2026洲际在墨西哥附加赛": [
+    "worldcupqualificationintercontinentalplayoffs"
+  ],
+  "世界杯洲际附加赛": [
+    "worldcupqualificationintercontinentalplayoffs"
+  ],
+  "世界杯附加赛": [
+    "worldcupqualificationintercontinentalplayoffs"
+  ],
+  "世界杯预选赛洲际附加赛": [
+    "worldcupqualificationintercontinentalplayoffs"
+  ],
+  "世预赛附加赛": [
+    "worldcupqualificationintercontinentalplayoffs"
+  ],
   "中北美系列赛": [
     "concacafseries"
   ],
@@ -325,6 +497,77 @@
   ],
   "中北美金杯": [
     "concacafseries"
+  ],
+  "worldcupqualificationeurope": [
+    "世杯欧区外围赛",
+    "世界杯2026欧洲外围赛附加赛",
+    "世界杯欧洲区",
+    "世界杯欧洲区外围赛",
+    "世界杯欧洲区预选赛",
+    "世界杯欧洲预选赛",
+    "世预赛欧洲",
+    "世预赛欧洲区",
+    "欧洲u19青年锦标赛外围赛联赛a",
+    "欧洲u21青年锦标赛2027外围赛",
+    "欧洲世预赛",
+    "欧洲区世预赛",
+    "欧洲区预选赛"
+  ],
+  "u20eliteleague": [
+    "u20精英联赛",
+    "u20精英赛",
+    "国际友谊赛u20"
+  ],
+  "uefau19championshipqualification": [
+    "eurou19qualifiers",
+    "u19欧锦赛预选赛",
+    "u19欧青赛预选",
+    "u19欧青赛预选赛",
+    "uefau19championshipqualifications",
+    "uefau19kvalifikacia",
+    "uefau19qualification",
+    "欧u19资格赛",
+    "欧洲u19锦标赛预选赛",
+    "欧洲u19青年锦标赛外围赛",
+    "欧洲u19青年锦标赛外围赛联赛a",
+    "欧足联u19预选赛",
+    "欧青u19外",
+    "欧青u19外围赛",
+    "欧青u19资格赛",
+    "欧青u19预选",
+    "欧青u19预选赛",
+    "欧青赛u19资格赛",
+    "欧青赛u19预选赛"
+  ],
+  "uefanationsleague": [
+    "欧国联",
+    "欧洲u21青年锦标赛2027外围赛",
+    "欧洲国家联赛",
+    "欧洲国家联赛d附加赛"
+  ],
+  "uefau21championshipqualification": [
+    "u21欧锦赛预选赛",
+    "u21欧青赛预选",
+    "u21欧青赛预选赛",
+    "u21欧预赛",
+    "欧u21预选赛",
+    "欧洲u21锦标赛预选赛",
+    "欧洲u21青年锦标赛2027外围赛",
+    "欧洲u21预选赛",
+    "欧青u21外",
+    "欧青u21外围赛",
+    "欧青u21资格赛",
+    "欧青u21预",
+    "欧青u21预赛",
+    "欧青u21预选",
+    "欧青u21预选赛",
+    "欧青赛u21外围赛",
+    "欧青赛u21资格赛",
+    "欧青赛u21预赛",
+    "欧青赛u21预选赛",
+    "欧青赛资格赛",
+    "欧青赛预选",
+    "欧青赛预选赛"
   ],
   "championnat": [
     "卢森堡甲级",
@@ -404,6 +647,165 @@
   ],
   "英超联赛": [
     "premierleague"
+  ],
+  "世杯欧区外围赛": [
+    "worldcupqualificationeurope"
+  ],
+  "世界杯欧洲区": [
+    "worldcupqualificationeurope"
+  ],
+  "世界杯欧洲区外围赛": [
+    "worldcupqualificationeurope"
+  ],
+  "世界杯欧洲区预选赛": [
+    "worldcupqualificationeurope"
+  ],
+  "世界杯欧洲预选赛": [
+    "worldcupqualificationeurope"
+  ],
+  "世预赛欧洲": [
+    "worldcupqualificationeurope"
+  ],
+  "世预赛欧洲区": [
+    "worldcupqualificationeurope"
+  ],
+  "欧洲世预赛": [
+    "worldcupqualificationeurope"
+  ],
+  "欧洲区世预赛": [
+    "worldcupqualificationeurope"
+  ],
+  "欧洲区预选赛": [
+    "worldcupqualificationeurope"
+  ],
+  "u20精英联赛": [
+    "u20eliteleague"
+  ],
+  "u20精英赛": [
+    "u20eliteleague"
+  ],
+  "eurou19qualifiers": [
+    "uefau19championshipqualification"
+  ],
+  "u19欧锦赛预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "u19欧青赛预选": [
+    "uefau19championshipqualification"
+  ],
+  "u19欧青赛预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "uefau19championshipqualifications": [
+    "uefau19championshipqualification"
+  ],
+  "uefau19kvalifikacia": [
+    "uefau19championshipqualification"
+  ],
+  "uefau19qualification": [
+    "uefau19championshipqualification"
+  ],
+  "欧u19资格赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧洲u19锦标赛预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧足联u19预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青u19外": [
+    "uefau19championshipqualification"
+  ],
+  "欧青u19外围赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青u19资格赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青u19预选": [
+    "uefau19championshipqualification"
+  ],
+  "欧青u19预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青赛u19资格赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧青赛u19预选赛": [
+    "uefau19championshipqualification"
+  ],
+  "欧国联": [
+    "uefanationsleague"
+  ],
+  "欧洲国家联赛": [
+    "uefanationsleague"
+  ],
+  "欧洲国家联赛d附加赛": [
+    "uefanationsleague"
+  ],
+  "u21欧锦赛预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "u21欧青赛预选": [
+    "uefau21championshipqualification"
+  ],
+  "u21欧青赛预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "u21欧预赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧洲u21锦标赛预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧洲u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21外": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21外围赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21资格赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21预": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21预赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21预选": [
+    "uefau21championshipqualification"
+  ],
+  "欧青u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛u21外围赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛u21资格赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛u21预赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛u21预选赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛资格赛": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛预选": [
+    "uefau21championshipqualification"
+  ],
+  "欧青赛预选赛": [
+    "uefau21championshipqualification"
   ],
   "卢森堡甲级": [
     "championnat"
@@ -546,6 +948,14 @@
     "保加利亚乙级联赛",
     "第二级别联赛"
   ],
+  "segundadivision": [
+    "乌拉圭乙组联赛",
+    "乙级联赛",
+    "西乙",
+    "西班牙乙级",
+    "西班牙乙级联赛",
+    "西班牙乙组联赛"
+  ],
   "ligadeascenso": [
     "promotionleague",
     "升级联赛",
@@ -632,6 +1042,13 @@
   "智利乙组联赛": [
     "primerab"
   ],
+  "智利甲b": [
+    "primerab"
+  ],
+  "西乙b": [
+    "ligadeascenso",
+    "primerab"
+  ],
   "阿丙": [
     "primerab"
   ],
@@ -658,6 +1075,22 @@
   "第二级别联赛": [
     "secondleague"
   ],
+  "乌拉圭乙组联赛": [
+    "segundadivision"
+  ],
+  "西乙": [
+    "ligadeascenso",
+    "segundadivision"
+  ],
+  "西班牙乙级": [
+    "segundadivision"
+  ],
+  "西班牙乙级联赛": [
+    "segundadivision"
+  ],
+  "西班牙乙组联赛": [
+    "segundadivision"
+  ],
   "promotionleague": [
     "ligadeascenso"
   ],
@@ -670,16 +1103,32 @@
   "墨西哥升级联赛": [
     "ligadeascenso"
   ],
-  "西乙": [
-    "ligadeascenso",
-    "segundadivision"
-  ],
-  "西乙b": [
-    "ligadeascenso",
-    "primerab"
-  ],
   "西协甲": [
     "ligadeascenso"
+  ],
+  "divisionprofesionalapertura": [
+    "巴拉圭甲",
+    "巴拉圭甲开幕赛",
+    "巴拉圭甲级",
+    "巴拉圭甲级开幕赛",
+    "巴拉圭甲级联赛",
+    "巴拉圭甲组联赛",
+    "巴拉圭甲阿佩图拉",
+    "巴拉甲",
+    "巴拉甲开幕赛",
+    "巴甲",
+    "玻利甲",
+    "玻利维亚甲",
+    "玻利维亚甲级",
+    "玻利维亚甲级春季",
+    "玻利维亚甲级联赛",
+    "玻甲",
+    "玻甲联",
+    "职业甲级联赛",
+    "职业联赛",
+    "职业联赛季前赛",
+    "职业联赛开幕赛",
+    "职业联赛开放杯"
   ],
   "primeranacional": [
     "阿乙",
@@ -689,13 +1138,68 @@
     "阿根廷乙组曼特波里顿联赛",
     "阿根廷全国联赛"
   ],
-  "segundadivision": [
-    "乌拉圭乙组联赛",
-    "乙级联赛",
-    "西乙",
-    "西班牙乙级",
-    "西班牙乙级联赛",
-    "西班牙乙组联赛"
+  "巴拉圭甲": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉圭甲开幕赛": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉圭甲级": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉圭甲级开幕赛": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉圭甲级联赛": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉圭甲组联赛": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉圭甲阿佩图拉": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉甲": [
+    "divisionprofesionalapertura"
+  ],
+  "巴拉甲开幕赛": [
+    "divisionprofesionalapertura"
+  ],
+  "巴甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲级": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲级春季": [
+    "divisionprofesionalapertura"
+  ],
+  "玻利维亚甲级联赛": [
+    "divisionprofesionalapertura"
+  ],
+  "玻甲": [
+    "divisionprofesionalapertura"
+  ],
+  "玻甲联": [
+    "divisionprofesionalapertura"
+  ],
+  "职业甲级联赛": [
+    "divisionprofesionalapertura"
+  ],
+  "职业联赛季前赛": [
+    "divisionprofesionalapertura"
+  ],
+  "职业联赛开幕赛": [
+    "divisionprofesionalapertura"
+  ],
+  "职业联赛开放杯": [
+    "divisionprofesionalapertura"
   ],
   "阿乙联赛": [
     "primeranacional"
@@ -709,102 +1213,6 @@
   "阿根廷全国联赛": [
     "primeranacional"
   ],
-  "乌拉圭乙组联赛": [
-    "segundadivision"
-  ],
-  "西班牙乙级": [
-    "segundadivision"
-  ],
-  "西班牙乙级联赛": [
-    "segundadivision"
-  ],
-  "西班牙乙组联赛": [
-    "segundadivision"
-  ],
-  "国际友谊赛u20": [
-    "friendlies",
-    "u20eliteleague"
-  ],
-  "u20eliteleague": [
-    "u20精英联赛",
-    "u20精英赛",
-    "国际友谊赛u20"
-  ],
-  "u20精英联赛": [
-    "u20eliteleague"
-  ],
-  "欧洲u21青年锦标赛2027外围赛": [
-    "friendlies",
-    "uefanationsleague",
-    "uefau21championshipqualification",
-    "worldcupqualificationeurope"
-  ],
-  "uefau21championshipqualification": [
-    "u21欧锦赛预选赛",
-    "u21欧青赛预选",
-    "u21欧青赛预选赛",
-    "u21欧预赛",
-    "欧u21预选赛",
-    "欧洲u21锦标赛预选赛",
-    "欧洲u21青年锦标赛2027外围赛",
-    "欧洲u21预选赛",
-    "欧青u21外",
-    "欧青u21外围赛",
-    "欧青u21资格赛",
-    "欧青u21预",
-    "欧青u21预赛",
-    "欧青u21预选",
-    "欧青u21预选赛",
-    "欧青赛u21外围赛",
-    "欧青赛u21资格赛",
-    "欧青赛u21预赛",
-    "欧青赛u21预选赛",
-    "欧青赛资格赛",
-    "欧青赛预选",
-    "欧青赛预选赛"
-  ],
-  "u21欧锦赛预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "u21欧预赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧u21预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧洲u21锦标赛预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧洲u21预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21外": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21外围赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21资格赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21预选": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛u21外围赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛u21资格赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛u21预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛预选赛": [
-    "uefau21championshipqualification"
-  ],
   "ekstraligawomen": [
     "polishwomensleague",
     "polskaekstraligawomen"
@@ -814,63 +1222,6 @@
   ],
   "polskaekstraligawomen": [
     "ekstraligawomen"
-  ],
-  "uefau19championshipqualification": [
-    "eurou19qualifiers",
-    "u19欧锦赛预选赛",
-    "u19欧青赛预选",
-    "u19欧青赛预选赛",
-    "uefau19championshipqualifications",
-    "uefau19kvalifikacia",
-    "uefau19qualification",
-    "欧u19资格赛",
-    "欧洲u19锦标赛预选赛",
-    "欧洲u19青年锦标赛外围赛",
-    "欧洲u19青年锦标赛外围赛联赛a",
-    "欧足联u19预选赛",
-    "欧青u19外",
-    "欧青u19外围赛",
-    "欧青u19资格赛",
-    "欧青u19预选",
-    "欧青u19预选赛",
-    "欧青赛u19资格赛",
-    "欧青赛u19预选赛"
-  ],
-  "eurou19qualifiers": [
-    "uefau19championshipqualification"
-  ],
-  "uefau19championshipqualifications": [
-    "uefau19championshipqualification"
-  ],
-  "uefau19kvalifikacia": [
-    "uefau19championshipqualification"
-  ],
-  "uefau19qualification": [
-    "uefau19championshipqualification"
-  ],
-  "欧洲u19锦标赛预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "欧洲u19青年锦标赛外围赛": [
-    "friendlies",
-    "uefau19championshipqualification"
-  ],
-  "欧洲u19青年锦标赛外围赛联赛a": [
-    "friendlies",
-    "uefau19championshipqualification",
-    "worldcupqualificationeurope"
-  ],
-  "欧足联u19预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "欧青u19资格赛": [
-    "uefau19championshipqualification"
-  ],
-  "欧青u19预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "欧青赛u19资格赛": [
-    "uefau19championshipqualification"
   ],
   "uefau17championshipqualification": [
     "campeonatou17uefaclasificacion",
@@ -1282,100 +1633,6 @@
   "巴超": [
     "cricketpakistansuperleague"
   ],
-  "ligarevelacaou23": [
-    "portugueserevelationleagueu23",
-    "portugueseu23league",
-    "u23新秀联赛",
-    "葡u23联赛",
-    "葡萄牙u23联赛",
-    "葡萄牙联赛u23附加赛",
-    "葡青联u23"
-  ],
-  "portugueserevelationleagueu23": [
-    "ligarevelacaou23"
-  ],
-  "portugueseu23league": [
-    "ligarevelacaou23"
-  ],
-  "u23新秀联赛": [
-    "ligarevelacaou23"
-  ],
-  "葡u23联赛": [
-    "ligarevelacaou23"
-  ],
-  "葡萄牙u23联赛": [
-    "ligarevelacaou23"
-  ],
-  "葡萄牙联赛u23附加赛": [
-    "ligarevelacaou23"
-  ],
-  "葡青联u23": [
-    "ligarevelacaou23"
-  ],
-  "worldcupqualificationeurope": [
-    "世杯欧区外围赛",
-    "世界杯2026欧洲外围赛附加赛",
-    "世界杯欧洲区",
-    "世界杯欧洲区外围赛",
-    "世界杯欧洲区预选赛",
-    "世界杯欧洲预选赛",
-    "世预赛欧洲",
-    "世预赛欧洲区",
-    "欧洲u19青年锦标赛外围赛联赛a",
-    "欧洲u21青年锦标赛2027外围赛",
-    "欧洲世预赛",
-    "欧洲区世预赛",
-    "欧洲区预选赛"
-  ],
-  "世杯欧区外围赛": [
-    "worldcupqualificationeurope"
-  ],
-  "世界杯2026欧洲外围赛附加赛": [
-    "friendlies",
-    "worldcupqualificationeurope"
-  ],
-  "世界杯欧洲区": [
-    "worldcupqualificationeurope"
-  ],
-  "世界杯欧洲区外围赛": [
-    "worldcupqualificationeurope"
-  ],
-  "世界杯欧洲区预选赛": [
-    "worldcupqualificationeurope"
-  ],
-  "世界杯欧洲预选赛": [
-    "worldcupqualificationeurope"
-  ],
-  "世预赛欧洲": [
-    "worldcupqualificationeurope"
-  ],
-  "世预赛欧洲区": [
-    "worldcupqualificationeurope"
-  ],
-  "欧洲世预赛": [
-    "worldcupqualificationeurope"
-  ],
-  "欧洲区世预赛": [
-    "worldcupqualificationeurope"
-  ],
-  "欧洲区预选赛": [
-    "worldcupqualificationeurope"
-  ],
-  "uefanationsleague": [
-    "欧国联",
-    "欧洲u21青年锦标赛2027外围赛",
-    "欧洲国家联赛",
-    "欧洲国家联赛d附加赛"
-  ],
-  "欧国联": [
-    "uefanationsleague"
-  ],
-  "欧洲国家联赛": [
-    "uefanationsleague"
-  ],
-  "欧洲国家联赛d附加赛": [
-    "uefanationsleague"
-  ],
   "tennis": [
     "atp迈阿密公开赛",
     "wta迈阿密公开赛",
@@ -1436,32 +1693,6 @@
   "欧冠": [
     "euroleague"
   ],
-  "worldcupqualificationintercontinentalplayoffs": [
-    "世界杯2026洲际在墨西哥附加赛",
-    "世界杯洲际附加赛",
-    "世界杯附加赛",
-    "世界杯预选赛洲际附加赛",
-    "世预赛洲际附加赛",
-    "世预赛附加赛"
-  ],
-  "世界杯2026洲际在墨西哥附加赛": [
-    "worldcupqualificationintercontinentalplayoffs"
-  ],
-  "世界杯洲际附加赛": [
-    "worldcupqualificationintercontinentalplayoffs"
-  ],
-  "世界杯附加赛": [
-    "worldcupqualificationintercontinentalplayoffs"
-  ],
-  "世界杯预选赛洲际附加赛": [
-    "worldcupqualificationintercontinentalplayoffs"
-  ],
-  "世预赛洲际附加赛": [
-    "worldcupqualificationintercontinentalplayoffs"
-  ],
-  "世预赛附加赛": [
-    "worldcupqualificationintercontinentalplayoffs"
-  ],
   "reserveleague": [
     "预备队联赛"
   ],
@@ -1514,75 +1745,6 @@
   "巴西女足联赛": [
     "brasileirowomen"
   ],
-  "divisionprofesionalapertura": [
-    "巴拉圭甲",
-    "巴拉圭甲开幕赛",
-    "巴拉圭甲级",
-    "巴拉圭甲级开幕赛",
-    "巴拉圭甲级联赛",
-    "巴拉圭甲组联赛",
-    "巴拉圭甲阿佩图拉",
-    "巴拉甲",
-    "巴拉甲开幕赛",
-    "巴甲",
-    "玻利甲",
-    "玻利维亚甲",
-    "玻利维亚甲级",
-    "玻利维亚甲级春季",
-    "玻利维亚甲级联赛",
-    "玻甲",
-    "玻甲联",
-    "职业甲级联赛",
-    "职业联赛",
-    "职业联赛季前赛",
-    "职业联赛开幕赛",
-    "职业联赛开放杯"
-  ],
-  "巴拉圭甲": [
-    "divisionprofesionalapertura"
-  ],
-  "巴拉圭甲级": [
-    "divisionprofesionalapertura"
-  ],
-  "巴拉圭甲级联赛": [
-    "divisionprofesionalapertura"
-  ],
-  "巴拉圭甲组联赛": [
-    "divisionprofesionalapertura"
-  ],
-  "巴拉甲": [
-    "divisionprofesionalapertura"
-  ],
-  "巴甲": [
-    "divisionprofesionalapertura"
-  ],
-  "玻利甲": [
-    "divisionprofesionalapertura"
-  ],
-  "玻利维亚甲": [
-    "divisionprofesionalapertura"
-  ],
-  "玻利维亚甲级": [
-    "divisionprofesionalapertura"
-  ],
-  "玻利维亚甲级春季": [
-    "divisionprofesionalapertura"
-  ],
-  "玻利维亚甲级联赛": [
-    "divisionprofesionalapertura"
-  ],
-  "玻甲": [
-    "divisionprofesionalapertura"
-  ],
-  "玻甲联": [
-    "divisionprofesionalapertura"
-  ],
-  "职业甲级联赛": [
-    "divisionprofesionalapertura"
-  ],
-  "职业联赛开放杯": [
-    "divisionprofesionalapertura"
-  ],
   "aleaguewomen": [
     "澳大利亚女子甲组联赛",
     "澳大利亚女足联赛",
@@ -1605,28 +1767,6 @@
   "澳洲女足联赛": [
     "aleaguewomen"
   ],
-  "j1league": [
-    "j1联赛",
-    "j联赛",
-    "日本j1百年构想联赛",
-    "日职",
-    "日职联"
-  ],
-  "j1联赛": [
-    "j1league"
-  ],
-  "j联赛": [
-    "j1league"
-  ],
-  "日本j1百年构想联赛": [
-    "j1league"
-  ],
-  "日职": [
-    "j1league"
-  ],
-  "日职联": [
-    "j1league"
-  ],
   "mma": [
     "综合格斗"
   ],
@@ -1644,6 +1784,12 @@
     "以色列甲级联赛",
     "以色列甲组",
     "以色列甲组联赛"
+  ],
+  "israeliseconddivision": [
+    "ligaleumit"
+  ],
+  "israelseconddivision": [
+    "ligaleumit"
   ],
   "以甲": [
     "ligaleumit"
@@ -1861,28 +2007,6 @@
   "英格兰乙组联赛": [
     "leaguetwo"
   ],
-  "womenschampionship": [
-    "女足冠军联赛",
-    "英女冠",
-    "英格兰女子冠军联赛",
-    "英格兰女子超级联赛2",
-    "英格兰女足冠军联赛"
-  ],
-  "女足冠军联赛": [
-    "womenschampionship"
-  ],
-  "英女冠": [
-    "womenschampionship"
-  ],
-  "英格兰女子冠军联赛": [
-    "womenschampionship"
-  ],
-  "英格兰女子超级联赛2": [
-    "womenschampionship"
-  ],
-  "英格兰女足冠军联赛": [
-    "womenschampionship"
-  ],
   "tweededivisie": [
     "dutchthirddivision",
     "荷乙",
@@ -1918,11 +2042,38 @@
     "澳超",
     "澳超联赛"
   ],
+  "南非甲级联赛": [
+    "nationalsoccerleague"
+  ],
   "南非联赛": [
+    "nationalsoccerleague"
+  ],
+  "国家联赛": [
+    "liganacional",
     "nationalsoccerleague"
   ],
   "国家足球联赛": [
     "nationalsoccerleague"
+  ],
+  "新西兰联": [
+    "nationalsoccerleague"
+  ],
+  "澳超": [
+    "aleague",
+    "nationalsoccerleague"
+  ],
+  "澳超联赛": [
+    "nationalsoccerleague"
+  ],
+  "liganacional": [
+    "国家联赛"
+  ],
+  "aleague": [
+    "澳大利亚甲组联赛",
+    "澳超"
+  ],
+  "澳大利亚甲组联赛": [
+    "aleague"
   ],
   "seriecgironea": [
     "意丙a组",
@@ -2030,13 +2181,6 @@
   "中西部杯": [
     "copacentrooeste"
   ],
-  "liganacional": [
-    "国家联赛"
-  ],
-  "国家联赛": [
-    "liganacional",
-    "nationalsoccerleague"
-  ],
   "boxingpbc": [
     "pbc拳击"
   ],
@@ -2138,7 +2282,11 @@
     "divisiondihonor"
   ],
   "seriea": [
+    "巴西甲组联赛",
     "意甲"
+  ],
+  "巴西甲组联赛": [
+    "seriea"
   ],
   "意甲": [
     "seriea"
@@ -2181,128 +2329,84 @@
   "亚洲杯资格赛": [
     "asiancupqualification"
   ],
-  "亚洲杯预选赛": [
-    "asiancupqualification"
-  ],
-  "南非甲级联赛": [
-    "nationalsoccerleague"
-  ],
-  "澳超": [
-    "nationalsoccerleague"
-  ],
-  "新西兰联": [
-    "nationalsoccerleague"
-  ],
-  "西甲开幕": [
-    "primeradivisionapertura"
-  ],
-  "西甲秋季": [
-    "primeradivisionapertura"
-  ],
-  "欧青赛u19预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "israeliseconddivision": [
-    "ligaleumit"
-  ],
-  "u19欧锦赛预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "israelseconddivision": [
-    "ligaleumit"
-  ],
-  "阿甲秋季联赛": [
-    "primeradivisionapertura"
-  ],
-  "澳超联赛": [
-    "nationalsoccerleague"
-  ],
   "亚洲杯预选": [
     "asiancupqualification"
   ],
-  "欧青u19外": [
-    "uefau19championshipqualification"
-  ],
-  "墨超开幕赛": [
-    "primeradivisionapertura"
-  ],
-  "欧青u19外围赛": [
-    "uefau19championshipqualification"
-  ],
-  "u21欧青赛预选赛": [
-    "uefau21championshipqualification"
-  ],
-  "u19欧青赛预选赛": [
-    "uefau19championshipqualification"
-  ],
-  "ligamx": [
-    "primeradivisionapertura"
-  ],
-  "欧青赛资格赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧u19资格赛": [
-    "uefau19championshipqualification"
-  ],
-  "u21欧青赛预选": [
-    "uefau21championshipqualification"
-  ],
-  "u19欧青赛预选": [
-    "uefau19championshipqualification"
-  ],
-  "欧青u19预选": [
-    "uefau19championshipqualification"
-  ],
-  "国际赛": [
-    "friendlies"
-  ],
-  "u20精英赛": [
-    "u20eliteleague"
-  ],
-  "欧青赛预选": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21预赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青赛u21预赛": [
-    "uefau21championshipqualification"
-  ],
-  "欧青u21预": [
-    "uefau21championshipqualification"
-  ],
-  "智利甲b": [
-    "primerab"
+  "亚洲杯预选赛": [
+    "asiancupqualification"
   ],
   "serieb": [
     "巴西乙组联赛",
     "意乙"
   ],
-  "意乙": [
-    "serieb"
-  ],
-  "职业联赛开幕赛": [
-    "divisionprofesionalapertura"
-  ],
-  "职业联赛季前赛": [
-    "divisionprofesionalapertura"
-  ],
   "巴西乙组联赛": [
     "serieb"
   ],
-  "巴拉甲开幕赛": [
-    "divisionprofesionalapertura"
+  "意乙": [
+    "serieb"
   ],
-  "巴拉圭甲开幕赛": [
-    "divisionprofesionalapertura"
+  "coppaitaliaseriect1530": [
+    "意大利杯丙级"
   ],
-  "阿甲阿佩图拉": [
-    "primeradivisionapertura"
+  "意大利杯丙级": [
+    "coppaitaliaseriect1530"
   ],
-  "巴拉圭甲阿佩图拉": [
-    "divisionprofesionalapertura"
+  "meistaradeildint1500": [
+    "冰岛超级联赛"
   ],
-  "巴拉圭甲级开幕赛": [
-    "divisionprofesionalapertura"
+  "冰岛超级联赛": [
+    "meistaradeildint1500"
+  ],
+  "coppaitaliaseriec": [
+    "意大利丙组联赛杯"
+  ],
+  "意大利丙组联赛杯": [
+    "coppaitaliaseriec"
+  ],
+  "botolaprot1600": [
+    "摩洛哥甲级联赛"
+  ],
+  "摩洛哥甲级联赛": [
+    "botolapro",
+    "botolaprot1600"
+  ],
+  "botolapro": [
+    "摩洛哥甲级联赛"
+  ],
+  "swpl1women": [
+    "苏格兰女子超级联赛"
+  ],
+  "苏格兰女子超级联赛": [
+    "swpl1women"
+  ],
+  "u20afcasiancup": [
+    "u20亚足联杯",
+    "亚足联u20女子亚洲杯2026在泰国"
+  ],
+  "u20亚足联杯": [
+    "u20afcasiancup"
+  ],
+  "亚足联u20女子亚洲杯2026在泰国": [
+    "u20afcasiancup"
+  ],
+  "darts": [
+    "丹麦丙组联赛",
+    "乌兹别克超级联赛",
+    "克罗地亚甲组联赛"
+  ],
+  "丹麦丙组联赛": [
+    "darts"
+  ],
+  "乌兹别克超级联赛": [
+    "darts"
+  ],
+  "克罗地亚甲组联赛": [
+    "darts"
+  ],
+  "ligaiit1430": [
+    "罗马尼亚甲级联赛"
+  ],
+  "罗马尼亚甲级联赛": [
+    "ligaiit1430"
   ]
 }

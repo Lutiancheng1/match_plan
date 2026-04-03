@@ -21,15 +21,25 @@ RECORDINGS_DIR = SCRIPT_DIR.parent
 if str(RECORDINGS_DIR) not in sys.path:
     sys.path.insert(0, str(RECORDINGS_DIR))
 
-# Ensure data site requests go through sing-box proxy (17897),
-# not system proxy (小火箭 1082) which may not route data site correctly.
+# Always route data site traffic through sing-box.
+# Node selection is managed by data_site_node_prober at startup.
 _SINGBOX_PROXY = "http://127.0.0.1:17897"
 for _pk in ("http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"):
-    if not os.environ.get(_pk):
-        os.environ[_pk] = _SINGBOX_PROXY
-# Exclude localhost from proxy (for /credentials endpoint etc.)
+    os.environ[_pk] = _SINGBOX_PROXY
 os.environ.setdefault("no_proxy", "127.0.0.1,localhost")
 os.environ.setdefault("NO_PROXY", "127.0.0.1,localhost")
+print("[dispatcher] 数据站代理: sing-box (17897)", flush=True)
+
+# Probe sing-box nodes at import time — rebuild config with working nodes
+try:
+    from data_site_node_prober import ensure_data_site_nodes
+    _working_nodes = ensure_data_site_nodes()
+    if _working_nodes:
+        print(f"[dispatcher] sing-box 节点探测完成: {_working_nodes}", flush=True)
+    else:
+        print("[dispatcher] WARNING: 无可用节点，sing-box 配置未更新", flush=True)
+except Exception as _e:
+    print(f"[dispatcher] 节点探测失败: {_e}", flush=True)
 
 from run_auto_capture import (
     ALL_GTYPES,
@@ -68,6 +78,39 @@ APP_WEB_BRIDGE_FALLBACK_TO_BROWSER = (
 
 def now_iso() -> str:
     return datetime.now().isoformat()
+
+
+def credential_debug_summary(
+    cookie: str | None,
+    template: dict | None,
+    feed_url: str | None,
+    data_source: str | None,
+) -> str:
+    cookie_text = str(cookie or "").strip()
+    template_map = template if isinstance(template, dict) else {}
+    feed = (feed_url or DEFAULT_URL or "").strip()
+    parsed = {}
+    try:
+        from urllib.parse import urlparse, parse_qs
+        parsed_url = urlparse(feed)
+        parsed = {
+            "host": parsed_url.netloc or "?",
+            "path": parsed_url.path or "/",
+            "ver": (parse_qs(parsed_url.query).get("ver", [""])[0] or template_map.get("ver") or "?"),
+        }
+    except Exception:
+        parsed = {"host": "?", "path": "?", "ver": template_map.get("ver") or "?"}
+    cookie_md5 = hashlib.md5(cookie_text.encode("utf-8")).hexdigest()[:10] if cookie_text else "none"
+    uid = str(template_map.get("uid") or "")[-8:] or "none"
+    return (
+        f"source={data_source or '?'} "
+        f"host={parsed['host']} "
+        f"path={parsed['path']} "
+        f"ver={parsed['ver']} "
+        f"uid_tail={uid} "
+        f"cookie_md5={cookie_md5} "
+        f"cookie_len={len(cookie_text)}"
+    )
 
 
 def applescript_eval_js(browser: str, window_index: int, tab_index: int, js: str, timeout: int = 20) -> str:
@@ -631,26 +674,91 @@ def resolve_selected_matches(args, logger: SessionLogger) -> tuple[list[dict], t
             bind_selected_matches_to_feed(selected, snapshot_rows, logger)
         except Exception as exc:
             logger.log(f"比赛数据绑定失败: {exc}", "WARN")
+            logger.log(
+                f"比赛数据绑定失败上下文: {credential_debug_summary(cookie, template, feed_url, data_source)}",
+                "WARN",
+            )
             retry_exc = exc
             try:
-                logger.log("比赛数据绑定异常，尝试刷新数据站代理 session 后重试", "WARN")
-                from run_auto_capture import _fetch_proxy_credentials
-                proxy_refreshed = _fetch_proxy_credentials(logger, refresh=True)
-                if proxy_refreshed:
-                    cookie, template, feed_url, data_source = proxy_refreshed
-                    use_dashboard = False
-                    snapshot_rows = fetch_live_data_snapshot(
-                        cookie,
-                        template,
-                        gtypes=list({m.get("gtype") for m in selected if m.get("gtype")}) or ALL_GTYPES,
-                        use_dashboard=use_dashboard,
-                        feed_url=feed_url or DEFAULT_URL,
+                retried = False
+                logger.log("比赛数据绑定异常，先重试当前会话凭证 (最多3次)", "WARN")
+                for attempt in range(1, 4):
+                    logger.log(
+                        f"当前会话重试#{attempt} 上下文: {credential_debug_summary(cookie, template, feed_url, data_source)}"
                     )
-                    logger.log(f"重试后当前数据快照: {len(snapshot_rows)} 条候选比赛")
-                    bind_selected_matches_to_feed(selected, snapshot_rows, logger)
-                    retry_exc = None
-                else:
-                    logger.log("比赛数据绑定重试失败：数据站代理刷新未返回有效 session", "WARN")
+                    try:
+                        snapshot_rows = fetch_live_data_snapshot(
+                            cookie,
+                            template,
+                            gtypes=list({m.get("gtype") for m in selected if m.get("gtype")}) or ALL_GTYPES,
+                            use_dashboard=use_dashboard,
+                            feed_url=feed_url or DEFAULT_URL,
+                        )
+                        logger.log(f"当前会话重试#{attempt} 后当前数据快照: {len(snapshot_rows)} 条候选比赛")
+                        bind_selected_matches_to_feed(selected, snapshot_rows, logger)
+                        retry_exc = None
+                        retried = True
+                        break
+                    except Exception as current_retry_error:
+                        retry_exc = current_retry_error
+                        logger.log(f"当前会话重试#{attempt} 仍失败: {current_retry_error}", "WARN")
+                        time.sleep(0.8)
+                if str(os.environ.get("MATCH_PLAN_SHARED_DATA_CREDENTIALS_FILE", "")).strip() and not use_dashboard:
+                    logger.log("比赛数据绑定异常，再重试现有共享凭证 (最多3次)", "WARN")
+                    from run_auto_capture import _load_shared_credentials_file
+                    for attempt in range(1, 4):
+                        if retry_exc is None:
+                            break
+                        shared_creds = _load_shared_credentials_file(logger)
+                        if not shared_creds:
+                            logger.log(f"共享凭证重试#{attempt} 未拿到可用凭证", "WARN")
+                            time.sleep(0.8)
+                            continue
+                        cookie, template, feed_url, data_source = shared_creds
+                        logger.log(
+                            f"共享凭证重试#{attempt} 上下文: {credential_debug_summary(cookie, template, feed_url, data_source)}"
+                        )
+                        try:
+                            snapshot_rows = fetch_live_data_snapshot(
+                                cookie,
+                                template,
+                                gtypes=list({m.get("gtype") for m in selected if m.get("gtype")}) or ALL_GTYPES,
+                                use_dashboard=False,
+                                feed_url=feed_url or DEFAULT_URL,
+                            )
+                            logger.log(
+                                f"共享凭证重试#{attempt} 后当前数据快照: {len(snapshot_rows)} 条候选比赛"
+                            )
+                            bind_selected_matches_to_feed(selected, snapshot_rows, logger)
+                            retry_exc = None
+                            retried = True
+                            break
+                        except Exception as shared_retry_error:
+                            retry_exc = shared_retry_error
+                            logger.log(f"共享凭证重试#{attempt} 仍失败: {shared_retry_error}", "WARN")
+                            time.sleep(0.8)
+                if retry_exc is not None:
+                    logger.log("比赛数据绑定异常，尝试刷新数据站代理 session 后重试", "WARN")
+                    from run_auto_capture import _fetch_proxy_credentials
+                    proxy_refreshed = _fetch_proxy_credentials(logger, refresh=True)
+                    if proxy_refreshed:
+                        cookie, template, feed_url, data_source = proxy_refreshed
+                        use_dashboard = False
+                        logger.log(
+                            f"refresh 后绑定上下文: {credential_debug_summary(cookie, template, feed_url, data_source)}"
+                        )
+                        snapshot_rows = fetch_live_data_snapshot(
+                            cookie,
+                            template,
+                            gtypes=list({m.get("gtype") for m in selected if m.get("gtype")}) or ALL_GTYPES,
+                            use_dashboard=use_dashboard,
+                            feed_url=feed_url or DEFAULT_URL,
+                        )
+                        logger.log(f"重试后当前数据快照: {len(snapshot_rows)} 条候选比赛")
+                        bind_selected_matches_to_feed(selected, snapshot_rows, logger)
+                        retry_exc = None
+                    elif not retried:
+                        logger.log("比赛数据绑定重试失败：数据站代理刷新未返回有效 session", "WARN")
             except Exception as retry_error:
                 retry_exc = retry_error
                 logger.log(f"比赛数据绑定重试仍失败: {retry_error}", "WARN")

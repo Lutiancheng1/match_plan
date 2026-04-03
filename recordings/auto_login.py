@@ -242,6 +242,8 @@ def auto_login(
         uid           - session uid
         mid           - member id
         ver           - frontend version string
+        entry_url     - resolved upstream entry host used for login
+        feed_url      - transform.php URL aligned with resolved host + ver
     """
     jar = http.cookiejar.CookieJar()
     # Create a single opener with cookie jar — reuse across all requests
@@ -286,6 +288,8 @@ def auto_login(
         "uid": uid,
         "mid": mid,
         "ver": ver,
+        "entry_url": resolved_entry_url,
+        "feed_url": f"{resolved_entry_url}/transform.php?ver={ver}",
     }
 
 

@@ -772,6 +772,12 @@ final class AppController {
         // Kill any leftover proxy from previous App launch (once per app lifecycle)
         if !dataSiteProxyKilledOld {
             dataSiteProxyKilledOld = true
+            if isDataSiteProxyResponsive() {
+                dataSiteProxyReady = true
+                appendLog("复用已存在的数据站代理进程")
+                appendDiagnosticLog(name: "data_site_proxy.log", message: "检测到已有可用代理，跳过清理旧进程")
+                return
+            }
             killExistingDataSiteProxy()
         }
 
@@ -797,6 +803,24 @@ final class AppController {
 
         // Check /ping inline (called every 5s from refreshAll)
         checkDataSiteProxyPing()
+    }
+
+    private func isDataSiteProxyResponsive(timeout: TimeInterval = 1.2) -> Bool {
+        guard let url = URL(string: "http://127.0.0.1:18780/ping") else { return false }
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: timeout)
+        request.httpMethod = "GET"
+        let semaphore = DispatchSemaphore(value: 0)
+        var ok = false
+        URLSession.shared.dataTask(with: request) { data, resp, _ in
+            if let data,
+               (resp as? HTTPURLResponse)?.statusCode == 200,
+               String(data: data, encoding: .utf8) == "ok" {
+                ok = true
+            }
+            semaphore.signal()
+        }.resume()
+        _ = semaphore.wait(timeout: .now() + timeout + 0.3)
+        return ok
     }
 
     private func killExistingDataSiteProxy() {
@@ -994,6 +1018,9 @@ final class AppController {
     }
 
     var runtimePhaseTitle: String {
+        if !supervisorStatus.dispatcher_alive && !activeWorkers.isEmpty {
+            return failedWorkers.isEmpty ? "录制中（仅 worker）" : "录制中（仅 worker，部分异常）"
+        }
         if supervisorStatus.recording_worker_count > 0 {
             return failedWorkers.isEmpty ? "录制中" : "录制中（部分异常）"
         }
@@ -1010,6 +1037,9 @@ final class AppController {
     }
 
     var runtimePhaseDetail: String {
+        if !supervisorStatus.dispatcher_alive && !activeWorkers.isEmpty {
+            return "检测到已有活跃 worker 正在录制，但总控状态未同步为运行中。"
+        }
         if supervisorStatus.recording_worker_count > 0 {
             return "当前有 \(supervisorStatus.recording_worker_count) 条 worker 正在录制。"
         }
