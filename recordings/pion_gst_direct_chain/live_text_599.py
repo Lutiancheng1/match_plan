@@ -455,7 +455,7 @@ class LiveTextPoller599:
         self.selected_match = dict(selected_match or {})
         self.league = league or str(self.selected_match.get("league", ""))
         self.alignment = alignment or AlignmentEngine()
-        self.poll_interval = max(5.0, float(poll_interval))
+        self.poll_interval = max(2.0, float(poll_interval))
         self.backfill_pages = int(backfill_pages)
         self.logger = logger
         # 确保 alignment engine 也有 logger
@@ -786,16 +786,19 @@ class Shared599Writer:
     - Worker 端用 Shared599Reader 读取并按 match_key 过滤
     """
 
+    # 单个请求之间的最小间隔（秒），防止 API 风控
+    MIN_REQUEST_GAP = 0.5
+
     def __init__(
         self,
         shared_path: str,
         *,
-        poll_interval: float = 5.0,
+        poll_interval: float = 2.0,
         logger: Any = None,
     ):
         import json as _json  # noqa: used in flush
         self.shared_path = shared_path
-        self.poll_interval = max(5.0, float(poll_interval))
+        self._base_interval = max(2.0, float(poll_interval))
         self.logger = logger
 
         # {match_key → registration_info}
@@ -808,6 +811,17 @@ class Shared599Writer:
         self._buffer: list[dict] = []
         self._buffer_lock = threading.Lock()
         self._total_events_flushed = 0
+
+    @property
+    def poll_interval(self) -> float:
+        """自适应周期：max(base_interval, N场 × MIN_REQUEST_GAP)。
+
+        少量比赛时保持快速轮询；比赛多时自动拉长周期避免风控。
+        例: base=2s, gap=0.5s → 3场=2s, 10场=5s, 20场=10s
+        """
+        with self._registry_lock:
+            n = max(1, len(self._registry))
+        return max(self._base_interval, n * self.MIN_REQUEST_GAP)
 
     @staticmethod
     def _match_key(team_h: str, team_c: str) -> str:
@@ -876,7 +890,7 @@ class Shared599Writer:
         if get_match_list is None or get_match_info is None:
             _log(self.logger, f"599集中: API 不可用 — {_API_599_IMPORT_ERROR}", "WARN")
             return
-        _log(self.logger, f"599集中轮询线程启动: interval={self.poll_interval}s")
+        _log(self.logger, f"599集中轮询线程启动: base_interval={self._base_interval}s, min_gap={self.MIN_REQUEST_GAP}s")
         while not self._stop.is_set():
             try:
                 self._poll_cycle()
